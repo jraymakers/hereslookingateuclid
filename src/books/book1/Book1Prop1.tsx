@@ -30,6 +30,22 @@ type State = {
 const minStep = 0;
 const maxStep = 9;
 
+const w = 400;
+const h = 400;
+const centerX = w/2;
+const centerY = h/2;
+const ab = 100;
+const aX = centerX - ab/2;
+const aY = centerY;
+const bX = centerX + ab/2;
+const bY = centerY;
+const alphaX = aX - ab;
+const alphaY = aY;
+const betaX = bX + ab;
+const betaY = bY;
+const cX = centerX;
+const cY = centerY - ab * Math.sqrt(3)/2;
+
 export class Book1Prop1 extends React.PureComponent<{}, State> {
 
   constructor(props: {}) {
@@ -42,7 +58,7 @@ export class Book1Prop1 extends React.PureComponent<{}, State> {
   public render(): JSX.Element {
     return (
       <div>
-        <div>Book 1, Proposition 1</div>
+        <div>Book 1, Proposition 1 (I.i)</div>
         <div>Construct an equilateral triangle on a given straight line.</div>
         <button onClick={this.start} disabled={this.state.step === minStep}>Start</button>
         <button onClick={this.back} disabled={this.state.step === minStep}>Back</button>
@@ -57,20 +73,20 @@ export class Book1Prop1 extends React.PureComponent<{}, State> {
           <li style={this.visibleFrom(6)}>Since AB and AC are both radii of circle &alpha;, they are equal.</li>
           <li style={this.visibleFrom(7)}>Likewise, since AB and BC are both radii of circle &beta;, they are equal.</li>
           <li style={this.visibleFrom(8)}>Because AB equals AC and AB equals BC, AC equals BC.</li>
-          <li style={this.visibleFrom(9)}>Thus AB, AC, and BC equal each other, so the triangle ABC is equilateral.</li>
+          <li style={this.visibleFrom(9)}>Thus AB, AC, and BC equal each other, so the triangle ABC is equilateral, as desired.</li>
         </ol>
         <div>
-          <svg className={svgClass} viewBox="0 0 400 400" preserve-aspect-ratio="true">
-            <line style={this.getStyleLineAB()} className={lineClass} x1="150" y1="200" x2="250" y2="200" />
-            <text style={this.getStyleLabelA()} x="145" y="200" dy="5px" textAnchor="end">A</text>
-            <text style={this.getStyleLabelA()} x="255" y="200" dy="5px" textAnchor="start">B</text>
-            <circle style={this.getStyleCircleAlpha()} className={circleClass} cx="150" cy="200" r="100" />
-            <text style={this.getStyleLabelAlpha()} x="45" y="200" dy="5px" textAnchor="end">&alpha;</text>
-            <circle style={this.getStyleCircleBeta()} className={circleClass} cx="250" cy="200" r="100" />
-            <text style={this.getStyleLabelBeta()} x="355" y="200" dy="5px" textAnchor="start">&beta;</text>
-            <text style={this.getStyleLabelC()} x="200" y="105" textAnchor="middle">C</text>
-            <line style={this.getStyleLineAC()} className={lineClass} x1="150" y1="200" x2="200" y2="113" />
-            <line style={this.getStyleLineBC()} className={lineClass} x1="250" y1="200" x2="200" y2="113" />
+          <svg className={svgClass} viewBox={`0 0 ${w} ${h}`}>
+            <line style={this.getStyleLineAB()} className={lineClass} x1={aX} y1={aY} x2={bX} y2={bY} />
+            <text style={this.getStyleLabelA()} x={aX} y={aY} dx={-5} dy={5} textAnchor="end">A</text>
+            <text style={this.getStyleLabelA()} x={bX} y={bY} dx={5} dy={5} textAnchor="start">B</text>
+            <circle style={this.getStyleCircleAlpha()} className={circleClass} cx={aX} cy={aY} r={ab} />
+            <text style={this.getStyleLabelAlpha()} x={alphaX} y={alphaY} dx={-5} dy={5} textAnchor="end">&alpha;</text>
+            <circle style={this.getStyleCircleBeta()} className={circleClass} cx={bX} cy={bY} r={ab} />
+            <text style={this.getStyleLabelBeta()} x={betaX} y={betaY} dx={5} dy={5} textAnchor="start">&beta;</text>
+            <text style={this.getStyleLabelC()} x={cX} y={cY} dy={-7} textAnchor="middle">C</text>
+            <line style={this.getStyleLineAC()} className={lineClass} x1={aX} y1={aY} x2={cX} y2={cY} />
+            <line style={this.getStyleLineBC()} className={lineClass} x1={bX} y1={bY} x2={cX} y2={cY} />
           </svg>
         </div>
       </div>
