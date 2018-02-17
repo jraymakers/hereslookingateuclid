@@ -19,7 +19,7 @@ module.exports = () => ({
     action: () => fse.remove(outDir)
   },
   copyIndex: {
-    action: () => fse.copy(path.join(srcDir, 'index.html'), path.join(outDir, 'index.html'))
+    action: () => fse.copy(path.join(srcDir, 'root', 'index.html'), path.join(outDir, 'index.html'))
   },
   serve: {
     action: jr.scriptAction(httpServerPath, ['./out', '-o'], { cwd: __dirname })
