@@ -1,0 +1,14 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "target": "es5"
+  }
+}
