@@ -15,6 +15,9 @@ const rootClass = style({
   bottom: 0,
   display: 'flex',
   flexDirection: 'column',
+  maxWidth: 1000,
+  fontFamily: 'serif',
+  fontSize: 16,
 });
 
 const topBarClass = style({

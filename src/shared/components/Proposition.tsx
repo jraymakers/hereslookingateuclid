@@ -50,24 +50,78 @@ const titleClass = style({
 const summaryClass = style({
   $debugName: `${classPrefix}_titleAndSummary`,
   $unique: true,
-  fontSize: 16,
   marginTop: 6,
 });
 
 const buttonsClass = style({
-  $debugName: `${classPrefix}_controls`,
+  $debugName: `${classPrefix}_buttons`,
   $unique: true,
   display: 'flex',
   flexDirection: 'row',
 });
 
+const verticalBarClass = style({
+  $debugName: `${classPrefix}_verticalBar`,
+  $unique: true,
+  width: 4,
+  height: 24,
+  backgroundColor: 'black',
+});
+
+const arrowLeftClass = style({
+  $debugName: `${classPrefix}_arrowLeft`,
+  $unique: true,
+  width: 0,
+  height: 0,
+  borderTop: '12px solid transparent',
+  borderBottom: '12px solid transparent',
+  borderRightWidth: 12,
+  borderRightStyle: 'solid',
+  borderRightColor: 'black',
+});
+
+const arrowRightClass = style({
+  $debugName: `${classPrefix}_arrowRight`,
+  $unique: true,
+  width: 0,
+  height: 0,
+  borderTop: '12px solid transparent',
+  borderBottom: '12px solid transparent',
+  borderLeftWidth: 12,
+  borderLeftStyle: 'solid',
+  borderLeftColor: 'black',
+});
+
 const buttonClass = style({
-  $debugName: `${classPrefix}_controls`,
+  $debugName: `${classPrefix}_button`,
   $unique: true,
   marginLeft: 6,
-  fontSize: 24,
-  border: 'none',
+  paddingLeft: 12,
+  paddingRight: 12,
+  display: 'flex',
+  flexDirection: 'row',
+  border: '1px solid #ddd',
   outline: 'none',
+  $nest: {
+    '&:focus': {
+      outline: '1px solid black',
+    },
+    '&:hover': {
+      backgroundColor: '#eee',
+    },
+    '&:disabled': {
+      backgroundColor: 'transparent',
+    },
+    [`&:disabled .${arrowLeftClass}`]: {
+      borderRightColor: '#ccc',
+    },
+    [`&:disabled .${arrowRightClass}`]: {
+      borderLeftColor: '#ccc',
+    },
+    [`&:disabled .${verticalBarClass}`]: {
+      backgroundColor: '#ccc',
+    }
+  }
 });
 
 const stepsAndDiagramClass = style({
@@ -83,6 +137,7 @@ const stepsAndDiagramClass = style({
 const stepsClass = style({
   $debugName: `${classPrefix}_steps`,
   $unique: true,
+  flex: 1,
   display: 'flex',
   flexDirection: 'column',
 });
@@ -102,6 +157,7 @@ const stepNumberClass = style({
   $unique: true,
   width: 30,
   textAlign: 'right',
+  flex: 'none',
 });
 
 const stepTextClass = style({
@@ -109,7 +165,6 @@ const stepTextClass = style({
   $unique: true,
   paddingLeft: 12,
   paddingRight: 12,
-  width: 500,
 });
 
 const diagramClass = style({
@@ -119,11 +174,6 @@ const diagramClass = style({
   borderStyle: 'solid',
   borderWidth: 1,
 });
-
-const leftDoubleTriangle = '\u23ea';
-const rightDoubleTriangle = '\u23e9';
-const leftDoubleTriangleWithBar = '\u23ee';
-const rightDoubleTriangleWithBar = '\u23ed';
 
 export type PropositionProps = {
   readonly title: string;
@@ -140,6 +190,9 @@ type PropositionState = {
 
 export class Proposition extends React.PureComponent<PropositionProps, PropositionState> {
 
+  private nextButton: HTMLButtonElement | undefined;
+  private backButton: HTMLButtonElement | undefined;
+
   constructor(props: PropositionProps) {
     super(props);
     this.state = {
@@ -149,24 +202,49 @@ export class Proposition extends React.PureComponent<PropositionProps, Propositi
 
   public render(): JSX.Element {
     return (
-      <div className={rootClass}>
+      <div className={rootClass} onKeyDown={this.onKeyDown}>
         <div className={headerClass}>
           <div className={titleAndSummaryClass}>
             <div className={titleClass}>{this.props.title}</div>
             <div className={summaryClass}>{this.props.summary}</div>
           </div>
           <div className={buttonsClass}>
-            <button className={buttonClass} onClick={this.start} disabled={this.state.stepNum === 0}>
-              {leftDoubleTriangleWithBar}
+            <button
+              tabIndex={3}
+              className={buttonClass}
+              disabled={this.state.stepNum === 0}
+              onClick={this.start}
+            >
+              <div className={verticalBarClass} />
+              <div className={arrowLeftClass} />
             </button>
-            <button className={buttonClass} onClick={this.back} disabled={this.state.stepNum === 0}>
-              {leftDoubleTriangle}
+            <button
+              tabIndex={4}
+              className={buttonClass}
+              disabled={this.state.stepNum === 0}
+              onClick={this.back}
+              ref={this.setBackButton}
+            >
+              <div className={arrowLeftClass} />
             </button>
-            <button className={buttonClass} onClick={this.next} disabled={this.state.stepNum === this.props.steps.length}>
-              {rightDoubleTriangle}
+            <button
+              tabIndex={1}
+              className={buttonClass}
+              disabled={this.state.stepNum === this.props.steps.length}
+              onClick={this.next}
+              autoFocus={true}
+              ref={this.setNextButton}
+            >
+              <div className={arrowRightClass} />
             </button>
-            <button className={buttonClass} onClick={this.end} disabled={this.state.stepNum === this.props.steps.length}>
-              {rightDoubleTriangleWithBar}
+            <button
+              tabIndex={2}
+              className={buttonClass}
+              disabled={this.state.stepNum === this.props.steps.length}
+              onClick={this.end}
+            >
+              <div className={arrowRightClass} />
+              <div className={verticalBarClass} />
             </button>
           </div>
         </div>
@@ -178,28 +256,60 @@ export class Proposition extends React.PureComponent<PropositionProps, Propositi
     );
   }
 
+  private readonly onKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+    console.log(event.which);
+    switch (event.which) {
+      case 39: // right arrow
+        this.next();
+        break;
+      case 37: // left arrow
+        this.back();
+        break;
+    }
+  }
+
+  private readonly setNextButton = (button: HTMLButtonElement) => {
+    this.nextButton = button;
+  }
+
+  private readonly setBackButton = (button: HTMLButtonElement) => {
+    this.backButton = button;
+  }
+
+  private readonly focusNextButtonIfStart = () => {
+    if (this.nextButton && this.state.stepNum === 0) {
+      this.nextButton.focus();
+    }
+  }
+
+  private readonly focusBackButtonIfEnd = () => {
+    if (this.backButton && this.state.stepNum === this.props.steps.length) {
+      this.backButton.focus();
+    }
+  }
+
   private readonly start = () => {
     this.setState({
       stepNum: 0,
-    });
+    }, this.focusNextButtonIfStart);
   };
 
   private readonly back = () => {
     this.setState({
       stepNum: Math.max(this.state.stepNum - 1, 0),
-    });
+    }, this.focusNextButtonIfStart);
   };
 
   private readonly next = () => {
     this.setState({
       stepNum: Math.min(this.state.stepNum + 1, this.props.steps.length),
-    });
+    }, this.focusBackButtonIfEnd);
   };
 
   private readonly end = () => {
     this.setState({
       stepNum: this.props.steps.length,
-    });
+    }, this.focusBackButtonIfEnd);
   };
 
   private renderSteps(): JSX.Element {
