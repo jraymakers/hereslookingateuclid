@@ -6,35 +6,30 @@ export type PointSvgProps = {
   readonly x: number;
   readonly y: number;
   readonly label: string;
-  readonly labelDir: number;
-  readonly hidden?: boolean;
+  readonly labelX?: number;
+  readonly labelY?: number;
   readonly highlighted?: boolean;
 };
 
 export class PointSvg extends React.PureComponent<PointSvgProps> {
 
   public render(): JSX.Element | null {
-    if (!this.props.hidden) {
-      return (
-        <g>
-          <circle
-            fill={this.props.highlighted ? 'red' : 'black'}
-            cx={this.props.x}
-            cy={this.props.y}
-            r={3}
-          />
-          <LabelSvg
-            x={this.props.x}
-            y={this.props.y}
-            text={this.props.label}
-            dir={this.props.labelDir}
-            highlighted={this.props.highlighted}
-          />
-        </g>
-      );
-    } else {
-      return null;
-    }
+    return (
+      <g>
+        <circle
+          fill={this.props.highlighted ? 'red' : 'black'}
+          cx={this.props.x}
+          cy={this.props.y}
+          r={3}
+        />
+        <LabelSvg
+          text={this.props.label}
+          x={this.props.x + (this.props.labelX || 0)}
+          y={this.props.y + (this.props.labelY || 0)}
+          highlighted={this.props.highlighted}
+        />
+      </g>
+    );
   }
 
 }

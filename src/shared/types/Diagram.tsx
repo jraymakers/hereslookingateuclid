@@ -2,7 +2,8 @@ export type PointDiagramPart = {
   readonly type: 'point';
   readonly x: number;
   readonly y: number;
-  readonly labelDir: number; // see LabelSvgProps.dir
+  readonly labelX?: number;
+  readonly labelY?: number;
 };
 
 export type LineDiagramPart = {
@@ -13,9 +14,9 @@ export type LineDiagramPart = {
 
 export type CircleDiagramPart = {
   readonly type: 'circle';
-  readonly c: string; // center point reference
-  readonly rp: string; // radius point reference
-  readonly labelDir: number; // see LabelSvgProps.dir
+  readonly p1: string; // center point reference
+  readonly p2: string; // radius point reference
+  readonly labelDir: number;
 };
 
 export type DiagramPart =

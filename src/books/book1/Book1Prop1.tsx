@@ -25,14 +25,14 @@ const cX = centerX;
 const cY = centerY - ab * Math.sqrt(3)/2;
 
 const diagramParts: DiagramPartMap = {
-  ['A']: { type: 'point', x: aX, y: aY, labelDir: LabelDir.W },
-  ['B']: { type: 'point', x: bX, y: bY, labelDir: LabelDir.E },
-  ['C']: { type: 'point', x: cX, y: cY, labelDir: LabelDir.N },
+  ['A']: { type: 'point', x: aX, y: aY, labelX: -10 },
+  ['B']: { type: 'point', x: bX, y: bY, labelX: 10 },
+  ['C']: { type: 'point', x: cX, y: cY, labelY: -12 },
   ['AB']: { type: 'line', p1: 'A', p2: 'B' },
   ['AC']: { type: 'line', p1: 'A', p2: 'C' },
   ['BC']: { type: 'line', p1: 'B', p2: 'C' },
-  [alpha]: { type: 'circle', c: 'A', rp: 'B', labelDir: LabelDir.W },
-  [beta]:  { type: 'circle', c: 'B', rp: 'A', labelDir: LabelDir.E },
+  [alpha]: { type: 'circle', p1: 'A', p2: 'B', labelDir: LabelDir.W },
+  [beta]:  { type: 'circle', p1: 'B', p2: 'A', labelDir: LabelDir.E },
 };
 
 const steps: PropositionStep[] = [

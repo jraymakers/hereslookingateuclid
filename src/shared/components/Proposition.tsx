@@ -160,11 +160,11 @@ export class Proposition extends React.PureComponent<PropositionProps, Propositi
   private renderPoint(key: string, point: PointDiagramPart, state: DiagramPartState): JSX.Element {
     return <PointSvg
       key={key}
-      label={key}
-      labelDir={point.labelDir}
       x={point.x}
       y={point.y}
-      hidden={state === 'hidden'}
+      label={key}
+      labelX={point.labelX}
+      labelY={point.labelY}
       highlighted={state === 'highlighted'}
     />;
   }
@@ -179,7 +179,6 @@ export class Proposition extends React.PureComponent<PropositionProps, Propositi
         y1={p1.y}
         x2={p2.x}
         y2={p2.y}
-        hidden={state === 'hidden'}
         highlighted={state === 'highlighted'}
       />
     } else {
@@ -188,20 +187,19 @@ export class Proposition extends React.PureComponent<PropositionProps, Propositi
   }
 
   private renderCircle(key: string, circle: CircleDiagramPart, state: DiagramPartState): JSX.Element | null {
-    const c = this.props.diagramParts[circle.c];
-    const rp = this.props.diagramParts[circle.rp];
-    if (c && c.type === 'point' && rp && rp.type === 'point') {
-      const dx = rp.x - c.x;
-      const dy = rp.y - c.y;
+    const p1 = this.props.diagramParts[circle.p1];
+    const p2 = this.props.diagramParts[circle.p2];
+    if (p1 && p1.type === 'point' && p2 && p2.type === 'point') {
+      const dx = p2.x - p1.x;
+      const dy = p2.y - p1.y;
       const r = Math.sqrt(dx * dx + dy * dy);
       return <CircleSvg
           key={key}
+          cx={p1.x}
+          cy={p1.y}
+          r={r}
           label={key}
           labelDir={circle.labelDir}
-          cx={c.x}
-          cy={c.y}
-          r={r}
-          hidden={state === 'hidden'}
           highlighted={state === 'highlighted'}
         />
     } else {
