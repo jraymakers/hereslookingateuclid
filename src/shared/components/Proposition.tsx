@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { style } from 'typestyle';
 import { CircleSvg } from './CircleSvg';
 import { LineSvg } from './LineSvg';
 import { PointSvg } from './PointSvg';
@@ -11,6 +12,118 @@ type DiagramPartState = 'hidden' | 'visible' | 'highlighted';
 type DiagramPartStateMap = {
   [key: string]: DiagramPartState;
 }
+
+const classPrefix = 'Proposition';
+
+const rootClass = style({
+  $debugName: `${classPrefix}_root`,
+  $unique: true,
+  display: 'flex',
+  flexDirection: 'column',
+});
+
+const headerClass = style({
+  $debugName: `${classPrefix}_header`,
+  $unique: true,
+  display: 'flex',
+  flexDirection: 'row',
+  paddingLeft: 12,
+  paddingRight: 12,
+  paddingTop: 6,
+  paddingBottom: 6,
+});
+
+const titleAndSummaryClass = style({
+  $debugName: `${classPrefix}_titleAndSummary`,
+  $unique: true,
+  display: 'flex',
+  flexDirection: 'column',
+  flex: 1,
+});
+
+const titleClass = style({
+  $debugName: `${classPrefix}_titleAndSummary`,
+  $unique: true,
+  fontSize: 20,
+});
+
+const summaryClass = style({
+  $debugName: `${classPrefix}_titleAndSummary`,
+  $unique: true,
+  fontSize: 16,
+  marginTop: 6,
+});
+
+const buttonsClass = style({
+  $debugName: `${classPrefix}_controls`,
+  $unique: true,
+  display: 'flex',
+  flexDirection: 'row',
+});
+
+const buttonClass = style({
+  $debugName: `${classPrefix}_controls`,
+  $unique: true,
+  marginLeft: 6,
+  fontSize: 24,
+  border: 'none',
+  outline: 'none',
+});
+
+const stepsAndDiagramClass = style({
+  $debugName: `${classPrefix}_stepsAndDiagram`,
+  $unique: true,
+  flex: 1,
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'start',
+  padding: 12,
+});
+
+const stepsClass = style({
+  $debugName: `${classPrefix}_steps`,
+  $unique: true,
+  display: 'flex',
+  flexDirection: 'column',
+});
+
+const stepClass = style({
+  $debugName: `${classPrefix}_step`,
+  $unique: true,
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'start',
+  paddingTop: 6,
+  paddingBottom: 6,
+});
+
+const stepNumberClass = style({
+  $debugName: `${classPrefix}_stepNumber`,
+  $unique: true,
+  width: 30,
+  textAlign: 'right',
+});
+
+const stepTextClass = style({
+  $debugName: `${classPrefix}_stepText`,
+  $unique: true,
+  paddingLeft: 12,
+  paddingRight: 12,
+  width: 500,
+});
+
+const diagramClass = style({
+  $debugName: `${classPrefix}_diagram`,
+  $unique: true,
+  borderColor: '#aaa',
+  borderStyle: 'solid',
+  borderWidth: 1,
+});
+
+const leftDoubleTriangle = '\u23ea';
+const rightDoubleTriangle = '\u23e9';
+const leftDoubleTriangleWithBar = '\u23ee';
+const rightDoubleTriangleWithBar = '\u23ed';
 
 export type PropositionProps = {
   readonly title: string;
@@ -36,15 +149,31 @@ export class Proposition extends React.PureComponent<PropositionProps, Propositi
 
   public render(): JSX.Element {
     return (
-      <div>
-        <div>{this.props.title}</div>
-        <div>{this.props.summary}</div>
-        <button onClick={this.start} disabled={this.state.stepNum === 0}>Start</button>
-        <button onClick={this.back} disabled={this.state.stepNum === 0}>Back</button>
-        <button onClick={this.next} disabled={this.state.stepNum === this.props.steps.length}>Next</button>
-        <button onClick={this.end} disabled={this.state.stepNum === this.props.steps.length}>End</button>
-        {this.renderSteps()}
-        {this.renderDiagram()}
+      <div className={rootClass}>
+        <div className={headerClass}>
+          <div className={titleAndSummaryClass}>
+            <div className={titleClass}>{this.props.title}</div>
+            <div className={summaryClass}>{this.props.summary}</div>
+          </div>
+          <div className={buttonsClass}>
+            <button className={buttonClass} onClick={this.start} disabled={this.state.stepNum === 0}>
+              {leftDoubleTriangleWithBar}
+            </button>
+            <button className={buttonClass} onClick={this.back} disabled={this.state.stepNum === 0}>
+              {leftDoubleTriangle}
+            </button>
+            <button className={buttonClass} onClick={this.next} disabled={this.state.stepNum === this.props.steps.length}>
+              {rightDoubleTriangle}
+            </button>
+            <button className={buttonClass} onClick={this.end} disabled={this.state.stepNum === this.props.steps.length}>
+              {rightDoubleTriangleWithBar}
+            </button>
+          </div>
+        </div>
+        <div className={stepsAndDiagramClass}>
+          {this.renderSteps()}
+          {this.renderDiagram()}
+        </div>
       </div>
     );
   }
@@ -75,17 +204,19 @@ export class Proposition extends React.PureComponent<PropositionProps, Propositi
 
   private renderSteps(): JSX.Element {
     const stepElements = this.props.steps.map((step, index) =>
-      <li
+      <div
+        className={stepClass}
         key={index+1}
         style={{ visibility: this.state.stepNum >= index+1 ? 'visible' : 'hidden'}}
       >
-        {step.text}
-      </li>
+        <div className={stepNumberClass}>{index+1}.</div>
+        <div className={stepTextClass}>{step.text}</div>
+      </div>
     );
     return (
-      <ol>
+      <div className={stepsClass}>
         {stepElements}
-      </ol>
+      </div>
     );
   }
 
@@ -113,7 +244,7 @@ export class Proposition extends React.PureComponent<PropositionProps, Propositi
       }
     }
     return (
-      <div>
+      <div className={diagramClass}>
         <svg
           width={this.props.width}
           height={this.props.height}
