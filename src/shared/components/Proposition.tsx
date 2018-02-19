@@ -104,23 +104,19 @@ const buttonClass = style({
   outline: 'none',
   $nest: {
     '&:focus': {
+      $unique: true,
       outline: '1px solid black',
     },
     '&:hover': {
+      $unique: true,
       backgroundColor: '#eee',
     },
     '&:disabled': {
+      $unique: true,
       backgroundColor: 'transparent',
+      border: '1px solid #888',
+      opacity: 0.3,
     },
-    [`&:disabled .${arrowLeftClass}`]: {
-      borderRightColor: '#ccc',
-    },
-    [`&:disabled .${arrowRightClass}`]: {
-      borderLeftColor: '#ccc',
-    },
-    [`&:disabled .${verticalBarClass}`]: {
-      backgroundColor: '#ccc',
-    }
   }
 });
 
@@ -153,6 +149,7 @@ const stepClass = style({
   paddingBottom: 6,
   $nest: {
     '&:hover': {
+      $unique: true,
       outline: '1px solid #888'
     }
   }

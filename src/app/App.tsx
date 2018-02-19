@@ -81,13 +81,18 @@ const buttonClass = style({
   outline: 'none',
   $nest: {
     '&:focus': {
+      $unique: true,
       outline: '1px solid black',
     },
     '&:hover': {
+      $unique: true,
       backgroundColor: '#eee',
     },
     '&:disabled': {
+      $unique: true,
       backgroundColor: 'transparent',
+      border: '1px solid #888',
+      opacity: 0.3,
     },
   }
 });
