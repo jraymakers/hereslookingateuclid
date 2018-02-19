@@ -140,6 +140,7 @@ const stepsClass = style({
   flex: 1,
   display: 'flex',
   flexDirection: 'column',
+  marginRight: 12,
 });
 
 const stepClass = style({
@@ -150,6 +151,11 @@ const stepClass = style({
   alignItems: 'start',
   paddingTop: 6,
   paddingBottom: 6,
+  $nest: {
+    '&:hover': {
+      outline: '1px solid #888'
+    }
+  }
 });
 
 const stepNumberClass = style({
@@ -311,12 +317,22 @@ export class Proposition extends React.PureComponent<PropositionProps, Propositi
     }, this.focusBackButtonIfEnd);
   };
 
+  private readonly goToStep = (stepNum: number) => {
+    this.setState({
+      stepNum: stepNum
+    }, () => {
+      this.focusNextButtonIfStart();
+      this.focusBackButtonIfEnd();
+    });
+  };
+
   private renderSteps(): JSX.Element {
     const stepElements = this.props.steps.map((step, index) =>
       <div
         className={stepClass}
         key={index+1}
         style={{ opacity: this.state.stepNum >= index+1 ? 1 : 0.2}}
+        onClick={() => this.goToStep(index+1)}
       >
         <div className={stepNumberClass}>{index+1}.</div>
         <div className={stepTextClass}>{step.text}</div>
@@ -328,6 +344,12 @@ export class Proposition extends React.PureComponent<PropositionProps, Propositi
       </div>
     );
   }
+
+  private onStepClick = () => {
+    this.setState({
+      stepNum: this.props.steps.length,
+    }, this.focusBackButtonIfEnd);
+  };
 
   private renderDiagram(): JSX.Element {
     const states = this.getDiagramPartStates();
