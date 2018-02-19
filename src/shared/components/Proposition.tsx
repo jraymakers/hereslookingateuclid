@@ -185,25 +185,27 @@ export type PropositionProps = {
   readonly height: number;
   readonly diagramParts: DiagramPartMap;
   readonly steps: ReadonlyArray<PropositionStep>;
-};
-
-type PropositionState = {
   readonly stepNum: number;
+  readonly goToStep: (stepNum: number) => void;
 };
 
-export class Proposition extends React.PureComponent<PropositionProps, PropositionState> {
+export class Proposition extends React.PureComponent<PropositionProps> {
 
   private nextButton: HTMLButtonElement | undefined;
   private backButton: HTMLButtonElement | undefined;
 
-  constructor(props: PropositionProps) {
-    super(props);
-    this.state = {
-      stepNum: 0,
-    };
+  public componentDidUpdate() {
+    if (this.nextButton && this.props.stepNum === 0) {
+      this.nextButton.focus();
+    }
+    if (this.backButton && this.props.stepNum === this.props.steps.length) {
+      this.backButton.focus();
+    }
   }
 
   public render(): JSX.Element {
+    const stepNum = this.props.stepNum;
+    const maxStepNum = this.props.steps.length;
     return (
       <div className={rootClass} onKeyDown={this.onKeyDown}>
         <div className={headerClass}>
@@ -215,7 +217,7 @@ export class Proposition extends React.PureComponent<PropositionProps, Propositi
             <button
               tabIndex={3}
               className={buttonClass}
-              disabled={this.state.stepNum === 0}
+              disabled={stepNum === 0}
               onClick={this.start}
             >
               <div className={verticalBarClass} />
@@ -224,7 +226,7 @@ export class Proposition extends React.PureComponent<PropositionProps, Propositi
             <button
               tabIndex={4}
               className={buttonClass}
-              disabled={this.state.stepNum === 0}
+              disabled={stepNum === 0}
               onClick={this.back}
               ref={this.setBackButton}
             >
@@ -233,7 +235,7 @@ export class Proposition extends React.PureComponent<PropositionProps, Propositi
             <button
               tabIndex={1}
               className={buttonClass}
-              disabled={this.state.stepNum === this.props.steps.length}
+              disabled={stepNum === maxStepNum}
               onClick={this.next}
               autoFocus={true}
               ref={this.setNextButton}
@@ -243,7 +245,7 @@ export class Proposition extends React.PureComponent<PropositionProps, Propositi
             <button
               tabIndex={2}
               className={buttonClass}
-              disabled={this.state.stepNum === this.props.steps.length}
+              disabled={stepNum === maxStepNum}
               onClick={this.end}
             >
               <div className={arrowRightClass} />
@@ -278,58 +280,30 @@ export class Proposition extends React.PureComponent<PropositionProps, Propositi
     this.backButton = button;
   }
 
-  private readonly focusNextButtonIfStart = () => {
-    if (this.nextButton && this.state.stepNum === 0) {
-      this.nextButton.focus();
-    }
-  }
-
-  private readonly focusBackButtonIfEnd = () => {
-    if (this.backButton && this.state.stepNum === this.props.steps.length) {
-      this.backButton.focus();
-    }
-  }
-
   private readonly start = () => {
-    this.setState({
-      stepNum: 0,
-    }, this.focusNextButtonIfStart);
+    this.props.goToStep(0);
   };
 
   private readonly back = () => {
-    this.setState({
-      stepNum: Math.max(this.state.stepNum - 1, 0),
-    }, this.focusNextButtonIfStart);
+    this.props.goToStep(Math.max(this.props.stepNum - 1, 0));
   };
 
   private readonly next = () => {
-    this.setState({
-      stepNum: Math.min(this.state.stepNum + 1, this.props.steps.length),
-    }, this.focusBackButtonIfEnd);
+    this.props.goToStep(Math.min(this.props.stepNum + 1, this.props.steps.length));
   };
 
   private readonly end = () => {
-    this.setState({
-      stepNum: this.props.steps.length,
-    }, this.focusBackButtonIfEnd);
-  };
-
-  private readonly goToStep = (stepNum: number) => {
-    this.setState({
-      stepNum: stepNum
-    }, () => {
-      this.focusNextButtonIfStart();
-      this.focusBackButtonIfEnd();
-    });
+    this.props.goToStep(this.props.steps.length);
   };
 
   private renderSteps(): JSX.Element {
+    const stepNum = this.props.stepNum;
     const stepElements = this.props.steps.map((step, index) =>
       <div
         className={stepClass}
         key={index+1}
-        style={{ opacity: this.state.stepNum >= index+1 ? 1 : 0.2}}
-        onClick={() => this.goToStep(index+1)}
+        style={{ opacity: stepNum >= index+1 ? 1 : 0.2}}
+        onClick={() => this.props.goToStep(index+1)}
       >
         <div className={stepNumberClass}>{index+1}.</div>
         <div className={stepTextClass}>{step.text}</div>
@@ -341,12 +315,6 @@ export class Proposition extends React.PureComponent<PropositionProps, Propositi
       </div>
     );
   }
-
-  private onStepClick = () => {
-    this.setState({
-      stepNum: this.props.steps.length,
-    }, this.focusBackButtonIfEnd);
-  };
 
   private renderDiagram(): JSX.Element {
     const states = this.getDiagramPartStates();
@@ -385,10 +353,11 @@ export class Proposition extends React.PureComponent<PropositionProps, Propositi
   }
 
   private getDiagramPartStates() {
+    const stepNum = this.props.stepNum;
     const stateMap: DiagramPartStateMap = {};
-    if (this.state.stepNum >= 1) {
+    if (stepNum >= 1) {
       let stepIndex = 0;
-      while (stepIndex < this.state.stepNum - 1) {
+      while (stepIndex < stepNum - 1) {
         const step = this.props.steps[stepIndex];
         for (const key of step.highlight) {
           stateMap[key] = 'visible';

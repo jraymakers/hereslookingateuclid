@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { registerPage } from '../../shared/PageRegistry';
 import { Proposition } from '../../shared/components/Proposition';
 import { LabelDir } from '../../shared/constants/LabelDir';
 import { DiagramPartMap } from '../../shared/types/Diagram';
@@ -74,17 +75,15 @@ const steps: PropositionStep[] = [
   }
 ];
 
-export class Book1Prop1 extends React.PureComponent<{}> {
-
-  public render(): JSX.Element {
-    return <Proposition
-      title={title}
-      summary={summary}
-      width={width}
-      height={height}
-      diagramParts={diagramParts}
-      steps={steps}
-    />;
-  }
-
-}
+registerPage(1, 1, ({ stepNum, goToStep }) =>
+  <Proposition
+    title={title}
+    summary={summary}
+    width={width}
+    height={height}
+    diagramParts={diagramParts}
+    steps={steps}
+    stepNum={stepNum}
+    goToStep={goToStep}
+  />
+);
