@@ -35,7 +35,7 @@ const topBarLeftClass = style({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'flex-start',
-  alignItems: 'flex-end',
+  alignItems: 'stretch',
 });
 
 const topBarCenterClass = style({
@@ -52,7 +52,6 @@ const topBarTitleClass = style({
   $unique: true,
   textAlign: 'center',
   fontSize: 24,
-  marginBottom: 12,
 });
 
 const topBarRightClass = style({
@@ -62,7 +61,7 @@ const topBarRightClass = style({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'flex-end',
-  alignItems: 'flex-end',
+  alignItems: 'stretch',
 });
 
 const contentClass = style({
@@ -117,28 +116,21 @@ export class App extends React.PureComponent<{}, AppState> {
             <button
               className={buttonClass}
               disabled={this.state.page === minPage}
-              onClick={this.back}
+              onClick={this.prevPage}
             >
-              Back
+              Previous Page
             </button>
           </div>
           <div className={topBarCenterClass}>
             <div className={topBarTitleClass}>Here's Looking at Euclid</div>
-            <button
-              className={buttonClass}
-              disabled={this.state.page === minPage}
-              onClick={this.start}
-            >
-              Start
-            </button>
           </div>
           <div className={topBarRightClass}>
             <button
               className={buttonClass}
               disabled={this.state.page === maxPage}
-              onClick={this.next}
+              onClick={this.nextPage}
             >
-              Next
+              Next Page
             </button>
           </div>
         </div>
@@ -160,19 +152,13 @@ export class App extends React.PureComponent<{}, AppState> {
     }
   }
 
-  private readonly start = () => {
-    this.setState({
-      page: minPage,
-    });
-  };
-
-  private readonly back = () => {
+  private readonly prevPage = () => {
     this.setState({
       page: Math.max(this.state.page - 1, minPage),
     });
   };
 
-  private readonly next = () => {
+  private readonly nextPage = () => {
     this.setState({
       page: Math.min(this.state.page + 1, maxPage),
     });
