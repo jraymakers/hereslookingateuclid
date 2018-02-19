@@ -257,7 +257,6 @@ export class Proposition extends React.PureComponent<PropositionProps, Propositi
   }
 
   private readonly onKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
-    console.log(event.which);
     switch (event.which) {
       case 39: // right arrow
         this.next();
@@ -317,7 +316,7 @@ export class Proposition extends React.PureComponent<PropositionProps, Propositi
       <div
         className={stepClass}
         key={index+1}
-        style={{ visibility: this.state.stepNum >= index+1 ? 'visible' : 'hidden'}}
+        style={{ opacity: this.state.stepNum >= index+1 ? 1 : 0.2}}
       >
         <div className={stepNumberClass}>{index+1}.</div>
         <div className={stepTextClass}>{step.text}</div>

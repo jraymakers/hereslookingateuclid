@@ -25,12 +25,17 @@ const topBarClass = style({
   $unique: true,
   display: 'flex',
   flexDirection: 'row',
+  padding: 12,
 });
 
 const topBarLeftClass = style({
   $debugName: `${classPrefix}_topBarLeft`,
   $unique: true,
   flex: 1,
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'flex-start',
+  alignItems: 'flex-end',
 });
 
 const topBarCenterClass = style({
@@ -39,6 +44,7 @@ const topBarCenterClass = style({
   flex: 'none',
   display: 'flex',
   flexDirection: 'column',
+  alignItems: 'center',
 });
 
 const topBarTitleClass = style({
@@ -46,13 +52,17 @@ const topBarTitleClass = style({
   $unique: true,
   textAlign: 'center',
   fontSize: 24,
+  marginBottom: 12,
 });
 
 const topBarRightClass = style({
   $debugName: `${classPrefix}_topBarRight`,
   $unique: true,
   flex: 1,
-  textAlign: 'right',
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'flex-end',
+  alignItems: 'flex-end',
 });
 
 const contentClass = style({
@@ -61,6 +71,26 @@ const contentClass = style({
   flex: 1,
   display: 'flex',
   flexDirection: 'column',
+});
+
+const buttonClass = style({
+  $debugName: `${classPrefix}_button`,
+  $unique: true,
+  paddingLeft: 12,
+  paddingRight: 12,
+  border: '1px solid #ddd',
+  outline: 'none',
+  $nest: {
+    '&:focus': {
+      outline: '1px solid black',
+    },
+    '&:hover': {
+      backgroundColor: '#eee',
+    },
+    '&:disabled': {
+      backgroundColor: 'transparent',
+    },
+  }
 });
 
 export type AppState = {
@@ -84,14 +114,32 @@ export class App extends React.PureComponent<{}, AppState> {
       <div className={rootClass}>
         <div className={topBarClass}>
           <div className={topBarLeftClass}>
-          <button onClick={this.back} disabled={this.state.page === minPage}>Back</button>
+            <button
+              className={buttonClass}
+              disabled={this.state.page === minPage}
+              onClick={this.back}
+            >
+              Back
+            </button>
           </div>
           <div className={topBarCenterClass}>
             <div className={topBarTitleClass}>Here's Looking at Euclid</div>
-            <button onClick={this.start} disabled={this.state.page === minPage}>Start</button>
+            <button
+              className={buttonClass}
+              disabled={this.state.page === minPage}
+              onClick={this.start}
+            >
+              Start
+            </button>
           </div>
           <div className={topBarRightClass}>
-          <button onClick={this.next} disabled={this.state.page === maxPage}>Next</button>
+            <button
+              className={buttonClass}
+              disabled={this.state.page === maxPage}
+              onClick={this.next}
+            >
+              Next
+            </button>
           </div>
         </div>
         <div className={contentClass}>
