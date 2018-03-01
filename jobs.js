@@ -21,6 +21,9 @@ module.exports = () => ({
   copyIndex: {
     action: () => fse.copy(path.join(srcDir, 'root', 'index.html'), path.join(outDir, 'index.html'))
   },
+  publish: {
+    action: jr.processAction('gsutil', ['cp', '-r', 'out/**', 'gs://www.hereslookingateuclid.com'], { cwd: __dirname })
+  },
   serve: {
     action: jr.scriptAction(httpServerPath, ['./out', '-o'], { cwd: __dirname })
   },
