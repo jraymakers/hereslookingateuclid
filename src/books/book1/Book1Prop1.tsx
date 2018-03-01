@@ -1,10 +1,5 @@
-import * as React from 'react';
-import { registerPage } from '../../shared/PageRegistry';
-import { Proposition } from '../../shared/components/Proposition';
-import { LabelDir } from '../../shared/constants/LabelDir';
-import { DiagramPartMap } from '../../shared/types/Diagram';
-import { PropositionStep } from '../../shared/types/PropositionStep';
-import { alpha, beta } from '../../shared/constants/GreekLetters';
+import { Greek, LabelDir } from '../../shared/constants';
+import { Diagram, Steps, Proposition } from '../../shared/types';
 
 const title = 'Book 1, Proposition 1 (I.i)';
 const summary = 'Construct an equilateral triangle on a given straight line.';
@@ -25,32 +20,36 @@ const betaY = bY;
 const cX = centerX;
 const cY = centerY - ab * Math.sqrt(3)/2;
 
-const diagramParts: DiagramPartMap = {
-  ['A']: { type: 'point', x: aX, y: aY, labelX: -10 },
-  ['B']: { type: 'point', x: bX, y: bY, labelX: 10 },
-  ['C']: { type: 'point', x: cX, y: cY, labelY: -12 },
-  ['AB']: { type: 'line', p1: 'A', p2: 'B' },
-  ['AC']: { type: 'line', p1: 'A', p2: 'C' },
-  ['BC']: { type: 'line', p1: 'B', p2: 'C' },
-  [alpha]: { type: 'circle', p1: 'A', p2: 'B', labelDir: LabelDir.W },
-  [beta]:  { type: 'circle', p1: 'B', p2: 'A', labelDir: LabelDir.E },
+const diagram: Diagram = {
+  width: width,
+  height: height,
+  parts: {
+    ['A']: { type: 'point', x: aX, y: aY, labelX: -10 },
+    ['B']: { type: 'point', x: bX, y: bY, labelX: 10 },
+    ['C']: { type: 'point', x: cX, y: cY, labelY: -12 },
+    ['AB']: { type: 'line', p1: 'A', p2: 'B' },
+    ['AC']: { type: 'line', p1: 'A', p2: 'C' },
+    ['BC']: { type: 'line', p1: 'B', p2: 'C' },
+    [Greek.alpha]: { type: 'circle', p1: 'A', p2: 'B', labelDir: LabelDir.W },
+    [Greek.beta]:  { type: 'circle', p1: 'B', p2: 'A', labelDir: LabelDir.E },
+  }
 };
 
-const steps: PropositionStep[] = [
+const steps: Steps = [
   {
     text: 'Let AB be the given straight line.',
     highlight: [ 'AB', 'A', 'B' ]
   },
   {
-    text: `Construct a circle ${alpha} with center A and radius AB.`,
-    highlight: [ alpha ]
+    text: `Construct a circle ${Greek.alpha} with center A and radius AB.`,
+    highlight: [ Greek.alpha ]
   },
   {
-    text: `Construct another circle ${beta} with center B and radius AB.`,
-    highlight: [ beta ]
+    text: `Construct another circle ${Greek.beta} with center B and radius AB.`,
+    highlight: [ Greek.beta ]
   },
   {
-    text: `Let C be either one of the two intersection points of ${alpha} and ${beta}.`,
+    text: `Let C be either one of the two intersection points of ${Greek.alpha} and ${Greek.beta}.`,
     highlight: [ 'C' ]
   },
   {
@@ -58,11 +57,11 @@ const steps: PropositionStep[] = [
     highlight: [ 'AC', 'BC' ]
   },
   {
-    text: `Since AB and AC are both radii of circle ${alpha}, they are equal.`,
+    text: `Since AB and AC are both radii of circle ${Greek.alpha}, they are equal.`,
     highlight: [ 'AB', 'AC' ]
   },
   {
-    text: `Likewise, since AB and BC are both radii of circle ${beta}, they are equal.`,
+    text: `Likewise, since AB and BC are both radii of circle ${Greek.beta}, they are equal.`,
     highlight: [ 'AB', 'BC' ]
   },
   {
@@ -75,15 +74,11 @@ const steps: PropositionStep[] = [
   }
 ];
 
-registerPage(1, 1, ({ stepNum, goToStep }) =>
-  <Proposition
-    title={title}
-    summary={summary}
-    width={width}
-    height={height}
-    diagramParts={diagramParts}
-    steps={steps}
-    stepNum={stepNum}
-    goToStep={goToStep}
-  />
-);
+const proposition: Proposition = {
+  title,
+  summary,
+  diagram,
+  steps,
+};
+
+export default proposition;

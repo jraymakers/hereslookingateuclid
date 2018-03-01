@@ -27,3 +27,9 @@ export type DiagramPart =
 export type DiagramPartMap = {
   readonly [key: string]: DiagramPart;
 };
+
+export type Diagram = {
+  readonly width: number;
+  readonly height: number;
+  readonly parts: DiagramPartMap;
+};

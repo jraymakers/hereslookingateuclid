@@ -72,11 +72,6 @@ const buttonClass = style({
   }
 });
 
-export type BookProp = {
-  readonly book: number;
-  readonly prop: number;
-}
-
 export type TopBarProps = {
   readonly previousEnabled: boolean;
   readonly nextEnabled: boolean;

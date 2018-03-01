@@ -1,11 +1,22 @@
 import * as React from 'react';
 import { style } from 'typestyle';
+
+import {
+  LabelDir
+} from '../constants';
+import {
+  CircleDiagramPart,
+  DiagramPart,
+  DiagramPartMap,
+  LineDiagramPart,
+  PointDiagramPart,
+  Proposition,
+  Step,
+} from '../types';
+
 import { CircleSvg } from './CircleSvg';
 import { LineSvg } from './LineSvg';
 import { PointSvg } from './PointSvg';
-import { LabelDir } from '../constants/LabelDir';
-import { DiagramPartMap, DiagramPart, PointDiagramPart, LineDiagramPart, CircleDiagramPart } from '../types/Diagram';
-import { PropositionStep } from '../types/PropositionStep';
 
 type DiagramPartState = 'hidden' | 'visible' | 'highlighted';
 
@@ -13,7 +24,7 @@ type DiagramPartStateMap = {
   [key: string]: DiagramPartState;
 }
 
-const classPrefix = 'Proposition';
+const classPrefix = 'PropositionView';
 
 const rootClass = style({
   $debugName: `${classPrefix}_root`,
@@ -178,18 +189,13 @@ const diagramClass = style({
   borderWidth: 1,
 });
 
-export type PropositionProps = {
-  readonly title: string;
-  readonly summary: string;
-  readonly width: number;
-  readonly height: number;
-  readonly diagramParts: DiagramPartMap;
-  readonly steps: ReadonlyArray<PropositionStep>;
+export type PropositionViewProps = {
+  readonly proposition: Proposition;
   readonly stepNum: number;
   readonly goToStep: (stepNum: number) => void;
 };
 
-export class Proposition extends React.PureComponent<PropositionProps> {
+export class PropositionView extends React.PureComponent<PropositionViewProps> {
 
   private nextButton: HTMLButtonElement | undefined;
   private backButton: HTMLButtonElement | undefined;
@@ -198,20 +204,20 @@ export class Proposition extends React.PureComponent<PropositionProps> {
     if (this.nextButton && this.props.stepNum === 0) {
       this.nextButton.focus();
     }
-    if (this.backButton && this.props.stepNum === this.props.steps.length) {
+    if (this.backButton && this.props.stepNum === this.props.proposition.steps.length) {
       this.backButton.focus();
     }
   }
 
   public render(): JSX.Element {
     const stepNum = this.props.stepNum;
-    const maxStepNum = this.props.steps.length;
+    const maxStepNum = this.props.proposition.steps.length;
     return (
       <div className={rootClass} onKeyDown={this.onKeyDown}>
         <div className={headerClass}>
           <div className={titleAndSummaryClass}>
-            <div className={titleClass}>{this.props.title}</div>
-            <div className={summaryClass}>{this.props.summary}</div>
+            <div className={titleClass}>{this.props.proposition.title}</div>
+            <div className={summaryClass}>{this.props.proposition.summary}</div>
           </div>
           <div className={buttonsClass}>
             <button
@@ -289,16 +295,16 @@ export class Proposition extends React.PureComponent<PropositionProps> {
   };
 
   private readonly next = () => {
-    this.props.goToStep(Math.min(this.props.stepNum + 1, this.props.steps.length));
+    this.props.goToStep(Math.min(this.props.stepNum + 1, this.props.proposition.steps.length));
   };
 
   private readonly end = () => {
-    this.props.goToStep(this.props.steps.length);
+    this.props.goToStep(this.props.proposition.steps.length);
   };
 
   private renderSteps(): JSX.Element {
     const stepNum = this.props.stepNum;
-    const stepElements = this.props.steps.map((step, index) =>
+    const stepElements = this.props.proposition.steps.map((step, index) =>
       <div
         className={stepClass}
         key={index+1}
@@ -317,10 +323,12 @@ export class Proposition extends React.PureComponent<PropositionProps> {
   }
 
   private renderDiagram(): JSX.Element {
+    const diagram = this.props.proposition.diagram;
     const states = this.getDiagramPartStates();
     const diagramElements: JSX.Element[] = [];
-    for (const key in this.props.diagramParts) {
-      const part = this.props.diagramParts[key];
+    const parts = diagram.parts;
+    for (const key in parts) {
+      const part = parts[key];
       const state = states[key];
       if (state === 'visible') {
         const element = this.renderDiagramPart(key, part, state);
@@ -329,8 +337,8 @@ export class Proposition extends React.PureComponent<PropositionProps> {
         }
       }
     }
-    for (const key in this.props.diagramParts) {
-      const part = this.props.diagramParts[key];
+    for (const key in parts) {
+      const part = parts[key];
       const state = states[key];
       if (state === 'highlighted') {
         const element = this.renderDiagramPart(key, part, state);
@@ -342,9 +350,9 @@ export class Proposition extends React.PureComponent<PropositionProps> {
     return (
       <div className={diagramClass}>
         <svg
-          width={this.props.width}
-          height={this.props.height}
-          viewBox={`0 0 ${this.props.width} ${this.props.height}`}
+          width={diagram.width}
+          height={diagram.height}
+          viewBox={`0 0 ${diagram.width} ${diagram.height}`}
         >
           {diagramElements}
         </svg>
@@ -353,18 +361,19 @@ export class Proposition extends React.PureComponent<PropositionProps> {
   }
 
   private getDiagramPartStates() {
+    const steps = this.props.proposition.steps;
     const stepNum = this.props.stepNum;
     const stateMap: DiagramPartStateMap = {};
     if (stepNum >= 1) {
       let stepIndex = 0;
       while (stepIndex < stepNum - 1) {
-        const step = this.props.steps[stepIndex];
+        const step = steps[stepIndex];
         for (const key of step.highlight) {
           stateMap[key] = 'visible';
         }
         stepIndex++;
       }
-      const step = this.props.steps[stepIndex];
+      const step = steps[stepIndex];
       for (const key of step.highlight) {
         stateMap[key] = 'highlighted';
       }
@@ -398,8 +407,9 @@ export class Proposition extends React.PureComponent<PropositionProps> {
   }
 
   private renderLine(key: string, line: LineDiagramPart, state: DiagramPartState): JSX.Element | null {
-    const p1 = this.props.diagramParts[line.p1];
-    const p2 = this.props.diagramParts[line.p2];
+    const parts = this.props.proposition.diagram.parts;
+    const p1 = parts[line.p1];
+    const p2 = parts[line.p2];
     if (p1 && p1.type === 'point' && p2 && p2.type === 'point') {
       return <LineSvg
         key={key}
@@ -415,8 +425,9 @@ export class Proposition extends React.PureComponent<PropositionProps> {
   }
 
   private renderCircle(key: string, circle: CircleDiagramPart, state: DiagramPartState): JSX.Element | null {
-    const p1 = this.props.diagramParts[circle.p1];
-    const p2 = this.props.diagramParts[circle.p2];
+    const parts = this.props.proposition.diagram.parts;
+    const p1 = parts[circle.p1];
+    const p2 = parts[circle.p2];
     if (p1 && p1.type === 'point' && p2 && p2.type === 'point') {
       const dx = p2.x - p1.x;
       const dy = p2.y - p1.y;

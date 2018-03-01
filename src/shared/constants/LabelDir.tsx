@@ -1,10 +1,12 @@
-export const LabelDir = {
-  E:    0,
-  SE:   1/4 * Math.PI,
-  S:    1/2 * Math.PI,
-  SW:   3/4 * Math.PI,
-  W:    Math.PI,
-  NW:   5/4 * Math.PI,
-  N:    3/2 * Math.PI,
-  NE:   7/4 * Math.PI,
+const eighthCircle = 1/4 * Math.PI;
+
+export namespace LabelDir {
+  export const E  = 0 * eighthCircle;
+  export const SE = 1 * eighthCircle;
+  export const S  = 2 * eighthCircle;
+  export const SW = 3 * eighthCircle;
+  export const W  = 4 * eighthCircle;
+  export const NW = 5 * eighthCircle;
+  export const N  = 6 * eighthCircle;
+  export const NE = 7 * eighthCircle;
 };
