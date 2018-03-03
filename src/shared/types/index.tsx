@@ -1,7 +1,7 @@
 export {
   Book,
-  Books,
-  BookProp, 
+  BookMap,
+  PropositionPageMap,
 } from './Book';
 
 export {
@@ -14,7 +14,20 @@ export {
 } from './Diagram';
 
 export {
-  Step,
-  Steps,
+  LinkInfo,
+} from './LinkInfo';
+
+export {
+  Page,
+  PageLinks,
+  BookPage,
+  BookContentsPage,
+  BookIntroPage,
+  PropositionPage,
+} from './Page';
+
+export {
   Proposition,
+  Step,
+  StepList,
 } from './Proposition';

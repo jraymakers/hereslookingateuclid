@@ -190,6 +190,7 @@ const diagramClass = style({
 });
 
 export type PropositionViewProps = {
+  readonly bookName: string,
   readonly proposition: Proposition;
   readonly stepNum: number;
   readonly goToStep: (stepNum: number) => void;
@@ -212,12 +213,14 @@ export class PropositionView extends React.PureComponent<PropositionViewProps> {
   public render(): JSX.Element {
     const stepNum = this.props.stepNum;
     const maxStepNum = this.props.proposition.steps.length;
+    const proposition = this.props.proposition;
+    const title = `Book ${this.props.bookName}: Proposition ${this.props.proposition.propName}`;
     return (
       <div className={rootClass} onKeyDown={this.onKeyDown}>
         <div className={headerClass}>
           <div className={titleAndSummaryClass}>
-            <div className={titleClass}>{this.props.proposition.title}</div>
-            <div className={summaryClass}>{this.props.proposition.summary}</div>
+            <div className={titleClass}>{title}</div>
+            <div className={summaryClass}>{proposition.summary}</div>
           </div>
           <div className={buttonsClass}>
             <button

@@ -1,7 +1,7 @@
 import { Greek, LabelDir } from '../../shared/constants';
-import { Diagram, Steps, Proposition } from '../../shared/types';
+import { Diagram, StepList, Proposition, PropositionPage } from '../../shared/types';
 
-const title = 'Book 1, Proposition 2 (I.ii)';
+const propName = '2';
 const summary = 'Construct a straight line equal to a given straight line with one end at a given point.';
 
 const width = 400;
@@ -57,7 +57,7 @@ const diagram: Diagram = {
   }
 };
 
-const steps: Steps = [
+const steps: StepList = [
   {
     text: 'Let A be the given point, and BC the given straight line.',
     highlight: [ 'A', 'B', 'C', 'BC' ]
@@ -110,7 +110,7 @@ const steps: Steps = [
 ];
 
 const proposition: Proposition = {
-  title,
+  propName,
   summary,
   diagram,
   steps,

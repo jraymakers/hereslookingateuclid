@@ -1,102 +1,49 @@
 import * as React from 'react';
-import { style } from 'typestyle';
+import { RouteComponentProps, withRouter } from 'react-router';
 
-import books from '../books';
+import { NavBar } from './NavBar';
 import { PropositionView } from '../shared/components';
-import { getProposition, getPrevBookProp, getNextBookProp } from '../shared/utils/BookUtils';
+import { PropositionPage } from '../shared/types';
+import { propUrl, propStepUrl } from '../routes/Urls';
 
-import { TopBar } from './TopBar';
-
-const classPrefix = 'PropositionPageView';
-
-const rootClass = style({
-  $debugName: `${classPrefix}_root`,
-  $unique: true,
-  position: 'absolute',
-  left: 0,
-  right: 0,
-  top: 0,
-  bottom: 0,
-  display: 'flex',
-  flexDirection: 'column',
-  maxWidth: 1000,
-  fontFamily: 'serif',
-  fontSize: 16,
-});
-
-const contentClass = style({
-  $debugName: `${classPrefix}_content`,
-  $unique: true,
-  flex: 1,
-  display: 'flex',
-  flexDirection: 'column',
-});
-
-export type PropositionPageViewProps = {
-  readonly bookNum: number;
-  readonly propNum: number;
+type PropositionPageViewProps = RouteComponentProps<{}> & {
+  readonly page: PropositionPage;
   readonly stepNum: number;
-  readonly goToBookPropStep: (bookNum: number, propNum: number, stepNum: number) => void;
 };
 
-export class PropositionPageView extends React.PureComponent<PropositionPageViewProps> {
+class PropositionPageView extends React.PureComponent<PropositionPageViewProps> {
 
   public render(): JSX.Element {
-    const bookNum = this.props.bookNum;
-    const propNum = this.props.propNum;
+    const page = this.props.page;
     const stepNum = this.props.stepNum;
     return (
-      <div className={rootClass}>
-        <TopBar
-          previousEnabled={!!getPrevBookProp(books, { bookNum, propNum })}
-          nextEnabled={!!getNextBookProp(books, { bookNum, propNum })}
-          onPrevious={this.onPreviousPage}
-          onNext={this.onNextPage}
+      <div>
+        <NavBar prev={page.prev} up={page.up} next={page.next}></NavBar>
+        <PropositionView
+          bookName={page.bookName}
+          proposition={page.proposition}
+          stepNum={stepNum}
+          goToStep={this.goToStep}
         />
-        <div className={contentClass}>
-          {this.renderProposition(bookNum, propNum, stepNum)}
-        </div>
       </div>
     );
   }
 
-  public renderProposition(bookNum: number, propNum: number, stepNum: number): JSX.Element | null {
-    const proposition = getProposition(books, { bookNum, propNum });
-    if (proposition) {
-      return (
-        <PropositionView
-          proposition={proposition}
-          stepNum={Math.min(Math.max(stepNum, 0), proposition.steps.length)}
-          goToStep={this.goToStep}
-        />
-      );
+  private readonly goToStep = (newStep: number) => {
+    const page = this.props.page;
+    if (newStep > 0) {
+      this.navigate(propStepUrl(page.bookName, page.proposition.propName, newStep));
     } else {
-      return null;
+      this.navigate(propUrl(page.bookName, page.proposition.propName));
     }
   }
 
-  private readonly onPreviousPage = () => {
-    const bookNum = this.props.bookNum;
-    const propNum = this.props.propNum;
-    const prevBookProp = getPrevBookProp(books, { bookNum, propNum });
-    if (prevBookProp) {
-      this.props.goToBookPropStep(prevBookProp.bookNum, prevBookProp.propNum, 0);
+  private navigate(pathname: string) {
+    if (this.props.location.pathname !== pathname) {
+      this.props.history.push(pathname);
     }
-  };
-
-  private readonly onNextPage = () => {
-    const bookNum = this.props.bookNum;
-    const propNum = this.props.propNum;
-    const nextBookProp = getNextBookProp(books, { bookNum, propNum });
-    if (nextBookProp) {
-      this.props.goToBookPropStep(nextBookProp.bookNum, nextBookProp.propNum, 0);
-    }
-  };
-
-  private readonly goToStep = (stepNum: number) => {
-    const bookNum = this.props.bookNum;
-    const propNum = this.props.propNum;
-    this.props.goToBookPropStep(bookNum, propNum, stepNum);
-  };
+  }
 
 }
+
+export const PropositionPageViewWithRouter = withRouter(PropositionPageView);

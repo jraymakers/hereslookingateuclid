@@ -1,7 +1,12 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { style } from 'typestyle';
 
-const classPrefix = 'TopBar';
+import { LinkInfo } from '../shared/types';
+
+import { mainContentsUrl } from '../routes/Urls';
+
+const classPrefix = 'NavBar';
 
 const rootClass = style({
   $debugName: `${classPrefix}_root`,
@@ -63,50 +68,51 @@ const buttonClass = style({
       $unique: true,
       backgroundColor: '#eee',
     },
-    '&:disabled': {
-      $unique: true,
-      backgroundColor: 'transparent',
-      border: '1px solid #888',
-      opacity: 0.3,
-    },
   }
 });
 
-export type TopBarProps = {
-  readonly previousEnabled: boolean;
-  readonly nextEnabled: boolean;
-  readonly onPrevious: () => void;
-  readonly onNext: () => void;
+const title = "Here's Looking at Euclid";
+
+export type NavBarProps = {
+  readonly prev: LinkInfo | null;
+  readonly up: LinkInfo | null;
+  readonly next: LinkInfo | null;
+  readonly noTitleLink?: boolean;
 };
 
-export class TopBar extends React.PureComponent<TopBarProps> {
+export class NavBar extends React.PureComponent<NavBarProps> {
 
   public render(): JSX.Element {
     return (
       <div className={rootClass}>
         <div className={leftClass}>
-          <button
-            className={buttonClass}
-            disabled={!this.props.previousEnabled}
-            onClick={this.props.onPrevious}
-          >
-            Previous Page
-          </button>
+          {this.renderLink(this.props.prev)}
         </div>
         <div className={centerClass}>
-          <div className={titleClass}>Here's Looking at Euclid</div>
+          {this.renderTitle()}
+          {this.renderLink(this.props.up)}
         </div>
         <div className={rightClass}>
-          <button
-            className={buttonClass}
-            disabled={!this.props.nextEnabled}
-            onClick={this.props.onNext}
-          >
-            Next Page
-          </button>
+          {this.renderLink(this.props.next)}
         </div>
       </div>
     );
+  }
+
+  private renderTitle(): JSX.Element {
+    if (this.props.noTitleLink) {
+      return <div className={titleClass}>{title}</div>
+    } else {
+      return <Link className={titleClass} to={mainContentsUrl}>{title}</Link>
+    }
+  }
+
+  private renderLink(link: LinkInfo | null): JSX.Element | null {
+    if (link) {
+      return <Link className={buttonClass} to={link.url}>{link.navText}</Link>;
+    } else {
+      return null;
+    }
   }
 
 }

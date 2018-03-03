@@ -1,7 +1,7 @@
 import { Greek, LabelDir } from '../../shared/constants';
-import { Diagram, Steps, Proposition } from '../../shared/types';
+import { Diagram, StepList, Proposition, PropositionPage } from '../../shared/types';
 
-const title = 'Book 1, Proposition 1 (I.i)';
+const propName = '1';
 const summary = 'Construct an equilateral triangle on a given straight line.';
 
 const width = 400;
@@ -35,7 +35,7 @@ const diagram: Diagram = {
   }
 };
 
-const steps: Steps = [
+const steps: StepList = [
   {
     text: 'Let AB be the given straight line.',
     highlight: [ 'AB', 'A', 'B' ]
@@ -75,7 +75,7 @@ const steps: Steps = [
 ];
 
 const proposition: Proposition = {
-  title,
+  propName,
   summary,
   diagram,
   steps,

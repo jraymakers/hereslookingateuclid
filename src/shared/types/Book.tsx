@@ -1,12 +1,16 @@
-import { Proposition } from './Proposition';
+import { BookContentsPage, BookIntroPage, PropositionPage } from './Page';
 
-export type Book = {
-  propositions: ReadonlyArray<Proposition>;
+export type PropositionPageMap = {
+  readonly [propName: string]: PropositionPage;
 }
 
-export type Books = ReadonlyArray<Book>;
+export type Book = {
+  readonly bookName: string;
+  readonly contentsPage: BookContentsPage,
+  readonly introPage: BookIntroPage,
+  readonly propositionPages: PropositionPageMap;
+}
 
-export type BookProp = {
-  readonly bookNum: number;
-  readonly propNum: number;
-};
+export type BookMap = {
+  readonly [bookName: string]: Book;
+}

@@ -5,11 +5,11 @@ export type Step = {
   readonly highlight: ReadonlyArray<string>;
 };
 
-export type Steps = ReadonlyArray<Step>;
+export type StepList = ReadonlyArray<Step>;
 
 export type Proposition = {
-  readonly title: string;
+  readonly propName: string;
   readonly summary: string;
   readonly diagram: Diagram;
-  readonly steps: Steps;
+  readonly steps: StepList;
 };
