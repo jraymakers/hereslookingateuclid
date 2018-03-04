@@ -1,5 +1,6 @@
 export type LinkInfo = {
-  readonly contentsText: string;
-  readonly navText: string;
+  readonly text: string;
   readonly url: string;
 };
+
+export type LinkInfoList = ReadonlyArray<LinkInfo>;

@@ -1,18 +1,11 @@
-import * as React from 'react';
+import {
+  ParagraphList,
+} from '../shared/types';
 
-import { NavBar } from '../app/NavBar';
+const intro: ParagraphList = [
+  [
+    'This is the main introduction.',
+  ],
+]
 
-import { bookIntroLink } from '../routes/Links';
-
-export class MainIntro extends React.PureComponent<{}> {
-
-  public render(): JSX.Element {
-    return (
-      <div>
-        <NavBar prev={null} up={null} next={bookIntroLink('I')}></NavBar>
-        <div>Introduction</div>
-      </div>
-    );
-  }
-
-}
+export default intro;

@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 
-import { NavBar } from './NavBar';
+import { propUrl, propStepUrl } from '../routes/Urls';
 import { PropositionView } from '../shared/components';
 import { PropositionPage } from '../shared/types';
-import { propUrl, propStepUrl } from '../routes/Urls';
+
+import { PageView } from './PageView';
 
 type PropositionPageViewProps = RouteComponentProps<{}> & {
   readonly page: PropositionPage;
@@ -17,15 +18,14 @@ class PropositionPageView extends React.PureComponent<PropositionPageViewProps> 
     const page = this.props.page;
     const stepNum = this.props.stepNum;
     return (
-      <div>
-        <NavBar prev={page.prev} up={page.up} next={page.next}></NavBar>
+      <PageView page={page}>
         <PropositionView
           bookName={page.bookName}
           proposition={page.proposition}
           stepNum={stepNum}
           goToStep={this.goToStep}
         />
-      </div>
+      </PageView>
     );
   }
 

@@ -1,32 +1,37 @@
-import { LinkInfo } from './LinkInfo';
+import { LinkInfo, LinkInfoList } from './LinkInfo';
 import { Proposition } from './Proposition';
 
-export type PageLinks = {
+export type Page = {
   readonly prev: LinkInfo | null;
   readonly up: LinkInfo | null;
   readonly next: LinkInfo | null;
 };
 
-export type BookPage = PageLinks & {
+export type ContentsContent = {
+  readonly contentsLinks: LinkInfoList;
+}
+
+export type Paragraph = ReadonlyArray<string>;
+
+export type ParagraphList = ReadonlyArray<Paragraph>;
+
+export type IntroContent = {
+  readonly title: LinkInfo | null;
+  readonly paragraphs: ParagraphList;
+};
+
+export type ContentsPage = Page & ContentsContent;
+
+export type IntroPage = Page & IntroContent;
+
+export type BookPage = Page & {
   readonly bookName: string;
 };
 
-export type BookContentsPage = BookPage & {
-  readonly pageType: 'bookContents';
-  readonly sectionLinks: ReadonlyArray<LinkInfo>;
-};
+export type BookContentsPage = BookPage & ContentsContent;
 
-export type BookIntroPage = BookPage & {
-  readonly pageType: 'bookIntro';
-  readonly content: () => JSX.Element;
-};
+export type BookIntroPage = BookPage & IntroContent;
 
 export type PropositionPage = BookPage & {
-  readonly pageType: 'proposition';
   readonly proposition: Proposition;
 };
-
-export type Page =
-  BookContentsPage |
-  BookIntroPage |
-  PropositionPage;

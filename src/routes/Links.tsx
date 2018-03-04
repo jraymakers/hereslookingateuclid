@@ -3,47 +3,48 @@ import {
 } from '../shared/types';
 
 import {
-  mainContentsUrl,
   mainIntroUrl,
-  bookUrl,
   bookContentsUrl,
   bookIntroUrl,
   propUrl,
-  propStepUrl,
 } from './Urls';
 
-export const mainContentsLink: LinkInfo = {
-  contentsText: 'Main Contents', // unused
-  navText: 'Main Contents',
-  url: mainContentsUrl
-};
-
 export const mainIntroLink: LinkInfo = {
-  contentsText: 'Introduction',
-  navText: 'Introduction',
+  text: 'Introduction',
   url: mainIntroUrl
 };
 
-export function bookContentsLink(bookName: string): LinkInfo {
+export function bookTitleContentsLink(bookName: string): LinkInfo {
   return {
-    contentsText: 'Contents', // unused
-    navText: `Book ${bookName} Contents`,
+    text: `Book ${bookName}`,
     url: bookContentsUrl(bookName)
+  };
+}
+
+export function bookTitleIntroLink(bookName: string): LinkInfo {
+  return {
+    text: `Book ${bookName}`,
+    url: bookIntroUrl(bookName)
   };
 }
 
 export function bookIntroLink(bookName: string): LinkInfo {
   return {
-    contentsText: 'Introduction',
-    navText: `Book ${bookName}`,
+    text: 'Introduction',
     url: bookIntroUrl(bookName)
   };
 }
 
-export function propLink(bookName: string, propName: string): LinkInfo {
+export function propTitleLink(bookName: string, propName: string): LinkInfo {
   return {
-    contentsText: `Proposition ${propName}`,
-    navText: `${bookName}.${propName}`,
+    text: `Proposition ${propName}`,
+    url: propUrl(bookName, propName)
+  };
+}
+
+export function propNavLink(bookName: string, propName: string): LinkInfo {
+  return {
+    text: `${bookName}.${propName}`,
     url: propUrl(bookName, propName)
   };
 }

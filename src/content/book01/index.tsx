@@ -5,11 +5,12 @@ import {
 } from '../../shared/types';
 
 import {
-  bookContentsLink,
+  bookTitleContentsLink,
+  bookTitleIntroLink,
   bookIntroLink,
-  mainContentsLink,
   mainIntroLink,
-  propLink,
+  propTitleLink,
+  propNavLink,
 } from '../../routes/Links';
 
 import {
@@ -24,23 +25,24 @@ import prop2 from './Book1Prop2';
 
 const bookName = 'I';
 
-const contentsLink = bookContentsLink(bookName);
+const titleContentsLink = bookTitleContentsLink(bookName);
+const titleIntroLink = bookTitleIntroLink(bookName);
 const introLink = bookIntroLink(bookName);
-const prop1Link = propLink(bookName, prop1.propName);
-const prop2Link = propLink(bookName, prop2.propName);
+const prop1Nav = propNavLink(bookName, prop1.propName);
+const prop2Nav = propNavLink(bookName, prop2.propName);
 
 const contents: ReadonlyArray<LinkInfo> = [
   introLink,
-  prop1Link,
-  prop2Link,
+  propTitleLink(bookName, prop1.propName),
+  propTitleLink(bookName, prop2.propName),
 ];
 
 const contentsPage = bookContentsPage(bookName, contents, null, null, null);
-const introPage = bookIntroPage(bookName, intro, mainIntroLink, contentsLink, prop1Link);
+const introPage = bookIntroPage(bookName, titleContentsLink, intro, mainIntroLink, null, prop1Nav);
 
 const propositionPages: PropositionPageMap = {
-  [prop1.propName]: propPage(bookName, prop1, introLink, contentsLink, prop2Link),
-  [prop2.propName]: propPage(bookName, prop2, prop1Link, contentsLink, null),
+  [prop1.propName]: propPage(bookName, prop1, titleIntroLink, null, prop2Nav),
+  [prop2.propName]: propPage(bookName, prop2, prop1Nav, null, null),
 };
 
 const book: Book = {

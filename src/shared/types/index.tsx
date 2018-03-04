@@ -15,11 +15,17 @@ export {
 
 export {
   LinkInfo,
+  LinkInfoList,
 } from './LinkInfo';
 
 export {
   Page,
-  PageLinks,
+  ContentsContent,
+  Paragraph,
+  ParagraphList,
+  IntroContent,
+  ContentsPage,
+  IntroPage,
   BookPage,
   BookContentsPage,
   BookIntroPage,

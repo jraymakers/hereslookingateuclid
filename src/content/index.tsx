@@ -1,10 +1,29 @@
-import { BookMap } from '../shared/types';
+import {
+  BookMap,
+  LinkInfo,
+} from '../shared/types';
 
+import {
+  bookTitleIntroLink,
+  mainIntroLink,
+} from '../routes/Links';
+
+import {
+  contentsPage,
+  introPage,
+} from '../shared/utils/PageUtils';
+
+import intro from './MainIntro';
 import book01 from './book01';
+
+export const contents: ReadonlyArray<LinkInfo> = [
+  mainIntroLink,
+  bookTitleIntroLink(book01.bookName),
+];
 
 export const books: BookMap = {
   [book01.bookName]: book01,
 };
 
-export { MainContents } from './MainContents';
-export { MainIntro } from './MainIntro';
+export const mainContentsPage = contentsPage(contents, null, null, null);
+export const mainIntroPage = introPage(null, intro, null, null, bookTitleIntroLink(book01.bookName));

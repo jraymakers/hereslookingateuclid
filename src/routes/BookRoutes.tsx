@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Redirect, Route, RouteComponentProps, Switch } from 'react-router';
 
-import { BookContentsPageView } from '../app/BookContentsPageView';
-import { BookIntroPageView } from '../app/BookIntroPageView';
+import { ContentsPageView } from '../app/ContentsPageView';
+import { IntroPageView } from '../app/IntroPageView';
 import { Book } from '../shared/types';
 
 import { PropRoutes } from './PropRoutes';
@@ -35,11 +35,11 @@ export class BookRoutes extends React.Component<BookRoutesProps> {
   }
 
   private readonly renderContents = () => {
-    return <BookContentsPageView page={this.props.book.contentsPage} />;
+    return <ContentsPageView page={this.props.book.contentsPage} />;
   }
 
   private readonly renderIntro = () => {
-    return <BookIntroPageView page={this.props.book.introPage} />;
+    return <IntroPageView page={this.props.book.introPage} />;
   }
 
   private readonly renderPropRoute = (props: PropRouteProps) => {

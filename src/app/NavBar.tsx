@@ -13,7 +13,6 @@ const rootClass = style({
   $unique: true,
   display: 'flex',
   flexDirection: 'row',
-  padding: 12,
 });
 
 const leftClass = style({
@@ -42,6 +41,21 @@ const titleClass = style({
   fontSize: 24,
 });
 
+const titleLinkClass = style({
+  $debugName: `${classPrefix}_titleLink`,
+  $unique: true,
+  textAlign: 'center',
+  fontSize: 24,
+  color: 'black',
+  textDecoration: 'none',
+  $nest: {
+    '&:hover': {
+      $unique: true,
+      color: '#888',
+    }
+  }
+});
+
 const rightClass = style({
   $debugName: `${classPrefix}_right`,
   $unique: true,
@@ -55,10 +69,14 @@ const rightClass = style({
 const buttonClass = style({
   $debugName: `${classPrefix}_button`,
   $unique: true,
-  paddingLeft: 12,
-  paddingRight: 12,
+  paddingLeft: 18,
+  paddingRight: 18,
   border: '1px solid #ddd',
+  color: 'black',
+  display: 'flex',
+  alignItems: 'center',
   outline: 'none',
+  textDecoration: 'none',
   $nest: {
     '&:focus': {
       $unique: true,
@@ -90,7 +108,7 @@ export class NavBar extends React.PureComponent<NavBarProps> {
         </div>
         <div className={centerClass}>
           {this.renderTitle()}
-          {this.renderLink(this.props.up)}
+          {/* {this.renderLink(this.props.up)} */}
         </div>
         <div className={rightClass}>
           {this.renderLink(this.props.next)}
@@ -103,13 +121,13 @@ export class NavBar extends React.PureComponent<NavBarProps> {
     if (this.props.noTitleLink) {
       return <div className={titleClass}>{title}</div>
     } else {
-      return <Link className={titleClass} to={mainContentsUrl}>{title}</Link>
+      return <Link className={titleLinkClass} to={mainContentsUrl}>{title}</Link>
     }
   }
 
   private renderLink(link: LinkInfo | null): JSX.Element | null {
     if (link) {
-      return <Link className={buttonClass} to={link.url}>{link.navText}</Link>;
+      return <Link className={buttonClass} to={link.url}>{link.text}</Link>;
     } else {
       return null;
     }

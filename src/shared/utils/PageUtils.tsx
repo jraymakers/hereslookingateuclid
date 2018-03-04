@@ -1,22 +1,55 @@
 import {
   BookContentsPage,
   BookIntroPage,
+  ContentsPage,
+  IntroPage,
   LinkInfo,
+  LinkInfoList,
+  ParagraphList,
   Proposition,
   PropositionPage,
 } from '../types';
 
+export function contentsPage(
+  contentsLinks: LinkInfoList,
+  prev: LinkInfo | null,
+  up: LinkInfo | null,
+  next: LinkInfo | null,
+): ContentsPage {
+  return {
+    contentsLinks,
+    prev: prev,
+    up: up,
+    next: next,
+  }
+}
+
+export function introPage(
+  title: LinkInfo | null,
+  paragraphs: ParagraphList,
+  prev: LinkInfo | null,
+  up: LinkInfo | null,
+  next: LinkInfo | null,
+): IntroPage {
+  return {
+    title,
+    paragraphs,
+    prev: prev,
+    up: up,
+    next: next,
+  }
+}
+
 export function bookContentsPage(
   bookName: string,
-  sectionLinks: ReadonlyArray<LinkInfo>,
+  contentsLinks: LinkInfoList,
   prev: LinkInfo | null,
   up: LinkInfo | null,
   next: LinkInfo | null,
 ): BookContentsPage {
   return {
-    pageType: 'bookContents',
     bookName,
-    sectionLinks,
+    contentsLinks,
     prev: prev,
     up: up,
     next: next,
@@ -25,15 +58,16 @@ export function bookContentsPage(
 
 export function bookIntroPage(
   bookName: string,
-  content: () => JSX.Element,
+  title: LinkInfo | null,
+  paragraphs: ParagraphList,
   prev: LinkInfo | null,
   up: LinkInfo | null,
   next: LinkInfo | null,
 ): BookIntroPage {
   return {
-    pageType: 'bookIntro',
     bookName,
-    content,
+    title,
+    paragraphs,
     prev: prev,
     up: up,
     next: next,
@@ -48,7 +82,6 @@ export function propPage(
   next: LinkInfo | null,
 ): PropositionPage {
   return {
-    pageType: 'proposition',
     bookName,
     proposition,
     prev: prev,

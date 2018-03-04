@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Redirect, Route, RouteComponentProps, Switch } from 'react-router';
 
-import { books, MainContents, MainIntro } from '../content';
+import { books, mainContentsPage, mainIntroPage } from '../content';
 
 import { BookRoutes } from './BookRoutes';
 import {
@@ -9,6 +9,8 @@ import {
   mainIntroUrl,
   bookUrl,
 } from './Urls';
+import { ContentsPageView } from '../app/ContentsPageView';
+import { IntroPageView } from '../app/IntroPageView';
 
 type BookRouteProps = RouteComponentProps<{
   readonly bookName: string;
@@ -19,12 +21,20 @@ export class MainRoutes extends React.Component<{}> {
   public render(): JSX.Element {
     return (
       <Switch>
-        <Route exact path={mainContentsUrl} component={MainContents} />
-        <Route exact path={mainIntroUrl} component={MainIntro} />
+        <Route exact path={mainContentsUrl} render={this.renderContents} />
+        <Route exact path={mainIntroUrl} component={this.renderIntro} />
         <Route path={bookUrl(':bookName')} render={this.renderBookRoute} />
         <Redirect to={mainIntroUrl} />
       </Switch>
     );
+  }
+
+  private readonly renderContents = (): JSX.Element => {
+    return <ContentsPageView page={mainContentsPage} noTitleLink={true} />
+  }
+
+  private readonly renderIntro = (): JSX.Element => {
+    return <IntroPageView page={mainIntroPage} />
   }
 
   private readonly renderBookRoute = (props: BookRouteProps): JSX.Element => {
