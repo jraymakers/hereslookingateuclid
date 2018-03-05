@@ -17,10 +17,11 @@ export function contentsPage(
   next: LinkInfo | null,
 ): ContentsPage {
   return {
+    title: null,
     contentsLinks,
-    prev: prev,
-    up: up,
-    next: next,
+    prev,
+    up,
+    next,
   }
 }
 
@@ -34,9 +35,9 @@ export function introPage(
   return {
     title,
     paragraphs,
-    prev: prev,
-    up: up,
-    next: next,
+    prev,
+    up,
+    next,
   }
 }
 
@@ -49,10 +50,11 @@ export function bookContentsPage(
 ): BookContentsPage {
   return {
     bookName,
+    title: `Book ${bookName}`,
     contentsLinks,
-    prev: prev,
-    up: up,
-    next: next,
+    prev,
+    up,
+    next,
   }
 }
 
@@ -68,9 +70,9 @@ export function bookIntroPage(
     bookName,
     title,
     paragraphs,
-    prev: prev,
-    up: up,
-    next: next,
+    prev,
+    up,
+    next,
   }
 }
 
@@ -84,8 +86,8 @@ export function propPage(
   return {
     bookName,
     proposition,
-    prev: prev,
-    up: up,
-    next: next,
+    prev,
+    up,
+    next,
   }
 }

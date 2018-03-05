@@ -55,7 +55,7 @@ const titleAndSummaryClass = style({
 const titleClass = style({
   $debugName: `${classPrefix}_titleAndSummary`,
   $unique: true,
-  fontSize: 20,
+  fontSize: 24,
 });
 
 const summaryClass = style({

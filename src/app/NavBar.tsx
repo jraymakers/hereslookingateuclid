@@ -13,6 +13,7 @@ const rootClass = style({
   $unique: true,
   display: 'flex',
   flexDirection: 'row',
+  paddingBottom: 12,
 });
 
 const leftClass = style({
@@ -38,14 +39,14 @@ const titleClass = style({
   $debugName: `${classPrefix}_title`,
   $unique: true,
   textAlign: 'center',
-  fontSize: 24,
+  fontSize: 30,
 });
 
 const titleLinkClass = style({
   $debugName: `${classPrefix}_titleLink`,
   $unique: true,
   textAlign: 'center',
-  fontSize: 24,
+  fontSize: 30,
   color: 'black',
   textDecoration: 'none',
   $nest: {

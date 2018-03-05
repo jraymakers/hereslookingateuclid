@@ -21,8 +21,7 @@ export {
 export {
   Page,
   ContentsContent,
-  Paragraph,
-  ParagraphList,
+  
   IntroContent,
   ContentsPage,
   IntroPage,
@@ -31,6 +30,14 @@ export {
   BookIntroPage,
   PropositionPage,
 } from './Page';
+
+export {
+  StyledRun,
+  Run,
+  Sentence,
+  Paragraph,
+  ParagraphList,
+} from './Paragraph';
 
 export {
   Proposition,

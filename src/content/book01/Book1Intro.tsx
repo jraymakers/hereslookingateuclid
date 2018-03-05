@@ -4,12 +4,8 @@ import {
 
 const intro: ParagraphList = [
   [
-    'This is the overview of Book I.',
+    [ 'This first book develops the basic principles of geometry in a flat plane.' ],
   ],
-  [
-    'This is the second paragraph of the overview.',
-    'It has two sentences.',
-  ]
 ];
 
 export default intro;

@@ -5,20 +5,31 @@ import { style } from 'typestyle';
 import { IntroPage, Paragraph } from '../shared/types';
 
 import { PageView } from './PageView';
+import { ParagraphView } from './ParagraphView';
 
 const classPrefix = 'IntroPageView';
 
 const titleClass = style({
   $debugName: `${classPrefix}_title`,
   $unique: true,
-  fontSize: 18,
+  fontSize: 24,
   padding: 6,
+  color: 'black',
+  textDecoration: 'none',
+  textAlign: 'center',
+  $nest: {
+    '&:hover': {
+      $unique: true,
+      color: '#888',
+    }
+  }
 });
 
-const paragraphClass = style({
-  $debugName: `${classPrefix}_paragraph`,
+const contentClass = style({
+  $debugName: `${classPrefix}_content`,
   $unique: true,
-  padding: 6,
+  maxWidth: 800,
+  alignSelf: 'center',
 });
 
 export type IntroPageViewProps = {
@@ -32,7 +43,9 @@ export class IntroPageView extends React.PureComponent<IntroPageViewProps> {
     return (
       <PageView page={page}>
         {this.renderTitle()}
-        {page.paragraphs.map(this.renderParagraph)}
+        <div className={contentClass}>
+          {page.paragraphs.map((paragraph, index) => <ParagraphView paragraph={paragraph} key={index} />)}
+        </div>
       </PageView>
     );
   }
@@ -44,14 +57,6 @@ export class IntroPageView extends React.PureComponent<IntroPageViewProps> {
     } else {
       return null;
     }
-  }
-
-  private readonly renderParagraph = (paragraph: Paragraph, paragraphIndex: number): JSX.Element => {
-    return (
-      <div className={paragraphClass} key={paragraphIndex}>
-        {paragraph.map((runText, runIndex) => <span key={runIndex}>{runText}{' '}</span>)}
-      </div>
-    );
   }
 
 }

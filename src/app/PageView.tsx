@@ -12,7 +12,10 @@ const rootClass = style({
   $unique: true,
   display: 'flex',
   flexDirection: 'column',
+  alignItems: 'stretch',
   padding: 12,
+  fontFamily: 'serif',
+  fontSize: 18,
 });
 
 type PageViewProps = {

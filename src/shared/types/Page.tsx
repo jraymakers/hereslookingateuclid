@@ -1,4 +1,5 @@
 import { LinkInfo, LinkInfoList } from './LinkInfo';
+import { ParagraphList } from './Paragraph';
 import { Proposition } from './Proposition';
 
 export type Page = {
@@ -8,12 +9,9 @@ export type Page = {
 };
 
 export type ContentsContent = {
+  readonly title: string | null;
   readonly contentsLinks: LinkInfoList;
 }
-
-export type Paragraph = ReadonlyArray<string>;
-
-export type ParagraphList = ReadonlyArray<Paragraph>;
 
 export type IntroContent = {
   readonly title: LinkInfo | null;
