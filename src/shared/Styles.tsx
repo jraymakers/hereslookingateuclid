@@ -1,6 +1,6 @@
 import { style } from 'typestyle';
 
-import { StyledText } from './types';
+import { StyledRun } from './types';
 
 const classPrefix = 'shared';
 
@@ -10,6 +10,6 @@ export const italicClass = style({
   fontStyle: 'italic',
 });
 
-export function italic(text: string): StyledText {
+export function italic(text: string): StyledRun {
   return { className: italicClass, text };
 }

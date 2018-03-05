@@ -4,6 +4,7 @@ import {
 } from '../shared/types';
 
 import {
+  bookTitleContentsLink,
   bookTitleIntroLink,
   mainIntroLink,
 } from '../routes/Links';
@@ -18,7 +19,7 @@ import book01 from './book01';
 
 export const contents: ReadonlyArray<LinkInfo> = [
   mainIntroLink,
-  bookTitleIntroLink(book01.bookName),
+  bookTitleContentsLink(book01.bookName),
 ];
 
 export const books: BookMap = {
