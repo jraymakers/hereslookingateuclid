@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { style } from 'typestyle';
 
-import { LinkInfo } from '../../shared/types';
+import { LinkInfo } from '../../link';
 
 import { ContentsPage } from '../types/Page';
 

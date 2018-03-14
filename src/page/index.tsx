@@ -4,11 +4,14 @@ export {
   TextPageView,
 } from './components';
 export {
+  Book,
   BookContentsPage,
+  BookMap,
   BookTextPage,
   Page,
   PropositionPage,
-} from './types/Page';
+  PropositionPageMap,
+} from './types';
 export {
   bookContentsPage,
   bookTextPage,

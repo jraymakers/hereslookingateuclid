@@ -1,15 +1,22 @@
 import * as React from 'react';
 import { Redirect, Route, RouteComponentProps, Switch } from 'react-router';
 
-import { books, mainContentsPage, mainIntroPage } from '../content';
-import { ContentsPageView, TextPageView } from '../page';
-
-import { BookRoutes } from './BookRoutes';
+import {
+  books,
+  mainContentsPage,
+  mainIntroPage
+} from '../content';
 import {
   mainContentsUrl,
   mainIntroUrl,
   bookUrl,
-} from './Urls';
+} from '../link';
+import {
+  ContentsPageView,
+  TextPageView
+} from '../page';
+
+import { BookRoutes } from './BookRoutes';
 
 
 type BookRouteProps = RouteComponentProps<{

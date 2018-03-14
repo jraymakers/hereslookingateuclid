@@ -1,3 +1,0 @@
-export {
-  PropositionView
-} from './PropositionView';

@@ -1,21 +1,19 @@
 import {
-  bookContentsPage,
-  bookTextPage,
-  propPage,
-} from '../../page';
-import {
   bookTitleContentsLink,
-  bookTitleIntroLink,
   bookIntroLink,
+  bookTitleIntroLink,
+  LinkInfo,
   mainIntroLink,
-  propTitleLink,
   propNavLink,
-} from '../../routes/Links';
+  propTitleLink,
+} from '../../link';
 import {
   Book,
-  LinkInfo,
+  bookContentsPage,
+  bookTextPage,
   PropositionPageMap,
-} from '../../shared/types';
+  propPage,
+} from '../../page';
 
 import intro from './Book1Intro';
 import prop1 from './Book1Prop1';

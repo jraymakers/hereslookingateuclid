@@ -7,9 +7,9 @@ import {
   PropositionPage,
 } from '../../page';
 import {
-  StepList,
   Proposition,
-} from '../../shared/types';
+  StepList,
+} from '../../proposition';
 
 const propName = '1';
 const summary = 'Construct an equilateral triangle on a given straight line.';

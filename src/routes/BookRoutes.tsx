@@ -1,15 +1,18 @@
 import * as React from 'react';
 import { Redirect, Route, RouteComponentProps, Switch } from 'react-router';
 
-import { ContentsPageView, TextPageView } from '../page';
-import { Book } from '../shared/types';
-
-import { PropRoutes } from './PropRoutes';
 import {
   bookContentsUrl,
   bookIntroUrl,
   propUrl,
-} from './Urls';
+} from '../link';
+import {
+  Book,
+  ContentsPageView,
+  TextPageView
+} from '../page';
+
+import { PropRoutes } from './PropRoutes';
 
 type BookRoutesProps = {
   readonly book: Book;

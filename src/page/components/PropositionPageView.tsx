@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 
+import { propUrl, propStepUrl } from '../../link';
 import { PropositionPage } from '../../page';
-import { propUrl, propStepUrl } from '../../routes/Urls';
-import { PropositionView } from '../../shared/components';
+import { PropositionView } from '../../proposition';
 
 import { PageView } from './PageView';
 

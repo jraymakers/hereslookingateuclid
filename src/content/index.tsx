@@ -1,16 +1,14 @@
 import {
+  bookTitleContentsLink,
+  bookTitleIntroLink,
+  LinkInfo,
+  mainIntroLink,
+} from '../link';
+import {
+  BookMap,
   contentsPage,
   textPage,
 } from '../page';
-import {
-  bookTitleContentsLink,
-  bookTitleIntroLink,
-  mainIntroLink,
-} from '../routes/Links';
-import {
-  BookMap,
-  LinkInfo,
-} from '../shared/types';
 
 import intro from './MainIntro';
 import book01 from './book01';

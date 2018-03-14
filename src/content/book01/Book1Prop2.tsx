@@ -7,9 +7,9 @@ import {
   PropositionPage,
 } from '../../page';
 import {
-  StepList,
   Proposition,
-} from '../../shared/types';
+  StepList,
+} from '../../proposition';
 
 const propName = '2';
 const summary = 'Construct a straight line equal to a given straight line with one end at a given point.';

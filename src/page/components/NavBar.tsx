@@ -2,8 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { style } from 'typestyle';
 
-import { mainContentsUrl } from '../../routes/Urls';
-import { LinkInfo } from '../../shared/types';
+import { LinkInfo, mainContentsUrl } from '../../link';
 
 const classPrefix = 'NavBar';
 

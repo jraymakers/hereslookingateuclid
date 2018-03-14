@@ -1,6 +1,6 @@
 import {
   LinkInfo,
-} from '../shared/types';
+} from '../types/LinkInfo';
 
 import {
   mainIntroUrl,

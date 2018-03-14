@@ -1,11 +1,13 @@
 import {
+  LinkInfo,
+  LinkInfoList,
+} from '../../link';
+import {
   ParagraphList,
 } from '../../paragraph';
 import {
-  LinkInfo,
-  LinkInfoList,
   Proposition,
-} from '../../shared/types';
+} from '../../proposition';
 
 import {
   BookContentsPage,

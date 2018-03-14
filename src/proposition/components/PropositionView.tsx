@@ -16,7 +16,7 @@ import {
 import {
   Proposition,
   Step,
-} from '../types';
+} from '../types/Proposition';
 
 type DiagramPartState = 'hidden' | 'visible' | 'highlighted';
 

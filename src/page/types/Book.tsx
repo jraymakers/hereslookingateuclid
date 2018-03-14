@@ -2,7 +2,7 @@ import {
   BookContentsPage,
   BookTextPage,
   PropositionPage
-} from '../../page';
+} from './Page';
 
 export type PropositionPageMap = {
   readonly [propName: string]: PropositionPage;
