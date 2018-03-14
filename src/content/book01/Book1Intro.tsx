@@ -1,6 +1,6 @@
 import {
   ParagraphList,
-} from '../../shared/types';
+} from '../../paragraph';
 
 const intro: ParagraphList = [
   [

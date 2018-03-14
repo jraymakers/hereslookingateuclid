@@ -6,7 +6,7 @@ import {
   Paragraph,
   Sentence,
   Run,
-} from '../shared/types';
+} from '../types/Paragraph';
 
 const classPrefix = 'Paragraph';
 

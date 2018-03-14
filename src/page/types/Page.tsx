@@ -1,6 +1,5 @@
-import { LinkInfo, LinkInfoList } from './LinkInfo';
-import { ParagraphList } from './Paragraph';
-import { Proposition } from './Proposition';
+import { ParagraphList } from '../../paragraph';
+import { LinkInfo, LinkInfoList, Proposition } from '../../shared/types';
 
 export type Page = {
   readonly prev: LinkInfo | null;

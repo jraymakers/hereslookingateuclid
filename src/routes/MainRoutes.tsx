@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Redirect, Route, RouteComponentProps, Switch } from 'react-router';
 
 import { books, mainContentsPage, mainIntroPage } from '../content';
+import { ContentsPageView, TextPageView } from '../page';
 
 import { BookRoutes } from './BookRoutes';
 import {
@@ -9,8 +10,7 @@ import {
   mainIntroUrl,
   bookUrl,
 } from './Urls';
-import { ContentsPageView } from '../app/ContentsPageView';
-import { TextPageView } from '../app/TextPageView';
+
 
 type BookRouteProps = RouteComponentProps<{
   readonly bookName: string;

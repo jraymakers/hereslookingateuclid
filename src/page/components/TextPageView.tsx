@@ -2,10 +2,11 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { style } from 'typestyle';
 
-import { TextPage, Paragraph } from '../shared/types';
+import { Paragraph, ParagraphView } from '../../paragraph';
+
+import { TextPage } from '../types/Page';
 
 import { PageView } from './PageView';
-import { ParagraphView } from './ParagraphView';
 
 const classPrefix = 'TextPageView';
 

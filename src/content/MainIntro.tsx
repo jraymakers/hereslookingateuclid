@@ -1,7 +1,7 @@
 import {
+  italic,
   ParagraphList,
-} from '../shared/types';
-import { italic } from '../shared/Styles';
+} from '../paragraph';
 
 const intro: ParagraphList = [
   [

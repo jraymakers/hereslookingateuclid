@@ -2,7 +2,10 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { style } from 'typestyle';
 
-import { ContentsPage, LinkInfo } from '../shared/types';
+import { LinkInfo } from '../../shared/types';
+
+import { ContentsPage } from '../types/Page';
+
 import { PageView } from './PageView';
 
 const classPrefix = 'ContentsPageView';

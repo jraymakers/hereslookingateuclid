@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Redirect, Route, RouteComponentProps, Switch } from 'react-router';
 
-import { PropositionPageViewWithRouter } from '../app/PropositionPageView';
-import { PropositionPage } from '../shared/types';
+import { PropositionPage, PropositionPageView } from '../page';
 
 import {
   propUrl,
@@ -51,7 +50,7 @@ export class PropRoutes extends React.Component<PropRoutesProps> {
   }
 
   private renderStep(stepNum: number): JSX.Element {
-    return <PropositionPageViewWithRouter page={this.props.page} stepNum={stepNum} />
+    return <PropositionPageView page={this.props.page} stepNum={stepNum} />
   }
 
 }

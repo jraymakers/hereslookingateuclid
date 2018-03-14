@@ -1,9 +1,8 @@
 import {
-  Book,
-  LinkInfo,
-  PropositionPageMap,
-} from '../../shared/types';
-
+  bookContentsPage,
+  bookTextPage,
+  propPage,
+} from '../../page';
 import {
   bookTitleContentsLink,
   bookTitleIntroLink,
@@ -12,12 +11,11 @@ import {
   propTitleLink,
   propNavLink,
 } from '../../routes/Links';
-
 import {
-  bookContentsPage,
-  bookTextPage,
-  propPage,
-} from '../../shared/utils/PageUtils';
+  Book,
+  LinkInfo,
+  PropositionPageMap,
+} from '../../shared/types';
 
 import intro from './Book1Intro';
 import prop1 from './Book1Prop1';

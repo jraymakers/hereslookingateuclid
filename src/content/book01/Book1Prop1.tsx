@@ -1,5 +1,15 @@
-import { Diagram, Greek, LabelDir } from '../../diagram';
-import { StepList, Proposition, PropositionPage } from '../../shared/types';
+import {
+  Diagram,
+  Greek,
+  LabelDir,
+} from '../../diagram';
+import {
+  PropositionPage,
+} from '../../page';
+import {
+  StepList,
+  Proposition,
+} from '../../shared/types';
 
 const propName = '1';
 const summary = 'Construct an equilateral triangle on a given straight line.';

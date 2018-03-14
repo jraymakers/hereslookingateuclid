@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { style } from 'typestyle';
 
-import { NavBar } from '../app/NavBar';
+import { Page } from '../types/Page';
 
-import { Page } from '../shared/types';
+import { NavBar } from './NavBar';
 
 const classPrefix = 'PageView';
 

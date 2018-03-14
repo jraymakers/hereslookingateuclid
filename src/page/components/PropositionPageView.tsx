@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 
-import { propUrl, propStepUrl } from '../routes/Urls';
-import { PropositionView } from '../shared/components';
-import { PropositionPage } from '../shared/types';
+import { PropositionPage } from '../../page';
+import { propUrl, propStepUrl } from '../../routes/Urls';
+import { PropositionView } from '../../shared/components';
 
 import { PageView } from './PageView';
 
@@ -12,7 +12,7 @@ type PropositionPageViewProps = RouteComponentProps<{}> & {
   readonly stepNum: number;
 };
 
-class PropositionPageView extends React.PureComponent<PropositionPageViewProps> {
+class PropositionPageViewInternal extends React.PureComponent<PropositionPageViewProps> {
 
   public render(): JSX.Element {
     const page = this.props.page;
@@ -46,4 +46,4 @@ class PropositionPageView extends React.PureComponent<PropositionPageViewProps> 
 
 }
 
-export const PropositionPageViewWithRouter = withRouter(PropositionPageView);
+export const PropositionPageView = withRouter(PropositionPageViewInternal);

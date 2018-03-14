@@ -1,14 +1,19 @@
 import {
+  ParagraphList,
+} from '../../paragraph';
+import {
+  LinkInfo,
+  LinkInfoList,
+  Proposition,
+} from '../../shared/types';
+
+import {
   BookContentsPage,
   BookTextPage,
   ContentsPage,
-  TextPage,
-  LinkInfo,
-  LinkInfoList,
-  ParagraphList,
-  Proposition,
   PropositionPage,
-} from '../types';
+  TextPage,
+} from '../types/Page';
 
 export function contentsPage(
   contentsLinks: LinkInfoList,

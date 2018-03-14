@@ -1,6 +1,6 @@
 import { style } from 'typestyle';
 
-import { StyledRun } from './types';
+import { StyledRun } from '../../paragraph';
 
 const classPrefix = 'shared';
 

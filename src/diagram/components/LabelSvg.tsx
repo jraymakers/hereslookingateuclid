@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-// const defaultDist = 12;
 const labelYOffset = 6;
 
 export type LabelSvgProps = {

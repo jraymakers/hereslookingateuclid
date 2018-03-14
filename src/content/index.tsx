@@ -1,18 +1,16 @@
 import {
-  BookMap,
-  LinkInfo,
-} from '../shared/types';
-
+  contentsPage,
+  textPage,
+} from '../page';
 import {
   bookTitleContentsLink,
   bookTitleIntroLink,
   mainIntroLink,
 } from '../routes/Links';
-
 import {
-  contentsPage,
-  textPage,
-} from '../shared/utils/PageUtils';
+  BookMap,
+  LinkInfo,
+} from '../shared/types';
 
 import intro from './MainIntro';
 import book01 from './book01';
