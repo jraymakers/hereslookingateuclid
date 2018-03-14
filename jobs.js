@@ -19,7 +19,7 @@ module.exports = () => ({
     action: () => fse.remove(outDir)
   },
   copyIndex: {
-    action: () => fse.copy(path.join(srcDir, 'root', 'index.html'), path.join(outDir, 'index.html'))
+    action: () => fse.copy(path.join(srcDir, 'app', 'root', 'index.html'), path.join(outDir, 'index.html'))
   },
   publish: {
     action: jr.processAction('gsutil', ['cp', '-r', 'out/**', 'gs://www.hereslookingateuclid.com'], { cwd: __dirname })

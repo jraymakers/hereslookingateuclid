@@ -1,16 +1,21 @@
 import * as React from 'react';
-import { Redirect, Route, RouteComponentProps, Switch } from 'react-router';
+import {
+  Redirect,
+  Route,
+  RouteComponentProps,
+  Switch,
+} from 'react-router';
 
 import {
   bookContentsUrl,
   bookIntroUrl,
   propUrl,
-} from '../link';
+} from '../../link';
 import {
   Book,
   ContentsPageView,
   TextPageView
-} from '../page';
+} from '../../page';
 
 import { PropRoutes } from './PropRoutes';
 

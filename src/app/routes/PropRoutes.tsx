@@ -1,14 +1,19 @@
 import * as React from 'react';
-import { Redirect, Route, RouteComponentProps, Switch } from 'react-router';
+import {
+  Redirect,
+  Route,
+  RouteComponentProps,
+  Switch,
+} from 'react-router';
 
 import {
   propUrl,
   propStepUrl,
-} from '../link';
+} from '../../link';
 import {
   PropositionPage,
   PropositionPageView
-} from '../page';
+} from '../../page';
 
 type PropRoutesProps = {
   readonly page: PropositionPage;
