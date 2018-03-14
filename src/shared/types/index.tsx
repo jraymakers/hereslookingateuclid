@@ -5,15 +5,6 @@ export {
 } from './Book';
 
 export {
-  Diagram,
-  DiagramPart,
-  DiagramPartMap,
-  PointDiagramPart,
-  LineDiagramPart,
-  CircleDiagramPart,
-} from './Diagram';
-
-export {
   LinkInfo,
   LinkInfoList,
 } from './LinkInfo';

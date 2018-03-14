@@ -1,4 +1,4 @@
-import { Diagram } from './Diagram';
+import { Diagram } from '../../diagram';
 
 export type Step = {
   readonly text: string;

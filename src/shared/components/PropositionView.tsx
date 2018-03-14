@@ -2,21 +2,21 @@ import * as React from 'react';
 import { style } from 'typestyle';
 
 import {
-  LabelDir
-} from '../constants';
-import {
   CircleDiagramPart,
+  CircleSvg,
   DiagramPart,
   DiagramPartMap,
+  LabelDir,
   LineDiagramPart,
+  LineSvg,
   PointDiagramPart,
+  PointSvg,
+} from '../../diagram';
+
+import {
   Proposition,
   Step,
 } from '../types';
-
-import { CircleSvg } from './CircleSvg';
-import { LineSvg } from './LineSvg';
-import { PointSvg } from './PointSvg';
 
 type DiagramPartState = 'hidden' | 'visible' | 'highlighted';
 
