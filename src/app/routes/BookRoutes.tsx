@@ -14,7 +14,7 @@ import {
 import {
   Book,
   ContentsPageView,
-  TextPageView
+  TextPageView,
 } from '../../page';
 
 import { PropRoutes } from './PropRoutes';

@@ -9,16 +9,16 @@ import {
 import {
   books,
   mainContentsPage,
-  mainIntroPage
+  mainIntroPage,
 } from '../../content';
 import {
+  bookUrl,
   mainContentsUrl,
   mainIntroUrl,
-  bookUrl,
 } from '../../link';
 import {
   ContentsPageView,
-  TextPageView
+  TextPageView,
 } from '../../page';
 
 import { BookRoutes } from './BookRoutes';

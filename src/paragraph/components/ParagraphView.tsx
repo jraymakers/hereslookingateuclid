@@ -4,8 +4,8 @@ import { style } from 'typestyle';
 
 import {
   Paragraph,
-  Sentence,
   Run,
+  Sentence,
 } from '../types/Paragraph';
 
 const classPrefix = 'Paragraph';

@@ -7,12 +7,12 @@ import {
 } from 'react-router';
 
 import {
-  propUrl,
   propStepUrl,
+  propUrl,
 } from '../../link';
 import {
   PropositionPage,
-  PropositionPageView
+  PropositionPageView,
 } from '../../page';
 
 type PropRoutesProps = {

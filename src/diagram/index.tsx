@@ -11,10 +11,10 @@ export {
 } from './constants';
 
 export {
+  CircleDiagramPart,
   Diagram,
   DiagramPart,
   DiagramPartMap,
-  PointDiagramPart,
   LineDiagramPart,
-  CircleDiagramPart,
+  PointDiagramPart,
 } from './types/Diagram';

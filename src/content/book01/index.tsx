@@ -1,6 +1,6 @@
 import {
-  bookTitleContentsLink,
   bookIntroLink,
+  bookTitleContentsLink,
   bookTitleIntroLink,
   LinkInfo,
   mainIntroLink,

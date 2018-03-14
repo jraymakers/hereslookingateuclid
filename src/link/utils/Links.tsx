@@ -3,9 +3,9 @@ import {
 } from '../types/LinkInfo';
 
 import {
-  mainIntroUrl,
   bookContentsUrl,
   bookIntroUrl,
+  mainIntroUrl,
   propUrl,
 } from './Urls';
 
