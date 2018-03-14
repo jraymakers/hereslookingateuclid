@@ -10,7 +10,7 @@ import {
   bookUrl,
 } from './Urls';
 import { ContentsPageView } from '../app/ContentsPageView';
-import { IntroPageView } from '../app/IntroPageView';
+import { TextPageView } from '../app/TextPageView';
 
 type BookRouteProps = RouteComponentProps<{
   readonly bookName: string;
@@ -34,7 +34,7 @@ export class MainRoutes extends React.Component<{}> {
   }
 
   private readonly renderIntro = (): JSX.Element => {
-    return <IntroPageView page={mainIntroPage} />
+    return <TextPageView page={mainIntroPage} />
   }
 
   private readonly renderBookRoute = (props: BookRouteProps): JSX.Element => {

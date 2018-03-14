@@ -22,12 +22,12 @@ export {
   Page,
   ContentsContent,
   
-  IntroContent,
+  TextContent,
   ContentsPage,
-  IntroPage,
+  TextPage,
   BookPage,
   BookContentsPage,
-  BookIntroPage,
+  BookTextPage,
   PropositionPage,
 } from './Page';
 

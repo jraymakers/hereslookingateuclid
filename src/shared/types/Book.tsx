@@ -1,4 +1,4 @@
-import { BookContentsPage, BookIntroPage, PropositionPage } from './Page';
+import { BookContentsPage, BookTextPage, PropositionPage } from './Page';
 
 export type PropositionPageMap = {
   readonly [propName: string]: PropositionPage;
@@ -7,7 +7,7 @@ export type PropositionPageMap = {
 export type Book = {
   readonly bookName: string;
   readonly contentsPage: BookContentsPage,
-  readonly introPage: BookIntroPage,
+  readonly introPage: BookTextPage,
   readonly propositionPages: PropositionPageMap;
 }
 

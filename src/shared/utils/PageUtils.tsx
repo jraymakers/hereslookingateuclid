@@ -1,8 +1,8 @@
 import {
   BookContentsPage,
-  BookIntroPage,
+  BookTextPage,
   ContentsPage,
-  IntroPage,
+  TextPage,
   LinkInfo,
   LinkInfoList,
   ParagraphList,
@@ -25,13 +25,13 @@ export function contentsPage(
   }
 }
 
-export function introPage(
+export function textPage(
   title: LinkInfo | null,
   paragraphs: ParagraphList,
   prev: LinkInfo | null,
   up: LinkInfo | null,
   next: LinkInfo | null,
-): IntroPage {
+): TextPage {
   return {
     title,
     paragraphs,
@@ -58,14 +58,14 @@ export function bookContentsPage(
   }
 }
 
-export function bookIntroPage(
+export function bookTextPage(
   bookName: string,
   title: LinkInfo | null,
   paragraphs: ParagraphList,
   prev: LinkInfo | null,
   up: LinkInfo | null,
   next: LinkInfo | null,
-): BookIntroPage {
+): BookTextPage {
   return {
     bookName,
     title,

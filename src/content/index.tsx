@@ -11,7 +11,7 @@ import {
 
 import {
   contentsPage,
-  introPage,
+  textPage,
 } from '../shared/utils/PageUtils';
 
 import intro from './MainIntro';
@@ -27,4 +27,4 @@ export const books: BookMap = {
 };
 
 export const mainContentsPage = contentsPage(contents, null, null, null);
-export const mainIntroPage = introPage(null, intro, null, null, bookTitleIntroLink(book01.bookName));
+export const mainIntroPage = textPage(null, intro, null, null, bookTitleIntroLink(book01.bookName));

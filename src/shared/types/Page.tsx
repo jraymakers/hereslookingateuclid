@@ -13,14 +13,14 @@ export type ContentsContent = {
   readonly contentsLinks: LinkInfoList;
 }
 
-export type IntroContent = {
+export type TextContent = {
   readonly title: LinkInfo | null;
   readonly paragraphs: ParagraphList;
 };
 
 export type ContentsPage = Page & ContentsContent;
 
-export type IntroPage = Page & IntroContent;
+export type TextPage = Page & TextContent;
 
 export type BookPage = Page & {
   readonly bookName: string;
@@ -28,7 +28,7 @@ export type BookPage = Page & {
 
 export type BookContentsPage = BookPage & ContentsContent;
 
-export type BookIntroPage = BookPage & IntroContent;
+export type BookTextPage = BookPage & TextContent;
 
 export type PropositionPage = BookPage & {
   readonly proposition: Proposition;

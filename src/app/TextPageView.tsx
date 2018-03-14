@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { style } from 'typestyle';
 
-import { IntroPage, Paragraph } from '../shared/types';
+import { TextPage, Paragraph } from '../shared/types';
 
 import { PageView } from './PageView';
 import { ParagraphView } from './ParagraphView';
 
-const classPrefix = 'IntroPageView';
+const classPrefix = 'TextPageView';
 
 const titleClass = style({
   $debugName: `${classPrefix}_title`,
@@ -32,11 +32,11 @@ const contentClass = style({
   alignSelf: 'center',
 });
 
-export type IntroPageViewProps = {
-  readonly page: IntroPage;
+export type TextPageViewProps = {
+  readonly page: TextPage;
 };
 
-export class IntroPageView extends React.PureComponent<IntroPageViewProps> {
+export class TextPageView extends React.PureComponent<TextPageViewProps> {
 
   public render(): JSX.Element {
     const page = this.props.page;

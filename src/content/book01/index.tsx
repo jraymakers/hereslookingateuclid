@@ -15,7 +15,7 @@ import {
 
 import {
   bookContentsPage,
-  bookIntroPage,
+  bookTextPage,
   propPage,
 } from '../../shared/utils/PageUtils';
 
@@ -38,7 +38,7 @@ const contents: ReadonlyArray<LinkInfo> = [
 ];
 
 const contentsPage = bookContentsPage(bookName, contents, null, null, null);
-const introPage = bookIntroPage(bookName, titleContentsLink, intro, mainIntroLink, null, prop1Nav);
+const introPage = bookTextPage(bookName, titleContentsLink, intro, mainIntroLink, null, prop1Nav);
 
 const propositionPages: PropositionPageMap = {
   [prop1.propName]: propPage(bookName, prop1, titleIntroLink, null, prop2Nav),
