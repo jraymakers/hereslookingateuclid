@@ -1,8 +1,5 @@
 export {
-  CircleSvg,
-  LabelSvg,
-  LineSvg,
-  PointSvg,
+  DiagramView,
 } from './components';
 
 export {
@@ -15,6 +12,8 @@ export {
   Diagram,
   DiagramPart,
   DiagramPartMap,
+  DiagramPartState,
+  DiagramPartStateMap,
   LineDiagramPart,
   PointDiagramPart,
-} from './types/Diagram';
+} from './types';

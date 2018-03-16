@@ -2,20 +2,8 @@ import * as React from 'react';
 import { style } from 'typestyle';
 
 import {
-  CircleDiagramPart,
-  CircleSvg,
-  DiagramPart,
-  DiagramPartMap,
-  LabelDir,
-  LineDiagramPart,
-  LineSvg,
-  PointDiagramPart,
-  PointSvg,
+  DiagramView
 } from '../../diagram';
-
-import {
-  DiagramPartState
-} from '../types/DiagramPartState';
 
 import {
   Proposition,
@@ -146,14 +134,6 @@ const stepsAndDiagramClass = style({
   padding: 12,
 });
 
-const diagramClass = style({
-  $debugName: `${classPrefix}_diagram`,
-  $unique: true,
-  borderColor: '#aaa',
-  borderStyle: 'solid',
-  borderWidth: 1,
-});
-
 export type PropositionViewProps = {
   readonly bookName: string,
   readonly proposition: Proposition;
@@ -180,6 +160,7 @@ export class PropositionView extends React.PureComponent<PropositionViewProps> {
     const maxStepNum = this.props.proposition.steps.length;
     const proposition = this.props.proposition;
     const title = `Book ${this.props.bookName}: Proposition ${this.props.proposition.propName}`;
+    const diagramPartStates = getDiagramPartStates(this.props.proposition.steps, this.props.stepNum);
     return (
       <div className={rootClass} onKeyDown={this.onKeyDown}>
         <div className={headerClass}>
@@ -233,7 +214,10 @@ export class PropositionView extends React.PureComponent<PropositionViewProps> {
             stepNum={this.props.stepNum}
             goToStep={this.props.goToStep}
           />
-          {this.renderDiagram()}
+          <DiagramView
+            diagram={this.props.proposition.diagram}
+            diagramPartStates={diagramPartStates}
+          />
         </div>
       </div>
     );
@@ -273,108 +257,5 @@ export class PropositionView extends React.PureComponent<PropositionViewProps> {
   private readonly end = () => {
     this.props.goToStep(this.props.proposition.steps.length);
   };
-
-  private renderDiagram(): JSX.Element {
-    const diagram = this.props.proposition.diagram;
-    const states = getDiagramPartStates(this.props.proposition.steps, this.props.stepNum);
-    const diagramElements: JSX.Element[] = [];
-    const parts = diagram.parts;
-    for (const key in parts) {
-      const part = parts[key];
-      const state = states[key];
-      if (state === 'visible') {
-        const element = this.renderDiagramPart(key, part, state);
-        if (element) {
-          diagramElements.push(element);
-        }
-      }
-    }
-    for (const key in parts) {
-      const part = parts[key];
-      const state = states[key];
-      if (state === 'highlighted') {
-        const element = this.renderDiagramPart(key, part, state);
-        if (element) {
-          diagramElements.push(element);
-        }
-      }
-    }
-    return (
-      <div className={diagramClass}>
-        <svg
-          width={diagram.width}
-          height={diagram.height}
-          viewBox={`0 0 ${diagram.width} ${diagram.height}`}
-        >
-          {diagramElements}
-        </svg>
-      </div>
-    );
-  }
-
-  private renderDiagramPart(key: string, part: DiagramPart, state: DiagramPartState): JSX.Element | null {
-    switch (part.type) {
-      case 'point':
-        return this.renderPoint(key, part, state);
-      case 'line':
-        return this.renderLine(key, part, state);
-      case 'circle':
-        return this.renderCircle(key, part, state);
-      default:
-        return null;
-    }
-  }
-
-  private renderPoint(key: string, point: PointDiagramPart, state: DiagramPartState): JSX.Element {
-    return <PointSvg
-      key={key}
-      x={point.x}
-      y={point.y}
-      label={key}
-      labelX={point.labelX}
-      labelY={point.labelY}
-      highlighted={state === 'highlighted'}
-    />;
-  }
-
-  private renderLine(key: string, line: LineDiagramPart, state: DiagramPartState): JSX.Element | null {
-    const parts = this.props.proposition.diagram.parts;
-    const p1 = parts[line.p1];
-    const p2 = parts[line.p2];
-    if (p1 && p1.type === 'point' && p2 && p2.type === 'point') {
-      return <LineSvg
-        key={key}
-        x1={p1.x}
-        y1={p1.y}
-        x2={p2.x}
-        y2={p2.y}
-        highlighted={state === 'highlighted'}
-      />
-    } else {
-      return null;
-    }
-  }
-
-  private renderCircle(key: string, circle: CircleDiagramPart, state: DiagramPartState): JSX.Element | null {
-    const parts = this.props.proposition.diagram.parts;
-    const p1 = parts[circle.p1];
-    const p2 = parts[circle.p2];
-    if (p1 && p1.type === 'point' && p2 && p2.type === 'point') {
-      const dx = p2.x - p1.x;
-      const dy = p2.y - p1.y;
-      const r = Math.sqrt(dx * dx + dy * dy);
-      return <CircleSvg
-          key={key}
-          cx={p1.x}
-          cy={p1.y}
-          r={r}
-          label={key}
-          labelDir={circle.labelDir}
-          highlighted={state === 'highlighted'}
-        />
-    } else {
-      return null;
-    }
-  }
 
 }

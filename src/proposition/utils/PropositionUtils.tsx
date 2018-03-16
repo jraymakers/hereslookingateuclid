@@ -1,4 +1,4 @@
-import { DiagramPartStateMap } from '../types/DiagramPartState';
+import { DiagramPartStateMap } from '../../diagram';
 import { StepList } from '../types/Proposition';
 
 export function getDiagramPartStates(steps: StepList, stepNum: number): DiagramPartStateMap {
