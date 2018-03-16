@@ -10,6 +10,7 @@ const classPrefix = 'PageView';
 const rootClass = style({
   $debugName: `${classPrefix}_root`,
   $unique: true,
+  flex: 1,
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'stretch',
@@ -21,9 +22,18 @@ const rootClass = style({
 type PageViewProps = {
   readonly page: Page;
   readonly noTitleLink?: boolean;
+  readonly onKeyDown?: (event: KeyboardEvent) => void;
 }
 
 export class PageView extends React.PureComponent<PageViewProps> {
+
+  public componentDidMount() {
+    document.body.addEventListener('keydown', this.onBodyKeyDown);
+  }
+
+  public componentWillUnmount() {
+    document.body.removeEventListener('keydown', this.onBodyKeyDown);
+  }
 
   public render(): JSX.Element {
     const page = this.props.page;
@@ -33,6 +43,12 @@ export class PageView extends React.PureComponent<PageViewProps> {
         {this.props.children}
       </div>
     );
+  }
+
+  private readonly onBodyKeyDown = (event: KeyboardEvent) => {
+    if (this.props.onKeyDown) {
+      this.props.onKeyDown(event);
+    }
   }
 
 }

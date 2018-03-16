@@ -18,7 +18,7 @@ class PropositionPageViewInternal extends React.PureComponent<PropositionPageVie
     const page = this.props.page;
     const stepNum = this.props.stepNum;
     return (
-      <PageView page={page}>
+      <PageView page={page} onKeyDown={this.onKeyDown}>
         <PropositionView
           bookName={page.bookName}
           proposition={page.proposition}
@@ -28,6 +28,25 @@ class PropositionPageViewInternal extends React.PureComponent<PropositionPageVie
       </PageView>
     );
   }
+
+  private readonly onKeyDown = (event: KeyboardEvent) => {
+    switch (event.key) {
+      case 'ArrowRight':
+        this.next();
+        break;
+      case 'ArrowLeft':
+        this.back();
+        break;
+    }
+  }
+
+  private readonly back = () => {
+    this.goToStep(Math.max(this.props.stepNum - 1, 0));
+  };
+
+  private readonly next = () => {
+    this.goToStep(Math.min(this.props.stepNum + 1, this.props.page.proposition.steps.length));
+  };
 
   private readonly goToStep = (newStep: number) => {
     const page = this.props.page;

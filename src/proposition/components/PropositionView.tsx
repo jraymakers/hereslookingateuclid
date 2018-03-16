@@ -143,18 +143,6 @@ export type PropositionViewProps = {
 
 export class PropositionView extends React.PureComponent<PropositionViewProps> {
 
-  private nextButton: HTMLButtonElement | undefined;
-  private backButton: HTMLButtonElement | undefined;
-
-  public componentDidUpdate() {
-    if (this.nextButton && this.props.stepNum === 0) {
-      this.nextButton.focus();
-    }
-    if (this.backButton && this.props.stepNum === this.props.proposition.steps.length) {
-      this.backButton.focus();
-    }
-  }
-
   public render(): JSX.Element {
     const stepNum = this.props.stepNum;
     const maxStepNum = this.props.proposition.steps.length;
@@ -162,7 +150,7 @@ export class PropositionView extends React.PureComponent<PropositionViewProps> {
     const title = `Book ${this.props.bookName}: Proposition ${this.props.proposition.propName}`;
     const diagramPartStates = getDiagramPartStates(this.props.proposition.steps, this.props.stepNum);
     return (
-      <div className={rootClass} onKeyDown={this.onKeyDown}>
+      <div className={rootClass}>
         <div className={headerClass}>
           <div className={titleAndSummaryClass}>
             <div className={titleClass}>{title}</div>
@@ -170,7 +158,6 @@ export class PropositionView extends React.PureComponent<PropositionViewProps> {
           </div>
           <div className={buttonsClass}>
             <button
-              tabIndex={3}
               className={buttonClass}
               disabled={stepNum === 0}
               onClick={this.start}
@@ -179,26 +166,20 @@ export class PropositionView extends React.PureComponent<PropositionViewProps> {
               <div className={arrowLeftClass} />
             </button>
             <button
-              tabIndex={4}
               className={buttonClass}
               disabled={stepNum === 0}
               onClick={this.back}
-              ref={this.setBackButton}
             >
               <div className={arrowLeftClass} />
             </button>
             <button
-              tabIndex={1}
               className={buttonClass}
               disabled={stepNum === maxStepNum}
               onClick={this.next}
-              autoFocus={true}
-              ref={this.setNextButton}
             >
               <div className={arrowRightClass} />
             </button>
             <button
-              tabIndex={2}
               className={buttonClass}
               disabled={stepNum === maxStepNum}
               onClick={this.end}
@@ -221,25 +202,6 @@ export class PropositionView extends React.PureComponent<PropositionViewProps> {
         </div>
       </div>
     );
-  }
-
-  private readonly onKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
-    switch (event.which) {
-      case 39: // right arrow
-        this.next();
-        break;
-      case 37: // left arrow
-        this.back();
-        break;
-    }
-  }
-
-  private readonly setNextButton = (button: HTMLButtonElement) => {
-    this.nextButton = button;
-  }
-
-  private readonly setBackButton = (button: HTMLButtonElement) => {
-    this.backButton = button;
   }
 
   private readonly start = () => {
