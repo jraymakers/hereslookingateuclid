@@ -19,12 +19,15 @@ import {
 
 import {
   Proposition,
-  Step,
 } from '../types/Proposition';
 
 import {
   getDiagramPartStates,
 } from '../utils/PropositionUtils';
+
+import {
+  PropositionStepsView,
+} from './PropositionStepsView';
 
 const classPrefix = 'PropositionView';
 
@@ -143,46 +146,6 @@ const stepsAndDiagramClass = style({
   padding: 12,
 });
 
-const stepsClass = style({
-  $debugName: `${classPrefix}_steps`,
-  $unique: true,
-  flex: 1,
-  display: 'flex',
-  flexDirection: 'column',
-  marginRight: 12,
-});
-
-const stepClass = style({
-  $debugName: `${classPrefix}_step`,
-  $unique: true,
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'start',
-  paddingTop: 6,
-  paddingBottom: 6,
-  $nest: {
-    '&:hover': {
-      $unique: true,
-      outline: '1px solid #888'
-    }
-  }
-});
-
-const stepNumberClass = style({
-  $debugName: `${classPrefix}_stepNumber`,
-  $unique: true,
-  width: 30,
-  textAlign: 'right',
-  flex: 'none',
-});
-
-const stepTextClass = style({
-  $debugName: `${classPrefix}_stepText`,
-  $unique: true,
-  paddingLeft: 12,
-  paddingRight: 12,
-});
-
 const diagramClass = style({
   $debugName: `${classPrefix}_diagram`,
   $unique: true,
@@ -265,7 +228,11 @@ export class PropositionView extends React.PureComponent<PropositionViewProps> {
           </div>
         </div>
         <div className={stepsAndDiagramClass}>
-          {this.renderSteps()}
+          <PropositionStepsView
+            steps={this.props.proposition.steps}
+            stepNum={this.props.stepNum}
+            goToStep={this.props.goToStep}
+          />
           {this.renderDiagram()}
         </div>
       </div>
@@ -306,26 +273,6 @@ export class PropositionView extends React.PureComponent<PropositionViewProps> {
   private readonly end = () => {
     this.props.goToStep(this.props.proposition.steps.length);
   };
-
-  private renderSteps(): JSX.Element {
-    const stepNum = this.props.stepNum;
-    const stepElements = this.props.proposition.steps.map((step, index) =>
-      <div
-        className={stepClass}
-        key={index+1}
-        style={{ opacity: stepNum >= index+1 ? 1 : 0.2}}
-        onClick={() => this.props.goToStep(index+1)}
-      >
-        <div className={stepNumberClass}>{index+1}.</div>
-        <div className={stepTextClass}>{step.text}</div>
-      </div>
-    );
-    return (
-      <div className={stepsClass}>
-        {stepElements}
-      </div>
-    );
-  }
 
   private renderDiagram(): JSX.Element {
     const diagram = this.props.proposition.diagram;
