@@ -14,15 +14,17 @@ import {
 } from '../../diagram';
 
 import {
+  DiagramPartState
+} from '../types/DiagramPartState';
+
+import {
   Proposition,
   Step,
 } from '../types/Proposition';
 
-type DiagramPartState = 'hidden' | 'visible' | 'highlighted';
-
-type DiagramPartStateMap = {
-  [key: string]: DiagramPartState;
-}
+import {
+  getDiagramPartStates,
+} from '../utils/PropositionUtils';
 
 const classPrefix = 'PropositionView';
 
@@ -327,7 +329,7 @@ export class PropositionView extends React.PureComponent<PropositionViewProps> {
 
   private renderDiagram(): JSX.Element {
     const diagram = this.props.proposition.diagram;
-    const states = this.getDiagramPartStates();
+    const states = getDiagramPartStates(this.props.proposition.steps, this.props.stepNum);
     const diagramElements: JSX.Element[] = [];
     const parts = diagram.parts;
     for (const key in parts) {
@@ -361,27 +363,6 @@ export class PropositionView extends React.PureComponent<PropositionViewProps> {
         </svg>
       </div>
     );
-  }
-
-  private getDiagramPartStates() {
-    const steps = this.props.proposition.steps;
-    const stepNum = this.props.stepNum;
-    const stateMap: DiagramPartStateMap = {};
-    if (stepNum >= 1) {
-      let stepIndex = 0;
-      while (stepIndex < stepNum - 1) {
-        const step = steps[stepIndex];
-        for (const key of step.highlight) {
-          stateMap[key] = 'visible';
-        }
-        stepIndex++;
-      }
-      const step = steps[stepIndex];
-      for (const key of step.highlight) {
-        stateMap[key] = 'highlighted';
-      }
-    }
-    return stateMap;
   }
 
   private renderDiagramPart(key: string, part: DiagramPart, state: DiagramPartState): JSX.Element | null {
