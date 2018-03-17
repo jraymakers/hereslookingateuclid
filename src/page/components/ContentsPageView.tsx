@@ -4,7 +4,7 @@ import { style } from 'typestyle';
 
 import { LinkInfo } from '../../link';
 
-import { ContentsPage } from '../types/Page';
+import { BookContentsPage, ContentsPage } from '../types/Page';
 
 import { PageView } from './PageView';
 import { PageTitleView } from './PageTitleView';
@@ -35,7 +35,7 @@ const linkClass = style({
 });
 
 type ContentsPageViewProps = {
-  readonly page: ContentsPage;
+  readonly page: ContentsPage | BookContentsPage;
   readonly noTitleLink?: boolean;
 };
 
@@ -45,7 +45,7 @@ export class ContentsPageView extends React.PureComponent<ContentsPageViewProps>
     const page = this.props.page;
     return (
       <PageView page={page} noTitleLink={this.props.noTitleLink}>
-        <PageTitleView text={page.title} />
+        <PageTitleView title={page.title} />
         <div className={linksSectionClass}>
           {page.contentsLinks.map(this.renderContentsLink)}
         </div>

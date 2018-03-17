@@ -3,22 +3,33 @@ import { ParagraphList } from '../../paragraph';
 import { Proposition } from '../../proposition';
 
 export type Page = {
-  readonly prev: LinkInfo | null;
-  readonly up: LinkInfo | null;
-  readonly next: LinkInfo | null;
+  readonly title?: LinkInfo | string | null | undefined;
+  readonly prev?: LinkInfo | null | undefined;
+  readonly up?: LinkInfo | null | undefined;
+  readonly next?: LinkInfo | null | undefined;
+};
+
+export type NoTitlePage = Page & {
+  readonly title?: null | undefined;
+};
+
+export type TitleLinkPage = Page & {
+  readonly title: LinkInfo;
+};
+
+export type TitleTextPage = Page & {
+  readonly title: string;
 };
 
 export type ContentsContent = {
-  readonly title: string | null;
   readonly contentsLinks: LinkInfoList;
 }
 
 export type TextContent = {
-  readonly title: LinkInfo | null;
   readonly paragraphs: ParagraphList;
 };
 
-export type ContentsPage = Page & ContentsContent;
+export type ContentsPage = NoTitlePage & ContentsContent;
 
 export type TextPage = Page & TextContent;
 
@@ -26,10 +37,12 @@ export type BookPage = Page & {
   readonly bookName: string;
 };
 
-export type BookContentsPage = BookPage & ContentsContent;
+export type BookTitleLinkPage = BookPage & TitleLinkPage;
 
-export type BookTextPage = BookPage & TextContent;
+export type BookContentsPage = BookPage & TitleTextPage & ContentsContent;
 
-export type PropositionPage = BookPage & {
+export type BookTextPage = BookTitleLinkPage & TextContent;
+
+export type PropositionPage = BookTitleLinkPage & {
   readonly proposition: Proposition;
 };

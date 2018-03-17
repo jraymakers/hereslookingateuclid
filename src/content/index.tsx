@@ -6,14 +6,14 @@ import {
 } from '../link';
 import {
   BookMap,
-  contentsPage,
-  textPage,
+  ContentsPage,
+  TextPage,
 } from '../page';
 
 import intro from './MainIntro';
 import book01 from './book01';
 
-export const contents: ReadonlyArray<LinkInfo> = [
+export const contentsLinks: ReadonlyArray<LinkInfo> = [
   mainIntroLink,
   bookTitleContentsLink(book01.bookName),
 ];
@@ -22,5 +22,8 @@ export const books: BookMap = {
   [book01.bookName]: book01,
 };
 
-export const mainContentsPage = contentsPage(contents, null, null, null);
-export const mainIntroPage = textPage(null, intro, null, null, bookTitleIntroLink(book01.bookName));
+export const mainContentsPage: ContentsPage = { contentsLinks };
+export const mainIntroPage: TextPage = {
+  paragraphs: intro,
+  next: bookTitleIntroLink(book01.bookName)
+}

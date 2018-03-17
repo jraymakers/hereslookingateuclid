@@ -5,7 +5,11 @@ export {
 } from './Book';
 export {
   BookContentsPage,
+  BookPage,
   BookTextPage,
+  BookTitleLinkPage,
+  ContentsPage,
   Page,
   PropositionPage,
+  TextPage,
 } from './Page';

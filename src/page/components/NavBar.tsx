@@ -91,9 +91,9 @@ const buttonClass = style({
 const title = "Here's Looking at Euclid";
 
 export type NavBarProps = {
-  readonly prev: LinkInfo | null;
-  readonly up: LinkInfo | null;
-  readonly next: LinkInfo | null;
+  readonly prev?: LinkInfo | null | undefined;
+  readonly up?: LinkInfo | null | undefined;
+  readonly next?: LinkInfo | null | undefined;
   readonly noTitleLink?: boolean;
 };
 
@@ -107,7 +107,6 @@ export class NavBar extends React.PureComponent<NavBarProps> {
         </div>
         <div className={centerClass}>
           {this.renderTitle()}
-          {/* {this.renderLink(this.props.up)} */}
         </div>
         <div className={rightClass}>
           {this.renderLink(this.props.next)}
@@ -124,7 +123,7 @@ export class NavBar extends React.PureComponent<NavBarProps> {
     }
   }
 
-  private renderLink(link: LinkInfo | null): JSX.Element | null {
+  private renderLink(link: LinkInfo | null | undefined): JSX.Element | null {
     if (link) {
       return <Link className={buttonClass} to={link.url}>{link.text}</Link>;
     } else {

@@ -27,24 +27,21 @@ const textClass = namedClass(classPrefix, 'title', textStyle);
 const linkClass = namedClass(classPrefix, 'link', linkStyle);
 
 export type PageTitleViewProps = {
-  readonly text?: string | null | undefined;
-  readonly link?: LinkInfo | null | undefined;
+  readonly title?: string | LinkInfo | null | undefined;
 };
 
 export class PageTitleView extends React.PureComponent<PageTitleViewProps> {
 
   public render(): JSX.Element | null {
-    const link = this.props.link;
-    if (link) {
-      return <Link className={classes(textClass, linkClass)} to={link.url}>{link.text}</Link>;
-    } else {
-      const text = this.props.text;
-      if (text) {
-        return <div className={textClass}>{text}</div>;
+    const title = this.props.title;
+    if (title) {
+      if (typeof title === 'string') {
+        return <div className={textClass}>{title}</div>;
       } else {
-        return null;
+        return <Link className={classes(textClass, linkClass)} to={title.url}>{title.text}</Link>;
       }
     }
+    return null;
   }
 
 }

@@ -7,15 +7,12 @@ export {
   Book,
   BookContentsPage,
   BookMap,
+  BookPage,
   BookTextPage,
+  BookTitleLinkPage,
+  ContentsPage,
   Page,
   PropositionPage,
   PropositionPageMap,
+  TextPage,
 } from './types';
-export {
-  bookContentsPage,
-  bookTextPage,
-  contentsPage,
-  propPage,
-  textPage,
-} from './utils/PageUtils';

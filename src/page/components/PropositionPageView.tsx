@@ -6,6 +6,7 @@ import { PropositionPage } from '../../page';
 import { PropositionView } from '../../proposition';
 
 import { PageView } from './PageView';
+import { PageTitleView } from './PageTitleView';
 
 type PropositionPageViewProps = RouteComponentProps<{}> & {
   readonly page: PropositionPage;
@@ -19,8 +20,8 @@ class PropositionPageViewInternal extends React.PureComponent<PropositionPageVie
     const stepNum = this.props.stepNum;
     return (
       <PageView page={page} onKeyDown={this.onKeyDown}>
+        <PageTitleView title={this.props.page.title} />
         <PropositionView
-          bookName={page.bookName}
           proposition={page.proposition}
           stepNum={stepNum}
           goToStep={this.goToStep}

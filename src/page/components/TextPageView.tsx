@@ -4,7 +4,7 @@ import { style } from 'typestyle';
 
 import { ParagraphView } from '../../paragraph';
 
-import { TextPage } from '../types/Page';
+import { BookTextPage, TextPage } from '../types/Page';
 
 import { PageView } from './PageView';
 import { PageTitleView } from './PageTitleView';
@@ -19,7 +19,7 @@ const contentClass = style({
 });
 
 export type TextPageViewProps = {
-  readonly page: TextPage;
+  readonly page: TextPage | BookTextPage;
 };
 
 export class TextPageView extends React.PureComponent<TextPageViewProps> {
@@ -28,7 +28,7 @@ export class TextPageView extends React.PureComponent<TextPageViewProps> {
     const page = this.props.page;
     return (
       <PageView page={page}>
-        <PageTitleView link={this.props.page.title} />
+        <PageTitleView title={this.props.page.title} />
         <div className={contentClass}>
           {page.paragraphs.map((paragraph, index) => <ParagraphView paragraph={paragraph} key={index} />)}
         </div>
