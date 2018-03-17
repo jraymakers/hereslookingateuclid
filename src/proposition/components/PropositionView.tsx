@@ -2,8 +2,11 @@ import * as React from 'react';
 import { style } from 'typestyle';
 
 import {
-  DiagramView
+  DiagramView,
 } from '../../diagram';
+import {
+  StepsView,
+} from '../../step';
 
 import {
   Proposition,
@@ -12,10 +15,6 @@ import {
 import {
   getDiagramPartStates,
 } from '../utils/PropositionUtils';
-
-import {
-  PropositionStepsView,
-} from './PropositionStepsView';
 
 const classPrefix = 'PropositionView';
 
@@ -189,9 +188,9 @@ export class PropositionView extends React.PureComponent<PropositionViewProps> {
           </div>
         </div>
         <div className={stepsAndDiagramClass}>
-          <PropositionStepsView
+          <StepsView
             steps={this.props.proposition.steps}
-            stepNum={this.props.stepNum}
+            currentStepNum={this.props.stepNum}
             goToStep={this.props.goToStep}
           />
           <DiagramView

@@ -3,11 +3,10 @@ import {
   LabelDir,
 } from '../../diagram';
 import {
-  PropositionPage,
-} from '../../page';
+  StepList,
+} from '../../step';
 import {
   Proposition,
-  StepList,
 } from '../../proposition';
 
 import { Greek } from '../Greek';

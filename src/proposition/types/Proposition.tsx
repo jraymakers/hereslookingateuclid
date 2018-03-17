@@ -1,11 +1,5 @@
 import { Diagram } from '../../diagram';
-
-export type Step = {
-  readonly text: string;
-  readonly highlight: ReadonlyArray<string>;
-};
-
-export type StepList = ReadonlyArray<Step>;
+import { StepList } from '../../step';
 
 export type Proposition = {
   readonly propName: string;
