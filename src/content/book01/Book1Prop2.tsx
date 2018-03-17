@@ -1,6 +1,5 @@
 import {
   Diagram,
-  Greek,
   LabelDir,
 } from '../../diagram';
 import {
@@ -10,6 +9,8 @@ import {
   Proposition,
   StepList,
 } from '../../proposition';
+
+import { Greek } from '../Greek';
 
 const propName = '2';
 const summary = 'Construct a straight line equal to a given straight line with one end at a given point.';

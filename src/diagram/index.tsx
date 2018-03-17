@@ -1,12 +1,9 @@
 export {
   DiagramView,
 } from './components';
-
 export {
-  Greek,
   LabelDir,
 } from './constants';
-
 export {
   CircleDiagramPart,
   Diagram,

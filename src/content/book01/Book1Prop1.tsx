@@ -1,6 +1,5 @@
 import {
   Diagram,
-  Greek,
   LabelDir,
 } from '../../diagram';
 import {
@@ -10,6 +9,8 @@ import {
   Proposition,
   StepList,
 } from '../../proposition';
+
+import { Greek } from '../Greek';
 
 const propName = '1';
 const summary = 'Construct an equilateral triangle on a given straight line.';
