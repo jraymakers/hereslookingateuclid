@@ -7,16 +7,9 @@ import { LinkInfo } from '../../link';
 import { ContentsPage } from '../types/Page';
 
 import { PageView } from './PageView';
+import { PageTitleView } from './PageTitleView';
 
 const classPrefix = 'ContentsPageView';
-
-const titleClass = style({
-  $debugName: `${classPrefix}_title`,
-  $unique: true,
-  fontSize: 24,
-  padding: 6,
-  textAlign: 'center',
-});
 
 const linksSectionClass = style({
   $debugName: `${classPrefix}_linkSection`,
@@ -52,7 +45,7 @@ export class ContentsPageView extends React.PureComponent<ContentsPageViewProps>
     const page = this.props.page;
     return (
       <PageView page={page} noTitleLink={this.props.noTitleLink}>
-        {page.title ? <div className={titleClass}>{page.title}</div> : null}
+        <PageTitleView text={page.title} />
         <div className={linksSectionClass}>
           {page.contentsLinks.map(this.renderContentsLink)}
         </div>
