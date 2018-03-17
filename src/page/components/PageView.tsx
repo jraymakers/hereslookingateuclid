@@ -12,11 +12,21 @@ const rootClass = style({
   $unique: true,
   flex: 1,
   display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center',
+});
+
+const contentClass = style({
+  $debugName: `${classPrefix}_content`,
+  $unique: true,
+  flex: 1,
+  display: 'flex',
   flexDirection: 'column',
   alignItems: 'stretch',
   padding: 12,
   fontFamily: 'serif',
   fontSize: 18,
+  maxWidth: 1200,
 });
 
 type PageViewProps = {
@@ -39,8 +49,10 @@ export class PageView extends React.PureComponent<PageViewProps> {
     const page = this.props.page;
     return (
       <div className={rootClass}>
-        <NavBar prev={page.prev} up={page.up} next={page.next} noTitleLink={this.props.noTitleLink}></NavBar>
-        {this.props.children}
+        <div className={contentClass}>
+          <NavBar prev={page.prev} up={page.up} next={page.next} noTitleLink={this.props.noTitleLink}></NavBar>
+          {this.props.children}
+        </div>
       </div>
     );
   }
