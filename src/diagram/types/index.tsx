@@ -6,7 +6,6 @@ export {
   LineDiagramPart,
   PointDiagramPart,
 } from './Diagram';
-
 export {
   DiagramPartState,
   DiagramPartStateMap,
