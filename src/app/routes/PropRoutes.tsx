@@ -57,7 +57,7 @@ export class PropRoutes extends React.Component<PropRoutesProps> {
   }
 
   private renderStep(stepNum: number): JSX.Element {
-    return <PropositionPageView page={this.props.page} stepNum={stepNum} />
+    return <PropositionPageView page={this.props.page} currentStepNum={stepNum} />
   }
 
 }

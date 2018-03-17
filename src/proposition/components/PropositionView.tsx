@@ -5,6 +5,7 @@ import {
   DiagramView,
 } from '../../diagram';
 import {
+  StepControlsView,
   StepsView,
 } from '../../step';
 
@@ -56,73 +57,6 @@ const summaryClass = style({
   marginTop: 6,
 });
 
-const buttonsClass = style({
-  $debugName: `${classPrefix}_buttons`,
-  $unique: true,
-  display: 'flex',
-  flexDirection: 'row',
-});
-
-const verticalBarClass = style({
-  $debugName: `${classPrefix}_verticalBar`,
-  $unique: true,
-  width: 4,
-  height: 24,
-  backgroundColor: 'black',
-});
-
-const arrowLeftClass = style({
-  $debugName: `${classPrefix}_arrowLeft`,
-  $unique: true,
-  width: 0,
-  height: 0,
-  borderTop: '12px solid transparent',
-  borderBottom: '12px solid transparent',
-  borderRightWidth: 12,
-  borderRightStyle: 'solid',
-  borderRightColor: 'black',
-});
-
-const arrowRightClass = style({
-  $debugName: `${classPrefix}_arrowRight`,
-  $unique: true,
-  width: 0,
-  height: 0,
-  borderTop: '12px solid transparent',
-  borderBottom: '12px solid transparent',
-  borderLeftWidth: 12,
-  borderLeftStyle: 'solid',
-  borderLeftColor: 'black',
-});
-
-const buttonClass = style({
-  $debugName: `${classPrefix}_button`,
-  $unique: true,
-  marginLeft: 6,
-  paddingLeft: 12,
-  paddingRight: 12,
-  display: 'flex',
-  flexDirection: 'row',
-  border: '1px solid #ddd',
-  outline: 'none',
-  $nest: {
-    '&:focus': {
-      $unique: true,
-      outline: '1px solid black',
-    },
-    '&:hover': {
-      $unique: true,
-      backgroundColor: '#eee',
-    },
-    '&:disabled': {
-      $unique: true,
-      backgroundColor: 'transparent',
-      border: '1px solid #888',
-      opacity: 0.3,
-    },
-  }
-});
-
 const stepsAndDiagramClass = style({
   $debugName: `${classPrefix}_stepsAndDiagram`,
   $unique: true,
@@ -135,18 +69,19 @@ const stepsAndDiagramClass = style({
 
 export type PropositionViewProps = {
   readonly proposition: Proposition;
-  readonly stepNum: number;
+  readonly currentStepNum: number;
   readonly goToStep: (stepNum: number) => void;
 };
 
 export class PropositionView extends React.PureComponent<PropositionViewProps> {
 
   public render(): JSX.Element {
-    const stepNum = this.props.stepNum;
-    const maxStepNum = this.props.proposition.steps.length;
     const proposition = this.props.proposition;
-    const title = `Proposition ${this.props.proposition.propName}`;
-    const diagramPartStates = getDiagramPartStates(this.props.proposition.steps, this.props.stepNum);
+    const title = `Proposition ${proposition.propName}`;
+    const steps = proposition.steps;
+    const currentStepNum = this.props.currentStepNum;
+    const diagramPartStates = getDiagramPartStates(steps, currentStepNum);
+    const goToStep = this.props.goToStep;
     return (
       <div className={rootClass}>
         <div className={headerClass}>
@@ -154,68 +89,26 @@ export class PropositionView extends React.PureComponent<PropositionViewProps> {
             <div className={titleClass}>{title}</div>
             <div className={summaryClass}>{proposition.summary}</div>
           </div>
-          <div className={buttonsClass}>
-            <button
-              className={buttonClass}
-              disabled={stepNum === 0}
-              onClick={this.start}
-            >
-              <div className={verticalBarClass} />
-              <div className={arrowLeftClass} />
-            </button>
-            <button
-              className={buttonClass}
-              disabled={stepNum === 0}
-              onClick={this.back}
-            >
-              <div className={arrowLeftClass} />
-            </button>
-            <button
-              className={buttonClass}
-              disabled={stepNum === maxStepNum}
-              onClick={this.next}
-            >
-              <div className={arrowRightClass} />
-            </button>
-            <button
-              className={buttonClass}
-              disabled={stepNum === maxStepNum}
-              onClick={this.end}
-            >
-              <div className={arrowRightClass} />
-              <div className={verticalBarClass} />
-            </button>
-          </div>
+          <StepControlsView
+            currentStepNum={currentStepNum}
+            minStepNum={0}
+            maxStepNum={steps.length}
+            goToStep={goToStep}
+          />
         </div>
         <div className={stepsAndDiagramClass}>
           <StepsView
-            steps={this.props.proposition.steps}
-            currentStepNum={this.props.stepNum}
-            goToStep={this.props.goToStep}
+            steps={steps}
+            currentStepNum={currentStepNum}
+            goToStep={goToStep}
           />
           <DiagramView
-            diagram={this.props.proposition.diagram}
+            diagram={proposition.diagram}
             diagramPartStates={diagramPartStates}
           />
         </div>
       </div>
     );
   }
-
-  private readonly start = () => {
-    this.props.goToStep(0);
-  };
-
-  private readonly back = () => {
-    this.props.goToStep(Math.max(this.props.stepNum - 1, 0));
-  };
-
-  private readonly next = () => {
-    this.props.goToStep(Math.min(this.props.stepNum + 1, this.props.proposition.steps.length));
-  };
-
-  private readonly end = () => {
-    this.props.goToStep(this.props.proposition.steps.length);
-  };
 
 }

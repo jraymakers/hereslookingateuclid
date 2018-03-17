@@ -1,6 +1,7 @@
 export {
-  StepsView,
-} from './components/StepsView';
+  StepControlsView,
+  StepsView
+} from './components';
 export {
   StepList,
 } from './types/Step';

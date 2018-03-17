@@ -10,20 +10,20 @@ import { PageTitleView } from './PageTitleView';
 
 type PropositionPageViewProps = RouteComponentProps<{}> & {
   readonly page: PropositionPage;
-  readonly stepNum: number;
+  readonly currentStepNum: number;
 };
 
 class PropositionPageViewInternal extends React.PureComponent<PropositionPageViewProps> {
 
   public render(): JSX.Element {
     const page = this.props.page;
-    const stepNum = this.props.stepNum;
+    const currentStepNum = this.props.currentStepNum;
     return (
       <PageView page={page} onKeyDown={this.onKeyDown}>
         <PageTitleView title={this.props.page.title} />
         <PropositionView
           proposition={page.proposition}
-          stepNum={stepNum}
+          currentStepNum={currentStepNum}
           goToStep={this.goToStep}
         />
       </PageView>
@@ -32,21 +32,23 @@ class PropositionPageViewInternal extends React.PureComponent<PropositionPageVie
 
   private readonly onKeyDown = (event: KeyboardEvent) => {
     switch (event.key) {
-      case 'ArrowRight':
-        this.next();
-        break;
       case 'ArrowLeft':
-        this.back();
+      case 'ArrowUp':
+        this.goPrev();
+        break;
+      case 'ArrowRight':
+      case 'ArrowDown':
+        this.goNext();
         break;
     }
   }
 
-  private readonly back = () => {
-    this.goToStep(Math.max(this.props.stepNum - 1, 0));
+  private readonly goPrev = () => {
+    this.goToStep(Math.max(this.props.currentStepNum - 1, 0));
   };
 
-  private readonly next = () => {
-    this.goToStep(Math.min(this.props.stepNum + 1, this.props.page.proposition.steps.length));
+  private readonly goNext = () => {
+    this.goToStep(Math.min(this.props.currentStepNum + 1, this.props.page.proposition.steps.length));
   };
 
   private readonly goToStep = (newStep: number) => {
