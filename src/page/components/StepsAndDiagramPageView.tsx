@@ -1,36 +1,33 @@
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 
-import {
-  defGroupStepUrl,
-  defGroupTitle,
-  defGroupUrl,
-} from '../../link';
-import { DefinitionGroupPage } from '../../page';
+import { StepsAndDiagramPage } from '../../page';
 import { StepsAndDiagramView } from '../../stepsAndDiagram';
 
 import { PageView } from './PageView';
-import { PageTitleView } from './PageTitleView';
+import { PageHeaderView } from './PageHeaderView';
 
-type DefinitionGroupPageViewProps = RouteComponentProps<{}> & {
-  readonly page: DefinitionGroupPage;
+type StepsAndDiagramPageViewProps = RouteComponentProps<{}> & {
+  readonly page: StepsAndDiagramPage;
   readonly currentStepIndex: number;
+  readonly makePageUrl: (bookName: string, pageName: string) => string;
+  readonly makePageStepUrl: (bookName: string, pageName: string, stepName: string) => string;
 };
 
-class DefinitionGroupPageViewInternal extends React.PureComponent<DefinitionGroupPageViewProps> {
+class StepsAndDiagramPageViewInternal extends React.PureComponent<StepsAndDiagramPageViewProps> {
 
   public render(): JSX.Element {
     const page = this.props.page;
-    const group = page.definitionGroup;
+    const stepsAndDiagram = page.stepsAndDiagram;
     const currentStepIndex = this.props.currentStepIndex;
     return (
       <PageView page={page} onKeyDown={this.onKeyDown}>
-        <PageTitleView title={page.title} />
+        <PageHeaderView header={page.header} />
         <StepsAndDiagramView
-          title={defGroupTitle(group)}
-          summary={group.summary}
-          steps={group.steps}
-          diagram={group.diagram}
+          title={stepsAndDiagram.title}
+          summary={stepsAndDiagram.summary}
+          steps={stepsAndDiagram.steps}
+          diagram={stepsAndDiagram.diagram}
           currentStepIndex={currentStepIndex}
           goToStep={this.goToStep}
         />
@@ -58,16 +55,16 @@ class DefinitionGroupPageViewInternal extends React.PureComponent<DefinitionGrou
 
   private readonly goNext = () => {
     const currentStepIndex = this.props.currentStepIndex;
-    this.goToStep(Math.min(currentStepIndex + 1, this.props.page.definitionGroup.steps.length - 1));
+    this.goToStep(Math.min(currentStepIndex + 1, this.props.page.stepsAndDiagram.steps.length - 1));
   };
 
   private readonly goToStep = (newStepIndex: number) => {
     const page = this.props.page;
     if (newStepIndex >= 0) {
-      const newStep = page.definitionGroup.steps[newStepIndex];
-      this.navigate(defGroupStepUrl(page.bookName, page.definitionGroup.defGroupName, newStep.name));
+      const newStep = page.stepsAndDiagram.steps[newStepIndex];
+      this.navigate(this.props.makePageStepUrl(page.bookName, page.stepsAndDiagram.name, newStep.name));
     } else {
-      this.navigate(defGroupUrl(page.bookName, page.definitionGroup.defGroupName));
+      this.navigate(this.props.makePageUrl(page.bookName, page.stepsAndDiagram.name));
     }
   }
 
@@ -79,4 +76,4 @@ class DefinitionGroupPageViewInternal extends React.PureComponent<DefinitionGrou
 
 }
 
-export const DefinitionGroupPageView = withRouter(DefinitionGroupPageViewInternal);
+export const StepsAndDiagramPageView = withRouter(StepsAndDiagramPageViewInternal);

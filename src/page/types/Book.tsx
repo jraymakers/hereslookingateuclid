@@ -1,24 +1,19 @@
 import {
   BookContentsPage,
   BookTextPage,
-  DefinitionGroupPage,
-  PropositionPage,
+  StepsAndDiagramPage,
 } from './Page';
 
-export type DefinitionGroupPageMap = {
-  readonly [defGroupName: string]: DefinitionGroupPage;
-}
-
-export type PropositionPageMap = {
-  readonly [propName: string]: PropositionPage;
+export type StepsAndDiagramPageMap = {
+  readonly [pageName: string]: StepsAndDiagramPage;
 }
 
 export type Book = {
   readonly bookName: string;
   readonly contentsPage: BookContentsPage,
   readonly introPage: BookTextPage,
-  readonly definitionGroupPages: DefinitionGroupPageMap;
-  readonly propositionPages: PropositionPageMap;
+  readonly definitionGroupPages: StepsAndDiagramPageMap;
+  readonly propositionPages: StepsAndDiagramPageMap;
 }
 
 export type BookMap = {

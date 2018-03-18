@@ -3,21 +3,19 @@ import {
   LabelDir,
 } from '../../diagram';
 import {
-  Proposition,
-} from '../../page';
+  propTitle,
+} from '../../link';
 import {
   Paragraph,
 } from '../../paragraph';
 import {
   StepList,
 } from '../../step';
+import {
+  StepsAndDiagram,
+} from '../../stepsAndDiagram';
 
 import { Greek } from '../Greek';
-
-const propName = '2';
-const summary: Paragraph = [
-  ['Construct a straight line equal to a given straight line with one end at a given point.'],
-];
 
 const width = 400;
 const height = 400;
@@ -162,8 +160,15 @@ const steps: StepList = [
   }
 ];
 
-const proposition: Proposition = {
-  propName,
+const name = '2';
+const title = propTitle(name);
+const summary: Paragraph = [
+  ['Construct a straight line equal to a given straight line with one end at a given point.'],
+];
+
+const proposition: StepsAndDiagram = {
+  name,
+  title,
   summary,
   diagram,
   steps,

@@ -1,7 +1,6 @@
 export {
   ContentsPageView,
-  DefinitionGroupPageView,
-  PropositionPageView,
+  StepsAndDiagramPageView,
   TextPageView,
 } from './components';
 export {
@@ -12,12 +11,8 @@ export {
   BookTextPage,
   BookTitleLinkPage,
   ContentsPage,
-  DefinitionGroup,
-  DefinitionGroupPage,
-  DefinitionGroupPageMap,
   Page,
-  Proposition,
-  PropositionPage,
-  PropositionPageMap,
+  StepsAndDiagramPage,
+  StepsAndDiagramPageMap,
   TextPage,
 } from './types';

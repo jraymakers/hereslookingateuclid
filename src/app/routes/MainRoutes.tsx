@@ -42,7 +42,7 @@ export class MainRoutes extends React.Component<{}> {
   }
 
   private readonly renderContents = (): JSX.Element => {
-    return <ContentsPageView page={mainContentsPage} noTitleLink={true} />
+    return <ContentsPageView page={mainContentsPage} noSiteTitleLink={true} />
   }
 
   private readonly renderIntro = (): JSX.Element => {

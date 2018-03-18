@@ -31,7 +31,7 @@ const contentClass = style({
 
 type PageViewProps = {
   readonly page: Page;
-  readonly noTitleLink?: boolean;
+  readonly noSiteTitleLink?: boolean;
   readonly onKeyDown?: (event: KeyboardEvent) => void;
 }
 
@@ -50,7 +50,9 @@ export class PageView extends React.PureComponent<PageViewProps> {
     return (
       <div className={rootClass}>
         <div className={contentClass}>
-          <NavBar prev={page.prev} up={page.up} next={page.next} noTitleLink={this.props.noTitleLink}></NavBar>
+          <NavBar prev={page.prev} up={page.up} next={page.next}
+            noSiteTitleLink={this.props.noSiteTitleLink}
+          />
           {this.props.children}
         </div>
       </div>

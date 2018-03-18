@@ -1,11 +1,9 @@
 import {
   Paragraph,
 } from '../../paragraph';
-
 import {
-  DefinitionGroup,
-  Proposition,
-} from '../../page/types';
+  StepsAndDiagram
+} from '../../stepsAndDiagram';
 
 import {
   LinkInfo,
@@ -57,15 +55,15 @@ export function defGroupNavLink(bookName: string, defGroupName: string): LinkInf
   };
 }
 
-export function defGroupTitle(group: DefinitionGroup): string {
-  return `Definition${group.steps.length > 1 ? 's' : ''} ${group.defGroupName}`;
+export function defGroupTitle(defGroupName: string, numSteps: number): string {
+  return `Definition${numSteps > 1 ? 's' : ''} ${defGroupName}`;
 }
 
-export function defGroupTitleLink(bookName: string, group: DefinitionGroup): SubtitledLinkInfo {
+export function defGroupTitleLink(bookName: string, defGroup: StepsAndDiagram): SubtitledLinkInfo {
   return {
-    text: defGroupTitle(group),
-    subtitle: group.summary,
-    url: defGroupUrl(bookName, group.defGroupName)
+    text: defGroupTitle(defGroup.name, defGroup.steps.length),
+    subtitle: defGroup.summary,
+    url: defGroupUrl(bookName, defGroup.name)
   };
 }
 
@@ -76,14 +74,14 @@ export function propNavLink(bookName: string, propName: string): LinkInfo {
   };
 }
 
-export function propTitle(proposition: Proposition): string {
-  return `Proposition ${proposition.propName}`;
+export function propTitle(propName: string): string {
+  return `Proposition ${propName}`;
 }
 
-export function propTitleLink(bookName: string, proposition: Proposition): SubtitledLinkInfo {
+export function propTitleLink(bookName: string, proposition: StepsAndDiagram): SubtitledLinkInfo {
   return {
-    text: propTitle(proposition),
+    text: propTitle(proposition.name),
     subtitle: proposition.summary,
-    url: propUrl(bookName, proposition.propName)
+    url: propUrl(bookName, proposition.name)
   };
 }

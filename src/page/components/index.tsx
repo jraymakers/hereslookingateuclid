@@ -2,17 +2,14 @@ export {
   ContentsPageView,
 } from './ContentsPageView';
 export {
-  DefinitionGroupPageView,
-} from './DefinitionGroupPageView';
-export {
   NavBar,
 } from './NavBar';
 export {
   PageView,
 } from './PageView';
 export {
-  PropositionPageView,
-} from './PropositionPageView';
+  StepsAndDiagramPageView,
+} from './StepsAndDiagramPageView';
 export {
   TextPageView,
 } from './TextPageView';

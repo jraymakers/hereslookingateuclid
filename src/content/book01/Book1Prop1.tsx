@@ -3,21 +3,21 @@ import {
   LabelDir,
 } from '../../diagram';
 import {
-  Proposition,
-} from '../../page';
+  propTitle,
+} from '../../link';
 import {
   Paragraph,
 } from '../../paragraph';
 import {
   StepList,
 } from '../../step';
+import {
+  StepsAndDiagram,
+} from '../../stepsAndDiagram';
 
 import { Greek } from '../Greek';
 
-const propName = '1';
-const summary: Paragraph = [
-  ['Construct an equilateral triangle on a given straight line.'],
-];
+
 
 const width = 400;
 const height = 400;
@@ -116,8 +116,15 @@ const steps: StepList = [
   }
 ];
 
-const proposition: Proposition = {
-  propName,
+const name = '1';
+const title = propTitle(name);
+const summary: Paragraph = [
+  ['Construct an equilateral triangle on a given straight line.'],
+];
+
+const proposition: StepsAndDiagram = {
+  name,
+  title,
   summary,
   diagram,
   steps,

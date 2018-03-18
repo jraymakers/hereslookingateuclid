@@ -22,23 +22,23 @@ const linkStyle = uniqueStyle({
   }
 });
 
-const classPrefix = 'PageTitleView';
-const textClass = namedClass(classPrefix, 'title', textStyle);
+const classPrefix = 'PageHeaderView';
+const textClass = namedClass(classPrefix, 'text', textStyle);
 const linkClass = namedClass(classPrefix, 'link', linkStyle);
 
-export type PageTitleViewProps = {
-  readonly title?: string | LinkInfo | null | undefined;
+export type PageHeaderViewProps = {
+  readonly header?: string | LinkInfo | null | undefined;
 };
 
-export class PageTitleView extends React.PureComponent<PageTitleViewProps> {
+export class PageHeaderView extends React.PureComponent<PageHeaderViewProps> {
 
   public render(): JSX.Element | null {
-    const title = this.props.title;
-    if (title) {
-      if (typeof title === 'string') {
-        return <div className={textClass}>{title}</div>;
+    const header = this.props.header;
+    if (header) {
+      if (typeof header === 'string') {
+        return <div className={textClass}>{header}</div>;
       } else {
-        return <Link className={classes(textClass, linkClass)} to={title.url}>{title.text}</Link>;
+        return <Link className={classes(textClass, linkClass)} to={header.url}>{header.text}</Link>;
       }
     }
     return null;

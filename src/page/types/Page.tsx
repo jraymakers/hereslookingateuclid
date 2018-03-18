@@ -1,26 +1,24 @@
 import { LinkInfo, LinkInfoList, SubtitledLinkInfoList } from '../../link';
 import { ParagraphList } from '../../paragraph';
-
-import { DefinitionGroup } from './DefinitionGroup';
-import { Proposition } from './Proposition';
+import { StepsAndDiagram } from '../../stepsAndDiagram';
 
 export type Page = {
-  readonly title?: LinkInfo | string | null | undefined;
+  readonly header?: LinkInfo | string | null | undefined;
   readonly prev?: LinkInfo | null | undefined;
   readonly up?: LinkInfo | null | undefined;
   readonly next?: LinkInfo | null | undefined;
 };
 
-export type NoTitlePage = Page & {
-  readonly title?: null | undefined;
+export type NoHeaderPage = Page & {
+  readonly header?: null | undefined;
 };
 
-export type TitleLinkPage = Page & {
-  readonly title: LinkInfo;
+export type HeaderLinkPage = Page & {
+  readonly header: LinkInfo;
 };
 
-export type TitleTextPage = Page & {
-  readonly title: string;
+export type HeaderTextPage = Page & {
+  readonly header: string;
 };
 
 export type ContentsContent = {
@@ -31,7 +29,7 @@ export type TextContent = {
   readonly paragraphs: ParagraphList;
 };
 
-export type ContentsPage = NoTitlePage & ContentsContent;
+export type ContentsPage = NoHeaderPage & ContentsContent;
 
 export type TextPage = Page & TextContent;
 
@@ -39,16 +37,12 @@ export type BookPage = Page & {
   readonly bookName: string;
 };
 
-export type BookTitleLinkPage = BookPage & TitleLinkPage;
+export type BookTitleLinkPage = BookPage & HeaderLinkPage;
 
-export type BookContentsPage = BookPage & TitleTextPage & ContentsContent;
+export type BookContentsPage = BookPage & HeaderTextPage & ContentsContent;
 
 export type BookTextPage = BookTitleLinkPage & TextContent;
 
-export type DefinitionGroupPage = BookTitleLinkPage & {
-  readonly definitionGroup: DefinitionGroup;
-};
-
-export type PropositionPage = BookTitleLinkPage & {
-  readonly proposition: Proposition;
+export type StepsAndDiagramPage = BookTitleLinkPage & {
+  readonly stepsAndDiagram: StepsAndDiagram;
 };

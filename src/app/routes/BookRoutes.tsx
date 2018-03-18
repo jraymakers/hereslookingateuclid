@@ -9,7 +9,9 @@ import {
 import {
   bookContentsUrl,
   bookIntroUrl,
+  defGroupStepUrl,
   defGroupUrl,
+  propStepUrl,
   propUrl,
 } from '../../link';
 import {
@@ -18,8 +20,7 @@ import {
   TextPageView,
 } from '../../page';
 
-import { DefGroupRoutes } from './DefGroupRoutes';
-import { PropRoutes } from './PropRoutes';
+import { StepsAndDiagramPageRoutes } from './StepsAndDiagramPageRoutes';
 
 type BookRoutesProps = {
   readonly book: Book;
@@ -60,7 +61,13 @@ export class BookRoutes extends React.Component<BookRoutesProps> {
     const defGroupName = props.match.params.defGroupName;
     const page = this.props.book.definitionGroupPages[defGroupName];
     if (page) {
-      return <DefGroupRoutes page={page} />
+      return (
+        <StepsAndDiagramPageRoutes
+          page={page}
+          makePageStepUrl={defGroupStepUrl}
+          makePageUrl={defGroupUrl}
+        />
+      );
     } else {
       return <Redirect to={bookContentsUrl(this.props.book.bookName)} />
     }
@@ -70,7 +77,13 @@ export class BookRoutes extends React.Component<BookRoutesProps> {
     const propName = props.match.params.propName;
     const page = this.props.book.propositionPages[propName];
     if (page) {
-      return <PropRoutes page={page} />
+      return (
+        <StepsAndDiagramPageRoutes
+          page={page}
+          makePageStepUrl={propStepUrl}
+          makePageUrl={propUrl}
+        />
+      );
     } else {
       return <Redirect to={bookContentsUrl(this.props.book.bookName)} />
     }

@@ -94,7 +94,7 @@ export type NavBarProps = {
   readonly prev?: LinkInfo | null | undefined;
   readonly up?: LinkInfo | null | undefined;
   readonly next?: LinkInfo | null | undefined;
-  readonly noTitleLink?: boolean;
+  readonly noSiteTitleLink?: boolean;
 };
 
 export class NavBar extends React.PureComponent<NavBarProps> {
@@ -106,7 +106,7 @@ export class NavBar extends React.PureComponent<NavBarProps> {
           {this.renderLink(this.props.prev)}
         </div>
         <div className={centerClass}>
-          {this.renderTitle()}
+          {this.renderSiteTitle()}
         </div>
         <div className={rightClass}>
           {this.renderLink(this.props.next)}
@@ -115,8 +115,8 @@ export class NavBar extends React.PureComponent<NavBarProps> {
     );
   }
 
-  private renderTitle(): JSX.Element {
-    if (this.props.noTitleLink) {
+  private renderSiteTitle(): JSX.Element {
+    if (this.props.noSiteTitleLink) {
       return <div className={titleClass}>{title}</div>
     } else {
       return <Link className={titleLinkClass} to={mainContentsUrl}>{title}</Link>

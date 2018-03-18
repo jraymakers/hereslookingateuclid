@@ -15,10 +15,8 @@ import {
   BookPage,
   BookTextPage,
   BookTitleLinkPage,
-  DefinitionGroupPage,
-  DefinitionGroupPageMap,
-  PropositionPage,
-  PropositionPageMap,
+  StepsAndDiagramPage,
+  StepsAndDiagramPageMap,
 } from '../../page';
 
 import intro from './Book1Intro';
@@ -31,9 +29,9 @@ const bookName = 'I';
 const titleContentsLink = bookTitleContentsLink(bookName);
 const titleIntroLink = bookTitleIntroLink(bookName);
 const introLink = bookIntroLink(bookName);
-const def1to4Nav = defGroupNavLink(bookName, def1to4.defGroupName);
-const prop1Nav = propNavLink(bookName, prop1.propName);
-const prop2Nav = propNavLink(bookName, prop2.propName);
+const def1to4Nav = defGroupNavLink(bookName, def1to4.name);
+const prop1Nav = propNavLink(bookName, prop1.name);
+const prop2Nav = propNavLink(bookName, prop2.name);
 
 const contentsLinks: SubtitledLinkInfoList = [
   introLink,
@@ -44,13 +42,13 @@ const contentsLinks: SubtitledLinkInfoList = [
 
 const contentsPage: BookContentsPage = {
   bookName,
-  title: titleContentsLink.text,
+  header: titleContentsLink.text,
   contentsLinks
 };
 
 const bookPage: BookTitleLinkPage = {
   bookName,
-  title: titleContentsLink,
+  header: titleContentsLink,
 };
 
 const introPage: BookTextPage = {
@@ -60,13 +58,13 @@ const introPage: BookTextPage = {
   next: def1to4Nav,
 };
 
-const definitionGroupPages: DefinitionGroupPageMap = {
-  [def1to4.defGroupName]: { ...bookPage, definitionGroup: def1to4, prev: titleIntroLink, next: prop1Nav},
+const definitionGroupPages: StepsAndDiagramPageMap = {
+  [def1to4.name]: { ...bookPage, stepsAndDiagram: def1to4, prev: titleIntroLink, next: prop1Nav},
 };
 
-const propositionPages: PropositionPageMap = {
-  [prop1.propName]: { ...bookPage, proposition: prop1, prev: def1to4Nav, next: prop2Nav },
-  [prop2.propName]: { ...bookPage, proposition: prop2, prev: prop1Nav, next: null },
+const propositionPages: StepsAndDiagramPageMap = {
+  [prop1.name]: { ...bookPage, stepsAndDiagram: prop1, prev: def1to4Nav, next: prop2Nav },
+  [prop2.name]: { ...bookPage, stepsAndDiagram: prop2, prev: prop1Nav, next: null },
 };
 
 const book: Book = {

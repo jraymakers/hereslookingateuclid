@@ -3,8 +3,8 @@ import {
   LabelDir,
 } from '../../diagram';
 import {
-  DefinitionGroup,
-} from '../../page';
+  defGroupTitle,
+} from '../../link';
 import {
   italic,
   Paragraph,
@@ -12,11 +12,9 @@ import {
 import {
   StepList,
 } from '../../step';
-
-const defGroupName = '1-4';
-const summary: Paragraph = [
-  ['Points and lines']
-];
+import {
+  StepsAndDiagram,
+} from '../../stepsAndDiagram';
 
 const width = 400;
 const height = 400;
@@ -58,8 +56,15 @@ const steps: StepList = [
   }
 ];
 
-const definitionGroup: DefinitionGroup = {
-  defGroupName,
+const name = '1-4';
+const title = defGroupTitle(name, steps.length);
+const summary: Paragraph = [
+  ['Points and lines']
+];
+
+const definitionGroup: StepsAndDiagram = {
+  name,
+  title,
   summary,
   diagram,
   steps,
