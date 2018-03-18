@@ -2,6 +2,7 @@ var path = require('path');
 
 module.exports = {
   entry: './src/app/root/root.tsx',
+  mode: 'development',
   module: {
     rules: [
       {
@@ -24,10 +25,5 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.js']
   },
-  stats: {
-    assets: false,
-    hash: false,
-    timings: false,
-    version: false
-  }
+  stats: 'errors-only',
 };
