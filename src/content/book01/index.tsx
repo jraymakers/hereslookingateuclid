@@ -2,7 +2,7 @@ import {
   bookIntroLink,
   bookTitleContentsLink,
   bookTitleIntroLink,
-  LinkInfo,
+  SubtitledLinkInfoList,
   mainIntroLink,
   propNavLink,
   propTitleLink,
@@ -29,10 +29,10 @@ const introLink = bookIntroLink(bookName);
 const prop1Nav = propNavLink(bookName, prop1.propName);
 const prop2Nav = propNavLink(bookName, prop2.propName);
 
-const contentsLinks: ReadonlyArray<LinkInfo> = [
+const contentsLinks: SubtitledLinkInfoList = [
   introLink,
-  propTitleLink(bookName, prop1.propName),
-  propTitleLink(bookName, prop2.propName),
+  propTitleLink(bookName, prop1.propName, prop1.summary),
+  propTitleLink(bookName, prop2.propName, prop2.summary),
 ];
 
 const contentsPage: BookContentsPage = {

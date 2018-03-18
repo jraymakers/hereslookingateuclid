@@ -1,6 +1,8 @@
 export {
   LinkInfo,
   LinkInfoList,
+  SubtitledLinkInfo,
+  SubtitledLinkInfoList,
 } from './types/LinkInfo';
 export {
   bookIntroLink,

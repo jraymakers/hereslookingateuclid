@@ -1,5 +1,6 @@
 import {
   LinkInfo,
+  SubtitledLinkInfo,
 } from '../types/LinkInfo';
 
 import {
@@ -35,9 +36,10 @@ export function bookIntroLink(bookName: string): LinkInfo {
   };
 }
 
-export function propTitleLink(bookName: string, propName: string): LinkInfo {
+export function propTitleLink(bookName: string, propName: string, subtitle: string): SubtitledLinkInfo {
   return {
     text: `Proposition ${propName}`,
+    subtitle: subtitle,
     url: propUrl(bookName, propName)
   };
 }

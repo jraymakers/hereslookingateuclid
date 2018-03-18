@@ -1,4 +1,4 @@
-import { LinkInfo, LinkInfoList } from '../../link';
+import { LinkInfo, LinkInfoList, SubtitledLinkInfoList } from '../../link';
 import { ParagraphList } from '../../paragraph';
 import { Proposition } from '../../proposition';
 
@@ -22,7 +22,7 @@ export type TitleTextPage = Page & {
 };
 
 export type ContentsContent = {
-  readonly contentsLinks: LinkInfoList;
+  readonly contentsLinks: SubtitledLinkInfoList;
 }
 
 export type TextContent = {

@@ -1,7 +1,7 @@
 import {
   bookTitleContentsLink,
   bookTitleIntroLink,
-  LinkInfo,
+  SubtitledLinkInfoList,
   mainIntroLink,
 } from '../link';
 import {
@@ -13,7 +13,7 @@ import {
 import intro from './MainIntro';
 import book01 from './book01';
 
-export const contentsLinks: ReadonlyArray<LinkInfo> = [
+export const contentsLinks: SubtitledLinkInfoList = [
   mainIntroLink,
   bookTitleContentsLink(book01.bookName),
 ];

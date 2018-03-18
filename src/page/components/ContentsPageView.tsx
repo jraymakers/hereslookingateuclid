@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { style } from 'typestyle';
 
-import { LinkInfo } from '../../link';
+import { SubtitledLinkInfo } from '../../link';
 
 import { BookContentsPage, ContentsPage } from '../types/Page';
 
@@ -23,7 +23,6 @@ const linkClass = style({
   $debugName: `${classPrefix}_link`,
   $unique: true,
   padding: 12,
-  fontSize: 21,
   color: 'black',
   textDecoration: 'none',
   $nest: {
@@ -32,6 +31,18 @@ const linkClass = style({
       color: '#888',
     }
   }
+});
+
+const linkTitleClass = style({
+  $debugName: `${classPrefix}_linkTitle`,
+  $unique: true,
+  fontSize: 21,
+});
+
+const linkSubtitleClass = style({
+  $debugName: `${classPrefix}_linkSubtitle`,
+  $unique: true,
+  fontSize: 15,
 });
 
 type ContentsPageViewProps = {
@@ -53,8 +64,13 @@ export class ContentsPageView extends React.PureComponent<ContentsPageViewProps>
     );
   }
 
-  private readonly renderContentsLink = (contentsLink: LinkInfo): JSX.Element => {
-    return <Link className={linkClass} to={contentsLink.url} key={contentsLink.url}>{contentsLink.text}</Link>
+  private readonly renderContentsLink = (contentsLink: SubtitledLinkInfo): JSX.Element => {
+    return (
+      <Link className={linkClass} to={contentsLink.url} key={contentsLink.url}>
+        <div className={linkTitleClass}>{contentsLink.text}</div>
+        {contentsLink.subtitle ? <div className={linkSubtitleClass}>{contentsLink.subtitle}</div> : null}
+      </Link>
+    );
   }
 
 }
