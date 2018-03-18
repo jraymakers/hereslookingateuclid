@@ -2,22 +2,20 @@ import * as React from 'react';
 import { style } from 'typestyle';
 
 import {
+  Diagram,
   DiagramView,
 } from '../../diagram';
 import {
   StepControlsView,
+  StepList,
   StepsView,
 } from '../../step';
 
 import {
-  Proposition,
-} from '../types/Proposition';
-
-import {
   getDiagramPartStates,
-} from '../utils/PropositionUtils';
+} from '../utils/StepsAndDiagramUtils';
 
-const classPrefix = 'PropositionView';
+const classPrefix = 'StepsAndDiagramView';
 
 const rootClass = style({
   $debugName: `${classPrefix}_root`,
@@ -46,13 +44,13 @@ const titleAndSummaryClass = style({
 });
 
 const titleClass = style({
-  $debugName: `${classPrefix}_titleAndSummary`,
+  $debugName: `${classPrefix}_title`,
   $unique: true,
   fontSize: 24,
 });
 
 const summaryClass = style({
-  $debugName: `${classPrefix}_titleAndSummary`,
+  $debugName: `${classPrefix}_summary`,
   $unique: true,
   marginTop: 6,
 });
@@ -67,18 +65,22 @@ const stepsAndDiagramClass = style({
   padding: 12,
 });
 
-export type PropositionViewProps = {
-  readonly proposition: Proposition;
+export type StepsAndDiagramViewProps = {
+  readonly title: string;
+  readonly summary: string;
+  readonly steps: StepList;
+  readonly diagram: Diagram;
   readonly currentStepNum: number;
   readonly goToStep: (stepNum: number) => void;
 };
 
-export class PropositionView extends React.PureComponent<PropositionViewProps> {
+export class StepsAndDiagramView extends React.PureComponent<StepsAndDiagramViewProps> {
 
   public render(): JSX.Element {
-    const proposition = this.props.proposition;
-    const title = `Proposition ${proposition.propName}`;
-    const steps = proposition.steps;
+    const title = this.props.title;
+    const summary = this.props.summary;
+    const steps = this.props.steps;
+    const diagram = this.props.diagram;
     const currentStepNum = this.props.currentStepNum;
     const diagramPartStates = getDiagramPartStates(steps, currentStepNum);
     const goToStep = this.props.goToStep;
@@ -87,7 +89,7 @@ export class PropositionView extends React.PureComponent<PropositionViewProps> {
         <div className={headerClass}>
           <div className={titleAndSummaryClass}>
             <div className={titleClass}>{title}</div>
-            <div className={summaryClass}>{proposition.summary}</div>
+            <div className={summaryClass}>{summary}</div>
           </div>
           <StepControlsView
             currentStepNum={currentStepNum}
@@ -103,7 +105,7 @@ export class PropositionView extends React.PureComponent<PropositionViewProps> {
             goToStep={goToStep}
           />
           <DiagramView
-            diagram={proposition.diagram}
+            diagram={diagram}
             diagramPartStates={diagramPartStates}
           />
         </div>

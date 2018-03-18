@@ -3,7 +3,7 @@ import { RouteComponentProps, withRouter } from 'react-router';
 
 import { propUrl, propStepUrl } from '../../link';
 import { PropositionPage } from '../../page';
-import { PropositionView } from '../../proposition';
+import { StepsAndDiagramView } from '../../stepsAndDiagram';
 
 import { PageView } from './PageView';
 import { PageTitleView } from './PageTitleView';
@@ -17,12 +17,16 @@ class PropositionPageViewInternal extends React.PureComponent<PropositionPageVie
 
   public render(): JSX.Element {
     const page = this.props.page;
+    const proposition = page.proposition;
     const currentStepNum = this.props.currentStepNum;
     return (
       <PageView page={page} onKeyDown={this.onKeyDown}>
-        <PageTitleView title={this.props.page.title} />
-        <PropositionView
-          proposition={page.proposition}
+        <PageTitleView title={page.title} />
+        <StepsAndDiagramView
+          title={`Proposition ${proposition.propName}`}
+          summary={proposition.summary}
+          steps={proposition.steps}
+          diagram={proposition.diagram}
           currentStepNum={currentStepNum}
           goToStep={this.goToStep}
         />
