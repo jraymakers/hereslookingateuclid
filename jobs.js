@@ -19,7 +19,7 @@ module.exports = () => ({
     action: () => fse.remove(outDir)
   },
   copyFavicon: {
-    action: () => fse.copy(path.join(srcDir, 'favicon', 'favicon.ico'), path.join(outDir, 'favicon.ico'))
+    action: () => fse.copy(path.join(srcDir, 'favicon', 'favicon.png'), path.join(outDir, 'favicon.png'))
   },
   copyIndex: {
     action: () => fse.copy(path.join(srcDir, 'app', 'root', 'index.html'), path.join(outDir, 'index.html'))
