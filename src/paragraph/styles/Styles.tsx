@@ -1,6 +1,8 @@
 import { style } from 'typestyle';
 
-import { StyledRun } from '../../paragraph';
+import { LinkInfo } from '../../link';
+
+import { LinkRun, StyledRun } from '../types/Paragraph';
 
 const classPrefix = 'shared';
 
@@ -11,5 +13,9 @@ export const italicClass = style({
 });
 
 export function italic(text: string): StyledRun {
-  return { className: italicClass, text };
+  return { type: 'styled', className: italicClass, text };
+}
+
+export function link(linkInfo: LinkInfo): LinkRun {
+  return { type: 'link', linkInfo };
 }

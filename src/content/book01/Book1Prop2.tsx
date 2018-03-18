@@ -3,9 +3,11 @@ import {
   LabelDir,
 } from '../../diagram';
 import {
+  propNavLink,
   propTitle,
 } from '../../link';
 import {
+  link,
   Paragraph,
 } from '../../paragraph';
 import {
@@ -90,7 +92,7 @@ const steps: StepList = [
     text: [
       ['Construct an equilateral triangle ABD on AB.'],
       ['So AB, AD, and BD are all equal.'],
-      ['(I.i)'], // this should be a link
+      ['(', link(propNavLink('I', '1')), ')'],
     ],
     highlight: [ 'D', 'AD', 'BD' ]
   },

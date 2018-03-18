@@ -1,12 +1,17 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { style } from 'typestyle';
+
+import {
+  linkClass,
+} from '../../style';
 
 import {
   Paragraph,
   Run,
   Sentence,
 } from '../types/Paragraph';
+
+const classPrefix = 'Paragraph';
 
 export type ParagraphViewProps = {
   readonly paragraph: Paragraph;
@@ -51,12 +56,21 @@ export class RunView extends React.PureComponent<RunViewProps> {
     const run = this.props.run;
     if (typeof run === 'string') {
       return <span>{run}</span>;
-    } else if (run.className) {
-      return <span className={run.className}>{run.text}</span>
     } else {
-      console.warn(`Unrecognized run: ${run}`);
-      return null;
+      switch (run.type) {
+        case 'styled':
+          return <span className={run.className}>{run.text}</span>;
+        case 'link':
+          return <Link className={linkClass} to={run.linkInfo.url}>{run.linkInfo.text}</Link>;
+        default:
+          assertNever(run);
+          return null;
+      }
     }
   }
 
+}
+
+function assertNever(value: never) {
+  console.warn(`assertNever called: ${value}`);
 }

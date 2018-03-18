@@ -3,11 +3,9 @@ export {
 } from './components/ParagraphView';
 export {
   italic,
+  link,
 } from './styles/Styles';
 export {
   Paragraph,
   ParagraphList,
-  Run,
-  Sentence,
-  StyledRun,
 } from './types/Paragraph';

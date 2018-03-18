@@ -2,28 +2,15 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 import { LinkInfo } from '../../link';
-import { classes, namedClass, uniqueStyle } from '../../style';
-
-const textStyle = uniqueStyle({
-  fontSize: 24,
-  padding: 6,
-  textAlign: 'center',
-});
-
-const linkHoverStyle = uniqueStyle({
-  color: '#888',
-});
-
-const linkStyle = uniqueStyle({
-  color: 'black',
-  textDecoration: 'none',
-  $nest: {
-    '&:hover': linkHoverStyle
-  }
-});
+import {
+  classes,
+  linkStyle,
+  namedClass,
+  pageHeaderTextStyle,
+} from '../../style';
 
 const classPrefix = 'PageHeaderView';
-const textClass = namedClass(classPrefix, 'text', textStyle);
+const textClass = namedClass(classPrefix, 'text', pageHeaderTextStyle);
 const linkClass = namedClass(classPrefix, 'link', linkStyle);
 
 export type PageHeaderViewProps = {
