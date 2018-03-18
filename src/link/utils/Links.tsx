@@ -11,6 +11,14 @@ import {
 } from '../types/LinkInfo';
 
 import {
+  introductionText,
+  bookTitle,
+  defGroupNavText,
+  defGroupTitle,
+  propNavText,
+  propTitle,
+} from './Text';
+import {
   bookContentsUrl,
   bookIntroUrl,
   defGroupUrl,
@@ -19,19 +27,15 @@ import {
 } from './Urls';
 
 export const mainIntroLink: LinkInfo = {
-  text: 'Introduction',
+  text: introductionText,
   url: mainIntroUrl
 };
 
 export function bookIntroLink(bookName: string): LinkInfo {
   return {
-    text: 'Introduction',
+    text: introductionText,
     url: bookIntroUrl(bookName)
   };
-}
-
-export function bookTitle(bookName: string): string {
-  return `Book ${bookName}`;
 }
 
 export function bookTitleContentsLink(bookName: string): LinkInfo {
@@ -50,13 +54,9 @@ export function bookTitleIntroLink(bookName: string): LinkInfo {
 
 export function defGroupNavLink(bookName: string, defGroupName: string): LinkInfo {
   return {
-    text: `${bookName}.Def${defGroupName}`,
+    text: defGroupNavText(bookName, defGroupName),
     url: defGroupUrl(bookName, defGroupName)
   };
-}
-
-export function defGroupTitle(defGroupName: string, numSteps: number): string {
-  return `Definition${numSteps > 1 ? 's' : ''} ${defGroupName}`;
 }
 
 export function defGroupTitleLink(bookName: string, defGroup: StepsAndDiagram): SubtitledLinkInfo {
@@ -69,13 +69,9 @@ export function defGroupTitleLink(bookName: string, defGroup: StepsAndDiagram): 
 
 export function propNavLink(bookName: string, propName: string): LinkInfo {
   return {
-    text: `${bookName}.${propName}`,
+    text: propNavText(bookName, propName),
     url: propUrl(bookName, propName)
   };
-}
-
-export function propTitle(propName: string): string {
-  return `Proposition ${propName}`;
 }
 
 export function propTitleLink(bookName: string, proposition: StepsAndDiagram): SubtitledLinkInfo {

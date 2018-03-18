@@ -90,7 +90,7 @@ const steps: StepList = [
     text: [
       ['Construct an equilateral triangle ABD on AB.'],
       ['So AB, AD, and BD are all equal.'],
-      ['(I.i)'],
+      ['(I.i)'], // this should be a link
     ],
     highlight: [ 'D', 'AD', 'BD' ]
   },
