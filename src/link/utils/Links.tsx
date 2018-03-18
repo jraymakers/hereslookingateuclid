@@ -1,4 +1,8 @@
 import {
+  Paragraph,
+} from '../../paragraph';
+
+import {
   LinkInfo,
   SubtitledLinkInfo,
 } from '../types/LinkInfo';
@@ -6,6 +10,7 @@ import {
 import {
   bookContentsUrl,
   bookIntroUrl,
+  defGroupUrl,
   mainIntroUrl,
   propUrl,
 } from './Urls';
@@ -36,7 +41,22 @@ export function bookIntroLink(bookName: string): LinkInfo {
   };
 }
 
-export function propTitleLink(bookName: string, propName: string, subtitle: string): SubtitledLinkInfo {
+export function defGroupTitleLink(bookName: string, defGroupName: string, subtitle: Paragraph): SubtitledLinkInfo {
+  return {
+    text: `Definitions ${defGroupName}`, // todo
+    subtitle: subtitle,
+    url: defGroupUrl(bookName, defGroupName)
+  };
+}
+
+export function defGroupNavLink(bookName: string, defGroupName: string): LinkInfo {
+  return {
+    text: `${bookName}.Def${defGroupName}`,
+    url: defGroupUrl(bookName, defGroupName)
+  };
+}
+
+export function propTitleLink(bookName: string, propName: string, subtitle: Paragraph): SubtitledLinkInfo {
   return {
     text: `Proposition ${propName}`,
     subtitle: subtitle,

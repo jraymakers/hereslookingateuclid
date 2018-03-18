@@ -1,5 +1,10 @@
+import {
+  Paragraph,
+} from '../../paragraph';
+
 export type Step = {
-  readonly text: string;
+  readonly name: string;
+  readonly text: Paragraph;
   readonly highlight: ReadonlyArray<string>;
 };
 

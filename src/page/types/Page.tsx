@@ -1,6 +1,8 @@
 import { LinkInfo, LinkInfoList, SubtitledLinkInfoList } from '../../link';
 import { ParagraphList } from '../../paragraph';
-import { Proposition } from '../../proposition';
+
+import { DefinitionGroup } from './DefinitionGroup';
+import { Proposition } from './Proposition';
 
 export type Page = {
   readonly title?: LinkInfo | string | null | undefined;
@@ -42,6 +44,10 @@ export type BookTitleLinkPage = BookPage & TitleLinkPage;
 export type BookContentsPage = BookPage & TitleTextPage & ContentsContent;
 
 export type BookTextPage = BookTitleLinkPage & TextContent;
+
+export type DefinitionGroupPage = BookTitleLinkPage & {
+  readonly definitionGroup: DefinitionGroup;
+};
 
 export type PropositionPage = BookTitleLinkPage & {
   readonly proposition: Proposition;

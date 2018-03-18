@@ -71,20 +71,20 @@ const buttonClass = style({
 });
 
 export type StepControlsViewProps = {
-  readonly currentStepNum: number;
-  readonly minStepNum: number;
-  readonly maxStepNum: number;
-  readonly goToStep: (stepNum: number) => void;
+  readonly currentStepIndex: number;
+  readonly minStepIndex: number;
+  readonly maxStepIndex: number;
+  readonly goToStep: (stepIndex: number) => void;
 };
 
 export class StepControlsView extends React.PureComponent<StepControlsViewProps> {
 
   public render(): JSX.Element {
-    const currentStepNum = this.props.currentStepNum;
-    const minStepNum = this.props.minStepNum;
-    const maxStepNum = this.props.maxStepNum;
-    const atMin = currentStepNum === minStepNum;
-    const atMax = currentStepNum === maxStepNum
+    const currentStepIndex = this.props.currentStepIndex;
+    const minStepIndex = this.props.minStepIndex;
+    const maxStepIndex = this.props.maxStepIndex;
+    const atMin = currentStepIndex === minStepIndex;
+    const atMax = currentStepIndex === maxStepIndex
     return (
       <div className={buttonsClass}>
         <button
@@ -122,19 +122,19 @@ export class StepControlsView extends React.PureComponent<StepControlsViewProps>
   }
 
   private readonly goMin = () => {
-    this.props.goToStep(this.props.minStepNum);
+    this.props.goToStep(this.props.minStepIndex);
   };
 
   private readonly goPrev = () => {
-    this.props.goToStep(Math.max(this.props.currentStepNum - 1, this.props.minStepNum));
+    this.props.goToStep(Math.max(this.props.currentStepIndex - 1, this.props.minStepIndex));
   };
 
   private readonly goNext = () => {
-    this.props.goToStep(Math.min(this.props.currentStepNum + 1, this.props.maxStepNum));
+    this.props.goToStep(Math.min(this.props.currentStepIndex + 1, this.props.maxStepIndex));
   };
 
   private readonly goMax = () => {
-    this.props.goToStep(this.props.maxStepNum);
+    this.props.goToStep(this.props.maxStepIndex);
   };
 
 }

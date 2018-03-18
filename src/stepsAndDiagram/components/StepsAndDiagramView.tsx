@@ -6,6 +6,10 @@ import {
   DiagramView,
 } from '../../diagram';
 import {
+  Paragraph,
+  ParagraphView,
+} from '../../paragraph';
+import {
   StepControlsView,
   StepList,
   StepsView,
@@ -49,12 +53,6 @@ const titleClass = style({
   fontSize: 24,
 });
 
-const summaryClass = style({
-  $debugName: `${classPrefix}_summary`,
-  $unique: true,
-  marginTop: 6,
-});
-
 const stepsAndDiagramClass = style({
   $debugName: `${classPrefix}_stepsAndDiagram`,
   $unique: true,
@@ -67,10 +65,10 @@ const stepsAndDiagramClass = style({
 
 export type StepsAndDiagramViewProps = {
   readonly title: string;
-  readonly summary: string;
+  readonly summary: Paragraph;
   readonly steps: StepList;
   readonly diagram: Diagram;
-  readonly currentStepNum: number;
+  readonly currentStepIndex: number;
   readonly goToStep: (stepNum: number) => void;
 };
 
@@ -81,27 +79,27 @@ export class StepsAndDiagramView extends React.PureComponent<StepsAndDiagramView
     const summary = this.props.summary;
     const steps = this.props.steps;
     const diagram = this.props.diagram;
-    const currentStepNum = this.props.currentStepNum;
-    const diagramPartStates = getDiagramPartStates(steps, currentStepNum);
+    const currentStepIndex = this.props.currentStepIndex;
+    const diagramPartStates = getDiagramPartStates(steps, currentStepIndex);
     const goToStep = this.props.goToStep;
     return (
       <div className={rootClass}>
         <div className={headerClass}>
           <div className={titleAndSummaryClass}>
             <div className={titleClass}>{title}</div>
-            <div className={summaryClass}>{summary}</div>
+            <ParagraphView paragraph={summary} />
           </div>
           <StepControlsView
-            currentStepNum={currentStepNum}
-            minStepNum={0}
-            maxStepNum={steps.length}
+            currentStepIndex={currentStepIndex}
+            minStepIndex={-1}
+            maxStepIndex={steps.length - 1}
             goToStep={goToStep}
           />
         </div>
         <div className={stepsAndDiagramClass}>
           <StepsView
             steps={steps}
-            currentStepNum={currentStepNum}
+            currentStepIndex={currentStepIndex}
             goToStep={goToStep}
           />
           <DiagramView

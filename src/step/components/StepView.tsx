@@ -2,6 +2,11 @@ import * as React from 'react';
 import { style } from 'typestyle';
 
 import {
+  Paragraph,
+  ParagraphView,
+} from '../../paragraph';
+
+import {
   Step,
 } from '../types/Step';
 
@@ -39,8 +44,9 @@ const textClass = style({
 });
 
 export type StepViewProps = {
-  readonly stepNum: number;
-  readonly text: string;
+  readonly stepIndex: number;
+  readonly stepName: string;
+  readonly text: Paragraph;
   readonly faded?: boolean;
   readonly goToStep: (stepNum: number) => void;
 };
@@ -48,21 +54,21 @@ export type StepViewProps = {
 export class StepView extends React.PureComponent<StepViewProps> {
 
   public render(): JSX.Element {
-    const stepNum = this.props.stepNum;
+    const stepName = this.props.stepName;
     return (
       <div
         className={rootClass}
         style={{ opacity: this.props.faded ? 0.2 : 1}}
         onClick={this.onClick}
       >
-        <div className={numberClass}>{stepNum}.</div>
-        <div className={textClass}>{this.props.text}</div>
+        <div className={numberClass}>{stepName}.</div>
+        <div className={textClass}><ParagraphView paragraph={this.props.text} /></div>
       </div>
     );
   }
 
   private readonly onClick = () => {
-    this.props.goToStep(this.props.stepNum);
+    this.props.goToStep(this.props.stepIndex);
   }
 
 }

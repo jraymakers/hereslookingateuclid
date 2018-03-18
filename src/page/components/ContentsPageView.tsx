@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { style } from 'typestyle';
 
 import { SubtitledLinkInfo } from '../../link';
+import { ParagraphView } from '../../paragraph';
 
 import { BookContentsPage, ContentsPage } from '../types/Page';
 
@@ -68,7 +69,11 @@ export class ContentsPageView extends React.PureComponent<ContentsPageViewProps>
     return (
       <Link className={linkClass} to={contentsLink.url} key={contentsLink.url}>
         <div className={linkTitleClass}>{contentsLink.text}</div>
-        {contentsLink.subtitle ? <div className={linkSubtitleClass}>{contentsLink.subtitle}</div> : null}
+        {contentsLink.subtitle
+            ? <div className={linkSubtitleClass}>
+                <ParagraphView paragraph={contentsLink.subtitle} />
+              </div>
+          : null}
       </Link>
     );
   }

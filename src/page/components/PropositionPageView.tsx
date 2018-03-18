@@ -10,7 +10,7 @@ import { PageTitleView } from './PageTitleView';
 
 type PropositionPageViewProps = RouteComponentProps<{}> & {
   readonly page: PropositionPage;
-  readonly currentStepNum: number;
+  readonly currentStepIndex: number;
 };
 
 class PropositionPageViewInternal extends React.PureComponent<PropositionPageViewProps> {
@@ -18,7 +18,7 @@ class PropositionPageViewInternal extends React.PureComponent<PropositionPageVie
   public render(): JSX.Element {
     const page = this.props.page;
     const proposition = page.proposition;
-    const currentStepNum = this.props.currentStepNum;
+    const currentStepIndex = this.props.currentStepIndex;
     return (
       <PageView page={page} onKeyDown={this.onKeyDown}>
         <PageTitleView title={page.title} />
@@ -27,7 +27,7 @@ class PropositionPageViewInternal extends React.PureComponent<PropositionPageVie
           summary={proposition.summary}
           steps={proposition.steps}
           diagram={proposition.diagram}
-          currentStepNum={currentStepNum}
+          currentStepIndex={currentStepIndex}
           goToStep={this.goToStep}
         />
       </PageView>
@@ -48,17 +48,18 @@ class PropositionPageViewInternal extends React.PureComponent<PropositionPageVie
   }
 
   private readonly goPrev = () => {
-    this.goToStep(Math.max(this.props.currentStepNum - 1, 0));
+    this.goToStep(Math.max(this.props.currentStepIndex - 1, -1));
   };
 
   private readonly goNext = () => {
-    this.goToStep(Math.min(this.props.currentStepNum + 1, this.props.page.proposition.steps.length));
+    this.goToStep(Math.min(this.props.currentStepIndex + 1, this.props.page.proposition.steps.length - 1));
   };
 
-  private readonly goToStep = (newStep: number) => {
+  private readonly goToStep = (newStepIndex: number) => {
     const page = this.props.page;
-    if (newStep > 0) {
-      this.navigate(propStepUrl(page.bookName, page.proposition.propName, newStep));
+    if (newStepIndex >= 0) {
+      const newStep = page.proposition.steps[newStepIndex];
+      this.navigate(propStepUrl(page.bookName, page.proposition.propName, newStep.name));
     } else {
       this.navigate(propUrl(page.bookName, page.proposition.propName));
     }

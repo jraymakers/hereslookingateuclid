@@ -3,16 +3,21 @@ import {
   LabelDir,
 } from '../../diagram';
 import {
+  Proposition,
+} from '../../page';
+import {
+  Paragraph,
+} from '../../paragraph';
+import {
   StepList,
 } from '../../step';
-import {
-  Proposition,
-} from '../../proposition';
 
 import { Greek } from '../Greek';
 
 const propName = '2';
-const summary = 'Construct a straight line equal to a given straight line with one end at a given point.';
+const summary: Paragraph = [
+  ['Construct a straight line equal to a given straight line with one end at a given point.'],
+];
 
 const width = 400;
 const height = 400;
@@ -69,52 +74,90 @@ const diagram: Diagram = {
 
 const steps: StepList = [
   {
-    text: 'Let A be the given point, and BC the given straight line.',
+    name: '1',
+    text: [
+      ['Let A be the given point, and BC the given straight line.'],
+    ],
     highlight: [ 'A', 'B', 'C', 'BC' ]
   },
   {
-    text: 'Construct the straight line AB.',
+    name: '2',
+    text: [
+      ['Construct the straight line AB.'],
+    ],
     highlight: [ 'AB' ]
   },
   {
-    text: 'Construct an equilateral triangle ABD on AB. So AB, AD, and BD are all equal. (I.i)',
+    name: '3',
+    text: [
+      ['Construct an equilateral triangle ABD on AB.'],
+      ['So AB, AD, and BD are all equal.'],
+      ['(I.i)'],
+    ],
     highlight: [ 'D', 'AD', 'BD' ]
   },
   {
-    text: 'Construct the straight lines AE and BF by extending DA and DB, respectively.',
+    name: '4',
+    text: [
+      ['Construct the straight lines AE and BF by extending DA and DB, respectively.'],
+    ],
     highlight: [ 'E', 'F', 'AH', 'BG', 'EH', 'FG' ]
   },
   {
-    text: `Construct the circle ${Greek.beta} with center B and radius BC.`,
+    name: '5',
+    text: [
+      [`Construct the circle ${Greek.beta} with center B and radius BC.`],
+    ],
     highlight: [ Greek.beta ]
   },
   {
-    text: `Let G be the intersection of ${Greek.beta} and DF.`,
+    name: '6',
+    text: [
+      [`Let G be the intersection of ${Greek.beta} and DF.`],
+    ],
     highlight: [ 'G' ]
   },
   {
-    text: `Construct the circle ${Greek.delta} with center D and radius DG.`,
+    name: '7',
+    text: [
+      [`Construct the circle ${Greek.delta} with center D and radius DG.`],
+    ],
     highlight: [ Greek.delta ]
   },
   {
-    text: `Let H be the intersection of ${Greek.delta} and DE.`,
+    name: '8',
+    text: [
+      [`Let H be the intersection of ${Greek.delta} and DE.`],
+    ],
     highlight: [ 'H' ]
   },
   {
-    text: `Since BC and BG are both radii of circle ${Greek.beta}, they are equal.`,
+    name: '9',
+    text: [
+      [`Since BC and BG are both radii of circle ${Greek.beta}, they are equal.`],
+    ],
     highlight: [ 'BC', 'BG' ]
   },
   {
-    text: `Since DG and DH are both radii of circle ${Greek.delta}, they are equal.`,
+    name: '10',
+    text: [
+      [`Since DG and DH are both radii of circle ${Greek.delta}, they are equal.`],
+    ],
     highlight: [ 'AD', 'AH', 'BD', 'BG' ]
   },
   {
-    text: 'Because AD equals BD, and AD and BD are parts of DH and DG respectively,'
-      + ' the remaining parts of each, AH and BG, are also equal.',
+    name: '11',
+    text: [
+      ['Because AD equals BD, and AD and BD are parts of DH and DG respectively,'
+      +' the remaining parts of each, AH and BG, are also equal.'],
+    ],
     highlight: [ 'AH', 'BG' ]
   },
   {
-    text: 'And since BG also equals BC, then AH equals BC, as desired.',
+    name: '12',
+    text: [
+      ['And since BG also equals BC, then AH equals BC, as desired.'],
+    ],
     highlight: [ 'AH', 'BC' ]
   }
 ];

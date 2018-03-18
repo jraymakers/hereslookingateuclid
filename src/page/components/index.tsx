@@ -2,6 +2,9 @@ export {
   ContentsPageView,
 } from './ContentsPageView';
 export {
+  DefinitionGroupPageView,
+} from './DefinitionGroupPageView';
+export {
   NavBar,
 } from './NavBar';
 export {

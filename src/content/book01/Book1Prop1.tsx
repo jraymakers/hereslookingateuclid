@@ -3,16 +3,21 @@ import {
   LabelDir,
 } from '../../diagram';
 import {
+  Proposition,
+} from '../../page';
+import {
+  Paragraph,
+} from '../../paragraph';
+import {
   StepList,
 } from '../../step';
-import {
-  Proposition,
-} from '../../proposition';
 
 import { Greek } from '../Greek';
 
 const propName = '1';
-const summary = 'Construct an equilateral triangle on a given straight line.';
+const summary: Paragraph = [
+  ['Construct an equilateral triangle on a given straight line.'],
+];
 
 const width = 400;
 const height = 400;
@@ -47,39 +52,66 @@ const diagram: Diagram = {
 
 const steps: StepList = [
   {
-    text: 'Let AB be the given straight line.',
+    name: '1',
+    text: [
+      ['Let AB be the given straight line.'],
+    ],
     highlight: [ 'AB', 'A', 'B' ]
   },
   {
-    text: `Construct a circle ${Greek.alpha} with center A and radius AB.`,
+    name: '2',
+    text: [
+      [`Construct a circle ${Greek.alpha} with center A and radius AB.`],
+    ],
     highlight: [ Greek.alpha ]
   },
   {
-    text: `Construct another circle ${Greek.beta} with center B and radius AB.`,
+    name: '3',
+    text: [
+      [`Construct another circle ${Greek.beta} with center B and radius AB.`],
+    ],
     highlight: [ Greek.beta ]
   },
   {
-    text: `Let C be either one of the two intersection points of ${Greek.alpha} and ${Greek.beta}.`,
+    name: '4',
+    text: [
+      [`Let C be either one of the two intersection points of ${Greek.alpha} and ${Greek.beta}.`],
+    ],
     highlight: [ 'C' ]
   },
   {
-    text: 'Construct the straight lines AC and BC.',
+    name: '5',
+    text: [
+      ['Construct the straight lines AC and BC.'],
+    ],
     highlight: [ 'AC', 'BC' ]
   },
   {
-    text: `Since AB and AC are both radii of circle ${Greek.alpha}, they are equal.`,
+    name: '6',
+    text: [
+      [`Since AB and AC are both radii of circle ${Greek.alpha}, they are equal.`],
+    ],
     highlight: [ 'AB', 'AC' ]
   },
   {
-    text: `Likewise, since AB and BC are both radii of circle ${Greek.beta}, they are equal.`,
+    name: '7',
+    text: [
+      [`Likewise, since AB and BC are both radii of circle ${Greek.beta}, they are equal.`],
+    ],
     highlight: [ 'AB', 'BC' ]
   },
   {
-    text: 'Because AB equals AC and AB equals BC, AC equals BC.',
+    name: '8',
+    text: [
+      ['Because AB equals AC and AB equals BC, AC equals BC.'],
+    ],
     highlight: [ 'AC', 'BC' ]
   },
   {
-    text: 'Thus AB, AC, and BC equal each other, so the triangle ABC is equilateral, as desired.',
+    name: '9',
+    text: [
+      ['Thus AB, AC, and BC equal each other, so the triangle ABC is equilateral, as desired.'],
+    ],
     highlight: [ 'AB', 'AC', 'BC' ]
   }
 ];

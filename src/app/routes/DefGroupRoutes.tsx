@@ -7,33 +7,33 @@ import {
 } from 'react-router';
 
 import {
-  propStepUrl,
-  propUrl,
+  defGroupStepUrl,
+  defGroupUrl,
 } from '../../link';
 import {
-  PropositionPage,
-  PropositionPageView,
+  DefinitionGroupPage,
+  DefinitionGroupPageView,
 } from '../../page';
 
-type PropRoutesProps = {
-  readonly page: PropositionPage;
+type DefGroupRoutesProps = {
+  readonly page: DefinitionGroupPage;
 };
 
 type StepRouteProps = RouteComponentProps<{
   readonly stepName: string;
 }>;
 
-export class PropRoutes extends React.Component<PropRoutesProps> {
+export class DefGroupRoutes extends React.Component<DefGroupRoutesProps> {
 
   public render(): JSX.Element {
     const page = this.props.page;
     const bookName = page.bookName;
-    const propName = page.proposition.propName;
+    const defGroupName = page.definitionGroup.defGroupName;
     return (
       <Switch>
-        <Route exact path={propStepUrl(bookName, propName, ':stepName')} render={this.renderStepRoute} />
-        <Route exact path={propUrl(bookName, propName)} render={this.renderNoStep} />
-        <Redirect to={propUrl(bookName, propName)} />
+        <Route exact path={defGroupStepUrl(bookName, defGroupName, ':stepName')} render={this.renderStepRoute} />
+        <Route exact path={defGroupUrl(bookName, defGroupName)} render={this.renderNoStep} />
+        <Redirect to={defGroupUrl(bookName, defGroupName)} />
       </Switch>
     );
   }
@@ -41,14 +41,14 @@ export class PropRoutes extends React.Component<PropRoutesProps> {
   private readonly renderStepRoute = (props: StepRouteProps): JSX.Element => {
     const stepName = props.match.params.stepName;
     const stepIndex = parseInt(stepName, 10) - 1;
-    const steps = this.props.page.proposition.steps;
+    const steps = this.props.page.definitionGroup.steps;
     if (0 <= stepIndex && stepIndex < steps.length) {
       return this.renderStep(stepIndex);
     } else {
       const page = this.props.page;
       const bookName = page.bookName;
-      const propName = page.proposition.propName;
-      return <Redirect to={propUrl(bookName, propName)} />
+      const defGroupName = page.definitionGroup.defGroupName;
+      return <Redirect to={defGroupUrl(bookName, defGroupName)} />
     }
   }
 
@@ -57,7 +57,7 @@ export class PropRoutes extends React.Component<PropRoutesProps> {
   }
 
   private renderStep(stepIndex: number): JSX.Element {
-    return <PropositionPageView page={this.props.page} currentStepIndex={stepIndex} />
+    return <DefinitionGroupPageView page={this.props.page} currentStepIndex={stepIndex} />
   }
 
 }

@@ -20,25 +20,23 @@ const rootClass = style({
 
 export type StepsViewProps = {
   readonly steps: StepList;
-  readonly currentStepNum?: number;
-  readonly firstStepNum?: number;
-  readonly goToStep: (stepNum: number) => void;
+  readonly currentStepIndex: number;
+  readonly goToStep: (stepIndex: number) => void;
 };
 
 export class StepsView extends React.PureComponent<StepsViewProps> {
 
   public render(): JSX.Element {
-    const firstStepNum = this.props.firstStepNum || 1;
-    const currentStepNum = this.props.currentStepNum || 0;
+    const currentStepIndex = this.props.currentStepIndex;
     const goToStep = this.props.goToStep;
     const stepElements = this.props.steps.map((step, index) => {
-      const stepNum = firstStepNum + index;
       return (
         <StepView
-          key={stepNum}
-          stepNum={stepNum}
+          key={step.name}
+          stepIndex={index}
+          stepName={step.name}
           text={step.text}
-          faded={stepNum > currentStepNum}
+          faded={index > currentStepIndex}
           goToStep={goToStep}
         />
       );

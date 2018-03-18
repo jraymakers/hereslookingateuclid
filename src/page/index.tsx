@@ -1,5 +1,6 @@
 export {
   ContentsPageView,
+  DefinitionGroupPageView,
   PropositionPageView,
   TextPageView,
 } from './components';
@@ -11,7 +12,11 @@ export {
   BookTextPage,
   BookTitleLinkPage,
   ContentsPage,
+  DefinitionGroup,
+  DefinitionGroupPage,
+  DefinitionGroupPageMap,
   Page,
+  Proposition,
   PropositionPage,
   PropositionPageMap,
   TextPage,
