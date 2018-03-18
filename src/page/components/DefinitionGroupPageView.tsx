@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 
-import { defGroupUrl, defGroupStepUrl } from '../../link';
+import {
+  defGroupStepUrl,
+  defGroupTitle,
+  defGroupUrl,
+} from '../../link';
 import { DefinitionGroupPage } from '../../page';
 import { StepsAndDiagramView } from '../../stepsAndDiagram';
 
@@ -23,7 +27,7 @@ class DefinitionGroupPageViewInternal extends React.PureComponent<DefinitionGrou
       <PageView page={page} onKeyDown={this.onKeyDown}>
         <PageTitleView title={page.title} />
         <StepsAndDiagramView
-          title={this.getTitle()}
+          title={defGroupTitle(group)}
           summary={group.summary}
           steps={group.steps}
           diagram={group.diagram}
@@ -32,18 +36,6 @@ class DefinitionGroupPageViewInternal extends React.PureComponent<DefinitionGrou
         />
       </PageView>
     );
-  }
-
-  private getTitle(): string {
-    const steps = this.props.page.definitionGroup.steps;
-    if (steps.length > 1) {
-      return `Definitions ${steps[0].name} to ${steps[steps.length - 1].name}`
-    } else if (steps.length === 1) {
-      return `Definition ${steps[0].name}`
-    } else {
-      console.warn(`def group with no steps`);
-      return '';
-    }
   }
 
   private readonly onKeyDown = (event: KeyboardEvent) => {

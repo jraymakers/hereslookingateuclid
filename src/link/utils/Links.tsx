@@ -3,6 +3,11 @@ import {
 } from '../../paragraph';
 
 import {
+  DefinitionGroup,
+  Proposition,
+} from '../../page/types';
+
+import {
   LinkInfo,
   SubtitledLinkInfo,
 } from '../types/LinkInfo';
@@ -20,20 +25,6 @@ export const mainIntroLink: LinkInfo = {
   url: mainIntroUrl
 };
 
-export function bookTitleContentsLink(bookName: string): LinkInfo {
-  return {
-    text: `Book ${bookName}`,
-    url: bookContentsUrl(bookName)
-  };
-}
-
-export function bookTitleIntroLink(bookName: string): LinkInfo {
-  return {
-    text: `Book ${bookName}`,
-    url: bookIntroUrl(bookName)
-  };
-}
-
 export function bookIntroLink(bookName: string): LinkInfo {
   return {
     text: 'Introduction',
@@ -41,11 +32,21 @@ export function bookIntroLink(bookName: string): LinkInfo {
   };
 }
 
-export function defGroupTitleLink(bookName: string, defGroupName: string, subtitle: Paragraph): SubtitledLinkInfo {
+export function bookTitle(bookName: string): string {
+  return `Book ${bookName}`;
+}
+
+export function bookTitleContentsLink(bookName: string): LinkInfo {
   return {
-    text: `Definitions ${defGroupName}`, // todo
-    subtitle: subtitle,
-    url: defGroupUrl(bookName, defGroupName)
+    text: bookTitle(bookName),
+    url: bookContentsUrl(bookName)
+  };
+}
+
+export function bookTitleIntroLink(bookName: string): LinkInfo {
+  return {
+    text: bookTitle(bookName),
+    url: bookIntroUrl(bookName)
   };
 }
 
@@ -56,11 +57,15 @@ export function defGroupNavLink(bookName: string, defGroupName: string): LinkInf
   };
 }
 
-export function propTitleLink(bookName: string, propName: string, subtitle: Paragraph): SubtitledLinkInfo {
+export function defGroupTitle(group: DefinitionGroup): string {
+  return `Definition${group.steps.length > 1 ? 's' : ''} ${group.defGroupName}`;
+}
+
+export function defGroupTitleLink(bookName: string, group: DefinitionGroup): SubtitledLinkInfo {
   return {
-    text: `Proposition ${propName}`,
-    subtitle: subtitle,
-    url: propUrl(bookName, propName)
+    text: defGroupTitle(group),
+    subtitle: group.summary,
+    url: defGroupUrl(bookName, group.defGroupName)
   };
 }
 
@@ -68,5 +73,17 @@ export function propNavLink(bookName: string, propName: string): LinkInfo {
   return {
     text: `${bookName}.${propName}`,
     url: propUrl(bookName, propName)
+  };
+}
+
+export function propTitle(proposition: Proposition): string {
+  return `Proposition ${proposition.propName}`;
+}
+
+export function propTitleLink(bookName: string, proposition: Proposition): SubtitledLinkInfo {
+  return {
+    text: propTitle(proposition),
+    subtitle: proposition.summary,
+    url: propUrl(bookName, proposition.propName)
   };
 }

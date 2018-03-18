@@ -37,9 +37,9 @@ const prop2Nav = propNavLink(bookName, prop2.propName);
 
 const contentsLinks: SubtitledLinkInfoList = [
   introLink,
-  defGroupTitleLink(bookName, def1to4.defGroupName, def1to4.summary),
-  propTitleLink(bookName, prop1.propName, prop1.summary),
-  propTitleLink(bookName, prop2.propName, prop2.summary),
+  defGroupTitleLink(bookName, def1to4),
+  propTitleLink(bookName, prop1),
+  propTitleLink(bookName, prop2),
 ];
 
 const contentsPage: BookContentsPage = {
