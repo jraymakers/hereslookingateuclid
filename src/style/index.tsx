@@ -7,10 +7,8 @@ export {
   buttonClass,
   linkClass,
   paddingLargeClass,
-  textHeaderClass,
   textItalicClass,
   textLargeClass,
-  textSiteTitleClass,
   textSmallClass,
 } from './constants/ClassConstants';
 export {
@@ -26,8 +24,11 @@ export {
   justifyContentStartStyle,
   paddingBottomLargeStyle,
   paddingLargeStyle,
+  textAlignCenterStyle,
   textNormalStyle,
   textSerifStyle,
+  textXLargeStyle,
+  textXXLargeStyle,
 } from './constants/StyleConstants';
 export {
   Style,

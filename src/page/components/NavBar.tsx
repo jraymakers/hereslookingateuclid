@@ -16,7 +16,8 @@ import {
   linkClass,
   namedClass,
   paddingBottomLargeStyle,
-  textSiteTitleClass,
+  textAlignCenterStyle,
+  textXXLargeStyle,
 } from '../../style';
 
 const classPrefix = 'NavBar';
@@ -40,6 +41,10 @@ const rightClass = namedClass(classPrefix, 'right',
   flexGrowStyle,
   flexRowStyle,
   justifyContentEndStyle,
+);
+const siteTitleClass = namedClass(classPrefix, 'siteTitle',
+  textAlignCenterStyle,
+  textXXLargeStyle,
 );
 
 const title = "Here's Looking at Euclid";
@@ -71,9 +76,9 @@ export class NavBar extends React.PureComponent<NavBarProps> {
 
   private renderSiteTitle(): JSX.Element {
     if (this.props.noSiteTitleLink) {
-      return <div className={textSiteTitleClass}>{title}</div>
+      return <div className={siteTitleClass}>{title}</div>
     } else {
-      return <Link className={classes(linkClass, textSiteTitleClass)} to={mainContentsUrl}>{title}</Link>
+      return <Link className={classes(linkClass, siteTitleClass)} to={mainContentsUrl}>{title}</Link>
     }
   }
 

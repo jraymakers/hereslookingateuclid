@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { style } from 'typestyle';
+
+import {
+  flexColumnStyle,
+  flexGrowStyle,
+  namedClass,
+} from '../../style';
 
 import {
   StepList,
@@ -9,14 +14,11 @@ import { StepView } from './StepView';
 
 const classPrefix = 'StepsView';
 
-const rootClass = style({
-  $debugName: `${classPrefix}_root`,
-  $unique: true,
-  flex: 1,
-  display: 'flex',
-  flexDirection: 'column',
-  marginRight: 12,
-});
+const rootClass = namedClass(classPrefix, 'root',
+  flexColumnStyle,
+  flexGrowStyle,
+  { marginRight: 12 },
+);
 
 export type StepsViewProps = {
   readonly steps: StepList;

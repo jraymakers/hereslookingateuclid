@@ -93,8 +93,7 @@ export const paddingLargeStyle: Style = {
   padding: 12,
 };
 
-export const textHeaderStyle: Style = {
-  fontSize: 24,
+export const textAlignCenterStyle: Style = {
   textAlign: 'center',
 };
 
@@ -114,11 +113,14 @@ export const textSerifStyle: Style = {
   fontFamily: 'serif',
 };
 
-export const textSiteTitleStyle: Style = {
-  fontSize: 30,
-  textAlign: 'center',
-};
-
 export const textSmallStyle: Style = {
   fontSize: 15,
+};
+
+export const textXLargeStyle: Style = {
+  fontSize: 24,
+};
+
+export const textXXLargeStyle: Style = {
+  fontSize: 30,
 };

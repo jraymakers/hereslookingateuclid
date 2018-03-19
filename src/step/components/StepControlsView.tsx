@@ -1,26 +1,21 @@
 import * as React from 'react';
-import { style } from 'typestyle';
+
+import {
+  flexRowStyle,
+  namedClass,
+} from '../../style';
 
 const classPrefix = 'StepControlsView';
 
-const buttonsClass = style({
-  $debugName: `${classPrefix}_buttons`,
-  $unique: true,
-  display: 'flex',
-  flexDirection: 'row',
-});
+const buttonsClass = namedClass(classPrefix, 'buttons', flexRowStyle);
 
-const verticalBarClass = style({
-  $debugName: `${classPrefix}_verticalBar`,
-  $unique: true,
+const verticalBarClass = namedClass(classPrefix, 'verticalBar', {
   width: 4,
   height: 24,
   backgroundColor: 'black',
 });
 
-const arrowLeftClass = style({
-  $debugName: `${classPrefix}_arrowLeft`,
-  $unique: true,
+const arrowLeftClass = namedClass(classPrefix, 'arrowLeft', {
   width: 0,
   height: 0,
   borderTop: '12px solid transparent',
@@ -30,9 +25,7 @@ const arrowLeftClass = style({
   borderRightColor: 'black',
 });
 
-const arrowRightClass = style({
-  $debugName: `${classPrefix}_arrowRight`,
-  $unique: true,
+const arrowRightClass = namedClass(classPrefix, 'arrowRight', {
   width: 0,
   height: 0,
   borderTop: '12px solid transparent',
@@ -42,14 +35,10 @@ const arrowRightClass = style({
   borderLeftColor: 'black',
 });
 
-const buttonClass = style({
-  $debugName: `${classPrefix}_button`,
-  $unique: true,
+const buttonClass = namedClass(classPrefix, 'button', flexRowStyle, {
   marginLeft: 6,
   paddingLeft: 12,
   paddingRight: 12,
-  display: 'flex',
-  flexDirection: 'row',
   border: '1px solid #ddd',
   outline: 'none',
   $nest: {

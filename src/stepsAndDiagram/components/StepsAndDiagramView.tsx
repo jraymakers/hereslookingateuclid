@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { style } from 'typestyle';
+// import { style } from 'typestyle';
 
 import {
   Diagram,
@@ -14,6 +14,14 @@ import {
   StepList,
   StepsView,
 } from '../../step';
+import {
+  flexColumnStyle,
+  flexGrowStyle,
+  flexRowStyle,
+  namedClass,
+  paddingLargeStyle,
+  textXLargeStyle,
+} from '../../style';
 
 import {
   getDiagramPartStates,
@@ -21,46 +29,28 @@ import {
 
 const classPrefix = 'StepsAndDiagramView';
 
-const rootClass = style({
-  $debugName: `${classPrefix}_root`,
-  $unique: true,
-  display: 'flex',
-  flexDirection: 'column',
-});
+const rootClass = namedClass(classPrefix, 'root', flexColumnStyle);
 
-const headerClass = style({
-  $debugName: `${classPrefix}_header`,
-  $unique: true,
-  display: 'flex',
-  flexDirection: 'row',
+const headerClass = namedClass(classPrefix, 'header', flexRowStyle, {
   paddingLeft: 12,
   paddingRight: 12,
   paddingTop: 6,
   paddingBottom: 6,
 });
 
-const titleAndSummaryClass = style({
-  $debugName: `${classPrefix}_titleAndSummary`,
-  $unique: true,
-  display: 'flex',
-  flexDirection: 'column',
-  flex: 1,
-});
+const titleAndSummaryClass = namedClass(classPrefix, 'titleAndSummary',
+  flexColumnStyle,
+  flexGrowStyle,
+ );
 
-const titleClass = style({
-  $debugName: `${classPrefix}_title`,
-  $unique: true,
-  fontSize: 24,
-});
+const titleClass = namedClass(classPrefix, 'title', textXLargeStyle);
 
-const stepsAndDiagramClass = style({
-  $debugName: `${classPrefix}_stepsAndDiagram`,
-  $unique: true,
-  flex: 1,
-  display: 'flex',
-  flexDirection: 'row',
+const stepsAndDiagramClass = namedClass(classPrefix, 'stepsAndDiagram',
+  flexGrowStyle,
+  flexRowStyle,
+  paddingLargeStyle,
+  {
   alignItems: 'start',
-  padding: 12,
 });
 
 export type StepsAndDiagramViewProps = {

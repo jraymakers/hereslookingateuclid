@@ -1,10 +1,14 @@
 import * as React from 'react';
-import { style } from 'typestyle';
 
 import {
   Paragraph,
   ParagraphView,
 } from '../../paragraph';
+import {
+  flexNoneStyle,
+  flexRowStyle,
+  namedClass,
+} from '../../style';
 
 import {
   Step,
@@ -12,11 +16,7 @@ import {
 
 const classPrefix = 'StepView';
 
-const rootClass = style({
-  $debugName: `${classPrefix}_root`,
-  $unique: true,
-  display: 'flex',
-  flexDirection: 'row',
+const rootClass = namedClass(classPrefix, 'root', flexRowStyle, {
   alignItems: 'start',
   paddingTop: 6,
   paddingBottom: 6,
@@ -28,17 +28,12 @@ const rootClass = style({
   }
 });
 
-const numberClass = style({
-  $debugName: `${classPrefix}_number`,
-  $unique: true,
+const numberClass = namedClass(classPrefix, 'number', flexNoneStyle, {
   width: 30,
   textAlign: 'right',
-  flex: 'none',
 });
 
-const textClass = style({
-  $debugName: `${classPrefix}_text`,
-  $unique: true,
+const textClass = namedClass(classPrefix, 'text', {
   paddingLeft: 12,
   paddingRight: 12,
 });

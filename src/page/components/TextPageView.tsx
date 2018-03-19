@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { style } from 'typestyle';
 
 import { ParagraphView } from '../../paragraph';
+import { alignSelfCenterStyle, namedClass } from '../../style';
 
 import { BookTextPage, TextPage } from '../types/Page';
 
@@ -10,13 +10,10 @@ import { PageView } from './PageView';
 import { PageHeaderView } from './PageHeaderView';
 
 const classPrefix = 'TextPageView';
-
-const contentClass = style({
-  $debugName: `${classPrefix}_content`,
-  $unique: true,
-  maxWidth: 800,
-  alignSelf: 'center',
-});
+const contentClass = namedClass(classPrefix, 'content',
+  alignSelfCenterStyle,
+  { maxWidth: 800 },
+);
 
 export type TextPageViewProps = {
   readonly page: TextPage | BookTextPage;
