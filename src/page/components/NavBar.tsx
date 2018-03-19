@@ -1,92 +1,46 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { style } from 'typestyle';
 
 import { LinkInfo, mainContentsUrl } from '../../link';
+import {
+  alignItemsCenterStyle,
+  alignItemsStretchStyle,
+  buttonClass,
+  classes,
+  flexColumnStyle,
+  flexGrowStyle,
+  justifyContentEndStyle,
+  justifyContentStartStyle,
+  flexNoneStyle,
+  flexRowStyle,
+  linkClass,
+  namedClass,
+  paddingBottomLargeStyle,
+  textSiteTitleClass,
+} from '../../style';
 
 const classPrefix = 'NavBar';
-
-const rootClass = style({
-  $debugName: `${classPrefix}_root`,
-  $unique: true,
-  display: 'flex',
-  flexDirection: 'row',
-  paddingBottom: 12,
-});
-
-const leftClass = style({
-  $debugName: `${classPrefix}_left`,
-  $unique: true,
-  flex: 1,
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'flex-start',
-  alignItems: 'stretch',
-});
-
-const centerClass = style({
-  $debugName: `${classPrefix}_center`,
-  $unique: true,
-  flex: 'none',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-});
-
-const titleClass = style({
-  $debugName: `${classPrefix}_title`,
-  $unique: true,
-  textAlign: 'center',
-  fontSize: 30,
-});
-
-const titleLinkClass = style({
-  $debugName: `${classPrefix}_titleLink`,
-  $unique: true,
-  textAlign: 'center',
-  fontSize: 30,
-  color: 'black',
-  textDecoration: 'none',
-  $nest: {
-    '&:hover': {
-      $unique: true,
-      color: '#888',
-    }
-  }
-});
-
-const rightClass = style({
-  $debugName: `${classPrefix}_right`,
-  $unique: true,
-  flex: 1,
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'flex-end',
-  alignItems: 'stretch',
-});
-
-const buttonClass = style({
-  $debugName: `${classPrefix}_button`,
-  $unique: true,
-  paddingLeft: 18,
-  paddingRight: 18,
-  border: '1px solid #ddd',
-  color: 'black',
-  display: 'flex',
-  alignItems: 'center',
-  outline: 'none',
-  textDecoration: 'none',
-  $nest: {
-    '&:focus': {
-      $unique: true,
-      outline: '1px solid black',
-    },
-    '&:hover': {
-      $unique: true,
-      backgroundColor: '#eee',
-    },
-  }
-});
+const rootClass = namedClass(classPrefix, 'root',
+  flexRowStyle,
+  paddingBottomLargeStyle,
+);
+const leftClass = namedClass(classPrefix, 'left',
+  alignItemsStretchStyle,  
+  flexGrowStyle,
+  flexRowStyle,
+  justifyContentStartStyle,
+);
+const centerClass = namedClass(classPrefix, 'center',
+  alignItemsCenterStyle,  
+  flexColumnStyle,
+  flexNoneStyle,
+);
+const rightClass = namedClass(classPrefix, 'right',
+  alignItemsStretchStyle,
+  flexGrowStyle,
+  flexRowStyle,
+  justifyContentEndStyle,
+);
 
 const title = "Here's Looking at Euclid";
 
@@ -117,9 +71,9 @@ export class NavBar extends React.PureComponent<NavBarProps> {
 
   private renderSiteTitle(): JSX.Element {
     if (this.props.noSiteTitleLink) {
-      return <div className={titleClass}>{title}</div>
+      return <div className={textSiteTitleClass}>{title}</div>
     } else {
-      return <Link className={titleLinkClass} to={mainContentsUrl}>{title}</Link>
+      return <Link className={classes(linkClass, textSiteTitleClass)} to={mainContentsUrl}>{title}</Link>
     }
   }
 

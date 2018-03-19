@@ -1,9 +1,18 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { style } from 'typestyle';
 
 import { SubtitledLinkInfo } from '../../link';
-import { ParagraphView } from '../../paragraph';
+import { Paragraph, ParagraphView } from '../../paragraph';
+import {
+  classes,
+  alignSelfCenterStyle,
+  flexColumnStyle,
+  linkClass,
+  namedClass,
+  paddingLargeClass,
+  textLargeClass,
+  textSmallClass,
+} from '../../style';
 
 import { BookContentsPage, ContentsPage } from '../types/Page';
 
@@ -11,40 +20,7 @@ import { PageView } from './PageView';
 import { PageHeaderView } from './PageHeaderView';
 
 const classPrefix = 'ContentsPageView';
-
-const linksSectionClass = style({
-  $debugName: `${classPrefix}_linkSection`,
-  $unique: true,
-  alignSelf: 'center',
-  display: 'flex',
-  flexDirection: 'column',
-});
-
-const linkClass = style({
-  $debugName: `${classPrefix}_link`,
-  $unique: true,
-  padding: 12,
-  color: 'black',
-  textDecoration: 'none',
-  $nest: {
-    '&:hover': {
-      $unique: true,
-      color: '#888',
-    }
-  }
-});
-
-const linkTitleClass = style({
-  $debugName: `${classPrefix}_linkTitle`,
-  $unique: true,
-  fontSize: 21,
-});
-
-const linkSubtitleClass = style({
-  $debugName: `${classPrefix}_linkSubtitle`,
-  $unique: true,
-  fontSize: 15,
-});
+const linksSectionClass = namedClass(classPrefix, 'links', alignSelfCenterStyle, flexColumnStyle);
 
 type ContentsPageViewProps = {
   readonly page: ContentsPage | BookContentsPage;
@@ -67,15 +43,23 @@ export class ContentsPageView extends React.PureComponent<ContentsPageViewProps>
 
   private readonly renderContentsLink = (contentsLink: SubtitledLinkInfo): JSX.Element => {
     return (
-      <Link className={linkClass} to={contentsLink.url} key={contentsLink.url}>
-        <div className={linkTitleClass}>{contentsLink.text}</div>
-        {contentsLink.subtitle
-            ? <div className={linkSubtitleClass}>
-                <ParagraphView paragraph={contentsLink.subtitle} />
-              </div>
-          : null}
+      <Link className={classes(linkClass, paddingLargeClass)} to={contentsLink.url} key={contentsLink.url}>
+        <div className={textLargeClass}>{contentsLink.text}</div>
+        {this.renderSubtitle(contentsLink.subtitle)}
       </Link>
     );
+  }
+
+  private renderSubtitle(subtitle: Paragraph | undefined): JSX.Element | null {
+    if (subtitle) {
+      return (
+        <div className={textSmallClass}>
+          <ParagraphView paragraph={subtitle} />
+        </div>
+      );
+    } else {
+      return null;
+    }
   }
 
 }

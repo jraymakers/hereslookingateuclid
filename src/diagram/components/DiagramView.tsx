@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { style } from 'typestyle';
+import { borderClass } from '../../style';
 
 import {
   CircleDiagramPart,
@@ -14,16 +14,6 @@ import {
 import { CircleSvg } from './CircleSvg';
 import { LineSvg } from './LineSvg';
 import { PointSvg } from './PointSvg';
-
-const classPrefix = 'DiagramView';
-
-const rootClass = style({
-  $debugName: `${classPrefix}_root`,
-  $unique: true,
-  borderColor: '#aaa',
-  borderStyle: 'solid',
-  borderWidth: 1,
-});
 
 export type DiagramViewProps = {
   readonly diagram: Diagram;
@@ -58,7 +48,7 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
       }
     }
     return (
-      <div className={rootClass}>
+      <div className={borderClass}>
         <svg
           width={diagram.width}
           height={diagram.height}

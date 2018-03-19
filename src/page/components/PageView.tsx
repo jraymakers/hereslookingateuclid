@@ -1,5 +1,16 @@
 import * as React from 'react';
-import { style } from 'typestyle';
+
+import {
+  alignItemsStretchStyle,
+  flexColumnStyle,
+  flexGrowStyle,
+  flexRowStyle,
+  justifyContentCenterStyle,
+  namedClass,
+  paddingLargeStyle,
+  textNormalStyle,
+  textSerifStyle,
+} from '../../style';
 
 import { Page } from '../types/Page';
 
@@ -7,27 +18,21 @@ import { NavBar } from './NavBar';
 
 const classPrefix = 'PageView';
 
-const rootClass = style({
-  $debugName: `${classPrefix}_root`,
-  $unique: true,
-  flex: 1,
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'center',
-});
+const rootClass = namedClass(classPrefix, 'root',
+  flexGrowStyle,
+  flexRowStyle,
+  justifyContentCenterStyle,
+);
 
-const contentClass = style({
-  $debugName: `${classPrefix}_content`,
-  $unique: true,
-  flex: 1,
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'stretch',
-  padding: 12,
-  fontFamily: 'serif',
-  fontSize: 18,
-  maxWidth: 1200,
-});
+const contentClass = namedClass(classPrefix, 'content',
+  alignItemsStretchStyle,
+  flexColumnStyle,
+  flexGrowStyle, 
+  paddingLargeStyle,
+  textNormalStyle,
+  textSerifStyle, 
+  { maxWidth: 1200 },
+);
 
 type PageViewProps = {
   readonly page: Page;

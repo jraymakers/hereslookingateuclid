@@ -4,14 +4,9 @@ import { Link } from 'react-router-dom';
 import { LinkInfo } from '../../link';
 import {
   classes,
-  linkStyle,
-  namedClass,
-  pageHeaderTextStyle,
+  linkClass,
+  textHeaderClass,
 } from '../../style';
-
-const classPrefix = 'PageHeaderView';
-const textClass = namedClass(classPrefix, 'text', pageHeaderTextStyle);
-const linkClass = namedClass(classPrefix, 'link', linkStyle);
 
 export type PageHeaderViewProps = {
   readonly header?: string | LinkInfo | null | undefined;
@@ -23,9 +18,9 @@ export class PageHeaderView extends React.PureComponent<PageHeaderViewProps> {
     const header = this.props.header;
     if (header) {
       if (typeof header === 'string') {
-        return <div className={textClass}>{header}</div>;
+        return <div className={textHeaderClass}>{header}</div>;
       } else {
-        return <Link className={classes(textClass, linkClass)} to={header.url}>{header.text}</Link>;
+        return <Link className={classes(linkClass, textHeaderClass)} to={header.url}>{header.text}</Link>;
       }
     }
     return null;

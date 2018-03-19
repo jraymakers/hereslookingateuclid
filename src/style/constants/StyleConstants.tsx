@@ -1,26 +1,124 @@
-import {
-  namedClass,
-  uniqueStyle,
-} from '../utils/StyleUtils';
+import { Style } from '../types/StyleTypes';
 
-export const pageHeaderTextStyle = uniqueStyle({
-  fontSize: 24,
-  padding: 6,
-  textAlign: 'center',
-});
+export const alignItemsCenterStyle: Style = {
+  alignItems: 'center',
+};
 
-export const linkHoverStyle = uniqueStyle({
+export const alignItemsStretchStyle: Style = {
+  alignItems: 'stretch',
+};
+
+export const alignSelfCenterStyle: Style = {
+  alignSelf: 'center',
+};
+
+export const borderStyle: Style = {
+  borderColor: '#aaa',
+  borderStyle: 'solid',
+  borderWidth: 1,
+};
+
+export const buttonStyle: Style = {
+  paddingLeft: 18,
+  paddingRight: 18,
+  border: '1px solid #ddd',
+  color: 'black',
+  display: 'flex',
+  alignItems: 'center',
+  outline: 'none',
+  textDecoration: 'none',
+  $nest: {
+    '&:focus': {
+      $unique: true,
+      outline: '1px solid black',
+    },
+    '&:hover': {
+      $unique: true,
+      backgroundColor: '#eee',
+    },
+  }
+};
+
+export const flexColumnStyle: Style = {
+  display: 'flex',
+  flexDirection: 'column',
+};
+
+export const flexGrowStyle: Style = {
+  flex: 1,
+};
+
+export const flexNoneStyle: Style = {
+  flex: 'none',
+};
+
+export const flexRowStyle: Style = {
+  display: 'flex',
+  flexDirection: 'row',
+};
+
+export const justifyContentCenterStyle: Style = {
+  justifyContent: 'center',
+};
+
+export const justifyContentEndStyle: Style = {
+  justifyContent: 'flex-end',
+};
+
+export const justifyContentStartStyle: Style = {
+  justifyContent: 'flex-start',
+};
+
+const linkHoverStyle: Style = {
   color: '#888',
-});
+};
 
-export const linkStyle = uniqueStyle({
+export const linkStyle: Style = {
   color: 'black',
   textDecoration: 'none',
   $nest: {
     '&:hover': linkHoverStyle
   }
-});
+};
 
-const classPrefix = 'common';
+export const paddingBottomLargeStyle: Style = {
+  paddingBottom: 12,
+};
 
-export const linkClass = namedClass(classPrefix, 'link', linkStyle);
+export const paddingNormalStyle: Style = {
+  padding: 6,
+};
+
+export const paddingLargeStyle: Style = {
+  padding: 12,
+};
+
+export const textHeaderStyle: Style = {
+  fontSize: 24,
+  textAlign: 'center',
+};
+
+export const textItalicStyle: Style = {
+  fontStyle: 'italic',
+};
+
+export const textLargeStyle: Style = {
+  fontSize: 21,
+};
+
+export const textNormalStyle: Style = {
+  fontSize: 18,
+};
+
+export const textSerifStyle: Style = {
+  fontFamily: 'serif',
+};
+
+export const textSiteTitleStyle: Style = {
+  fontSize: 30,
+  textAlign: 'center',
+};
+
+export const textSmallStyle: Style = {
+  fontSize: 15,
+};
