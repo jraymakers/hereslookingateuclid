@@ -3,17 +3,11 @@ import { namedClass } from '../utils/StyleUtils';
 import {
   borderStyle,
   buttonStyle,
-  flexColumnStyle,
-  flexRowStyle,
   linkStyle,
   paddingLargeStyle,
-  paddingNormalStyle,
   textItalicStyle,
   textLargeStyle,
-  textNormalStyle,
   textSmallStyle,
-  textXLargeStyle,
-  textXXLargeStyle,
 } from './StyleConstants';
 
 const classPrefix = 'shared';
