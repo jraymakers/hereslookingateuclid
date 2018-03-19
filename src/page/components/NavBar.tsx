@@ -9,10 +9,10 @@ import {
   classes,
   flexColumnStyle,
   flexGrowStyle,
-  justifyContentEndStyle,
-  justifyContentStartStyle,
   flexNoneStyle,
   flexRowStyle,
+  justifyContentEndStyle,
+  justifyContentStartStyle,
   linkClass,
   namedClass,
   paddingBottomLargeStyle,
@@ -26,13 +26,13 @@ const rootClass = namedClass(classPrefix, 'root',
   paddingBottomLargeStyle,
 );
 const leftClass = namedClass(classPrefix, 'left',
-  alignItemsStretchStyle,  
+  alignItemsStretchStyle,
   flexGrowStyle,
   flexRowStyle,
   justifyContentStartStyle,
 );
 const centerClass = namedClass(classPrefix, 'center',
-  alignItemsCenterStyle,  
+  alignItemsCenterStyle,
   flexColumnStyle,
   flexNoneStyle,
 );
@@ -76,9 +76,9 @@ export class NavBar extends React.PureComponent<NavBarProps> {
 
   private renderSiteTitle(): JSX.Element {
     if (this.props.noSiteTitleLink) {
-      return <div className={siteTitleClass}>{title}</div>
+      return <div className={siteTitleClass}>{title}</div>;
     } else {
-      return <Link className={classes(linkClass, siteTitleClass)} to={mainContentsUrl}>{title}</Link>
+      return <Link className={classes(linkClass, siteTitleClass)} to={mainContentsUrl}>{title}</Link>;
     }
   }
 

@@ -1,8 +1,8 @@
 import {
   bookTitleContentsLink,
   bookTitleIntroLink,
-  SubtitledLinkInfoList,
   mainIntroLink,
+  SubtitledLinkInfoList,
 } from '../link';
 import {
   BookMap,
@@ -10,8 +10,8 @@ import {
   TextPage,
 } from '../page';
 
-import intro from './MainIntro';
 import book01 from './book01';
+import intro from './MainIntro';
 
 export const contentsLinks: SubtitledLinkInfoList = [
   mainIntroLink,
@@ -25,5 +25,5 @@ export const books: BookMap = {
 export const mainContentsPage: ContentsPage = { contentsLinks };
 export const mainIntroPage: TextPage = {
   paragraphs: intro,
-  next: bookTitleIntroLink(book01.bookName)
-}
+  next: bookTitleIntroLink(book01.bookName),
+};

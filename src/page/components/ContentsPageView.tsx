@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { SubtitledLinkInfo } from '../../link';
 import { Paragraph, ParagraphView } from '../../paragraph';
 import {
-  classes,
   alignSelfCenterStyle,
+  classes,
   flexColumnStyle,
   linkClass,
   namedClass,
@@ -16,8 +16,8 @@ import {
 
 import { BookContentsPage, ContentsPage } from '../types/Page';
 
-import { PageView } from './PageView';
 import { PageHeaderView } from './PageHeaderView';
+import { PageView } from './PageView';
 
 const classPrefix = 'ContentsPageView';
 const linksSectionClass = namedClass(classPrefix, 'links', alignSelfCenterStyle, flexColumnStyle);

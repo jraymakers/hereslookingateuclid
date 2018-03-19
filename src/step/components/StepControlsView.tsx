@@ -56,7 +56,7 @@ const buttonClass = namedClass(classPrefix, 'button', flexRowStyle, {
       border: '1px solid #888',
       opacity: 0.3,
     },
-  }
+  },
 });
 
 export type StepControlsViewProps = {
@@ -73,7 +73,7 @@ export class StepControlsView extends React.PureComponent<StepControlsViewProps>
     const minStepIndex = this.props.minStepIndex;
     const maxStepIndex = this.props.maxStepIndex;
     const atMin = currentStepIndex === minStepIndex;
-    const atMax = currentStepIndex === maxStepIndex
+    const atMax = currentStepIndex === maxStepIndex;
     return (
       <div className={buttonsClass}>
         <button
@@ -112,18 +112,18 @@ export class StepControlsView extends React.PureComponent<StepControlsViewProps>
 
   private readonly goMin = () => {
     this.props.goToStep(this.props.minStepIndex);
-  };
+  }
 
   private readonly goPrev = () => {
     this.props.goToStep(Math.max(this.props.currentStepIndex - 1, this.props.minStepIndex));
-  };
+  }
 
   private readonly goNext = () => {
     this.props.goToStep(Math.min(this.props.currentStepIndex + 1, this.props.maxStepIndex));
-  };
+  }
 
   private readonly goMax = () => {
     this.props.goToStep(this.props.maxStepIndex);
-  };
+  }
 
 }

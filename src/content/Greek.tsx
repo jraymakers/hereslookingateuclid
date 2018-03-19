@@ -1,6 +1,8 @@
-export namespace Greek {
-  export const alpha = '\u03b1';
-  export const beta = '\u03b2';
-  export const gamma = '\u03b3';
-  export const delta = '\u03b4';
-}
+export const GreekInternal = {
+  alpha: '\u03b1',
+  beta:  '\u03b2',
+  gamma: '\u03b3',
+  delta: '\u03b4',
+};
+
+export const Greek: Readonly<typeof GreekInternal> = GreekInternal;

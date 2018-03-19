@@ -19,8 +19,8 @@ import {
   StepsAndDiagramPageMap,
 } from '../../page';
 
-import intro from './Book1Intro';
 import def1to4 from './Book1Def1to4';
+import intro from './Book1Intro';
 import prop1 from './Book1Prop1';
 import prop2 from './Book1Prop2';
 
@@ -43,7 +43,7 @@ const contentsLinks: SubtitledLinkInfoList = [
 const contentsPage: BookContentsPage = {
   bookName,
   header: titleContentsLink.text,
-  contentsLinks
+  contentsLinks,
 };
 
 const bookPage: BookTitleLinkPage = {

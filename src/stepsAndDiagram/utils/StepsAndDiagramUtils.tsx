@@ -12,8 +12,8 @@ export function getDiagramPartStates(steps: StepList, currentStepIndex: number):
       }
       stepIndex++;
     }
-    const step = steps[stepIndex];
-    for (const key of step.highlight) {
+    const currentStep = steps[stepIndex];
+    for (const key of currentStep.highlight) {
       stateMap[key] = 'highlighted';
     }
   }

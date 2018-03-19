@@ -4,8 +4,8 @@ import { RouteComponentProps, withRouter } from 'react-router';
 import { StepsAndDiagramPage } from '../../page';
 import { StepsAndDiagramView } from '../../stepsAndDiagram';
 
-import { PageView } from './PageView';
 import { PageHeaderView } from './PageHeaderView';
+import { PageView } from './PageView';
 
 type StepsAndDiagramPageViewProps = RouteComponentProps<{}> & {
   readonly page: StepsAndDiagramPage;
@@ -51,12 +51,12 @@ class StepsAndDiagramPageViewInternal extends React.PureComponent<StepsAndDiagra
   private readonly goPrev = () => {
     const currentStepIndex = this.props.currentStepIndex;
     this.goToStep(Math.max(currentStepIndex - 1, -1));
-  };
+  }
 
   private readonly goNext = () => {
     const currentStepIndex = this.props.currentStepIndex;
     this.goToStep(Math.min(currentStepIndex + 1, this.props.page.stepsAndDiagram.steps.length - 1));
-  };
+  }
 
   private readonly goToStep = (newStepIndex: number) => {
     const page = this.props.page;

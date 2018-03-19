@@ -48,7 +48,7 @@ export class StepsAndDiagramPageRoutes extends React.Component<StepsAndDiagramPa
       const page = this.props.page;
       const bookName = page.bookName;
       const pageName = page.stepsAndDiagram.name;
-      return <Redirect to={this.props.makePageUrl(bookName, pageName)} />
+      return <Redirect to={this.props.makePageUrl(bookName, pageName)} />;
     }
   }
 

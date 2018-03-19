@@ -7,6 +7,6 @@ const intro: ParagraphList = [
   [
     [ `This is an interactive interpretation of Euclid's `, italic('Elements'), `.` ],
   ],
-]
+];
 
 export default intro;

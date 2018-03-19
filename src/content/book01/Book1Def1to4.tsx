@@ -29,37 +29,37 @@ const steps: StepList = [
   {
     name: '1',
     text: [
-      ['A ', italic('point'), ' is that which has no part.']
+      ['A ', italic('point'), ' is that which has no part.'],
     ],
-    highlight: []
+    highlight: [],
   },
   {
     name: '2',
     text: [
-      ['A ', italic('line'), ' is breadthless length.']
+      ['A ', italic('line'), ' is breadthless length.'],
     ],
-    highlight: []
+    highlight: [],
   },
   {
     name: '3',
     text: [
-      ['The ends of a line are points.']
+      ['The ends of a line are points.'],
     ],
-    highlight: []
+    highlight: [],
   },
   {
     name: '4',
     text: [
-      ['A ', italic('straight line'), ' is a line which lies evenly with the points on itself.']
+      ['A ', italic('straight line'), ' is a line which lies evenly with the points on itself.'],
     ],
-    highlight: []
-  }
+    highlight: [],
+  },
 ];
 
 const name = '1-4';
 const title = defGroupTitle(name, steps.length);
 const summary: Paragraph = [
-  ['Points and lines']
+  ['Points and lines'],
 ];
 
 const definitionGroup: StepsAndDiagram = {

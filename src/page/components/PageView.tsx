@@ -27,10 +27,10 @@ const rootClass = namedClass(classPrefix, 'root',
 const contentClass = namedClass(classPrefix, 'content',
   alignItemsStretchStyle,
   flexColumnStyle,
-  flexGrowStyle, 
+  flexGrowStyle,
   paddingLargeStyle,
   textNormalStyle,
-  textSerifStyle, 
+  textSerifStyle,
   { maxWidth: 1200 },
 );
 
@@ -38,7 +38,7 @@ type PageViewProps = {
   readonly page: Page;
   readonly noSiteTitleLink?: boolean;
   readonly onKeyDown?: (event: KeyboardEvent) => void;
-}
+};
 
 export class PageView extends React.PureComponent<PageViewProps> {
 

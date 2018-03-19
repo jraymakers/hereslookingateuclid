@@ -21,17 +21,17 @@ import { Greek } from '../Greek';
 
 const width = 400;
 const height = 400;
-const centerX = width/2;
-const centerY = height/2;
+const centerX = width / 2;
+const centerY = height / 2;
 const dX = centerX;
 const dY = centerY;
 const ab = 50;
 const bc = 100;
 const fg = 40;
 const dg = ab + bc;
-const daAngle = Math.PI*11/24;
-const dbAngle = Math.PI*3/24;
-const bcAngle = Math.PI*10/24;
+const daAngle = Math.PI * 11 / 24;
+const dbAngle = Math.PI * 3 / 24;
+const bcAngle = Math.PI * 10 / 24;
 const aX = dX + ab * Math.cos(daAngle);
 const aY = dY + ab * Math.sin(daAngle);
 const bX = dX + ab * Math.cos(dbAngle);
@@ -48,8 +48,8 @@ const eX = hX + fg * Math.cos(daAngle);
 const eY = hY + fg * Math.sin(daAngle);
 
 const diagram: Diagram = {
-  width: width,
-  height: height,
+  width,
+  height,
   parts: {
     ['A']: { type: 'point', x: aX, y: aY, labelX: -10},
     ['B']: { type: 'point', x: bX, y: bY, labelX: 9, labelY: -9 },
@@ -69,7 +69,7 @@ const diagram: Diagram = {
     ['FG']: { type: 'line', p1: 'F', p2: 'G' },
     [Greek.beta]:  { type: 'circle', p1: 'B', p2: 'C', labelDir: LabelDir.W },
     [Greek.delta]: { type: 'circle', p1: 'D', p2: 'G', labelDir: LabelDir.W },
-  }
+  },
 };
 
 const steps: StepList = [
@@ -78,14 +78,14 @@ const steps: StepList = [
     text: [
       ['Let A be the given point, and BC the given straight line.'],
     ],
-    highlight: [ 'A', 'B', 'C', 'BC' ]
+    highlight: [ 'A', 'B', 'C', 'BC' ],
   },
   {
     name: '2',
     text: [
       ['Construct the straight line AB.'],
     ],
-    highlight: [ 'AB' ]
+    highlight: [ 'AB' ],
   },
   {
     name: '3',
@@ -94,72 +94,72 @@ const steps: StepList = [
       ['So AB, AD, and BD are all equal.'],
       ['(', link(propNavLink('I', '1')), ')'],
     ],
-    highlight: [ 'D', 'AD', 'BD' ]
+    highlight: [ 'D', 'AD', 'BD' ],
   },
   {
     name: '4',
     text: [
       ['Construct the straight lines AE and BF by extending DA and DB, respectively.'],
     ],
-    highlight: [ 'E', 'F', 'AH', 'BG', 'EH', 'FG' ]
+    highlight: [ 'E', 'F', 'AH', 'BG', 'EH', 'FG' ],
   },
   {
     name: '5',
     text: [
       [`Construct the circle ${Greek.beta} with center B and radius BC.`],
     ],
-    highlight: [ Greek.beta ]
+    highlight: [ Greek.beta ],
   },
   {
     name: '6',
     text: [
       [`Let G be the intersection of ${Greek.beta} and DF.`],
     ],
-    highlight: [ 'G' ]
+    highlight: [ 'G' ],
   },
   {
     name: '7',
     text: [
       [`Construct the circle ${Greek.delta} with center D and radius DG.`],
     ],
-    highlight: [ Greek.delta ]
+    highlight: [ Greek.delta ],
   },
   {
     name: '8',
     text: [
       [`Let H be the intersection of ${Greek.delta} and DE.`],
     ],
-    highlight: [ 'H' ]
+    highlight: [ 'H' ],
   },
   {
     name: '9',
     text: [
       [`Since BC and BG are both radii of circle ${Greek.beta}, they are equal.`],
     ],
-    highlight: [ 'BC', 'BG' ]
+    highlight: [ 'BC', 'BG' ],
   },
   {
     name: '10',
     text: [
       [`Since DG and DH are both radii of circle ${Greek.delta}, they are equal.`],
     ],
-    highlight: [ 'AD', 'AH', 'BD', 'BG' ]
+    highlight: [ 'AD', 'AH', 'BD', 'BG' ],
   },
   {
     name: '11',
     text: [
       ['Because AD equals BD, and AD and BD are parts of DH and DG respectively,'
-      +' the remaining parts of each, AH and BG, are also equal.'],
+      + ' the remaining parts of each, AH and BG, are also equal.'],
     ],
-    highlight: [ 'AH', 'BG' ]
+    highlight: [ 'AH', 'BG' ],
   },
   {
     name: '12',
     text: [
       ['And since BG also equals BC, then AH equals BC, as desired.'],
     ],
-    highlight: [ 'AH', 'BC' ]
-  }
+    highlight: [ 'AH', 'BC' ],
+  },
 ];
 
 const name = '2';

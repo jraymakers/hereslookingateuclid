@@ -6,7 +6,7 @@ import {
 
 export type StepsAndDiagramPageMap = {
   readonly [pageName: string]: StepsAndDiagramPage;
-}
+};
 
 export type Book = {
   readonly bookName: string;
@@ -14,8 +14,8 @@ export type Book = {
   readonly introPage: BookTextPage,
   readonly definitionGroupPages: StepsAndDiagramPageMap;
   readonly propositionPages: StepsAndDiagramPageMap;
-}
+};
 
 export type BookMap = {
   readonly [bookName: string]: Book;
-}
+};

@@ -1,3 +1,3 @@
 export {
-  LabelDir
+  LabelDir,
 } from './LabelDir';

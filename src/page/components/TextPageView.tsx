@@ -6,8 +6,8 @@ import { alignSelfCenterStyle, namedClass } from '../../style';
 
 import { BookTextPage, TextPage } from '../types/Page';
 
-import { PageView } from './PageView';
 import { PageHeaderView } from './PageHeaderView';
+import { PageView } from './PageView';
 
 const classPrefix = 'TextPageView';
 const contentClass = namedClass(classPrefix, 'content',

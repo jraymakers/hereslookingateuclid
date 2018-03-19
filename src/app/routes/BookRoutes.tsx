@@ -69,7 +69,7 @@ export class BookRoutes extends React.Component<BookRoutesProps> {
         />
       );
     } else {
-      return <Redirect to={bookContentsUrl(this.props.book.bookName)} />
+      return <Redirect to={bookContentsUrl(this.props.book.bookName)} />;
     }
   }
 
@@ -85,7 +85,7 @@ export class BookRoutes extends React.Component<BookRoutesProps> {
         />
       );
     } else {
-      return <Redirect to={bookContentsUrl(this.props.book.bookName)} />
+      return <Redirect to={bookContentsUrl(this.props.book.bookName)} />;
     }
   }
 

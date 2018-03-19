@@ -23,7 +23,7 @@ export type HeaderTextPage = Page & {
 
 export type ContentsContent = {
   readonly contentsLinks: SubtitledLinkInfoList;
-}
+};
 
 export type TextContent = {
   readonly paragraphs: ParagraphList;

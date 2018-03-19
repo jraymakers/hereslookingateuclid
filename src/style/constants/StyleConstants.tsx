@@ -36,7 +36,7 @@ export const buttonStyle: Style = {
       $unique: true,
       backgroundColor: '#eee',
     },
-  }
+  },
 };
 
 export const flexColumnStyle: Style = {
@@ -77,8 +77,8 @@ export const linkStyle: Style = {
   color: 'black',
   textDecoration: 'none',
   $nest: {
-    '&:hover': linkHoverStyle
-  }
+    '&:hover': linkHoverStyle,
+  },
 };
 
 export const paddingBottomLargeStyle: Style = {

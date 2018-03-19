@@ -29,22 +29,26 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
     const diagramElements: JSX.Element[] = [];
     const parts = diagram.parts;
     for (const key in parts) {
-      const part = parts[key];
-      const state = states[key];
-      if (state === 'visible') {
-        const element = this.renderDiagramPart(key, part, state);
-        if (element) {
-          diagramElements.push(element);
+      if (parts.hasOwnProperty(key)) {
+        const part = parts[key];
+        const state = states[key];
+        if (state === 'visible') {
+          const element = this.renderDiagramPart(key, part, state);
+          if (element) {
+            diagramElements.push(element);
+          }
         }
       }
     }
     for (const key in parts) {
-      const part = parts[key];
-      const state = states[key];
-      if (state === 'highlighted') {
-        const element = this.renderDiagramPart(key, part, state);
-        if (element) {
-          diagramElements.push(element);
+      if (parts.hasOwnProperty(key)) {
+        const part = parts[key];
+        const state = states[key];
+        if (state === 'highlighted') {
+          const element = this.renderDiagramPart(key, part, state);
+          if (element) {
+            diagramElements.push(element);
+          }
         }
       }
     }
@@ -98,7 +102,7 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
         x2={p2.x}
         y2={p2.y}
         highlighted={state === 'highlighted'}
-      />
+      />;
     } else {
       return null;
     }
@@ -120,7 +124,7 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
           label={key}
           labelDir={circle.labelDir}
           highlighted={state === 'highlighted'}
-        />
+        />;
     } else {
       return null;
     }

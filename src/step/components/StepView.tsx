@@ -23,9 +23,9 @@ const rootClass = namedClass(classPrefix, 'root', flexRowStyle, {
   $nest: {
     '&:hover': {
       $unique: true,
-      outline: '1px solid #888'
-    }
-  }
+      outline: '1px solid #888',
+    },
+  },
 });
 
 const numberClass = namedClass(classPrefix, 'number', flexNoneStyle, {

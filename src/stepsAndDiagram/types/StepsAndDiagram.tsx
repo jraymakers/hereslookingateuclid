@@ -8,4 +8,4 @@ export type StepsAndDiagram = {
   readonly summary: Paragraph;
   readonly diagram: Diagram;
   readonly steps: StepList;
-}
+};

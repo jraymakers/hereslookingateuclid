@@ -23,7 +23,6 @@ import {
 
 import { BookRoutes } from './BookRoutes';
 
-
 type BookRouteProps = RouteComponentProps<{
   readonly bookName: string;
 }>;
@@ -42,11 +41,11 @@ export class MainRoutes extends React.Component<{}> {
   }
 
   private readonly renderContents = (): JSX.Element => {
-    return <ContentsPageView page={mainContentsPage} noSiteTitleLink={true} />
+    return <ContentsPageView page={mainContentsPage} noSiteTitleLink={true} />;
   }
 
   private readonly renderIntro = (): JSX.Element => {
-    return <TextPageView page={mainIntroPage} />
+    return <TextPageView page={mainIntroPage} />;
   }
 
   private readonly renderBookRoute = (props: BookRouteProps): JSX.Element => {
@@ -54,9 +53,9 @@ export class MainRoutes extends React.Component<{}> {
     const bookName = match.params.bookName;
     const book = books[bookName];
     if (book) {
-      return <BookRoutes book={book} />
+      return <BookRoutes book={book} />;
     } else {
-      return <Redirect to={mainContentsUrl} />
+      return <Redirect to={mainContentsUrl} />;
     }
   }
 
