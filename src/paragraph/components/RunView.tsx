@@ -5,6 +5,10 @@ import { linkClass } from '../../style';
 
 import { Run } from '../types/Paragraph';
 
+function stopProp(event: React.MouseEvent<HTMLElement>) {
+  event.stopPropagation();
+}
+
 export type RunViewProps = {
   readonly run: Run;
 };
@@ -20,7 +24,11 @@ export class RunView extends React.PureComponent<RunViewProps> {
         case 'styled':
           return <span className={run.className}>{run.text}</span>;
         case 'link':
-          return <Link className={linkClass} to={run.linkInfo.url}>{run.linkInfo.text}</Link>;
+          return (
+            <span onClick={stopProp}>
+              <Link className={linkClass} to={run.linkInfo.url}>{run.linkInfo.text}</Link>
+            </span>
+          );
         default:
           assertNever(run);
           return null;
