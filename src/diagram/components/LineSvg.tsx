@@ -12,7 +12,7 @@ export class LineSvg extends React.PureComponent<LineSvgProps> {
 
   public render(): JSX.Element | null {
     return <line
-      stroke={this.props.highlighted ? 'red' : 'black'}
+      stroke={this.props.highlighted ? 'orange' : 'black'}
       strokeWidth={2}
       strokeLinecap="round"
       x1={this.props.x1}

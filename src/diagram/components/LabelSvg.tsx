@@ -13,7 +13,7 @@ export class LabelSvg extends React.PureComponent<LabelSvgProps> {
 
   public render(): JSX.Element | null {
     return <text
-      fill={this.props.highlighted ? 'red' : 'black'}
+      fill={this.props.highlighted ? 'orange' : 'black'}
       textAnchor="middle"
       x={this.props.x}
       y={this.props.y + labelYOffset}

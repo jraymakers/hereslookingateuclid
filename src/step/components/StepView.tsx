@@ -5,6 +5,7 @@ import {
   ParagraphView,
 } from '../../paragraph';
 import {
+  classes,
   flexNoneStyle,
   flexRowStyle,
   namedClass,
@@ -28,6 +29,20 @@ const rootClass = namedClass(classPrefix, 'root', flexRowStyle, {
   },
 });
 
+const fadedClass = namedClass(classPrefix, 'faded', {
+  opacity: 0.2,
+});
+
+const highlightedClass = namedClass(classPrefix, 'highlighted', {
+  outline: '1px solid orange',
+  $nest: {
+    '&:hover': {
+      $unique: true,
+      outline: '1px solid orange',
+    },
+  },
+});
+
 const numberClass = namedClass(classPrefix, 'number', flexNoneStyle, {
   width: 30,
   textAlign: 'right',
@@ -43,6 +58,7 @@ export type StepViewProps = {
   readonly stepName: string;
   readonly text: Paragraph;
   readonly faded?: boolean;
+  readonly highlighted?: boolean;
   readonly goToStep: (stepNum: number) => void;
 };
 
@@ -50,10 +66,14 @@ export class StepView extends React.PureComponent<StepViewProps> {
 
   public render(): JSX.Element {
     const stepName = this.props.stepName;
+    const rootClasses = classes(
+      rootClass,
+      this.props.faded && fadedClass,
+      this.props.highlighted && highlightedClass,
+    );
     return (
       <div
-        className={rootClass}
-        style={{ opacity: this.props.faded ? 0.2 : 1}}
+        className={rootClasses}
         onClick={this.onClick}
       >
         <div className={numberClass}>{stepName}.</div>

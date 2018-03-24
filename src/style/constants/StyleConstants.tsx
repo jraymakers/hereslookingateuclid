@@ -69,15 +69,14 @@ export const justifyContentStartStyle: Style = {
   justifyContent: 'flex-start',
 };
 
-const linkHoverStyle: Style = {
-  color: '#888',
-};
-
 export const linkStyle: Style = {
   color: 'black',
   textDecoration: 'none',
   $nest: {
-    '&:hover': linkHoverStyle,
+    '&:hover': {
+      $unique: true,
+      color: 'orange',
+    },
   },
 };
 

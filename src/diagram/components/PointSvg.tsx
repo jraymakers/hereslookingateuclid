@@ -17,7 +17,7 @@ export class PointSvg extends React.PureComponent<PointSvgProps> {
     return (
       <g>
         <circle
-          fill={this.props.highlighted ? 'red' : 'black'}
+          fill={this.props.highlighted ? 'orange' : 'black'}
           cx={this.props.x}
           cy={this.props.y}
           r={3}

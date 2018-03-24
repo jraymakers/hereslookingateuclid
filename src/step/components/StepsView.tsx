@@ -39,6 +39,7 @@ export class StepsView extends React.PureComponent<StepsViewProps> {
           stepName={step.name}
           text={step.text}
           faded={index > currentStepIndex}
+          highlighted={index === currentStepIndex}
           goToStep={goToStep}
         />
       );

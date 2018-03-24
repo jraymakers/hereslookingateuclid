@@ -20,7 +20,7 @@ export class CircleSvg extends React.PureComponent<CircleSvgProps> {
       <g>
         <circle
           fill="transparent"
-          stroke={this.props.highlighted ? 'red' : 'black'}
+          stroke={this.props.highlighted ? 'orange' : 'black'}
           strokeWidth={2}
           cx={this.props.cx}
           cy={this.props.cy}
