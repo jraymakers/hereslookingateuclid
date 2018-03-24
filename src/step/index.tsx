@@ -5,3 +5,6 @@ export {
 export {
   StepList,
 } from './types/Step';
+export {
+  findStepIndex,
+} from './utils/StepUtils';

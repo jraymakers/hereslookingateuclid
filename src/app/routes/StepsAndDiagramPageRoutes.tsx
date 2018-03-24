@@ -11,6 +11,10 @@ import {
   StepsAndDiagramPageView,
 } from '../../page';
 
+import {
+  findStepIndex,
+} from '../../step';
+
 type StepsAndDiagramPageRoutesProps = {
   readonly page: StepsAndDiagramPage;
   readonly makePageUrl: (bookName: string, pageName: string) => string;
@@ -40,8 +44,8 @@ export class StepsAndDiagramPageRoutes extends React.Component<StepsAndDiagramPa
 
   private readonly renderStepRoute = (props: StepRouteProps): JSX.Element => {
     const stepName = props.match.params.stepName;
-    const stepIndex = parseInt(stepName, 10) - 1;
     const steps = this.props.page.stepsAndDiagram.steps;
+    const stepIndex = findStepIndex(steps, stepName);
     if (0 <= stepIndex && stepIndex < steps.length) {
       return this.renderStep(stepIndex);
     } else {
