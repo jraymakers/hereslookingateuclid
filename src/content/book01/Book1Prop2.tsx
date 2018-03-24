@@ -148,8 +148,8 @@ const steps: StepList = [
   {
     name: '11',
     text: [
-      ['Because AD equals BD, and AD and BD are parts of DH and DG respectively,'
-      + ' the remaining parts of each, AH and BG, are also equal.'],
+      ['Because AD equals BD, and AD and BD are parts of DH and DG respectively, ',
+       'the remaining parts of each, AH and BG, are also equal.'],
     ],
     highlight: [ 'AH', 'BG' ],
   },
