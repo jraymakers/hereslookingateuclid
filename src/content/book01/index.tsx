@@ -19,31 +19,34 @@ import {
   StepsAndDiagramPageMap,
 } from '../../page';
 
-import def1to4 from './Book1Def1to4';
-import def5to7 from './Book1Def5to7';
-import def8to12 from './Book1Def8to12';
+import def01to04 from './Book1Def01to04';
+import def05to07 from './Book1Def05to07';
+import def08to12 from './Book1Def08to12';
+import def13to14 from './Book1Def13to14';
 import intro from './Book1Intro';
-import prop1 from './Book1Prop1';
-import prop2 from './Book1Prop2';
+import prop01 from './Book1Prop01';
+import prop02 from './Book1Prop02';
 
 const bookName = 'I';
 
 const titleContentsLink = bookTitleContentsLink(bookName);
 const titleIntroLink = bookTitleIntroLink(bookName);
 const introLink = bookIntroLink(bookName);
-const def1to4Nav = defGroupNavLink(bookName, def1to4.name);
-const def5to7Nav = defGroupNavLink(bookName, def5to7.name);
-const def8to12Nav = defGroupNavLink(bookName, def8to12.name);
-const prop1Nav = propNavLink(bookName, prop1.name);
-const prop2Nav = propNavLink(bookName, prop2.name);
+const def01to04Nav = defGroupNavLink(bookName, def01to04.name);
+const def05to07Nav = defGroupNavLink(bookName, def05to07.name);
+const def08to12Nav = defGroupNavLink(bookName, def08to12.name);
+const def13to14Nav = defGroupNavLink(bookName, def13to14.name);
+const prop01Nav = propNavLink(bookName, prop01.name);
+const prop02Nav = propNavLink(bookName, prop02.name);
 
 const contentsLinks: SubtitledLinkInfoList = [
   introLink,
-  defGroupTitleLink(bookName, def1to4),
-  defGroupTitleLink(bookName, def5to7),
-  defGroupTitleLink(bookName, def8to12),
-  propTitleLink(bookName, prop1),
-  propTitleLink(bookName, prop2),
+  defGroupTitleLink(bookName, def01to04),
+  defGroupTitleLink(bookName, def05to07),
+  defGroupTitleLink(bookName, def08to12),
+  defGroupTitleLink(bookName, def13to14),
+  propTitleLink(bookName, prop01),
+  propTitleLink(bookName, prop02),
 ];
 
 const contentsPage: BookContentsPage = {
@@ -61,18 +64,19 @@ const introPage: BookTextPage = {
   ...bookPage,
   paragraphs: intro,
   prev: mainIntroLink,
-  next: def1to4Nav,
+  next: def01to04Nav,
 };
 
 const definitionGroupPages: StepsAndDiagramPageMap = {
-  [def1to4.name]:   { ...bookPage, stepsAndDiagram: def1to4,   prev: titleIntroLink, next: def5to7Nav},
-  [def5to7.name]:   { ...bookPage, stepsAndDiagram: def5to7,   prev: def1to4Nav,     next: def8to12Nav},
-  [def8to12.name]:  { ...bookPage, stepsAndDiagram: def8to12,  prev: def5to7Nav,     next: prop1Nav},
+  [def01to04.name]: { ...bookPage, stepsAndDiagram: def01to04, prev: titleIntroLink, next: def05to07Nav},
+  [def05to07.name]: { ...bookPage, stepsAndDiagram: def05to07, prev: def01to04Nav,   next: def08to12Nav},
+  [def08to12.name]: { ...bookPage, stepsAndDiagram: def08to12, prev: def05to07Nav,   next: def13to14Nav},
+  [def13to14.name]: { ...bookPage, stepsAndDiagram: def13to14, prev: def08to12Nav,   next: prop01Nav},
 };
 
 const propositionPages: StepsAndDiagramPageMap = {
-  [prop1.name]: { ...bookPage, stepsAndDiagram: prop1, prev: def5to7Nav, next: prop2Nav },
-  [prop2.name]: { ...bookPage, stepsAndDiagram: prop2, prev: prop1Nav, next: null },
+  [prop01.name]: { ...bookPage, stepsAndDiagram: prop01, prev: def13to14Nav, next: prop02Nav },
+  [prop02.name]: { ...bookPage, stepsAndDiagram: prop02, prev: prop01Nav,    next: null },
 };
 
 const book: Book = {
