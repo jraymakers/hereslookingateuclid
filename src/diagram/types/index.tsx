@@ -1,5 +1,6 @@
 export {
   CircleDiagramPart,
+  CurveDiagramPart,
   Diagram,
   DiagramPart,
   DiagramPartMap,
