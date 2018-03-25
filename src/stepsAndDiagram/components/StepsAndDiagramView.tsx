@@ -80,7 +80,7 @@ export class StepsAndDiagramView extends React.PureComponent<StepsAndDiagramView
           </div>
           <StepControlsView
             currentStepIndex={currentStepIndex}
-            minStepIndex={-1}
+            minStepIndex={0}
             maxStepIndex={steps.length - 1}
             goToStep={goToStep}
           />

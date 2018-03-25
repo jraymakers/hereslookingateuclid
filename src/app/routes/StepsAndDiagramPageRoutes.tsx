@@ -17,7 +17,6 @@ import {
 
 type StepsAndDiagramPageRoutesProps = {
   readonly page: StepsAndDiagramPage;
-  readonly makePageUrl: (bookName: string, pageName: string) => string;
   readonly makePageStepUrl: (bookName: string, pageName: string, stepName: string) => string;
 };
 
@@ -35,9 +34,7 @@ export class StepsAndDiagramPageRoutes extends React.Component<StepsAndDiagramPa
       <Switch>
         <Route exact path={this.props.makePageStepUrl(bookName, pageName, ':stepName')}
           render={this.renderStepRoute} />
-        <Route exact path={this.props.makePageUrl(bookName, pageName)}
-          render={this.renderNoStep} />
-        <Redirect to={this.props.makePageUrl(bookName, pageName)} />
+        <Redirect to={this.props.makePageStepUrl(bookName, pageName, page.stepsAndDiagram.steps[0].name)} />
       </Switch>
     );
   }
@@ -52,12 +49,12 @@ export class StepsAndDiagramPageRoutes extends React.Component<StepsAndDiagramPa
       const page = this.props.page;
       const bookName = page.bookName;
       const pageName = page.stepsAndDiagram.name;
-      return <Redirect to={this.props.makePageUrl(bookName, pageName)} />;
+      return <Redirect to={this.props.makePageStepUrl(bookName, pageName, steps[0].name)} />;
     }
   }
 
-  private readonly renderNoStep = (): JSX.Element => {
-    return this.renderStep(-1);
+  private readonly renderFirstStep = (): JSX.Element => {
+    return this.renderStep(0);
   }
 
   private renderStep(stepIndex: number): JSX.Element {
@@ -66,7 +63,6 @@ export class StepsAndDiagramPageRoutes extends React.Component<StepsAndDiagramPa
         page={this.props.page}
         currentStepIndex={stepIndex}
         makePageStepUrl={this.props.makePageStepUrl}
-        makePageUrl={this.props.makePageUrl}
       />
     );
   }

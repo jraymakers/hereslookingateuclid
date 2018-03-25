@@ -65,7 +65,6 @@ export class BookRoutes extends React.Component<BookRoutesProps> {
         <StepsAndDiagramPageRoutes
           page={page}
           makePageStepUrl={defGroupStepUrl}
-          makePageUrl={defGroupUrl}
         />
       );
     } else {
@@ -81,7 +80,6 @@ export class BookRoutes extends React.Component<BookRoutesProps> {
         <StepsAndDiagramPageRoutes
           page={page}
           makePageStepUrl={propStepUrl}
-          makePageUrl={propUrl}
         />
       );
     } else {

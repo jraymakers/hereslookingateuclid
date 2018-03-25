@@ -10,7 +10,6 @@ import { PageView } from './PageView';
 type StepsAndDiagramPageViewProps = RouteComponentProps<{}> & {
   readonly page: StepsAndDiagramPage;
   readonly currentStepIndex: number;
-  readonly makePageUrl: (bookName: string, pageName: string) => string;
   readonly makePageStepUrl: (bookName: string, pageName: string, stepName: string) => string;
 };
 
@@ -50,21 +49,36 @@ class StepsAndDiagramPageViewInternal extends React.PureComponent<StepsAndDiagra
 
   private readonly goPrev = () => {
     const currentStepIndex = this.props.currentStepIndex;
-    this.goToStep(Math.max(currentStepIndex - 1, -1));
+    if (currentStepIndex === 0) {
+      const page = this.props.page;
+      if (page.prev) {
+        this.navigate(page.prev.url);
+      }
+    } else {
+      this.goToStep(currentStepIndex - 1);
+    }
   }
 
   private readonly goNext = () => {
+    const page = this.props.page;
     const currentStepIndex = this.props.currentStepIndex;
-    this.goToStep(Math.min(currentStepIndex + 1, this.props.page.stepsAndDiagram.steps.length - 1));
+    if (currentStepIndex === page.stepsAndDiagram.steps.length - 1) {
+      if (page.next) {
+        this.navigate(page.next.url);
+      }
+    } else {
+      this.goToStep(currentStepIndex + 1);
+    }
   }
 
   private readonly goToStep = (newStepIndex: number) => {
     const page = this.props.page;
-    if (newStepIndex >= 0) {
-      const newStep = page.stepsAndDiagram.steps[newStepIndex];
+    const steps = page.stepsAndDiagram.steps;
+    if (0 <= newStepIndex && newStepIndex < steps.length) {
+      const newStep = steps[newStepIndex];
       this.navigate(this.props.makePageStepUrl(page.bookName, page.stepsAndDiagram.name, newStep.name));
     } else {
-      this.navigate(this.props.makePageUrl(page.bookName, page.stepsAndDiagram.name));
+      this.navigate(this.props.makePageStepUrl(page.bookName, page.stepsAndDiagram.name, steps[0].name));
     }
   }
 
