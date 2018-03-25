@@ -24,7 +24,7 @@ export class CurveSvg extends React.PureComponent<CurveSvgProps> {
     const x2 = this.props.x2;
     const y2 = this.props.y2;
     return <path
-      d={`M ${x1},${y2} C ${cpx1},${cpy1} ${cpx2},${cpy2} ${x2},${y2}`}
+      d={`M ${x1},${y1} C ${cpx1},${cpy1} ${cpx2},${cpy2} ${x2},${y2}`}
       fill="transparent"
       stroke={this.props.highlighted ? 'orange' : 'black'}
       strokeLinecap="round"
