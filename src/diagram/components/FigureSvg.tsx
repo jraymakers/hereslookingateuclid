@@ -2,6 +2,18 @@ import * as React from 'react';
 
 import { assertNever } from '../../common';
 
+export type ArcBoundaryPart = {
+  readonly type: 'arc',
+  readonly x1: number;
+  readonly y1: number;
+  readonly x2: number;
+  readonly y2: number;
+  readonly rx: number;
+  readonly ry: number;
+  readonly largest?: boolean;
+  readonly ccw?: boolean;
+};
+
 export type CurveBoundaryPart = {
   readonly type: 'curve',
   readonly x1: number;
@@ -22,7 +34,7 @@ export type LineBoundaryPart = {
   readonly y2: number;
 };
 
-export type FigureBoundaryPart = CurveBoundaryPart | LineBoundaryPart;
+export type FigureBoundaryPart = ArcBoundaryPart | CurveBoundaryPart | LineBoundaryPart;
 
 export type FigureBoundaryPartList = ReadonlyArray<FigureBoundaryPart>;
 
@@ -35,6 +47,25 @@ function pathFromBoundary(boundaryParts: FigureBoundaryPartList): string {
     stringParts.push(`M ${x},${y}`);
     for (const part of boundaryParts) {
       switch (part.type) {
+        case 'arc':
+          const rx = part.rx;
+          const ry = part.ry;
+          const largest = part.largest ? 1 : 0;
+          const sweep = part.ccw ? 0 : 1;
+          if (part.x2 === x && part.y2 === y) {
+            stringParts.push(`A ${rx},${ry} 0 ${largest} ${sweep} ${part.x1},${part.y1}`);
+            x = part.x1;
+            y = part.y1;
+          } else {
+            if (part.x1 !== x && part.y1 !== y) {
+              console.warn('disconnected boundary; adding line');
+              stringParts.push(`L ${part.x1},${part.y1}`);
+            }
+            stringParts.push(`A ${rx},${ry} 0 ${largest} ${sweep} ${part.x2},${part.y2}`);
+            x = part.x2;
+            y = part.y2;
+          }
+          break;
         case 'curve':
           if (part.x2 === x && part.y2 === y) {
             stringParts.push(`C ${part.cpx2},${part.cpy2} ${part.cpx1},${part.cpy1} ${part.x1},${part.y1}`);

@@ -4,6 +4,7 @@ import { assertNever } from '../../common';
 import { borderClass } from '../../style';
 
 import {
+  ArcDiagramPart,
   CircleDiagramPart,
   CurveDiagramPart,
   Diagram,
@@ -15,6 +16,7 @@ import {
   PointDiagramPart,
 } from '../types';
 
+import { ArcSvg } from './ArcSvg';
 import { CircleSvg } from './CircleSvg';
 import { CurveSvg } from './CurveSvg';
 import {
@@ -26,6 +28,10 @@ import {
 } from './FigureSvg';
 import { LineSvg } from './LineSvg';
 import { PointSvg } from './PointSvg';
+
+function isArc(dp: DiagramPart | null | undefined): dp is ArcDiagramPart {
+  return dp ? dp.type === 'arc' : false;
+}
 
 function isCurve(dp: DiagramPart | null | undefined): dp is CurveDiagramPart {
   return dp ? dp.type === 'curve' : false;
@@ -90,6 +96,8 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
 
   private renderDiagramPart(key: string, part: DiagramPart, state: DiagramPartState): JSX.Element | null {
     switch (part.type) {
+      case 'arc':
+        return this.renderArc(key, part, state);
       case 'circle':
         return this.renderCircle(key, part, state);
       case 'curve':
@@ -106,6 +114,34 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
     }
   }
 
+  private renderArc(key: string, arc: ArcDiagramPart, state: DiagramPartState): JSX.Element | null {
+    const parts = this.props.diagram.parts;
+    const p1 = parts[arc.p1];
+    const p2 = parts[arc.p2];
+    const center = parts[arc.center];
+    if (isPoint(p1) && isPoint(p2) && isPoint(center)) {
+      const rx = p1.x - center.x;
+      const ry = p1.y - center.y;
+      const r = Math.sqrt(rx * rx + ry * ry);
+      return <ArcSvg
+        key={key}
+        x1={p1.x}
+        y1={p1.y}
+        x2={p2.x}
+        y2={p2.y}
+        rx={r}
+        ry={r}
+        largest={arc.largest}
+        ccw={arc.ccw}
+        label={key}
+        labelDir={arc.labelDir}
+        highlighted={state === 'highlighted'}
+      />;
+    } else {
+      return null;
+    }
+  }
+
   private renderCircle(key: string, circle: CircleDiagramPart, state: DiagramPartState): JSX.Element | null {
     const parts = this.props.diagram.parts;
     const p1 = parts[circle.p1];
@@ -115,14 +151,14 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
       const dy = p2.y - p1.y;
       const r = Math.sqrt(dx * dx + dy * dy);
       return <CircleSvg
-          key={key}
-          cx={p1.x}
-          cy={p1.y}
-          r={r}
-          label={key}
-          labelDir={circle.labelDir}
-          highlighted={state === 'highlighted'}
-        />;
+        key={key}
+        cx={p1.x}
+        cy={p1.y}
+        r={r}
+        label={key}
+        labelDir={circle.labelDir}
+        highlighted={state === 'highlighted'}
+      />;
     } else {
       return null;
     }
@@ -157,16 +193,24 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
     const figureBoundaryParts: FigureBoundaryPart[] = [];
     for (const boundaryPartName of figure.boundary) {
       const boundaryPart = diagramParts[boundaryPartName];
-      if (isLine(boundaryPart)) {
+      if (isArc(boundaryPart)) {
         const p1 = diagramParts[boundaryPart.p1];
         const p2 = diagramParts[boundaryPart.p2];
-        if (isPoint(p1) && isPoint(p2)) {
+        const center = diagramParts[boundaryPart.center];
+        if (isPoint(p1) && isPoint(p2) && isPoint(center)) {
+          const rx = p1.x - center.x;
+          const ry = p1.y - center.y;
+          const r = Math.sqrt(rx * rx + ry * ry);
           figureBoundaryParts.push({
-            type: 'line',
+            type: 'arc',
             x1: p1.x,
             y1: p1.y,
             x2: p2.x,
             y2: p2.y,
+            rx: r,
+            ry: r,
+            largest: boundaryPart.largest,
+            ccw: boundaryPart.ccw,
           });
         }
       } else if (isCurve(boundaryPart)) {
@@ -183,6 +227,18 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
             cpy1: cp1.y,
             cpx2: cp2.x,
             cpy2: cp2.y,
+            x2: p2.x,
+            y2: p2.y,
+          });
+        }
+      } else if (isLine(boundaryPart)) {
+        const p1 = diagramParts[boundaryPart.p1];
+        const p2 = diagramParts[boundaryPart.p2];
+        if (isPoint(p1) && isPoint(p2)) {
+          figureBoundaryParts.push({
+            type: 'line',
+            x1: p1.x,
+            y1: p1.y,
             x2: p2.x,
             y2: p2.y,
           });

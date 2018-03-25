@@ -24,29 +24,24 @@ const height = 400;
 const r = width * 0.3;
 const aX = width * 0.5;
 const aY = height * 0.5;
-const bX = aX + r;
+const bX = aX - r;
 const bY = aY;
-const cX = aX - r * Math.cos(Math.PI * 0.4);
-const cY = aY + r * Math.sin(Math.PI * 0.4);
-const dX = aX - r * Math.cos(Math.PI * 0.2);
-const dY = aY - r * Math.sin(Math.PI * 0.2);
-const eX = aX - r;
-const eY = aY;
+const cX = aX + r;
+const cY = aY;
 
 const diagram: Diagram = {
   width,
   height,
   parts: {
-    [Greek.alpha]: { type: 'circle', p1: 'A', p2: 'B' },
+    ['circle']: { type: 'figure', boundary: [ 'BC', 'CB' ] },
+    ['semicircle']: { type: 'figure', boundary: [ 'BC' ] },
+    ['BC']: { type: 'arc', p1: 'B', p2: 'C', center: 'A' },
+    ['CB']: { type: 'arc', p1: 'C', p2: 'B', center: 'A' },
     ['AB']: { type: 'line', p1: 'A', p2: 'B' },
     ['AC']: { type: 'line', p1: 'A', p2: 'C' },
-    ['AD']: { type: 'line', p1: 'A', p2: 'D' },
-    ['AE']: { type: 'line', p1: 'A', p2: 'E' },
-    ['A']: { type: 'point', x: aX, y: aY, labelY: -15 },
+    ['A']: { type: 'point', x: aX, y: aY, labelY: 15 },
     ['B']: { type: 'point', x: bX, y: bY },
     ['C']: { type: 'point', x: cX, y: cY },
-    ['D']: { type: 'point', x: dX, y: dY },
-    ['E']: { type: 'point', x: eX, y: eY },
   },
 };
 
@@ -57,7 +52,7 @@ const steps: StepList = [
       ['A ', italic('circle'), ' is a plane figure contained by one line such that all the straight lines ',
        'falling upon it from one point among those lying within the figure equal one another.'],
     ],
-    highlight: [ Greek.alpha, 'AB', 'AC', 'AD' ],
+    highlight: [ 'circle', 'BC', 'CB' ],
   },
   {
     name: '16',
@@ -73,7 +68,7 @@ const steps: StepList = [
        'and terminated in both directions by the circumference of the circle, ',
        'and such a straight line also bisects the circle.'],
     ],
-    highlight: [ 'AB', 'AE' ],
+    highlight: [ 'AB', 'AC' ],
   },
   {
     name: '18',
@@ -82,7 +77,7 @@ const steps: StepList = [
        'and the circumference cut off by it.'],
       ['And the center of the semicircle is of the same as that of the circle.'],
     ],
-    highlight: [],
+    highlight: [ 'semicircle' ],
   },
 ];
 

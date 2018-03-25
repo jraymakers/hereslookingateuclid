@@ -1,4 +1,5 @@
 export {
+  ArcDiagramPart,
   CircleDiagramPart,
   CurveDiagramPart,
   Diagram,
