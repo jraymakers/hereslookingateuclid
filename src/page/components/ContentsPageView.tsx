@@ -20,7 +20,11 @@ import { PageHeaderView } from './PageHeaderView';
 import { PageView } from './PageView';
 
 const classPrefix = 'ContentsPageView';
-const linksSectionClass = namedClass(classPrefix, 'links', alignSelfCenterStyle, flexColumnStyle);
+const linksSectionClass = namedClass(classPrefix, 'links',
+  alignSelfCenterStyle,
+  flexColumnStyle,
+  { maxWidth: 600 },
+);
 
 type ContentsPageViewProps = {
   readonly page: ContentsPage | BookContentsPage;

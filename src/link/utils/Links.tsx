@@ -11,18 +11,24 @@ import {
 } from '../types/LinkInfo';
 
 import {
+  axiomGroupNavText,
+  axiomGroupTitle,
   bookTitle,
   defGroupNavText,
   defGroupTitle,
   introductionText,
+  postulateNavText,
+  postulateTitle,
   propNavText,
   propTitle,
 } from './Text';
 import {
+  axiomGroupUrl,
   bookContentsUrl,
   bookIntroUrl,
   defGroupUrl,
   mainIntroUrl,
+  postulateUrl,
   propUrl,
 } from './Urls';
 
@@ -30,6 +36,21 @@ export const mainIntroLink: LinkInfo = {
   text: introductionText,
   url: mainIntroUrl,
 };
+
+export function axiomGroupNavLink(bookName: string, axiomGroupName: string): LinkInfo {
+  return {
+    text: axiomGroupNavText(bookName, axiomGroupName),
+    url: axiomGroupUrl(bookName, axiomGroupName),
+  };
+}
+
+export function axiomGroupTitleLink(bookName: string, axiomGroup: StepsAndDiagram): SubtitledLinkInfo {
+  return {
+    text: axiomGroupTitle(axiomGroup.name),
+    subtitle: axiomGroup.summary,
+    url: axiomGroupUrl(bookName, axiomGroup.name),
+  };
+}
 
 export function bookIntroLink(bookName: string): LinkInfo {
   return {
@@ -64,6 +85,21 @@ export function defGroupTitleLink(bookName: string, defGroup: StepsAndDiagram): 
     text: defGroupTitle(defGroup.name, defGroup.steps.length),
     subtitle: defGroup.summary,
     url: defGroupUrl(bookName, defGroup.name),
+  };
+}
+
+export function postulateNavLink(bookName: string, postulateName: string): LinkInfo {
+  return {
+    text: postulateNavText(bookName, postulateName),
+    url: postulateUrl(bookName, postulateName),
+  };
+}
+
+export function postulateTitleLink(bookName: string, postulate: StepsAndDiagram): SubtitledLinkInfo {
+  return {
+    text: postulateTitle(postulate.name),
+    subtitle: postulate.summary,
+    url: postulateUrl(bookName, postulate.name),
   };
 }
 

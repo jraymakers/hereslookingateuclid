@@ -25,7 +25,7 @@ export type DiagramPart =
   CircleDiagramPart;
 
 export type DiagramPartMap = {
-  readonly [key: string]: DiagramPart;
+  readonly [key: string]: DiagramPart | null | undefined;
 };
 
 export type Diagram = {

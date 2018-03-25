@@ -15,9 +15,11 @@ import {
   findStepIndex,
 } from '../../step';
 
+export type MakePageStepUrl = (bookName: string, pageName: string, stepName: string) => string;
+
 type StepsAndDiagramPageRoutesProps = {
   readonly page: StepsAndDiagramPage;
-  readonly makePageStepUrl: (bookName: string, pageName: string, stepName: string) => string;
+  readonly makePageStepUrl: MakePageStepUrl;
 };
 
 type StepRouteProps = RouteComponentProps<{

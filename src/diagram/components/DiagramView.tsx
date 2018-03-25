@@ -33,7 +33,7 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
         const part = parts[key];
         const state = states[key];
         if (state === 'visible') {
-          const element = this.renderDiagramPart(key, part, state);
+          const element = part && this.renderDiagramPart(key, part, state);
           if (element) {
             diagramElements.push(element);
           }
@@ -45,7 +45,7 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
         const part = parts[key];
         const state = states[key];
         if (state === 'highlighted') {
-          const element = this.renderDiagramPart(key, part, state);
+          const element = part && this.renderDiagramPart(key, part, state);
           if (element) {
             diagramElements.push(element);
           }

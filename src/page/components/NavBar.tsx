@@ -33,7 +33,7 @@ const leftClass = namedClass(classPrefix, 'left',
 );
 const centerClass = namedClass(classPrefix, 'center',
   alignItemsCenterStyle,
-  flexColumnStyle,
+  flexRowStyle,
   flexNoneStyle,
 );
 const rightClass = namedClass(classPrefix, 'right',

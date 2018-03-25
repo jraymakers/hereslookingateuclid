@@ -35,12 +35,13 @@ const headerClass = namedClass(classPrefix, 'header', flexRowStyle, {
   paddingRight: 12,
   paddingTop: 6,
   paddingBottom: 6,
+  alignItems: 'flex-end',
 });
 
 const titleAndSummaryClass = namedClass(classPrefix, 'titleAndSummary',
   flexColumnStyle,
   flexGrowStyle,
- );
+);
 
 const titleClass = namedClass(classPrefix, 'title', textXLargeStyle);
 
@@ -48,9 +49,7 @@ const stepsAndDiagramClass = namedClass(classPrefix, 'stepsAndDiagram',
   flexGrowStyle,
   flexRowStyle,
   paddingLargeStyle,
-  {
-  alignItems: 'start',
-});
+);
 
 export type StepsAndDiagramViewProps = {
   readonly title: string;

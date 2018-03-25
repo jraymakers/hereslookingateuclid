@@ -7,7 +7,10 @@ import {
 
 const classPrefix = 'StepControlsView';
 
-const buttonsClass = namedClass(classPrefix, 'buttons', flexRowStyle);
+const buttonsClass = namedClass(classPrefix, 'buttons',
+  flexRowStyle,
+  { height: 48 },
+);
 
 const verticalBarClass = namedClass(classPrefix, 'verticalBar', {
   width: 4,
