@@ -4,6 +4,7 @@ export {
   Diagram,
   DiagramPart,
   DiagramPartMap,
+  FigureDiagramPart,
   LineDiagramPart,
   PointDiagramPart,
 } from './Diagram';

@@ -13,6 +13,11 @@ export type CurveDiagramPart = {
   readonly p2: string; // point reference
 };
 
+export type FigureDiagramPart = {
+  readonly type: 'figure';
+  readonly boundary: ReadonlyArray<string>; // curve or line references
+};
+
 export type LineDiagramPart = {
   readonly type: 'line';
   readonly p1: string; // point reference
@@ -30,6 +35,7 @@ export type PointDiagramPart = {
 export type DiagramPart =
   CircleDiagramPart |
   CurveDiagramPart |
+  FigureDiagramPart |
   LineDiagramPart |
   PointDiagramPart;
 

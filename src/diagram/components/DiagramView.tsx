@@ -10,14 +10,30 @@ import {
   DiagramPart,
   DiagramPartState,
   DiagramPartStateMap,
+  FigureDiagramPart,
   LineDiagramPart,
   PointDiagramPart,
 } from '../types';
 
 import { CircleSvg } from './CircleSvg';
 import { CurveSvg } from './CurveSvg';
+import {
+  CurveBoundaryPart,
+  FigureBoundaryPart,
+  FigureBoundaryPartList,
+  FigureSvg,
+  LineBoundaryPart,
+} from './FigureSvg';
 import { LineSvg } from './LineSvg';
 import { PointSvg } from './PointSvg';
+
+function isCurve(dp: DiagramPart | null | undefined): dp is CurveDiagramPart {
+  return dp ? dp.type === 'curve' : false;
+}
+
+function isLine(dp: DiagramPart | null | undefined): dp is LineDiagramPart {
+  return dp ? dp.type === 'line' : false;
+}
 
 function isPoint(dp: DiagramPart | null | undefined): dp is PointDiagramPart {
   return dp ? dp.type === 'point' : false;
@@ -78,9 +94,11 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
         return this.renderCircle(key, part, state);
       case 'curve':
         return this.renderCurve(key, part, state);
+      case 'figure':
+        return this.renderFigure(key, part, state);
       case 'line':
         return this.renderLine(key, part, state);
-        case 'point':
+      case 'point':
         return this.renderPoint(key, part, state);
       default:
         assertNever(part);
@@ -121,10 +139,10 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
         key={key}
         x1={p1.x}
         y1={p1.y}
-        cx1={cp1.x}
-        cy1={cp1.y}
-        cx2={cp2.x}
-        cy2={cp2.y}
+        cpx1={cp1.x}
+        cpy1={cp1.y}
+        cpx2={cp2.x}
+        cpy2={cp2.y}
         x2={p2.x}
         y2={p2.y}
         highlighted={state === 'highlighted'}
@@ -132,6 +150,52 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
     } else {
       return null;
     }
+  }
+
+  private renderFigure(key: string, figure: FigureDiagramPart, state: DiagramPartState): JSX.Element | null {
+    const diagramParts = this.props.diagram.parts;
+    const figureBoundaryParts: FigureBoundaryPart[] = [];
+    for (const boundaryPartName of figure.boundary) {
+      const boundaryPart = diagramParts[boundaryPartName];
+      if (isLine(boundaryPart)) {
+        const p1 = diagramParts[boundaryPart.p1];
+        const p2 = diagramParts[boundaryPart.p2];
+        if (isPoint(p1) && isPoint(p2)) {
+          figureBoundaryParts.push({
+            type: 'line',
+            x1: p1.x,
+            y1: p1.y,
+            x2: p2.x,
+            y2: p2.y,
+          });
+        }
+      } else if (isCurve(boundaryPart)) {
+        const p1 = diagramParts[boundaryPart.p1];
+        const cp1 = diagramParts[boundaryPart.cp1];
+        const cp2 = diagramParts[boundaryPart.cp2];
+        const p2 = diagramParts[boundaryPart.p2];
+        if (isPoint(p1) && isPoint(cp1) && isPoint(cp2) && isPoint(p2)) {
+          figureBoundaryParts.push({
+            type: 'curve',
+            x1: p1.x,
+            y1: p1.y,
+            cpx1: cp1.x,
+            cpy1: cp1.y,
+            cpx2: cp2.x,
+            cpy2: cp2.y,
+            x2: p2.x,
+            y2: p2.y,
+          });
+        }
+      } else {
+        console.warn(`unsupported boundary part: ${boundaryPartName}`);
+      }
+    }
+    return <FigureSvg
+      key={key}
+      boundaryParts={figureBoundaryParts}
+      highlighted={state === 'highlighted'}
+    />;
   }
 
   private renderLine(key: string, line: LineDiagramPart, state: DiagramPartState): JSX.Element | null {
