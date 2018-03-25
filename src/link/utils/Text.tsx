@@ -5,7 +5,7 @@ export function bookTitle(bookName: string): string {
 }
 
 export function defGroupNavText(bookName: string, defGroupName: string): string {
-  return `${bookName}.Def${defGroupName}`;
+  return `${bookName}: Def ${defGroupName}`;
 }
 
 export function defGroupTitle(defGroupName: string, numSteps: number): string {
@@ -13,7 +13,7 @@ export function defGroupTitle(defGroupName: string, numSteps: number): string {
 }
 
 export function propNavText(bookName: string, propName: string): string {
-  return `${bookName}.${propName}`; // should propName be lowercase roman here?
+  return `${bookName}: Prop ${propName}`; // should propName be lowercase roman here?
 }
 
 export function propTitle(propName: string): string {
