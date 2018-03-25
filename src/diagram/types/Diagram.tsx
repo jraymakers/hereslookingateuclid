@@ -2,7 +2,7 @@ export type CircleDiagramPart = {
   readonly type: 'circle';
   readonly p1: string; // center point reference
   readonly p2: string; // radius point reference
-  readonly labelDir: number;
+  readonly labelDir?: number;
 };
 
 export type CurveDiagramPart = {

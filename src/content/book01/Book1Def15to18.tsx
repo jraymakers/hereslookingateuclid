@@ -16,13 +16,38 @@ import {
   StepsAndDiagram,
 } from '../../stepsAndDiagram';
 
+import { Greek } from '../Greek';
+
 const width = 400;
 const height = 400;
+
+const r = width * 0.3;
+const aX = width * 0.5;
+const aY = height * 0.5;
+const bX = aX + r;
+const bY = aY;
+const cX = aX - r * Math.cos(Math.PI * 0.4);
+const cY = aY + r * Math.sin(Math.PI * 0.4);
+const dX = aX - r * Math.cos(Math.PI * 0.2);
+const dY = aY - r * Math.sin(Math.PI * 0.2);
+const eX = aX - r;
+const eY = aY;
 
 const diagram: Diagram = {
   width,
   height,
-  parts: {},
+  parts: {
+    [Greek.alpha]: { type: 'circle', p1: 'A', p2: 'B' },
+    ['AB']: { type: 'line', p1: 'A', p2: 'B' },
+    ['AC']: { type: 'line', p1: 'A', p2: 'C' },
+    ['AD']: { type: 'line', p1: 'A', p2: 'D' },
+    ['AE']: { type: 'line', p1: 'A', p2: 'E' },
+    ['A']: { type: 'point', x: aX, y: aY, labelY: -15 },
+    ['B']: { type: 'point', x: bX, y: bY },
+    ['C']: { type: 'point', x: cX, y: cY },
+    ['D']: { type: 'point', x: dX, y: dY },
+    ['E']: { type: 'point', x: eX, y: eY },
+  },
 };
 
 const steps: StepList = [
@@ -32,14 +57,14 @@ const steps: StepList = [
       ['A ', italic('circle'), ' is a plane figure contained by one line such that all the straight lines ',
        'falling upon it from one point among those lying within the figure equal one another.'],
     ],
-    highlight: [],
+    highlight: [ Greek.alpha, 'AB', 'AC', 'AD' ],
   },
   {
     name: '16',
     text: [
       ['And the point is called the ', italic('center'), ' of the circle.'],
     ],
-    highlight: [],
+    highlight: [ 'A' ],
   },
   {
     name: '17',
@@ -48,7 +73,7 @@ const steps: StepList = [
        'and terminated in both directions by the circumference of the circle, ',
        'and such a straight line also bisects the circle.'],
     ],
-    highlight: [],
+    highlight: [ 'AB', 'AE' ],
   },
   {
     name: '18',
