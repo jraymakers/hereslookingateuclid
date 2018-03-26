@@ -3,7 +3,11 @@ import { RouteComponentProps, withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 
 import { ParagraphView } from '../../paragraph';
-import { alignSelfCenterStyle, namedClass } from '../../style';
+import {
+  alignSelfCenterStyle,
+  marginTopLargeStyle,
+  namedClass,
+} from '../../style';
 
 import { BookTextPage, TextPage } from '../types/Page';
 
@@ -13,6 +17,7 @@ import { PageView } from './PageView';
 const classPrefix = 'TextPageView';
 const contentClass = namedClass(classPrefix, 'content',
   alignSelfCenterStyle,
+  marginTopLargeStyle,
   { maxWidth: 800 },
 );
 

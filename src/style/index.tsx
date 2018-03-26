@@ -20,7 +20,7 @@ export {
   justifyContentCenterStyle,
   justifyContentEndStyle,
   justifyContentStartStyle,
-  paddingBottomLargeStyle,
+  marginTopLargeStyle,
   paddingLargeStyle,
   textAlignCenterStyle,
   textNormalStyle,

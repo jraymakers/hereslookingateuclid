@@ -66,7 +66,7 @@ const steps: StepList = [
 const name = '1-5';
 const title = axiomGroupTitle(name);
 const summary: Paragraph = [
-  ['also known as Common Notions'],
+  ['also called Common Notions'],
 ];
 
 const postulate: StepsAndDiagram = {

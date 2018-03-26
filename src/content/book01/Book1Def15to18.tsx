@@ -38,7 +38,7 @@ const diagram: Diagram = {
   height,
   parts: {
     ['circle']: { type: 'figure', boundary: [ 'BC', 'CB' ] },
-    ['semicircle']: { type: 'figure', boundary: [ 'BC' ] },
+    ['semicircle']: { type: 'figure', boundary: [ 'AB', 'BC', 'AC' ] },
     ['BC']: { type: 'arc', p1: 'B', p2: 'C', center: 'A' },
     ['CB']: { type: 'arc', p1: 'C', p2: 'B', center: 'A' },
     ['AB']: { type: 'line', p1: 'A', p2: 'B' },

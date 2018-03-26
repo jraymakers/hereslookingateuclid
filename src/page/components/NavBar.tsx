@@ -15,7 +15,6 @@ import {
   justifyContentStartStyle,
   linkClass,
   namedClass,
-  paddingBottomLargeStyle,
   textAlignCenterStyle,
   textXXLargeStyle,
 } from '../../style';
@@ -23,7 +22,7 @@ import {
 const classPrefix = 'NavBar';
 const rootClass = namedClass(classPrefix, 'root',
   flexRowStyle,
-  paddingBottomLargeStyle,
+  { height: 36 },
 );
 const leftClass = namedClass(classPrefix, 'left',
   alignItemsStretchStyle,

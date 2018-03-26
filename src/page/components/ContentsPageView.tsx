@@ -8,6 +8,7 @@ import {
   classes,
   flexColumnStyle,
   linkClass,
+  marginTopLargeStyle,
   namedClass,
   paddingLargeClass,
   textLargeClass,
@@ -23,6 +24,7 @@ const classPrefix = 'ContentsPageView';
 const linksSectionClass = namedClass(classPrefix, 'links',
   alignSelfCenterStyle,
   flexColumnStyle,
+  marginTopLargeStyle,
   { maxWidth: 600 },
 );
 

@@ -80,8 +80,8 @@ export const linkStyle: Style = {
   },
 };
 
-export const paddingBottomLargeStyle: Style = {
-  paddingBottom: 12,
+export const marginTopLargeStyle: Style = {
+  marginTop: 12,
 };
 
 export const paddingNormalStyle: Style = {
