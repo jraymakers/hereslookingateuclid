@@ -37,6 +37,8 @@ const diagram: Diagram = {
   width,
   height,
   parts: {
+    ['BC']: { type: 'curve', p1: 'B', cp1: 'cp1', cp2: 'cp2', p2: 'C' },
+    ['DE']: { type: 'line', p1: 'D', p2: 'E' },
     ['A']: { type: 'point', x: aX, y: aY, labelY: -12 },
     ['B']: { type: 'point', x: bX, y: bY, labelX: -12 },
     ['C']: { type: 'point', x: cX, y: cY, labelX:  12 },
@@ -44,8 +46,6 @@ const diagram: Diagram = {
     ['E']: { type: 'point', x: eX, y: eY, labelX:  12 },
     ['cp1']: { type: 'point', x: cp1X, y: cp1Y },
     ['cp2']: { type: 'point', x: cp2X, y: cp2Y },
-    ['BC']: { type: 'curve', p1: 'B', cp1: 'cp1', cp2: 'cp2', p2: 'C' },
-    ['DE']: { type: 'line', p1: 'D', p2: 'E' },
   },
 };
 

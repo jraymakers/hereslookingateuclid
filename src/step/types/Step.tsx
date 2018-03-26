@@ -5,7 +5,9 @@ import {
 export type Step = {
   readonly name: string;
   readonly text: Paragraph;
-  readonly highlight: ReadonlyArray<string>;
+  readonly show?: ReadonlyArray<string>;
+  readonly hide?: ReadonlyArray<string>;
+  readonly highlight?: ReadonlyArray<string>;
 };
 
 export type StepList = ReadonlyArray<Step>;

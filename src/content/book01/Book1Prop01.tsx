@@ -37,14 +37,14 @@ const diagram: Diagram = {
   width,
   height,
   parts: {
-    ['A']: { type: 'point', x: aX, y: aY, labelX: -10 },
-    ['B']: { type: 'point', x: bX, y: bY, labelX: 10 },
-    ['C']: { type: 'point', x: cX, y: cY, labelY: -12 },
+    [Greek.alpha]: { type: 'circle', p1: 'A', p2: 'B', labelDir: LabelDir.W },
+    [Greek.beta]:  { type: 'circle', p1: 'B', p2: 'A', labelDir: LabelDir.E },
     ['AB']: { type: 'line', p1: 'A', p2: 'B' },
     ['AC']: { type: 'line', p1: 'A', p2: 'C' },
     ['BC']: { type: 'line', p1: 'B', p2: 'C' },
-    [Greek.alpha]: { type: 'circle', p1: 'A', p2: 'B', labelDir: LabelDir.W },
-    [Greek.beta]:  { type: 'circle', p1: 'B', p2: 'A', labelDir: LabelDir.E },
+    ['A']: { type: 'point', x: aX, y: aY, labelX: -10 },
+    ['B']: { type: 'point', x: bX, y: bY, labelX: 10 },
+    ['C']: { type: 'point', x: cX, y: cY, labelY: -12 },
   },
 };
 

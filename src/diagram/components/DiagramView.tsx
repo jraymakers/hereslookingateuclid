@@ -61,19 +61,7 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
       if (parts.hasOwnProperty(key)) {
         const part = parts[key];
         const state = states[key];
-        if (state === 'visible') {
-          const element = part && this.renderDiagramPart(key, part, state);
-          if (element) {
-            diagramElements.push(element);
-          }
-        }
-      }
-    }
-    for (const key in parts) {
-      if (parts.hasOwnProperty(key)) {
-        const part = parts[key];
-        const state = states[key];
-        if (state === 'highlighted') {
+        if (state === 'visible' || state === 'highlighted') {
           const element = part && this.renderDiagramPart(key, part, state);
           if (element) {
             diagramElements.push(element);

@@ -28,6 +28,10 @@ const bX = aX - r;
 const bY = aY;
 const cX = aX + r;
 const cY = aY;
+const dX = aX - r * Math.cos(Math.PI * 0.1);
+const dY = aY + r * Math.sin(Math.PI * 0.1);
+const eX = aX - r * Math.cos(Math.PI * 0.3);
+const eY = aY - r * Math.sin(Math.PI * 0.3);
 
 const diagram: Diagram = {
   width,
@@ -39,9 +43,13 @@ const diagram: Diagram = {
     ['CB']: { type: 'arc', p1: 'C', p2: 'B', center: 'A' },
     ['AB']: { type: 'line', p1: 'A', p2: 'B' },
     ['AC']: { type: 'line', p1: 'A', p2: 'C' },
+    ['AD']: { type: 'line', p1: 'A', p2: 'D' },
+    ['AE']: { type: 'line', p1: 'A', p2: 'E' },
     ['A']: { type: 'point', x: aX, y: aY, labelY: 15 },
     ['B']: { type: 'point', x: bX, y: bY },
     ['C']: { type: 'point', x: cX, y: cY },
+    ['D']: { type: 'point', x: dX, y: dY },
+    ['E']: { type: 'point', x: eX, y: eY },
   },
 };
 
@@ -52,13 +60,15 @@ const steps: StepList = [
       ['A ', italic('circle'), ' is a plane figure contained by one line such that all the straight lines ',
        'falling upon it from one point among those lying within the figure equal one another.'],
     ],
-    highlight: [ 'circle', 'BC', 'CB' ],
+    show: [ 'A', 'BC', 'CB', 'AC', 'AD', 'AE' ],
+    highlight: [ 'circle' ],
   },
   {
     name: '16',
     text: [
       ['And the point is called the ', italic('center'), ' of the circle.'],
     ],
+    hide: [ 'AC', 'AD', 'AE' ],
     highlight: [ 'A' ],
   },
   {
