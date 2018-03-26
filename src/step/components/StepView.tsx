@@ -44,7 +44,7 @@ const highlightedClass = namedClass(classPrefix, 'highlighted', {
 });
 
 const numberClass = namedClass(classPrefix, 'number', flexNoneStyle, {
-  width: 30,
+  width: 36,
   textAlign: 'right',
 });
 

@@ -27,22 +27,46 @@ const diagram: Diagram = {
 
 const steps: StepList = [
   {
-    name: '20',
+    name: '20a',
     text: [
       ['Of trilateral figures, an ',
-       italic('equilateral triangle'), ' is that which has its three sides equal, an ',
-       italic('isosceles triangle'), ' that which has two of its sides alone equal, and a ',
-       italic('scalene triangle'), ' that which has its three sides unequal.'],
+       italic('equilateral triangle'), ' is that which has its three sides equal, '],
     ],
     highlight: [],
   },
   {
-    name: '21',
+    name: '20b',
+    text: [
+      ['an ', italic('isosceles triangle'), ' that which has two of its sides alone equal, '],
+    ],
+    highlight: [],
+  },
+  {
+    name: '20c',
+    text: [
+      ['and a ', italic('scalene triangle'), ' that which has its three sides unequal.'],
+    ],
+    highlight: [],
+  },
+  {
+    name: '21a',
     text: [
       ['Further, of trilateral figures, a ',
-       italic('right-angled triangle'), ' is that which has a right angle, an ',
-       italic('obtuse-angled triangle'), ' that which has an obtuse angle, and an ',
-       italic('acute-angled triangle'), ' that which has its three angles acute.'],
+       italic('right-angled triangle'), ' is that which has a right angle, '],
+    ],
+    highlight: [],
+  },
+  {
+    name: '21b',
+    text: [
+      ['an ', italic('obtuse-angled triangle'), ' that which has an obtuse angle, '],
+    ],
+    highlight: [],
+  },
+  {
+    name: '21c',
+    text: [
+      ['and an ', italic('acute-angled triangle'), ' that which has its three angles acute.'],
     ],
     highlight: [],
   },

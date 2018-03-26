@@ -27,14 +27,38 @@ const diagram: Diagram = {
 
 const steps: StepList = [
   {
-    name: '22',
+    name: '22a',
     text: [
       ['Of quadrilateral figures, a ',
-       italic('square'), ' is that which is both equilateral and right-angled; an ',
-       italic('oblong'), ' that which is right-angled but not equilateral; a ',
-       italic('rhombus'), ' that which is equilateral but not right-angled; and a ',
-       italic('rhomboid'), ' that which has its opposite sides and angles equal to one another ',
+       italic('square'), ' is that which is both equilateral and right-angled;'],
+    ],
+    highlight: [],
+  },
+  {
+    name: '22b',
+    text: [
+      ['an ', italic('oblong'), ' that which is right-angled but not equilateral;'],
+    ],
+    highlight: [],
+  },
+  {
+    name: '22c',
+    text: [
+      ['a ', italic('rhombus'), ' that which is equilateral but not right-angled;'],
+    ],
+    highlight: [],
+  },
+  {
+    name: '22d',
+    text: [
+      ['and a ', italic('rhomboid'), ' that which has its opposite sides and angles equal to one another ',
        'but is neither equilateral nor right-angled.'],
+    ],
+    highlight: [],
+  },
+  {
+    name: '22e',
+    text: [
       ['And let quadrilaterals other than these be called ', italic('trapezia'), '.'],
     ],
     highlight: [],
