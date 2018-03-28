@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { ParagraphView } from '../../paragraph';
 import {
   alignSelfCenterStyle,
-  marginTopLargeStyle,
+  mediumSpace,
   namedClass,
 } from '../../style';
 
@@ -17,12 +17,12 @@ import { PageView } from './PageView';
 const classPrefix = 'TextPageView';
 const contentClass = namedClass(classPrefix, 'content',
   alignSelfCenterStyle,
-  marginTopLargeStyle,
-  { maxWidth: 800 },
   {
+    marginTop: mediumSpace,
+    maxWidth: 800,
     $nest: {
       '&>*': {
-        marginTop: 12,
+        marginTop: mediumSpace,
       },
     },
   },

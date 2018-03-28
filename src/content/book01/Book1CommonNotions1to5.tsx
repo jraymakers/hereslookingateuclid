@@ -66,7 +66,7 @@ const steps: StepList = [
 const name = '1-5';
 const title = commonNotionTitle(name);
 const summary: Paragraph = [
-  ['sometimes called Axioms'],
+  ['Algebraic and Logical Axioms'],
 ];
 
 const postulate: StepsAndDiagram = {

@@ -8,9 +8,9 @@ import {
   classes,
   flexColumnStyle,
   linkClass,
-  marginTopLargeStyle,
+  mediumSpace,
   namedClass,
-  paddingLargeClass,
+  paddingMediumClass,
   textLargeClass,
   textSmallClass,
 } from '../../style';
@@ -24,8 +24,10 @@ const classPrefix = 'ContentsPageView';
 const linksSectionClass = namedClass(classPrefix, 'links',
   alignSelfCenterStyle,
   flexColumnStyle,
-  marginTopLargeStyle,
-  { maxWidth: 600 },
+  {
+    marginTop: mediumSpace,
+    maxWidth: 600,
+  },
 );
 
 type ContentsPageViewProps = {
@@ -49,7 +51,7 @@ export class ContentsPageView extends React.PureComponent<ContentsPageViewProps>
 
   private readonly renderContentsLink = (contentsLink: SubtitledLinkInfo): JSX.Element => {
     return (
-      <Link className={classes(linkClass, paddingLargeClass)} to={contentsLink.url} key={contentsLink.url}>
+      <Link className={classes(linkClass, paddingMediumClass)} to={contentsLink.url} key={contentsLink.url}>
         <div className={textLargeClass}>{contentsLink.text}</div>
         {this.renderSubtitle(contentsLink.subtitle)}
       </Link>

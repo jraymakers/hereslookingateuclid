@@ -5,7 +5,7 @@ import { LinkInfo } from '../../link';
 import {
   classes,
   linkClass,
-  marginTopLargeStyle,
+  mediumSpace,
   namedClass,
   textAlignCenterStyle,
   textXLargeStyle,
@@ -13,9 +13,9 @@ import {
 
 const classPrefix = 'PageHeaderView';
 const headerClass = namedClass(classPrefix, 'header',
-  marginTopLargeStyle,
   textAlignCenterStyle,
   textXLargeStyle,
+  { marginTop: mediumSpace },
 );
 
 export type PageHeaderViewProps = {

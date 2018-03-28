@@ -1,5 +1,10 @@
 import { Style } from '../types/StyleTypes';
 
+import {
+  largeSpace,
+  mediumSpace,
+} from './SpaceConstants';
+
 export const alignItemsCenterStyle: Style = {
   alignItems: 'center',
 };
@@ -19,8 +24,8 @@ export const borderStyle: Style = {
 };
 
 export const buttonStyle: Style = {
-  paddingLeft: 18,
-  paddingRight: 18,
+  paddingLeft: largeSpace,
+  paddingRight: largeSpace,
   border: '1px solid #ddd',
   color: 'black',
   display: 'flex',
@@ -80,16 +85,8 @@ export const linkStyle: Style = {
   },
 };
 
-export const marginTopLargeStyle: Style = {
-  marginTop: 12,
-};
-
-export const paddingNormalStyle: Style = {
-  padding: 6,
-};
-
-export const paddingLargeStyle: Style = {
-  padding: 12,
+export const paddingMediumStyle: Style = {
+  padding: mediumSpace,
 };
 
 export const textAlignCenterStyle: Style = {

@@ -17,8 +17,8 @@ import {
   flexColumnStyle,
   flexGrowStyle,
   flexRowStyle,
+  mediumSpace,
   namedClass,
-  paddingLargeStyle,
   textXLargeStyle,
 } from '../../style';
 
@@ -31,11 +31,9 @@ const classPrefix = 'StepsAndDiagramView';
 const rootClass = namedClass(classPrefix, 'root', flexColumnStyle);
 
 const headerClass = namedClass(classPrefix, 'header', flexRowStyle, {
-  paddingLeft: 12,
-  paddingRight: 12,
-  paddingTop: 6,
-  paddingBottom: 6,
   alignItems: 'flex-end',
+  paddingTop: mediumSpace,
+  paddingBottom: mediumSpace,
 });
 
 const titleAndSummaryClass = namedClass(classPrefix, 'titleAndSummary',
@@ -48,7 +46,6 @@ const titleClass = namedClass(classPrefix, 'title', textXLargeStyle);
 const stepsAndDiagramClass = namedClass(classPrefix, 'stepsAndDiagram',
   flexGrowStyle,
   flexRowStyle,
-  paddingLargeStyle,
 );
 
 export type StepsAndDiagramViewProps = {

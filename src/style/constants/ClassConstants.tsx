@@ -4,7 +4,7 @@ import {
   borderStyle,
   buttonStyle,
   linkStyle,
-  paddingLargeStyle,
+  paddingMediumStyle,
   textItalicStyle,
   textLargeStyle,
   textSmallStyle,
@@ -18,7 +18,7 @@ export const buttonClass = namedClass(classPrefix, 'button', buttonStyle);
 
 export const linkClass = namedClass(classPrefix, 'link', linkStyle);
 
-export const paddingLargeClass = namedClass(classPrefix, 'paddingLarge', paddingLargeStyle);
+export const paddingMediumClass = namedClass(classPrefix, 'paddingLarge', paddingMediumStyle);
 
 export const textItalicClass = namedClass(classPrefix, 'textItalic', textItalicStyle);
 export const textLargeClass = namedClass(classPrefix, 'textLarge', textLargeStyle);

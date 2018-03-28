@@ -4,11 +4,16 @@ export {
   borderClass,
   buttonClass,
   linkClass,
-  paddingLargeClass,
+  paddingMediumClass,
   textItalicClass,
   textLargeClass,
   textSmallClass,
 } from './constants/ClassConstants';
+export {
+  smallSpace,
+  mediumSpace,
+  largeSpace,
+} from './constants/SpaceConstants';
 export {
   alignItemsCenterStyle,
   alignItemsStretchStyle,
@@ -20,8 +25,6 @@ export {
   justifyContentCenterStyle,
   justifyContentEndStyle,
   justifyContentStartStyle,
-  marginTopLargeStyle,
-  paddingLargeStyle,
   textAlignCenterStyle,
   textNormalStyle,
   textSerifStyle,

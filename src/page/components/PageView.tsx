@@ -6,8 +6,9 @@ import {
   flexGrowStyle,
   flexRowStyle,
   justifyContentCenterStyle,
+  largeSpace,
+  mediumSpace,
   namedClass,
-  paddingLargeStyle,
   textNormalStyle,
   textSerifStyle,
 } from '../../style';
@@ -28,10 +29,15 @@ const contentClass = namedClass(classPrefix, 'content',
   alignItemsStretchStyle,
   flexColumnStyle,
   flexGrowStyle,
-  paddingLargeStyle,
   textNormalStyle,
   textSerifStyle,
-  { maxWidth: 1200 },
+  {
+    maxWidth: 1200,
+    paddingLeft: mediumSpace,
+    paddingRight: mediumSpace,
+    paddingTop: largeSpace,
+    paddingBottom: largeSpace,
+  },
 );
 
 type PageViewProps = {
