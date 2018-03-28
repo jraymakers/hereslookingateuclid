@@ -33,10 +33,10 @@ const contentClass = namedClass(classPrefix, 'content',
   textSerifStyle,
   {
     maxWidth: 1200,
-    paddingLeft: mediumSpace,
-    paddingRight: mediumSpace,
-    paddingTop: largeSpace,
-    paddingBottom: largeSpace,
+    paddingLeft: largeSpace,
+    paddingRight: largeSpace,
+    paddingTop: mediumSpace,
+    paddingBottom: mediumSpace,
   },
 );
 
