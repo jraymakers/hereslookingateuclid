@@ -10,7 +10,7 @@ import { PageView } from './PageView';
 type StepsAndDiagramPageViewProps = RouteComponentProps<{}> & {
   readonly page: StepsAndDiagramPage;
   readonly currentStepIndex: number;
-  readonly makePageStepUrl: (bookName: string, pageName: string, stepName: string) => string;
+  readonly makePageUrl: (bookName: string, pageName: string, stepName: string) => string;
 };
 
 class StepsAndDiagramPageViewInternal extends React.PureComponent<StepsAndDiagramPageViewProps> {
@@ -76,9 +76,9 @@ class StepsAndDiagramPageViewInternal extends React.PureComponent<StepsAndDiagra
     const steps = page.stepsAndDiagram.steps;
     if (0 <= newStepIndex && newStepIndex < steps.length) {
       const newStep = steps[newStepIndex];
-      this.navigate(this.props.makePageStepUrl(page.bookName, page.stepsAndDiagram.name, newStep.name));
+      this.navigate(this.props.makePageUrl(page.bookName, page.stepsAndDiagram.name, newStep.name));
     } else {
-      this.navigate(this.props.makePageStepUrl(page.bookName, page.stepsAndDiagram.name, steps[0].name));
+      this.navigate(this.props.makePageUrl(page.bookName, page.stepsAndDiagram.name, steps[0].name));
     }
   }
 

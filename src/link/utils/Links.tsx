@@ -11,8 +11,8 @@ import {
 } from '../types/LinkInfo';
 
 import {
-  // axiomNavText,
-  // axiomTitle,
+  axiomNavText,
+  axiomTitle,
   bookTitle,
   commonNotionNavText,
   commonNotionTitle,
@@ -25,10 +25,9 @@ import {
   propositionTitle,
 } from './Text';
 import {
-  // axiomUrl,
+  axiomUrl,
   bookContentsUrl,
   bookIntroUrl,
-  commonNotionStepUrl,
   commonNotionUrl,
   definitionUrl,
   mainIntroUrl,
@@ -40,21 +39,6 @@ export const mainIntroLink: LinkInfo = {
   text: introductionText,
   url: mainIntroUrl,
 };
-
-// export function axiomNavLink(bookName: string, pageName: string): LinkInfo {
-//   return {
-//     text: axiomNavText(bookName, pageName),
-//     url: axiomUrl(bookName, pageName),
-//   };
-// }
-
-// export function axiomTitleLink(bookName: string, stepsAndDiagram: StepsAndDiagram): SubtitledLinkInfo {
-//   return {
-//     text: axiomTitle(stepsAndDiagram.name),
-//     subtitle: stepsAndDiagram.summary,
-//     url: axiomUrl(bookName, stepsAndDiagram.name),
-//   };
-// }
 
 export function bookIntroLink(bookName: string): LinkInfo {
   return {
@@ -77,10 +61,25 @@ export function bookTitleIntroLink(bookName: string): LinkInfo {
   };
 }
 
-export function commonNotionNavLink(bookName: string, pageName: string): LinkInfo {
+export function axiomNavLink(bookName: string, pageName: string, stepName?: string): LinkInfo {
+  return {
+    text: axiomNavText(bookName, pageName),
+    url: axiomUrl(bookName, pageName, stepName),
+  };
+}
+
+export function axiomTitleLink(bookName: string, stepsAndDiagram: StepsAndDiagram): SubtitledLinkInfo {
+  return {
+    text: axiomTitle(stepsAndDiagram.name),
+    subtitle: stepsAndDiagram.summary,
+    url: axiomUrl(bookName, stepsAndDiagram.name),
+  };
+}
+
+export function commonNotionNavLink(bookName: string, pageName: string, stepName?: string): LinkInfo {
   return {
     text: commonNotionNavText(bookName, pageName),
-    url: commonNotionUrl(bookName, pageName),
+    url: commonNotionUrl(bookName, pageName, stepName),
   };
 }
 
@@ -92,10 +91,10 @@ export function commonNotionTitleLink(bookName: string, stepsAndDiagram: StepsAn
   };
 }
 
-export function definitionNavLink(bookName: string, pageName: string): LinkInfo {
+export function definitionNavLink(bookName: string, pageName: string, stepName?: string): LinkInfo {
   return {
     text: definitionNavText(bookName, pageName),
-    url: definitionUrl(bookName, pageName),
+    url: definitionUrl(bookName, pageName, stepName),
   };
 }
 
@@ -107,10 +106,10 @@ export function definitionTitleLink(bookName: string, stepsAndDiagram: StepsAndD
   };
 }
 
-export function postulateNavLink(bookName: string, pageName: string): LinkInfo {
+export function postulateNavLink(bookName: string, pageName: string, stepName?: string): LinkInfo {
   return {
     text: postulateNavText(bookName, pageName),
-    url: postulateUrl(bookName, pageName),
+    url: postulateUrl(bookName, pageName, stepName),
   };
 }
 
@@ -122,10 +121,10 @@ export function postulateTitleLink(bookName: string, stepsAndDiagram: StepsAndDi
   };
 }
 
-export function propositionNavLink(bookName: string, pageName: string): LinkInfo {
+export function propositionNavLink(bookName: string, pageName: string, stepName?: string): LinkInfo {
   return {
     text: propositionNavText(bookName, pageName),
-    url: propositionUrl(bookName, pageName),
+    url: propositionUrl(bookName, pageName, stepName),
   };
 }
 

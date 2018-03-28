@@ -7,17 +7,13 @@ import {
 } from 'react-router';
 
 import {
-  // axiomStepUrl,
   // axiomUrl,
   bookContentsUrl,
   bookIntroUrl,
-  commonNotionStepUrl,
   commonNotionUrl,
-  definitionStepUrl,
   definitionUrl,
-  postulateStepUrl,
+  MakePageUrl,
   postulateUrl,
-  propositionStepUrl,
   propositionUrl,
 } from '../../link';
 import {
@@ -27,7 +23,7 @@ import {
   TextPageView,
 } from '../../page';
 
-import { MakePageStepUrl, StepsAndDiagramPageRoutes } from './StepsAndDiagramPageRoutes';
+import { StepsAndDiagramPageRoutes } from './StepsAndDiagramPageRoutes';
 
 type BookRoutesProps = {
   readonly book: Book;
@@ -67,45 +63,45 @@ export class BookRoutes extends React.Component<BookRoutesProps> {
   //   const pageName = props.match.params.pageName;
   //   const pages = this.props.book.axiomPages;
   //   const page = pages ? pages[pageName] : null;
-  //   return this.renderStepsAndDiagramPage(page, axiomStepUrl);
+  //   return this.renderStepsAndDiagramPage(page, axiomUrl);
   // }
 
   private readonly renderCommonNotionRoute = (props: PageRouteProps) => {
     const pageName = props.match.params.pageName;
     const pages = this.props.book.commonNotionPages;
     const page = pages ? pages[pageName] : null;
-    return this.renderStepsAndDiagramPage(page, commonNotionStepUrl);
+    return this.renderStepsAndDiagramPage(page, commonNotionUrl);
   }
 
   private readonly renderDefinitionRoute = (props: PageRouteProps) => {
     const pageName = props.match.params.pageName;
     const pages = this.props.book.definitionPages;
     const page = pages ? pages[pageName] : null;
-    return this.renderStepsAndDiagramPage(page, definitionStepUrl);
+    return this.renderStepsAndDiagramPage(page, definitionUrl);
   }
 
   private readonly renderPostulateRoute = (props: PageRouteProps) => {
     const pageName = props.match.params.pageName;
     const pages = this.props.book.postulatePages;
     const page = pages ? pages[pageName] : null;
-    return this.renderStepsAndDiagramPage(page, postulateStepUrl);
+    return this.renderStepsAndDiagramPage(page, postulateUrl);
   }
 
   private readonly renderPropositionRoute = (props: PageRouteProps) => {
     const pageName = props.match.params.pageName;
     const page = this.props.book.propositionPages[pageName];
-    return this.renderStepsAndDiagramPage(page, propositionStepUrl);
+    return this.renderStepsAndDiagramPage(page, propositionUrl);
   }
 
   private renderStepsAndDiagramPage(
     page: StepsAndDiagramPage | null | undefined,
-    makePageStepUrl: MakePageStepUrl,
+    makePageUrl: MakePageUrl,
   ): JSX.Element {
     if (page) {
       return (
         <StepsAndDiagramPageRoutes
           page={page}
-          makePageStepUrl={makePageStepUrl}
+          makePageUrl={makePageUrl}
         />
       );
     } else {

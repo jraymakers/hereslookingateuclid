@@ -7,6 +7,11 @@ import {
 } from 'react-router';
 
 import {
+  lastStep,
+  MakePageUrl,
+} from '../../link';
+
+import {
   StepsAndDiagramPage,
   StepsAndDiagramPageView,
 } from '../../page';
@@ -15,11 +20,9 @@ import {
   findStepIndex,
 } from '../../step';
 
-export type MakePageStepUrl = (bookName: string, pageName: string, stepName: string) => string;
-
 type StepsAndDiagramPageRoutesProps = {
   readonly page: StepsAndDiagramPage;
-  readonly makePageStepUrl: MakePageStepUrl;
+  readonly makePageUrl: MakePageUrl;
 };
 
 type StepRouteProps = RouteComponentProps<{
@@ -29,34 +32,37 @@ type StepRouteProps = RouteComponentProps<{
 export class StepsAndDiagramPageRoutes extends React.Component<StepsAndDiagramPageRoutesProps> {
 
   public render(): JSX.Element {
+    return (
+      <Switch>
+        <Route exact path={this.pageUrl(':stepName')} render={this.renderStepRoute} />
+        <Redirect to={this.pageUrl(this.props.page.stepsAndDiagram.steps[0].name)} />
+      </Switch>
+    );
+  }
+
+  private pageUrl(stepName: string): string {
     const page = this.props.page;
     const bookName = page.bookName;
     const pageName = page.stepsAndDiagram.name;
-    return (
-      <Switch>
-        <Route exact path={this.props.makePageStepUrl(bookName, pageName, ':stepName')}
-          render={this.renderStepRoute} />
-        <Redirect to={this.props.makePageStepUrl(bookName, pageName, page.stepsAndDiagram.steps[0].name)} />
-      </Switch>
-    );
+    return this.props.makePageUrl(bookName, pageName, stepName);
   }
 
   private readonly renderStepRoute = (props: StepRouteProps): JSX.Element => {
     const stepName = props.match.params.stepName;
     const steps = this.props.page.stepsAndDiagram.steps;
+    if (stepName === lastStep) {
+      return this.renderRedirect(steps[steps.length - 1].name);
+    }
     const stepIndex = findStepIndex(steps, stepName);
     if (0 <= stepIndex && stepIndex < steps.length) {
       return this.renderStep(stepIndex);
     } else {
-      const page = this.props.page;
-      const bookName = page.bookName;
-      const pageName = page.stepsAndDiagram.name;
-      return <Redirect to={this.props.makePageStepUrl(bookName, pageName, steps[0].name)} />;
+      return this.renderRedirect(steps[0].name);
     }
   }
 
-  private readonly renderFirstStep = (): JSX.Element => {
-    return this.renderStep(0);
+  private renderRedirect(stepName: string) {
+    return <Redirect to={this.pageUrl(stepName)} />;
   }
 
   private renderStep(stepIndex: number): JSX.Element {
@@ -64,7 +70,7 @@ export class StepsAndDiagramPageRoutes extends React.Component<StepsAndDiagramPa
       <StepsAndDiagramPageView
         page={this.props.page}
         currentStepIndex={stepIndex}
-        makePageStepUrl={this.props.makePageStepUrl}
+        makePageUrl={this.props.makePageUrl}
       />
     );
   }

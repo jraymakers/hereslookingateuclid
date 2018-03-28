@@ -1,15 +1,15 @@
 export const introductionText = 'Introduction';
 
-// export function axiomNavText(bookName: string, pageName: string): string {
-//   return `${bookName}: Axiom ${pageName}`;
-// }
-
-// export function axiomTitle(pageName: string): string {
-//   return `Axiom ${pageName}`;
-// }
-
 export function bookTitle(bookName: string): string {
   return `Book ${bookName}`;
+}
+
+export function axiomNavText(bookName: string, pageName: string): string {
+  return `${bookName}: Axiom ${pageName}`;
+}
+
+export function axiomTitle(pageName: string): string {
+  return `Axiom ${pageName}`;
 }
 
 export function commonNotionNavText(bookName: string, pageName: string): string {
