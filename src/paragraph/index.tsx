@@ -6,6 +6,7 @@ export {
   ParagraphList,
 } from './types/Paragraph';
 export {
+  anchor,
   italic,
   link,
 } from './utils/RunUtils';

@@ -1,5 +1,10 @@
 import { LinkInfo } from '../../link';
 
+export type AnchorRun = {
+  readonly type: 'anchor';
+  readonly linkInfo: LinkInfo;
+};
+
 export type LinkRun = {
   readonly type: 'link';
   readonly linkInfo: LinkInfo;
@@ -11,7 +16,7 @@ export type StyledRun = {
   readonly className: string;
 };
 
-export type Run = LinkRun | StyledRun | string;
+export type Run = AnchorRun | LinkRun | StyledRun | string;
 
 export type Sentence = ReadonlyArray<Run>;
 

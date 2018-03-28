@@ -22,6 +22,12 @@ export class RunView extends React.PureComponent<RunViewProps> {
       return <span>{run}</span>;
     } else {
       switch (run.type) {
+        case 'anchor':
+          return (
+            <span onClick={stopProp}>
+              <a className={linkClass} href={run.linkInfo.url}>{run.linkInfo.text}</a>
+            </span>
+          );
         case 'styled':
           return <span className={run.className}>{run.text}</span>;
         case 'link':

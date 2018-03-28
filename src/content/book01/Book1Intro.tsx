@@ -4,7 +4,7 @@ import {
 
 const intro: ParagraphList = [
   [
-    [ 'This first book develops the basic principles of geometry in a flat plane.' ],
+    [ 'The basic principles of geometry in a flat plane.' ],
   ],
 ];
 

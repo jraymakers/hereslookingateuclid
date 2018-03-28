@@ -19,6 +19,13 @@ const contentClass = namedClass(classPrefix, 'content',
   alignSelfCenterStyle,
   marginTopLargeStyle,
   { maxWidth: 800 },
+  {
+    $nest: {
+      '&>*': {
+        marginBottom: 12,
+      },
+    },
+  },
 );
 
 export type TextPageViewProps = RouteComponentProps<{}> & {

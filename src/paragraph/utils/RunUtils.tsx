@@ -1,7 +1,11 @@
 import { LinkInfo } from '../../link';
 import { textItalicClass } from '../../style';
 
-import { LinkRun, StyledRun } from '../types/Paragraph';
+import { AnchorRun, LinkRun, StyledRun } from '../types/Paragraph';
+
+export function anchor(linkInfo: LinkInfo): AnchorRun {
+  return { type: 'anchor', linkInfo };
+}
 
 export function italic(text: string): StyledRun {
   return { type: 'styled', className: textItalicClass, text };
