@@ -1,13 +1,13 @@
 export const mainContentsUrl = '/contents';
 export const mainIntroUrl = '/introduction';
 
-export function axiomGroupUrl(bookName: string, axiomGroupName: string): string {
-  return `/book/${bookName}/axioms/${axiomGroupName}`;
-}
+// export function axiomUrl(bookName: string, pageName: string): string {
+//   return `/book/${bookName}/axiom/${pageName}`;
+// }
 
-export function axiomGroupStepUrl(bookName: string, axiomGroupName: string, stepName: string): string {
-  return `/book/${bookName}/axioms/${axiomGroupName}/axiom=${stepName}`;
-}
+// export function axiomStepUrl(bookName: string, pageName: string, stepName: string): string {
+//   return `/book/${bookName}/axiom/${pageName}/select=${stepName}`;
+// }
 
 export function bookUrl(bookName: string): string {
   return `/book/${bookName}`;
@@ -21,26 +21,34 @@ export function bookIntroUrl(bookName: string): string {
   return `/book/${bookName}/introduction`;
 }
 
-export function defGroupUrl(bookName: string, defGroupName: string): string {
-  return `/book/${bookName}/definitions/${defGroupName}`;
+export function commonNotionUrl(bookName: string, pageName: string): string {
+  return `/book/${bookName}/common-notion/${pageName}`;
 }
 
-export function defGroupStepUrl(bookName: string, defGroupName: string, stepName: string): string {
-  return `/book/${bookName}/definitions/${defGroupName}/definition=${stepName}`;
+export function commonNotionStepUrl(bookName: string, pageName: string, stepName: string): string {
+  return `/book/${bookName}/common-notion/${pageName}/select=${stepName}`;
 }
 
-export function postulateUrl(bookName: string, postName: string): string {
-  return `/book/${bookName}/postulate/${postName}`;
+export function definitionUrl(bookName: string, pageName: string): string {
+  return `/book/${bookName}/definition/${pageName}`;
 }
 
-export function postulateStepUrl(bookName: string, postName: string, stepName: string): string {
-  return `/book/${bookName}/postulate/${postName}/step=${stepName}`;
+export function definitionStepUrl(bookName: string, pageName: string, stepName: string): string {
+  return `/book/${bookName}/definition/${pageName}/select=${stepName}`;
 }
 
-export function propUrl(bookName: string, propName: string): string {
-  return `/book/${bookName}/propostion/${propName}`;
+export function postulateUrl(bookName: string, pageName: string): string {
+  return `/book/${bookName}/postulate/${pageName}`;
 }
 
-export function propStepUrl(bookName: string, propName: string, stepName: string): string {
-  return `/book/${bookName}/propostion/${propName}/step=${stepName}`;
+export function postulateStepUrl(bookName: string, pageName: string, stepName: string): string {
+  return `/book/${bookName}/postulate/${pageName}/select=${stepName}`;
+}
+
+export function propositionUrl(bookName: string, pageName: string): string {
+  return `/book/${bookName}/propostion/${pageName}`;
+}
+
+export function propositionStepUrl(bookName: string, pageName: string, stepName: string): string {
+  return `/book/${bookName}/propostion/${pageName}/select=${stepName}`;
 }

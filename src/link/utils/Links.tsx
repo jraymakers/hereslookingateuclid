@@ -11,25 +11,29 @@ import {
 } from '../types/LinkInfo';
 
 import {
-  axiomGroupNavText,
-  axiomGroupTitle,
+  // axiomNavText,
+  // axiomTitle,
   bookTitle,
-  defGroupNavText,
-  defGroupTitle,
+  commonNotionNavText,
+  commonNotionTitle,
+  definitionNavText,
+  definitionTitle,
   introductionText,
   postulateNavText,
   postulateTitle,
-  propNavText,
-  propTitle,
+  propositionNavText,
+  propositionTitle,
 } from './Text';
 import {
-  axiomGroupUrl,
+  // axiomUrl,
   bookContentsUrl,
   bookIntroUrl,
-  defGroupUrl,
+  commonNotionStepUrl,
+  commonNotionUrl,
+  definitionUrl,
   mainIntroUrl,
   postulateUrl,
-  propUrl,
+  propositionUrl,
 } from './Urls';
 
 export const mainIntroLink: LinkInfo = {
@@ -37,20 +41,20 @@ export const mainIntroLink: LinkInfo = {
   url: mainIntroUrl,
 };
 
-export function axiomGroupNavLink(bookName: string, axiomGroupName: string): LinkInfo {
-  return {
-    text: axiomGroupNavText(bookName, axiomGroupName),
-    url: axiomGroupUrl(bookName, axiomGroupName),
-  };
-}
+// export function axiomNavLink(bookName: string, pageName: string): LinkInfo {
+//   return {
+//     text: axiomNavText(bookName, pageName),
+//     url: axiomUrl(bookName, pageName),
+//   };
+// }
 
-export function axiomGroupTitleLink(bookName: string, axiomGroup: StepsAndDiagram): SubtitledLinkInfo {
-  return {
-    text: axiomGroupTitle(axiomGroup.name),
-    subtitle: axiomGroup.summary,
-    url: axiomGroupUrl(bookName, axiomGroup.name),
-  };
-}
+// export function axiomTitleLink(bookName: string, stepsAndDiagram: StepsAndDiagram): SubtitledLinkInfo {
+//   return {
+//     text: axiomTitle(stepsAndDiagram.name),
+//     subtitle: stepsAndDiagram.summary,
+//     url: axiomUrl(bookName, stepsAndDiagram.name),
+//   };
+// }
 
 export function bookIntroLink(bookName: string): LinkInfo {
   return {
@@ -73,47 +77,62 @@ export function bookTitleIntroLink(bookName: string): LinkInfo {
   };
 }
 
-export function defGroupNavLink(bookName: string, defGroupName: string): LinkInfo {
+export function commonNotionNavLink(bookName: string, pageName: string): LinkInfo {
   return {
-    text: defGroupNavText(bookName, defGroupName),
-    url: defGroupUrl(bookName, defGroupName),
+    text: commonNotionNavText(bookName, pageName),
+    url: commonNotionUrl(bookName, pageName),
   };
 }
 
-export function defGroupTitleLink(bookName: string, defGroup: StepsAndDiagram): SubtitledLinkInfo {
+export function commonNotionTitleLink(bookName: string, stepsAndDiagram: StepsAndDiagram): SubtitledLinkInfo {
   return {
-    text: defGroupTitle(defGroup.name, defGroup.steps.length),
-    subtitle: defGroup.summary,
-    url: defGroupUrl(bookName, defGroup.name),
+    text: commonNotionTitle(stepsAndDiagram.name),
+    subtitle: stepsAndDiagram.summary,
+    url: commonNotionUrl(bookName, stepsAndDiagram.name),
   };
 }
 
-export function postulateNavLink(bookName: string, postulateName: string): LinkInfo {
+export function definitionNavLink(bookName: string, pageName: string): LinkInfo {
   return {
-    text: postulateNavText(bookName, postulateName),
-    url: postulateUrl(bookName, postulateName),
+    text: definitionNavText(bookName, pageName),
+    url: definitionUrl(bookName, pageName),
   };
 }
 
-export function postulateTitleLink(bookName: string, postulate: StepsAndDiagram): SubtitledLinkInfo {
+export function definitionTitleLink(bookName: string, stepsAndDiagram: StepsAndDiagram): SubtitledLinkInfo {
   return {
-    text: postulateTitle(postulate.name),
-    subtitle: postulate.summary,
-    url: postulateUrl(bookName, postulate.name),
+    text: definitionTitle(stepsAndDiagram.name),
+    subtitle: stepsAndDiagram.summary,
+    url: definitionUrl(bookName, stepsAndDiagram.name),
   };
 }
 
-export function propNavLink(bookName: string, propName: string): LinkInfo {
+export function postulateNavLink(bookName: string, pageName: string): LinkInfo {
   return {
-    text: propNavText(bookName, propName),
-    url: propUrl(bookName, propName),
+    text: postulateNavText(bookName, pageName),
+    url: postulateUrl(bookName, pageName),
   };
 }
 
-export function propTitleLink(bookName: string, proposition: StepsAndDiagram): SubtitledLinkInfo {
+export function postulateTitleLink(bookName: string, stepsAndDiagram: StepsAndDiagram): SubtitledLinkInfo {
   return {
-    text: propTitle(proposition.name),
-    subtitle: proposition.summary,
-    url: propUrl(bookName, proposition.name),
+    text: postulateTitle(stepsAndDiagram.name),
+    subtitle: stepsAndDiagram.summary,
+    url: postulateUrl(bookName, stepsAndDiagram.name),
+  };
+}
+
+export function propositionNavLink(bookName: string, pageName: string): LinkInfo {
+  return {
+    text: propositionNavText(bookName, pageName),
+    url: propositionUrl(bookName, pageName),
+  };
+}
+
+export function propositionTitleLink(bookName: string, stepsAndDiagram: StepsAndDiagram): SubtitledLinkInfo {
+  return {
+    text: propositionTitle(stepsAndDiagram.name),
+    subtitle: stepsAndDiagram.summary,
+    url: propositionUrl(bookName, stepsAndDiagram.name),
   };
 }

@@ -3,7 +3,7 @@ import {
   LabelDir,
 } from '../../diagram';
 import {
-  propTitle,
+  propositionTitle,
 } from '../../link';
 import {
   Paragraph,
@@ -115,7 +115,7 @@ const steps: StepList = [
 ];
 
 const name = '1';
-const title = propTitle(name);
+const title = propositionTitle(name);
 const summary: Paragraph = [
   ['Construct an equilateral triangle on a given straight line.'],
 ];

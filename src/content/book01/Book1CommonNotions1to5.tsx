@@ -3,7 +3,7 @@ import {
   LabelDir,
 } from '../../diagram';
 import {
-  axiomGroupTitle,
+  commonNotionTitle,
 } from '../../link';
 import {
   italic,
@@ -64,9 +64,9 @@ const steps: StepList = [
 ];
 
 const name = '1-5';
-const title = axiomGroupTitle(name);
+const title = commonNotionTitle(name);
 const summary: Paragraph = [
-  ['also called Common Notions'],
+  ['sometimes called Axioms'],
 ];
 
 const postulate: StepsAndDiagram = {

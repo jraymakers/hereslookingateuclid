@@ -3,7 +3,7 @@ import {
   LabelDir,
 } from '../../diagram';
 import {
-  defGroupTitle,
+  definitionTitle,
 } from '../../link';
 import {
   italic,
@@ -79,7 +79,7 @@ const steps: StepList = [
 ];
 
 const name = '13-14';
-const title = defGroupTitle(name, steps.length);
+const title = definitionTitle(name);
 const summary: Paragraph = [
   ['Figures'],
 ];

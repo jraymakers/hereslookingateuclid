@@ -12,8 +12,9 @@ export type Book = {
   readonly bookName: string;
   readonly contentsPage: BookContentsPage,
   readonly introPage: BookTextPage,
-  readonly axiomGroupPages?: StepsAndDiagramPageMap;
-  readonly definitionGroupPages?: StepsAndDiagramPageMap;
+  // readonly axiomPages?: StepsAndDiagramPageMap;
+  readonly commonNotionPages?: StepsAndDiagramPageMap;
+  readonly definitionPages?: StepsAndDiagramPageMap;
   readonly postulatePages?: StepsAndDiagramPageMap;
   readonly propositionPages: StepsAndDiagramPageMap;
 };

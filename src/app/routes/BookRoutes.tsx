@@ -7,16 +7,18 @@ import {
 } from 'react-router';
 
 import {
-  axiomGroupStepUrl,
-  axiomGroupUrl,
+  // axiomStepUrl,
+  // axiomUrl,
   bookContentsUrl,
   bookIntroUrl,
-  defGroupStepUrl,
-  defGroupUrl,
+  commonNotionStepUrl,
+  commonNotionUrl,
+  definitionStepUrl,
+  definitionUrl,
   postulateStepUrl,
   postulateUrl,
-  propStepUrl,
-  propUrl,
+  propositionStepUrl,
+  propositionUrl,
 } from '../../link';
 import {
   Book,
@@ -27,24 +29,12 @@ import {
 
 import { MakePageStepUrl, StepsAndDiagramPageRoutes } from './StepsAndDiagramPageRoutes';
 
-type AxiomGroupRouteProps = RouteComponentProps<{
-  readonly axiomGroupName: string;
-}>;
-
 type BookRoutesProps = {
   readonly book: Book;
 };
 
-type DefGroupRouteProps = RouteComponentProps<{
-  readonly defGroupName: string;
-}>;
-
-type PostulateRouteProps = RouteComponentProps<{
-  readonly postulateName: string;
-}>;
-
-type PropRouteProps = RouteComponentProps<{
-  readonly propName: string;
+type PageRouteProps = RouteComponentProps<{
+  readonly pageName: string;
 }>;
 
 export class BookRoutes extends React.Component<BookRoutesProps> {
@@ -55,10 +45,11 @@ export class BookRoutes extends React.Component<BookRoutesProps> {
       <Switch>
         <Route exact path={bookContentsUrl(bookName)} render={this.renderContents} />
         <Route exact path={bookIntroUrl(bookName)} render={this.renderIntro} />
-        <Route path={axiomGroupUrl(bookName, ':axiomGroupName')} render={this.renderAxiomGroupRoute} />
-        <Route path={defGroupUrl(bookName, ':defGroupName')} render={this.renderDefGroupRoute} />
-        <Route path={postulateUrl(bookName, ':postulateName')} render={this.renderPostulateRoute} />
-        <Route path={propUrl(bookName, ':propName')} render={this.renderPropRoute} />
+        {/* <Route path={axiomUrl(bookName, ':pageName')} render={this.renderAxiomRoute} /> */}
+        <Route path={commonNotionUrl(bookName, ':pageName')} render={this.renderCommonNotionRoute} />
+        <Route path={definitionUrl(bookName, ':pageName')} render={this.renderDefinitionRoute} />
+        <Route path={postulateUrl(bookName, ':pageName')} render={this.renderPostulateRoute} />
+        <Route path={propositionUrl(bookName, ':pageName')} render={this.renderPropositionRoute} />
         <Redirect to={bookIntroUrl(bookName)} />
       </Switch>
     );
@@ -72,31 +63,38 @@ export class BookRoutes extends React.Component<BookRoutesProps> {
     return <TextPageView page={this.props.book.introPage} />;
   }
 
-  private readonly renderAxiomGroupRoute = (props: AxiomGroupRouteProps) => {
-    const axiomGroupName = props.match.params.axiomGroupName;
-    const pages = this.props.book.axiomGroupPages;
-    const page = pages ? pages[axiomGroupName] : null;
-    return this.renderStepsAndDiagramPage(page, axiomGroupStepUrl);
+  // private readonly renderAxiomRoute = (props: AxiomGroupRouteProps) => {
+  //   const pageName = props.match.params.pageName;
+  //   const pages = this.props.book.axiomPages;
+  //   const page = pages ? pages[pageName] : null;
+  //   return this.renderStepsAndDiagramPage(page, axiomStepUrl);
+  // }
+
+  private readonly renderCommonNotionRoute = (props: PageRouteProps) => {
+    const pageName = props.match.params.pageName;
+    const pages = this.props.book.commonNotionPages;
+    const page = pages ? pages[pageName] : null;
+    return this.renderStepsAndDiagramPage(page, commonNotionStepUrl);
   }
 
-  private readonly renderDefGroupRoute = (props: DefGroupRouteProps) => {
-    const defGroupName = props.match.params.defGroupName;
-    const pages = this.props.book.definitionGroupPages;
-    const page = pages ? pages[defGroupName] : null;
-    return this.renderStepsAndDiagramPage(page, defGroupStepUrl);
+  private readonly renderDefinitionRoute = (props: PageRouteProps) => {
+    const pageName = props.match.params.pageName;
+    const pages = this.props.book.definitionPages;
+    const page = pages ? pages[pageName] : null;
+    return this.renderStepsAndDiagramPage(page, definitionStepUrl);
   }
 
-  private readonly renderPostulateRoute = (props: PostulateRouteProps) => {
-    const postulateName = props.match.params.postulateName;
+  private readonly renderPostulateRoute = (props: PageRouteProps) => {
+    const pageName = props.match.params.pageName;
     const pages = this.props.book.postulatePages;
-    const page = pages ? pages[postulateName] : null;
+    const page = pages ? pages[pageName] : null;
     return this.renderStepsAndDiagramPage(page, postulateStepUrl);
   }
 
-  private readonly renderPropRoute = (props: PropRouteProps) => {
-    const propName = props.match.params.propName;
-    const page = this.props.book.propositionPages[propName];
-    return this.renderStepsAndDiagramPage(page, propStepUrl);
+  private readonly renderPropositionRoute = (props: PageRouteProps) => {
+    const pageName = props.match.params.pageName;
+    const page = this.props.book.propositionPages[pageName];
+    return this.renderStepsAndDiagramPage(page, propositionStepUrl);
   }
 
   private renderStepsAndDiagramPage(

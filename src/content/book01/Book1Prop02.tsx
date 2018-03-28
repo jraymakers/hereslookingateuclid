@@ -3,8 +3,8 @@ import {
   LabelDir,
 } from '../../diagram';
 import {
-  propNavLink,
-  propTitle,
+  propositionNavLink,
+  propositionTitle,
 } from '../../link';
 import {
   link,
@@ -92,7 +92,7 @@ const steps: StepList = [
     text: [
       ['Construct an equilateral triangle ABD on AB.'],
       ['So AB, AD, and BD are all equal.'],
-      ['(', link(propNavLink('I', '1')), ')'],
+      ['(', link(propositionNavLink('I', '1')), ')'],
     ],
     highlight: [ 'D', 'AD', 'BD' ],
   },
@@ -163,7 +163,7 @@ const steps: StepList = [
 ];
 
 const name = '2';
-const title = propTitle(name);
+const title = propositionTitle(name);
 const summary: Paragraph = [
   ['Construct a straight line equal to a given straight line with one end at a given point.'],
 ];

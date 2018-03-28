@@ -22,7 +22,7 @@ const contentClass = namedClass(classPrefix, 'content',
   {
     $nest: {
       '&>*': {
-        marginBottom: 12,
+        marginTop: 12,
       },
     },
   },

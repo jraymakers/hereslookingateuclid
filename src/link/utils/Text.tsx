@@ -1,37 +1,45 @@
 export const introductionText = 'Introduction';
 
-export function axiomGroupNavText(bookName: string, axiomGroupName: string): string {
-  return `${bookName}: Axioms ${axiomGroupName}`;
-}
+// export function axiomNavText(bookName: string, pageName: string): string {
+//   return `${bookName}: Axiom ${pageName}`;
+// }
 
-export function axiomGroupTitle(axiomGroupName: string): string {
-  return `Axioms ${axiomGroupName}`;
-}
+// export function axiomTitle(pageName: string): string {
+//   return `Axiom ${pageName}`;
+// }
 
 export function bookTitle(bookName: string): string {
   return `Book ${bookName}`;
 }
 
-export function defGroupNavText(bookName: string, defGroupName: string): string {
-  return `${bookName}: Def ${defGroupName}`;
+export function commonNotionNavText(bookName: string, pageName: string): string {
+  return `${bookName}: Common Notion ${pageName}`;
 }
 
-export function defGroupTitle(defGroupName: string, numSteps: number): string {
-  return `Definition${numSteps > 1 ? 's' : ''} ${defGroupName}`;
+export function commonNotionTitle(pageName: string): string {
+  return `Common Notion ${pageName}`;
 }
 
-export function postulateNavText(bookName: string, postulateName: string): string {
-  return `${bookName}: Postulate ${postulateName}`;
+export function definitionNavText(bookName: string, pageName: string): string {
+  return `${bookName}: Definition ${pageName}`;
+}
+
+export function definitionTitle(pageName: string): string {
+  return `Definition ${pageName}`;
+}
+
+export function postulateNavText(bookName: string, pageName: string): string {
+  return `${bookName}: Postulate ${pageName}`;
 }
 
 export function postulateTitle(postulateName: string): string {
   return `Postulate ${postulateName}`;
 }
 
-export function propNavText(bookName: string, propName: string): string {
-  return `${bookName}: Prop ${propName}`;
+export function propositionNavText(bookName: string, pageName: string): string {
+  return `${bookName}: Proposition ${pageName}`;
 }
 
-export function propTitle(propName: string): string {
-  return `Proposition ${propName}`;
+export function propositionTitle(pageName: string): string {
+  return `Proposition ${pageName}`;
 }
