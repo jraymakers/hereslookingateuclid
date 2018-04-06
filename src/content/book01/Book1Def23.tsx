@@ -47,7 +47,7 @@ const steps: StepList = [
     name: '23',
     text: [
       [italic('Parallel'), ' straight lines are straight lines which, ',
-       'being in the same plane and being produced indefinitely in both directions, ',
+       'being in the same plane and being extended indefinitely in both directions, ',
        'do not meet one another in either direction.'],
     ],
     highlight: [ 'AB', 'CD' ],

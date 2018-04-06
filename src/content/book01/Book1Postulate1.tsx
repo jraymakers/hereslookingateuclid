@@ -19,19 +19,36 @@ import {
 const width = 400;
 const height = 400;
 
+const aX = width * 0.3;
+const aY = height * 0.4;
+const bX = width * 0.7;
+const bY = height * 0.6;
+
 const diagram: Diagram = {
   width,
   height,
-  parts: {},
+  parts: {
+    ['AB']: { type: 'line', p1: 'A', p2: 'B' },
+
+    ['A']: { type: 'point', x: aX, y: aY, labelY: -12 },
+    ['B']: { type: 'point', x: bX, y: bY, labelY: 12 },
+  },
 };
 
 const steps: StepList = [
   {
-    name: '1',
+    name: '1a',
     text: [
-      ['Draw a straight line from any point to any point.'],
+      ['Let A and B be any two points.'],
     ],
-    highlight: [],
+    highlight: [ 'A', 'B' ],
+  },
+  {
+    name: '1b',
+    text: [
+      ['Then there is a unique straight line AB with ends A and B.'],
+    ],
+    highlight: [ 'AB' ],
   },
 ];
 
