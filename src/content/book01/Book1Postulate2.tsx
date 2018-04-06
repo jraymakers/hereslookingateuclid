@@ -51,7 +51,7 @@ const steps: StepList = [
   {
     name: '2b',
     text: [
-      ['Then AB can be ', italic('extended'), ' from A to B by choosing a point C',
+      ['Then AB can be ', italic('extended'), ' in the direction of B by choosing a point C',
        ' and constructing the straight line BC such that B is on the straight line AC.'],
     ],
     highlight: [ 'C', 'BC' ],
