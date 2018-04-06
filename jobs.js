@@ -31,6 +31,10 @@ module.exports = () => ({
   publish: {
     action: jr.processAction('gsutil', ['cp', '-r', 'out/**', 'gs://www.hereslookingateuclid.com'], { cwd: __dirname })
   },
+  publishBundle: {
+    action: jr.processAction('gsutil', ['cp', 'out/bundle.js', 'gs://www.hereslookingateuclid.com/bundle.js'],
+      { cwd: __dirname })
+  },
   serve: {
     action: jr.scriptAction(httpServerPath, ['./out', '-o'], { cwd: __dirname })
   },
