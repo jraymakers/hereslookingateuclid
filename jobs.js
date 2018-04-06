@@ -11,13 +11,25 @@ const srcDir = 'src';
 
 module.exports = () => ({
   build: {
-    needs: ['bundle', 'copyFavicon', 'copyIndex', 'lint']
+    needs: ['buildDev']
   },
-  bundle: {
-    action: jr.scriptAction(webpackPath, ['--hide-modules'], { cwd: __dirname })
+  buildDev: {
+    needs: ['bundleDev', 'copy', 'lint']
+  },
+  buildProd: {
+    needs: ['bundleProd', 'copy', 'lint']
+  },
+  bundleDev: {
+    action: jr.scriptAction(webpackPath, ['--hide-modules', '--mode', 'development'], { cwd: __dirname })
+  },
+  bundleProd: {
+    action: jr.scriptAction(webpackPath, ['--hide-modules', '--mode', 'production'], { cwd: __dirname })
   },
   clean: {
     action: () => fse.remove(outDir)
+  },
+  copy: {
+    needs: ['copyFavicon', 'copyIndex']
   },
   copyFavicon: {
     action: () => fse.copy(path.join(srcDir, 'favicon', 'favicon.png'), path.join(outDir, 'favicon.png'))
