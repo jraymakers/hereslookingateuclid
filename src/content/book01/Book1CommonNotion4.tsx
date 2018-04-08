@@ -95,7 +95,7 @@ const steps: StepList = [
   {
     name: 'b',
     text: [
-      ['Then ABC and DEF are equal.'],
+      ['Then ABC and DEF are equal (by Common Notion 4).'],
     ],
     highlight: [ 'A', 'B', 'C', 'D', 'E', 'F', 'AB', 'BC', 'AC', 'DE', 'EF', 'DF' ],
   },
