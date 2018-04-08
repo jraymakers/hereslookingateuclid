@@ -9,13 +9,14 @@ export type PointSvgProps = {
   readonly labelX?: number;
   readonly labelY?: number;
   readonly highlighted?: boolean;
+  readonly className?: string;
 };
 
 export class PointSvg extends React.PureComponent<PointSvgProps> {
 
   public render(): JSX.Element | null {
     return (
-      <g>
+      <g className={this.props.className}>
         <circle
           fill={this.props.highlighted ? 'orange' : 'black'}
           cx={this.props.x}

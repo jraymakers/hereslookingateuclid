@@ -6,12 +6,14 @@ export type LineSvgProps = {
   readonly x2: number;
   readonly y2: number;
   readonly highlighted?: boolean;
+  readonly className?: string;
 };
 
 export class LineSvg extends React.PureComponent<LineSvgProps> {
 
   public render(): JSX.Element | null {
     return <line
+      className={this.props.className}
       stroke={this.props.highlighted ? 'orange' : 'black'}
       strokeWidth={2}
       strokeLinecap="round"

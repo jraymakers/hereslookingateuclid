@@ -1,4 +1,4 @@
-export { classes } from 'typestyle';
+export { classes, keyframes } from 'typestyle';
 
 export {
   borderClass,

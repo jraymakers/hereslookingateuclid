@@ -32,6 +32,7 @@ export type LineDiagramPart = {
   readonly type: 'line';
   readonly p1: string; // point reference
   readonly p2: string; // point reference
+  readonly className?: string;
 };
 
 export type PointDiagramPart = {
@@ -40,6 +41,7 @@ export type PointDiagramPart = {
   readonly y: number;
   readonly labelX?: number;
   readonly labelY?: number;
+  readonly className?: string;
 };
 
 export type DiagramPart =

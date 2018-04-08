@@ -254,6 +254,7 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
         x2={p2.x}
         y2={p2.y}
         highlighted={state === 'highlighted'}
+        className={line.className}
       />;
     } else {
       return null;
@@ -269,6 +270,7 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
       labelX={point.labelX}
       labelY={point.labelY}
       highlighted={state === 'highlighted'}
+      className={point.className}
     />;
   }
 
