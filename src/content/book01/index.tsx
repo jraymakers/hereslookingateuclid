@@ -24,7 +24,12 @@ import {
   StepsAndDiagramPageMap,
 } from '../../page';
 
-import cn1to5 from './Book1CommonNotions1to5';
+import cn1 from './Book1CommonNotion1';
+import cn2 from './Book1CommonNotion2';
+import cn3 from './Book1CommonNotion3';
+import cn4 from './Book1CommonNotion4';
+import cn5 from './Book1CommonNotion5';
+// import cn1to5 from './Book1CommonNotions1to5';
 import def01to04 from './Book1Def01to04';
 import def05to07 from './Book1Def05to07';
 import def08to12 from './Book1Def08to12';
@@ -69,13 +74,29 @@ const def23Nav     = definitionNavLink(bookName, def23.name);
 const def23NavLast     = definitionNavLink(bookName, def23.name, lastStep);
 
 const postulate1Nav = postulateNavLink(bookName, postulate1.name);
+const postulate1NavLast = postulateNavLink(bookName, postulate1.name, lastStep);
 const postulate2Nav = postulateNavLink(bookName, postulate2.name);
+const postulate2NavLast = postulateNavLink(bookName, postulate2.name, lastStep);
 const postulate3Nav = postulateNavLink(bookName, postulate3.name);
+const postulate3NavLast = postulateNavLink(bookName, postulate3.name, lastStep);
 const postulate4Nav = postulateNavLink(bookName, postulate4.name);
+const postulate4NavLast = postulateNavLink(bookName, postulate4.name, lastStep);
 const postulate5Nav = postulateNavLink(bookName, postulate5.name);
+const postulate5NavLast = postulateNavLink(bookName, postulate5.name, lastStep);
 
-const cn1to5Nav = commonNotionNavLink(bookName, cn1to5.name);
-const cn1to5NavLast = commonNotionNavLink(bookName, cn1to5.name, lastStep);
+const cn1Nav = commonNotionNavLink(bookName, cn1.name);
+const cn1NavLast = commonNotionNavLink(bookName, cn1.name, lastStep);
+const cn2Nav = commonNotionNavLink(bookName, cn2.name);
+const cn2NavLast = commonNotionNavLink(bookName, cn2.name, lastStep);
+const cn3Nav = commonNotionNavLink(bookName, cn3.name);
+const cn3NavLast = commonNotionNavLink(bookName, cn3.name, lastStep);
+const cn4Nav = commonNotionNavLink(bookName, cn4.name);
+const cn4NavLast = commonNotionNavLink(bookName, cn4.name, lastStep);
+const cn5Nav = commonNotionNavLink(bookName, cn5.name);
+const cn5NavLast = commonNotionNavLink(bookName, cn5.name, lastStep);
+
+// const cn1to5Nav = commonNotionNavLink(bookName, cn1to5.name);
+// const cn1to5NavLast = commonNotionNavLink(bookName, cn1to5.name, lastStep);
 
 const prop01Nav = propositionNavLink(bookName, prop01.name);
 const prop01NavLast = propositionNavLink(bookName, prop01.name, lastStep);
@@ -98,7 +119,11 @@ const contentsLinks: SubtitledLinkInfoList = [
   postulateTitleLink(bookName, postulate3),
   postulateTitleLink(bookName, postulate4),
   postulateTitleLink(bookName, postulate5),
-  commonNotionTitleLink(bookName, cn1to5),
+  commonNotionTitleLink(bookName, cn1),
+  commonNotionTitleLink(bookName, cn2),
+  commonNotionTitleLink(bookName, cn3),
+  commonNotionTitleLink(bookName, cn4),
+  commonNotionTitleLink(bookName, cn5),
   propositionTitleLink(bookName, prop01),
   propositionTitleLink(bookName, prop02),
 ];
@@ -135,18 +160,22 @@ const definitionPages: StepsAndDiagramPageMap = {
 
 const postulatePages: StepsAndDiagramPageMap = {
   [postulate1.name]: { ...bookPage, stepsAndDiagram: postulate1, prev: def23NavLast,      next: postulate2Nav },
-  [postulate2.name]: { ...bookPage, stepsAndDiagram: postulate2, prev: postulate1Nav, next: postulate3Nav },
-  [postulate3.name]: { ...bookPage, stepsAndDiagram: postulate3, prev: postulate2Nav, next: postulate4Nav },
-  [postulate4.name]: { ...bookPage, stepsAndDiagram: postulate4, prev: postulate3Nav, next: postulate5Nav },
-  [postulate5.name]: { ...bookPage, stepsAndDiagram: postulate5, prev: postulate4Nav, next: cn1to5Nav },
+  [postulate2.name]: { ...bookPage, stepsAndDiagram: postulate2, prev: postulate1NavLast, next: postulate3Nav },
+  [postulate3.name]: { ...bookPage, stepsAndDiagram: postulate3, prev: postulate2NavLast, next: postulate4Nav },
+  [postulate4.name]: { ...bookPage, stepsAndDiagram: postulate4, prev: postulate3NavLast, next: postulate5Nav },
+  [postulate5.name]: { ...bookPage, stepsAndDiagram: postulate5, prev: postulate4NavLast, next: cn1Nav },
 };
 
 const commonNotionPages: StepsAndDiagramPageMap = {
-  [cn1to5.name]: { ...bookPage, stepsAndDiagram: cn1to5, prev: postulate5Nav, next: prop01Nav },
+  [cn1.name]: { ...bookPage, stepsAndDiagram: cn1, prev: postulate5NavLast, next: cn2Nav },
+  [cn2.name]: { ...bookPage, stepsAndDiagram: cn2, prev: cn1NavLast,    next: cn3Nav },
+  [cn3.name]: { ...bookPage, stepsAndDiagram: cn3, prev: cn2NavLast,    next: cn4Nav },
+  [cn4.name]: { ...bookPage, stepsAndDiagram: cn4, prev: cn3NavLast,    next: cn5Nav },
+  [cn5.name]: { ...bookPage, stepsAndDiagram: cn5, prev: cn4NavLast,    next: prop01Nav },
 };
 
 const propositionPages: StepsAndDiagramPageMap = {
-  [prop01.name]: { ...bookPage, stepsAndDiagram: prop01, prev: cn1to5NavLast,  next: prop02Nav },
+  [prop01.name]: { ...bookPage, stepsAndDiagram: prop01, prev: cn5NavLast,  next: prop02Nav },
   [prop02.name]: { ...bookPage, stepsAndDiagram: prop02, prev: prop01NavLast, next: null },
 };
 
