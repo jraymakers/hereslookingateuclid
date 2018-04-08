@@ -73,45 +73,45 @@ const steps: StepList = [
     ],
   },
   {
-    name: '5a',
+    name: 'a',
     text: [
-      ['Let AC and DF be two straight lines.'],
+      ['In other words: Given two straight lines AC and DF,'],
     ],
     show: [ 'A', 'C', 'D', 'F' ],
     highlight: [ 'AB', 'BC', 'DE', 'EF' ],
   },
   {
-    name: '5b',
+    name: 'b',
     text: [
-      ['Let B be a point on AC between A and C.'],
+      ['a point B between A and C,'],
     ],
     highlight: [ 'B' ],
   },
   {
-    name: '5c',
+    name: 'c',
     text: [
-      ['Let E be a point on DF between D and F.'],
+      ['a point E between D and F,'],
     ],
     highlight: [ 'E' ],
   },
   {
-    name: '5d',
+    name: 'd',
     text: [
-      ['Construct straight line BE.'],
+      ['and the straight line BE'],
     ],
     highlight: [ 'BE' ],
   },
   {
-    name: '5e',
+    name: 'e',
     text: [
-      ['Let the two angles ABE and BED total less than two right angles.'],
+      ['such that the two angles ABE and BED total less than two right angles,'],
     ],
     highlight: [ 'AB', 'BE', 'DE' ],
   },
   {
-    name: '5f',
+    name: 'f',
     text: [
-      ['Then, if AC and DF are extended in the directions of A and D, they meet at a point G.'],
+      ['then, if AC and DF are extended in the directions of A and D, they meet at a point G.'],
     ],
     highlight: [ 'G', 'AG', 'DG' ],
   },
