@@ -29,7 +29,6 @@ import cn2 from './Book1CommonNotion2';
 import cn3 from './Book1CommonNotion3';
 import cn4 from './Book1CommonNotion4';
 import cn5 from './Book1CommonNotion5';
-// import cn1to5 from './Book1CommonNotions1to5';
 import def01to04 from './Book1Def01to04';
 import def05to07 from './Book1Def05to07';
 import def08to12 from './Book1Def08to12';
@@ -47,6 +46,7 @@ import postulate4 from './Book1Postulate4';
 import postulate5 from './Book1Postulate5';
 import prop01 from './Book1Prop01';
 import prop02 from './Book1Prop02';
+import prop03 from './Book1Prop03';
 
 const bookName = 'I';
 
@@ -95,13 +95,12 @@ const cn4NavLast = commonNotionNavLink(bookName, cn4.name, lastStep);
 const cn5Nav = commonNotionNavLink(bookName, cn5.name);
 const cn5NavLast = commonNotionNavLink(bookName, cn5.name, lastStep);
 
-// const cn1to5Nav = commonNotionNavLink(bookName, cn1to5.name);
-// const cn1to5NavLast = commonNotionNavLink(bookName, cn1to5.name, lastStep);
-
 const prop01Nav = propositionNavLink(bookName, prop01.name);
 const prop01NavLast = propositionNavLink(bookName, prop01.name, lastStep);
 const prop02Nav = propositionNavLink(bookName, prop02.name);
 const prop02NavLast = propositionNavLink(bookName, prop02.name, lastStep);
+const prop03Nav = propositionNavLink(bookName, prop03.name);
+const prop03NavLast = propositionNavLink(bookName, prop03.name, lastStep);
 
 const contentsLinks: SubtitledLinkInfoList = [
   introLink,
@@ -126,6 +125,7 @@ const contentsLinks: SubtitledLinkInfoList = [
   commonNotionTitleLink(bookName, cn5),
   propositionTitleLink(bookName, prop01),
   propositionTitleLink(bookName, prop02),
+  propositionTitleLink(bookName, prop03),
 ];
 
 const contentsPage: BookContentsPage = {
@@ -176,7 +176,8 @@ const commonNotionPages: StepsAndDiagramPageMap = {
 
 const propositionPages: StepsAndDiagramPageMap = {
   [prop01.name]: { ...bookPage, stepsAndDiagram: prop01, prev: cn5NavLast,  next: prop02Nav },
-  [prop02.name]: { ...bookPage, stepsAndDiagram: prop02, prev: prop01NavLast, next: null },
+  [prop02.name]: { ...bookPage, stepsAndDiagram: prop02, prev: prop01NavLast, next: prop03Nav },
+  [prop03.name]: { ...bookPage, stepsAndDiagram: prop03, prev: prop02NavLast, next: null },
 };
 
 const book: Book = {
