@@ -88,7 +88,7 @@ const steps: StepList = [
     name: 'a',
     text: [
       ['Example: Let ABC and DEF be triangles such that,',
-       ' when A coincides with D, then B coincides with E and C coincides with F.'],
+       ' if A coincides with D, then, at the same time, B may coincide with E, and C may coincide with F.'],
     ],
     highlight: [ 'A', 'B', 'C', 'D', 'E', 'F', 'AB', 'BC', 'AC', 'DE', 'EF', 'DF' ],
   },
