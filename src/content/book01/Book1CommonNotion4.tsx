@@ -20,8 +20,6 @@ import {
   namedClass,
 } from '../../style';
 
-import { Greek } from '../Greek';
-
 const width = 400;
 const height = 400;
 
@@ -41,12 +39,14 @@ const fY = eY;
 
 const translatePosAnimation = keyframes({
   '0%': { transform: `translate(0, 0)` },
-  '50%': { transform: `translate(${width * 0.25}px, ${width * 0.2}px)` },
+  '40%': { transform: `translate(${width * 0.25}px, ${width * 0.2}px)` },
+  '60%': { transform: `translate(${width * 0.25}px, ${width * 0.2}px)` },
 });
 
 const translateNegAnimation = keyframes({
   '0%': { transform: `translate(0, 0)` },
-  '50%': { transform: `translate(${-width * 0.25}px, ${-width * 0.2}px)` },
+  '40%': { transform: `translate(${-width * 0.25}px, ${-width * 0.2}px)` },
+  '60%': { transform: `translate(${-width * 0.25}px, ${-width * 0.2}px)` },
 });
 
 const posClass = namedClass('Book1CommonNotion4', 'pos', {
@@ -87,8 +87,9 @@ const steps: StepList = [
   {
     name: 'a',
     text: [
-      ['Example: Let ABC and DEF be triangles such that,',
-       ' if A coincides with D, then, at the same time, B may coincide with E, and C may coincide with F.'],
+      ['Example: Let ABC and DEF be triangles such that, ',
+       'all at the same time, A may be made to coincide with D, ',
+       'B with E, and C with F.'],
     ],
     highlight: [ 'A', 'B', 'C', 'D', 'E', 'F', 'AB', 'BC', 'AC', 'DE', 'EF', 'DF' ],
   },

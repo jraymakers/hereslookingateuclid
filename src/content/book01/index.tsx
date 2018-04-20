@@ -47,6 +47,7 @@ import postulate5 from './Book1Postulate5';
 import prop01 from './Book1Prop01';
 import prop02 from './Book1Prop02';
 import prop03 from './Book1Prop03';
+import prop04 from './Book1Prop04';
 
 const bookName = 'I';
 
@@ -101,6 +102,8 @@ const prop02Nav = propositionNavLink(bookName, prop02.name);
 const prop02NavLast = propositionNavLink(bookName, prop02.name, lastStep);
 const prop03Nav = propositionNavLink(bookName, prop03.name);
 const prop03NavLast = propositionNavLink(bookName, prop03.name, lastStep);
+const prop04Nav = propositionNavLink(bookName, prop04.name);
+const prop04NavLast = propositionNavLink(bookName, prop04.name, lastStep);
 
 const contentsLinks: SubtitledLinkInfoList = [
   introLink,
@@ -126,6 +129,7 @@ const contentsLinks: SubtitledLinkInfoList = [
   propositionTitleLink(bookName, prop01),
   propositionTitleLink(bookName, prop02),
   propositionTitleLink(bookName, prop03),
+  propositionTitleLink(bookName, prop04),
 ];
 
 const contentsPage: BookContentsPage = {
@@ -177,7 +181,8 @@ const commonNotionPages: StepsAndDiagramPageMap = {
 const propositionPages: StepsAndDiagramPageMap = {
   [prop01.name]: { ...bookPage, stepsAndDiagram: prop01, prev: cn5NavLast,  next: prop02Nav },
   [prop02.name]: { ...bookPage, stepsAndDiagram: prop02, prev: prop01NavLast, next: prop03Nav },
-  [prop03.name]: { ...bookPage, stepsAndDiagram: prop03, prev: prop02NavLast, next: null },
+  [prop03.name]: { ...bookPage, stepsAndDiagram: prop03, prev: prop02NavLast, next: prop04Nav },
+  [prop04.name]: { ...bookPage, stepsAndDiagram: prop04, prev: prop03NavLast, next: null },
 };
 
 const book: Book = {
