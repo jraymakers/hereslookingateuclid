@@ -151,7 +151,7 @@ const introPage: BookTextPage = {
 };
 
 const definitionPages: StepsAndDiagramPageMap = {
-  [def01to04.name]: { ...bookPage, stepsAndDiagram: def01to04, prev: titleIntroLink, next: def05to07Nav},
+  [def01to04.name]: { ...bookPage, stepsAndDiagram: def01to04, prev: titleIntroLink,     next: def05to07Nav},
   [def05to07.name]: { ...bookPage, stepsAndDiagram: def05to07, prev: def01to04NavLast,   next: def08to12Nav},
   [def08to12.name]: { ...bookPage, stepsAndDiagram: def08to12, prev: def05to07NavLast,   next: def13to14Nav},
   [def13to14.name]: { ...bookPage, stepsAndDiagram: def13to14, prev: def08to12NavLast,   next: def15to18Nav},
@@ -172,14 +172,14 @@ const postulatePages: StepsAndDiagramPageMap = {
 
 const commonNotionPages: StepsAndDiagramPageMap = {
   [cn1.name]: { ...bookPage, stepsAndDiagram: cn1, prev: postulate5NavLast, next: cn2Nav },
-  [cn2.name]: { ...bookPage, stepsAndDiagram: cn2, prev: cn1NavLast,    next: cn3Nav },
-  [cn3.name]: { ...bookPage, stepsAndDiagram: cn3, prev: cn2NavLast,    next: cn4Nav },
-  [cn4.name]: { ...bookPage, stepsAndDiagram: cn4, prev: cn3NavLast,    next: cn5Nav },
-  [cn5.name]: { ...bookPage, stepsAndDiagram: cn5, prev: cn4NavLast,    next: prop01Nav },
+  [cn2.name]: { ...bookPage, stepsAndDiagram: cn2, prev: cn1NavLast,        next: cn3Nav },
+  [cn3.name]: { ...bookPage, stepsAndDiagram: cn3, prev: cn2NavLast,        next: cn4Nav },
+  [cn4.name]: { ...bookPage, stepsAndDiagram: cn4, prev: cn3NavLast,        next: cn5Nav },
+  [cn5.name]: { ...bookPage, stepsAndDiagram: cn5, prev: cn4NavLast,        next: prop01Nav },
 };
 
 const propositionPages: StepsAndDiagramPageMap = {
-  [prop01.name]: { ...bookPage, stepsAndDiagram: prop01, prev: cn5NavLast,  next: prop02Nav },
+  [prop01.name]: { ...bookPage, stepsAndDiagram: prop01, prev: cn5NavLast,    next: prop02Nav },
   [prop02.name]: { ...bookPage, stepsAndDiagram: prop02, prev: prop01NavLast, next: prop03Nav },
   [prop03.name]: { ...bookPage, stepsAndDiagram: prop03, prev: prop02NavLast, next: prop04Nav },
   [prop04.name]: { ...bookPage, stepsAndDiagram: prop04, prev: prop03NavLast, next: null },

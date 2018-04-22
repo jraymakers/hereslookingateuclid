@@ -3,7 +3,7 @@ import {
   LabelDir,
 } from '../../diagram';
 import {
-  propositionNavLink,
+  propositionRefLink,
   propositionTitle,
 } from '../../link';
 import {
@@ -66,7 +66,7 @@ const steps: StepList = [
     name: '2',
     text: [
       ['Construct the straight line AE equal to CD.'],
-      ['(', link(propositionNavLink('I', '2')), ')'],
+      ['(', link(propositionRefLink('I', '2')), ')'],
     ],
     highlight: [ 'E', 'AE' ],
   },

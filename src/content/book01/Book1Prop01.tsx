@@ -3,9 +3,13 @@ import {
   LabelDir,
 } from '../../diagram';
 import {
+  commonNotionRefLink,
+  definitionRefLink,
+  postulateRefLink,
   propositionTitle,
 } from '../../link';
 import {
+  link,
   Paragraph,
 } from '../../paragraph';
 import {
@@ -60,6 +64,7 @@ const steps: StepList = [
     name: '2',
     text: [
       [`Construct a circle ${Greek.alpha} with center A and radius AB.`],
+      ['(', link(postulateRefLink('I', '3')), ')'],
     ],
     highlight: [ Greek.alpha ],
   },
@@ -67,6 +72,7 @@ const steps: StepList = [
     name: '3',
     text: [
       [`Construct another circle ${Greek.beta} with center B and radius AB.`],
+      ['(', link(postulateRefLink('I', '3')), ')'],
     ],
     highlight: [ Greek.beta ],
   },
@@ -74,6 +80,7 @@ const steps: StepList = [
     name: '4',
     text: [
       [`Let C be either one of the two intersection points of ${Greek.alpha} and ${Greek.beta}.`],
+      // Note
     ],
     highlight: [ 'C' ],
   },
@@ -81,6 +88,7 @@ const steps: StepList = [
     name: '5',
     text: [
       ['Construct the straight lines AC and BC.'],
+      ['(', link(postulateRefLink('I', '1')), ')'],
     ],
     highlight: [ 'AC', 'BC' ],
   },
@@ -88,6 +96,7 @@ const steps: StepList = [
     name: '6',
     text: [
       [`Since AB and AC are both radii of circle ${Greek.alpha}, they are equal.`],
+      ['(', link(definitionRefLink('I', '15-18', '15')), ')'],
     ],
     highlight: [ 'AB', 'AC' ],
   },
@@ -95,6 +104,7 @@ const steps: StepList = [
     name: '7',
     text: [
       [`Likewise, since AB and BC are both radii of circle ${Greek.beta}, they are equal.`],
+      ['(', link(definitionRefLink('I', '15-18', '15')), ')'],
     ],
     highlight: [ 'AB', 'BC' ],
   },
@@ -102,6 +112,7 @@ const steps: StepList = [
     name: '8',
     text: [
       ['Because AB equals AC and AB equals BC, AC equals BC.'],
+      ['(', link(commonNotionRefLink('I', '1')), ')'],
     ],
     highlight: [ 'AC', 'BC' ],
   },
@@ -109,6 +120,7 @@ const steps: StepList = [
     name: '9',
     text: [
       ['Thus AB, AC, and BC equal each other, so the triangle ABC is equilateral, as desired.'],
+      ['(', link(definitionRefLink('I', '20-21', '20')), ')'],
     ],
     highlight: [ 'AB', 'AC', 'BC' ],
   },
