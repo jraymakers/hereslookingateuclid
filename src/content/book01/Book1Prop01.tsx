@@ -6,6 +6,7 @@ import {
   commonNotionRefLink,
   definitionRefLink,
   postulateRefLink,
+  propositionRefLink,
   propositionTitle,
 } from '../../link';
 import {
