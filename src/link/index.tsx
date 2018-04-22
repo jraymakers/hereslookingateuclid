@@ -6,18 +6,23 @@ export {
 } from './types/LinkInfo';
 export {
   axiomNavLink,
+  axiomRefLink,
   axiomTitleLink,
   bookIntroLink,
   bookTitleContentsLink,
   bookTitleIntroLink,
   commonNotionNavLink,
+  commonNotionRefLink,
   commonNotionTitleLink,
   definitionNavLink,
+  definitionRefLink,
   definitionTitleLink,
   mainIntroLink,
   postulateNavLink,
+  postulateRefLink,
   postulateTitleLink,
   propositionNavLink,
+  propositionRefLink,
   propositionTitleLink,
 } from './utils/Links';
 export {
