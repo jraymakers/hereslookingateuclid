@@ -121,7 +121,7 @@ const steps: StepList = [
     name: '9',
     text: [
       ['Thus AB, AC, and BC equal each other, so the triangle ABC is equilateral, as desired.'],
-      ['(', link(definitionRefLink('I', '20-21', '20')), ')'],
+      ['(', link(definitionRefLink('I', '20-21', '20a')), ')'],
     ],
     highlight: [ 'AB', 'AC', 'BC' ],
   },
