@@ -49,13 +49,15 @@ const translateNegAnimation = keyframes({
   '60%': { transform: `translate(${-width * 0.25}px, ${-width * 0.2}px)` },
 });
 
-const posClass = namedClass('Book1CommonNotion4', 'pos', {
+const cssPrefix = 'Book1CommonNotion4';
+
+const posClass = namedClass(cssPrefix, 'pos', {
   animationName: translatePosAnimation,
   animationDuration: '5s',
   animationIterationCount: 'infinite',
 });
 
-const negClass = namedClass('Book1CommonNotion4', 'neg', {
+const negClass = namedClass(cssPrefix, 'neg', {
   animationName: translateNegAnimation,
   animationDuration: '5s',
   animationIterationCount: 'infinite',
