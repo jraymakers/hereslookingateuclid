@@ -13,3 +13,11 @@
 - Placeholders for other books?
 - Write intros (overall, Book I, etc)
 - Appendix?
+
+- Crazy idea:
+  - expand drawing area to full page
+  - interleave drawing and text
+  - describe steps and diagram in same system
+  - animate everything
+  - put page navigation into menu (floating)
+  - put step navigation into floating buttons
