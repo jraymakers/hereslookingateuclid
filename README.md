@@ -8,6 +8,7 @@
 - Make line hash marks
 - Simplify language, esp. of prop enuciations?
 - Add sections to steps, make sections of proofs explicit?
+- visual design: sections with shadows?
 
 - Add content (Book I: rest of defs, posts, cns, and then rest of props)
 - Placeholders for other books?
