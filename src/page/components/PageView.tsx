@@ -61,7 +61,7 @@ export class PageView extends React.PureComponent<PageViewProps> {
     return (
       <div className={rootClass}>
         <div className={contentClass}>
-          <NavBar prev={page.prev} up={page.up} next={page.next}
+          <NavBar prev={page.prev} next={page.next}
             noSiteTitleLink={this.props.noSiteTitleLink}
           />
           {this.props.children}

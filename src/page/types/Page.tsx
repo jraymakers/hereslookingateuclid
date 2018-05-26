@@ -5,7 +5,6 @@ import { StepsAndDiagram } from '../../stepsAndDiagram';
 export type Page = {
   readonly header?: LinkInfo | string | null | undefined;
   readonly prev?: LinkInfo | null | undefined;
-  readonly up?: LinkInfo | null | undefined;
   readonly next?: LinkInfo | null | undefined;
 };
 

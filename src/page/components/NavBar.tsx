@@ -50,7 +50,6 @@ const title = "Here's Looking at Euclid";
 
 export type NavBarProps = {
   readonly prev?: LinkInfo | null | undefined;
-  readonly up?: LinkInfo | null | undefined;
   readonly next?: LinkInfo | null | undefined;
   readonly noSiteTitleLink?: boolean;
 };
