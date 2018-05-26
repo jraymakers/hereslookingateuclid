@@ -22,3 +22,13 @@
   - animate everything
   - put page navigation into menu (floating)
   - put step navigation into floating buttons
+
+
+page elements:
+- hierarchy with links & navigation dropdowns (e.g. Here's Looking At Euclid > Book I)
+- next & prev buttons (with labels? on hover?)
+- title & summary
+- steps
+- diagram
+- (commentary)
+
