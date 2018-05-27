@@ -21,7 +21,8 @@ export function commonNotionNavText(bookName: string, pageName: string): string 
 }
 
 export function commonNotionRefText(bookName: string, pageName: string): string {
-  return `${bookName}.CN.${pageName}`;
+  // return `${bookName}.CN.${pageName}`;
+  return `CN ${pageName}`;
 }
 
 export function commonNotionTitle(pageName: string): string {
@@ -33,7 +34,7 @@ export function definitionNavText(bookName: string, pageName: string): string {
 }
 
 export function definitionRefText(bookName: string, defName: string): string {
-  return `${bookName}.Def.${defName}`;
+  return `Def ${bookName}.${defName}`;
 }
 
 export function definitionTitle(pageName: string): string {
@@ -45,7 +46,8 @@ export function postulateNavText(bookName: string, pageName: string): string {
 }
 
 export function postulateRefText(bookName: string, pageName: string): string {
-  return `${bookName}.Pos.${pageName}`;
+  // return `${bookName}.Pos.${pageName}`;
+  return `Post ${pageName}`;
 }
 
 export function postulateTitle(postulateName: string): string {

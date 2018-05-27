@@ -143,8 +143,8 @@ const steps: StepList = [
     text: [
       ['Since B and E coincide, and C and F coincide, BC coincides wiith EF, ',
        'so BC equals EF.'],
-      ['(', link(commonNotionRefLink('I', '4')), ')'],
     ],
+    link: commonNotionRefLink('I', '4'),
     show: [ 'A ', 'D ', 'AB ', 'AC ', 'DE ', 'DF ' ],
     highlight: [ 'B ', 'C ', 'E ', 'F ', 'BC ', 'EF ' ],
   },
@@ -152,16 +152,16 @@ const steps: StepList = [
     name: '6',
     text: [
       ['And the whole triangles ABC and DEF coincide, so they are equal.'],
-      ['(', link(commonNotionRefLink('I', '4')), ')'],
     ],
+    link: commonNotionRefLink('I', '4'),
     highlight: [ 'A ', 'B ', 'C ', 'D ', 'E ', 'F ', 'AB ', 'AC ', 'BC ', 'DE ', 'DF ', 'EF ' ],
   },
   {
     name: '7',
     text: [
       ['Also, the angles ABC and DEF coincide, and thus are equal.'],
-      ['(', link(commonNotionRefLink('I', '4')), ')'],
     ],
+    link: commonNotionRefLink('I', '4'),
     show: ['A ', 'B ', 'C ', 'D ', 'E ', 'F ', 'AC ', 'DF ' ],
     highlight: [ 'AB ', 'BC ', 'DE ', 'EF ' ],
   },
@@ -169,8 +169,8 @@ const steps: StepList = [
     name: '8',
     text: [
       ['Likewise, the angles ACB and DFE coincide, and thus are equal.'],
-      ['(', link(commonNotionRefLink('I', '4')), ')'],
     ],
+    link: commonNotionRefLink('I', '4'),
     show: ['A ', 'B ', 'C ', 'D ', 'E ', 'F ', 'AB ', 'DE ' ],
     highlight: [ 'AC ', 'BC ', 'DF ', 'EF ' ],
   },

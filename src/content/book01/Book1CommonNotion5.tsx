@@ -3,6 +3,7 @@ import {
   LabelDir,
 } from '../../diagram';
 import {
+  commonNotionRefLink,
   commonNotionTitle,
 } from '../../link';
 import {
@@ -59,8 +60,9 @@ const steps: StepList = [
   {
     name: 'c',
     text: [
-      ['Then AC is a part of AB, so AB is greater than AC (by Common Notion 5).'],
+      ['Then AC is a part of AB, so AB is greater than AC.'],
     ],
+    link: commonNotionRefLink('I', '5'),
     highlight: [ 'AC' ],
   },
 ];

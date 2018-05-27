@@ -10,3 +10,9 @@ export {
   italic,
   link,
 } from './utils/RunUtils';
+export {
+  RunView,
+} from './components/RunView';
+export {
+  SentenceView,
+} from './components/SentenceView';

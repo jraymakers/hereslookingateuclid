@@ -3,6 +3,7 @@ import {
   LabelDir,
 } from '../../diagram';
 import {
+  commonNotionRefLink,
   commonNotionTitle,
 } from '../../link';
 import {
@@ -98,8 +99,9 @@ const steps: StepList = [
   {
     name: 'b',
     text: [
-      ['Then ABC and DEF are equal (by Common Notion 4).'],
+      ['Then ABC and DEF are equal.'],
     ],
+    link: commonNotionRefLink('I', '4'),
     highlight: [ 'A', 'B', 'C', 'D', 'E', 'F', 'AB', 'BC', 'AC', 'DE', 'EF', 'DF' ],
   },
 ];

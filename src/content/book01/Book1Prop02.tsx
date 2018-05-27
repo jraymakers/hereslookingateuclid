@@ -87,8 +87,8 @@ const steps: StepList = [
     name: '2',
     text: [
       ['Construct the straight line AB.'],
-      ['(', link(postulateRefLink('I', '1')), ')'],
     ],
+    link: postulateRefLink('I', '1'),
     highlight: [ 'AB' ],
   },
   {
@@ -96,24 +96,24 @@ const steps: StepList = [
     text: [
       ['Construct an equilateral triangle ABD on AB.'],
       ['So AB, AD, and BD are all equal.'],
-      ['(', link(propositionRefLink('I', '1')), ')'],
     ],
+    link: propositionRefLink('I', '1'),
     highlight: [ 'D', 'AD', 'BD' ],
   },
   {
     name: '4',
     text: [
       ['Construct the straight lines AE and BF by extending DA and DB, respectively.'],
-      ['(', link(postulateRefLink('I', '2')), ')'],
     ],
+    link: postulateRefLink('I', '2'),
     highlight: [ 'E', 'F', 'AH', 'BG', 'EH', 'FG' ],
   },
   {
     name: '5',
     text: [
       [`Construct the circle ${Greek.beta} with center B and radius BC.`],
-      ['(', link(postulateRefLink('I', '3')), ')'],
     ],
+    link: postulateRefLink('I', '3'),
     highlight: [ Greek.beta ],
   },
   {
@@ -127,8 +127,8 @@ const steps: StepList = [
     name: '7',
     text: [
       [`Construct the circle ${Greek.delta} with center D and radius DG.`],
-      ['(', link(postulateRefLink('I', '3')), ')'],
     ],
+    link: postulateRefLink('I', '3'),
     highlight: [ Greek.delta ],
   },
   {
@@ -142,16 +142,16 @@ const steps: StepList = [
     name: '9',
     text: [
       [`Since BC and BG are both radii of circle ${Greek.beta}, they are equal.`],
-      ['(', link(definitionRefLink('I', '15-18', '15')), ')'],
     ],
+    link: definitionRefLink('I', '15-18', '15'),
     highlight: [ 'BC', 'BG' ],
   },
   {
     name: '10',
     text: [
       [`Since DG and DH are both radii of circle ${Greek.delta}, they are equal.`],
-      ['(', link(definitionRefLink('I', '15-18', '15')), ')'],
     ],
+    link: definitionRefLink('I', '15-18', '15'),
     highlight: [ 'AD', 'AH', 'BD', 'BG' ],
   },
   {
@@ -159,16 +159,16 @@ const steps: StepList = [
     text: [
       ['Because AD equals BD, and AD and BD are parts of DH and DG respectively, ',
        'the remaining parts of each, AH and BG, are also equal.'],
-      ['(', link(commonNotionRefLink('I', '3')), ')'],
     ],
+    link: commonNotionRefLink('I', '3'),
     highlight: [ 'AH', 'BG' ],
   },
   {
     name: '12',
     text: [
       ['And since BG also equals BC, then AH equals BC, as desired.'],
-      ['(', link(commonNotionRefLink('I', '1')), ')'],
     ],
+    link: commonNotionRefLink('I', '1'),
     highlight: [ 'AH', 'BC' ],
   },
 ];

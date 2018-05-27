@@ -65,16 +65,16 @@ const steps: StepList = [
     name: '2',
     text: [
       [`Construct a circle ${Greek.alpha} with center A and radius AB.`],
-      ['(', link(postulateRefLink('I', '3')), ')'],
     ],
+    link: postulateRefLink('I', '3'),
     highlight: [ Greek.alpha ],
   },
   {
     name: '3',
     text: [
       [`Construct another circle ${Greek.beta} with center B and radius AB.`],
-      ['(', link(postulateRefLink('I', '3')), ')'],
     ],
+    link: postulateRefLink('I', '3'),
     highlight: [ Greek.beta ],
   },
   {
@@ -89,40 +89,40 @@ const steps: StepList = [
     name: '5',
     text: [
       ['Construct the straight lines AC and BC.'],
-      ['(', link(postulateRefLink('I', '1')), ')'],
     ],
+    link: postulateRefLink('I', '1'),
     highlight: [ 'AC', 'BC' ],
   },
   {
     name: '6',
     text: [
       [`Since AB and AC are both radii of circle ${Greek.alpha}, they are equal.`],
-      ['(', link(definitionRefLink('I', '15-18', '15')), ')'],
     ],
+    link: definitionRefLink('I', '15-18', '15'),
     highlight: [ 'AB', 'AC' ],
   },
   {
     name: '7',
     text: [
       [`Likewise, since AB and BC are both radii of circle ${Greek.beta}, they are equal.`],
-      ['(', link(definitionRefLink('I', '15-18', '15')), ')'],
     ],
+    link: definitionRefLink('I', '15-18', '15'),
     highlight: [ 'AB', 'BC' ],
   },
   {
     name: '8',
     text: [
       ['Because AB equals AC and AB equals BC, AC equals BC.'],
-      ['(', link(commonNotionRefLink('I', '1')), ')'],
     ],
+    link: commonNotionRefLink('I', '1'),
     highlight: [ 'AC', 'BC' ],
   },
   {
     name: '9',
     text: [
       ['Thus AB, AC, and BC equal each other, so the triangle ABC is equilateral, as desired.'],
-      ['(', link(definitionRefLink('I', '20-21', '20a')), ')'],
     ],
+    link: definitionRefLink('I', '20-21', '20a'),
     highlight: [ 'AB', 'AC', 'BC' ],
   },
 ];

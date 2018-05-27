@@ -69,16 +69,16 @@ const steps: StepList = [
     name: '2',
     text: [
       ['Construct the straight line AE equal to CD.'],
-      ['(', link(propositionRefLink('I', '2')), ')'],
     ],
+    link: propositionRefLink('I', '2'),
     highlight: [ 'E', 'AE' ],
   },
   {
     name: '3',
     text: [
       [`Construct the circle ${Greek.alpha} with center A and radius AE.`],
-      ['(', link(postulateRefLink('I', '3')), ')'],
     ],
+    link: postulateRefLink('I', '3'),
     highlight: [ Greek.alpha ],
   },
   {
@@ -92,16 +92,16 @@ const steps: StepList = [
     name: '5',
     text: [
       [`Since AE and AF are both radii of circle ${Greek.alpha}, they are equal.`],
-      ['(', link(definitionRefLink('I', '15-18', '15')), ')'],
     ],
+    link: definitionRefLink('I', '15-18', '15'),
     highlight: [ 'AE', 'AF' ],
   },
   {
     name: '6',
     text: [
       ['So AF is part of AB and equal to CD, as desired.'],
-      ['(', link(commonNotionRefLink('I', '1')), ')'],
     ],
+    link: commonNotionRefLink('I', '1'),
     highlight: [ 'AF', 'CD' ],
   },
 ];

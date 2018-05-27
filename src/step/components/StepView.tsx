@@ -1,11 +1,17 @@
 import * as React from 'react';
 
 import {
+  LinkInfo,
+} from '../../link';
+import {
+  link,
   Paragraph,
   ParagraphView,
+  RunView,
 } from '../../paragraph';
 import {
   classes,
+  flexGrowStyle,
   flexNoneStyle,
   flexRowStyle,
   namedClass,
@@ -49,15 +55,21 @@ const numberClass = namedClass(classPrefix, 'number', flexNoneStyle, {
   textAlign: 'right',
 });
 
-const textClass = namedClass(classPrefix, 'text', {
+const textClass = namedClass(classPrefix, 'text', flexGrowStyle, {
   paddingLeft: 12,
   paddingRight: 12,
+});
+
+const linkClass = namedClass(classPrefix, 'link', flexNoneStyle, {
+  width: 90,
+  textAlign: 'right',
 });
 
 export type StepViewProps = {
   readonly stepIndex: number;
   readonly stepName: string;
   readonly text: Paragraph;
+  readonly link?: LinkInfo | null | undefined;
   readonly faded?: boolean;
   readonly highlighted?: boolean;
   readonly goToStep: (stepNum: number) => void;
@@ -79,6 +91,7 @@ export class StepView extends React.PureComponent<StepViewProps> {
       >
         <div className={numberClass}>{stepName}.</div>
         <div className={textClass}><ParagraphView paragraph={this.props.text} /></div>
+        <div className={linkClass}>{this.props.link ? <RunView run={link(this.props.link)} /> : null}</div>
       </div>
     );
   }
