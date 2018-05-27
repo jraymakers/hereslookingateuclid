@@ -2,7 +2,6 @@ export { classes, keyframes } from 'typestyle';
 
 export {
   borderClass,
-  buttonClass,
   linkClass,
   paddingMediumClass,
   textItalicClass,
@@ -18,6 +17,7 @@ export {
   alignItemsCenterStyle,
   alignItemsStretchStyle,
   alignSelfCenterStyle,
+  borderStyle,
   flexColumnStyle,
   flexGrowStyle,
   flexNoneStyle,

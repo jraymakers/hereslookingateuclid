@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { assertNever } from '../../common';
-import { borderClass } from '../../style';
+import { borderStyle, namedClass } from '../../style';
 
 import {
   ArcDiagramPart,
@@ -45,6 +45,13 @@ function isPoint(dp: DiagramPart | null | undefined): dp is PointDiagramPart {
   return dp ? dp.type === 'point' : false;
 }
 
+const classPrefix = 'DiagramView';
+
+const rootClass = namedClass(classPrefix, 'root',
+  borderStyle,
+  { backgroundColor: 'white' },
+);
+
 export type DiagramViewProps = {
   readonly diagram: Diagram;
   readonly diagramPartStates: DiagramPartStateMap;
@@ -70,7 +77,7 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
       }
     }
     return (
-      <div className={borderClass}>
+      <div className={rootClass}>
         <svg
           width={diagram.width}
           height={diagram.height}

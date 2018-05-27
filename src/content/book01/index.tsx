@@ -16,12 +16,10 @@ import {
 } from '../../link';
 import {
   Book,
-  BookContentsPage,
-  BookPage,
-  BookTextPage,
-  BookTitleLinkPage,
+  ContentsPage,
   StepsAndDiagramPage,
   StepsAndDiagramPageMap,
+  TextPage,
 } from '../../page';
 
 import cn1 from './Book1CommonNotion1';
@@ -136,22 +134,23 @@ const contentsLinks: SubtitledLinkInfoList = [
   propositionTitleLink(bookName, prop05),
 ];
 
-const contentsPage: BookContentsPage = {
+const contentsPage: ContentsPage = {
+  type: 'contents',
   bookName,
-  header: titleContentsLink.text,
   contentsLinks,
 };
 
-const bookPage: BookTitleLinkPage = {
+const introPage: TextPage = {
+  type: 'text',
   bookName,
-  header: titleContentsLink,
-};
-
-const introPage: BookTextPage = {
-  ...bookPage,
-  paragraphs: intro,
   prev: mainIntroLink,
   next: def01to04Nav,
+  paragraphs: intro,
+};
+
+const bookPage = {
+  type: 'stepsAndDiagram' as 'stepsAndDiagram',
+  bookName,
 };
 
 const definitionPages: StepsAndDiagramPageMap = {

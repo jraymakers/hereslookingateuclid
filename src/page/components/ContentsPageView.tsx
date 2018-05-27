@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import { SubtitledLinkInfo } from '../../link';
+import { bookTitle, SubtitledLinkInfo } from '../../link';
 import { Paragraph, ParagraphView } from '../../paragraph';
 import {
   alignSelfCenterStyle,
@@ -15,7 +15,7 @@ import {
   textSmallClass,
 } from '../../style';
 
-import { BookContentsPage, ContentsPage } from '../types/Page';
+import { ContentsPage } from '../types/Page';
 
 import { PageHeaderView } from './PageHeaderView';
 import { PageView } from './PageView';
@@ -31,8 +31,7 @@ const linksSectionClass = namedClass(classPrefix, 'links',
 );
 
 type ContentsPageViewProps = {
-  readonly page: ContentsPage | BookContentsPage;
-  readonly noSiteTitleLink?: boolean;
+  readonly page: ContentsPage;
 };
 
 export class ContentsPageView extends React.PureComponent<ContentsPageViewProps> {
@@ -40,8 +39,8 @@ export class ContentsPageView extends React.PureComponent<ContentsPageViewProps>
   public render(): JSX.Element {
     const page = this.props.page;
     return (
-      <PageView page={page} noSiteTitleLink={this.props.noSiteTitleLink}>
-        <PageHeaderView header={page.header} />
+      <PageView page={page}>
+        {/* <PageHeaderView header={page.bookName ? bookTitle(page.bookName) : null} /> */}
         <div className={linksSectionClass}>
           {page.contentsLinks.map(this.renderContentsLink)}
         </div>

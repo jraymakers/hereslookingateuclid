@@ -2,6 +2,7 @@ import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 
+import { bookTitle } from '../../link';
 import { ParagraphView } from '../../paragraph';
 import {
   alignSelfCenterStyle,
@@ -9,7 +10,7 @@ import {
   namedClass,
 } from '../../style';
 
-import { BookTextPage, TextPage } from '../types/Page';
+import { TextPage } from '../types/Page';
 
 import { PageHeaderView } from './PageHeaderView';
 import { PageView } from './PageView';
@@ -29,7 +30,7 @@ const contentClass = namedClass(classPrefix, 'content',
 );
 
 export type TextPageViewProps = RouteComponentProps<{}> & {
-  readonly page: TextPage | BookTextPage;
+  readonly page: TextPage;
 };
 
 class TextPageViewInternal extends React.PureComponent<TextPageViewProps> {
@@ -38,7 +39,7 @@ class TextPageViewInternal extends React.PureComponent<TextPageViewProps> {
     const page = this.props.page;
     return (
       <PageView page={page} onKeyDown={this.onKeyDown}>
-        <PageHeaderView header={this.props.page.header} />
+        {/* <PageHeaderView header={page.bookName ? bookTitle(page.bookName) : null} /> */}
         <div className={contentClass}>
           {page.paragraphs.map((paragraph, index) => <ParagraphView paragraph={paragraph} key={index} />)}
         </div>

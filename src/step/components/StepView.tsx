@@ -18,7 +18,6 @@ import {
 const classPrefix = 'StepView';
 
 const rootClass = namedClass(classPrefix, 'root', flexRowStyle, {
-  alignItems: 'start',
   paddingTop: 6,
   paddingBottom: 6,
   $nest: {

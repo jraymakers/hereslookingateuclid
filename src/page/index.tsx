@@ -5,11 +5,7 @@ export {
 } from './components';
 export {
   Book,
-  BookContentsPage,
   BookMap,
-  BookPage,
-  BookTextPage,
-  BookTitleLinkPage,
   ContentsPage,
   Page,
   StepsAndDiagramPage,

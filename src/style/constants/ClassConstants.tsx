@@ -2,7 +2,6 @@ import { namedClass } from '../utils/StyleUtils';
 
 import {
   borderStyle,
-  buttonStyle,
   linkStyle,
   paddingMediumStyle,
   textItalicStyle,
@@ -13,8 +12,6 @@ import {
 const classPrefix = 'shared';
 
 export const borderClass = namedClass(classPrefix, 'border', borderStyle);
-
-export const buttonClass = namedClass(classPrefix, 'button', buttonStyle);
 
 export const linkClass = namedClass(classPrefix, 'link', linkStyle);
 

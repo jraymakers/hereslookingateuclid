@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import {
+  borderStyle,
   flexColumnStyle,
   flexGrowStyle,
   namedClass,
@@ -15,9 +16,17 @@ import { StepView } from './StepView';
 const classPrefix = 'StepsView';
 
 const rootClass = namedClass(classPrefix, 'root',
+  borderStyle,
   flexColumnStyle,
   flexGrowStyle,
-  { marginRight: 12 },
+  {
+    backgroundColor: 'white',
+    paddingTop: 12,
+    paddingBottom: 12,
+    paddingLeft: 12,
+    paddingRight: 12,
+    marginRight: 12,
+  },
 );
 
 export type StepsViewProps = {

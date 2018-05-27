@@ -28,17 +28,18 @@ import {
 
 const classPrefix = 'StepsAndDiagramView';
 
-const rootClass = namedClass(classPrefix, 'root', flexColumnStyle);
-
-const headerClass = namedClass(classPrefix, 'header', flexRowStyle, {
-  alignItems: 'flex-end',
-  paddingTop: mediumSpace,
-  paddingBottom: mediumSpace,
-});
+const rootClass = namedClass(classPrefix, 'root', flexColumnStyle,
+  { padding: 12 },
+);
 
 const titleAndSummaryClass = namedClass(classPrefix, 'titleAndSummary',
   flexColumnStyle,
   flexGrowStyle,
+  {
+    padding: '6px 12px',
+    backgroundColor: 'white',
+    border: '1px solid #aaa',
+  },
 );
 
 const titleClass = namedClass(classPrefix, 'title', textXLargeStyle);
@@ -46,6 +47,7 @@ const titleClass = namedClass(classPrefix, 'title', textXLargeStyle);
 const stepsAndDiagramClass = namedClass(classPrefix, 'stepsAndDiagram',
   flexGrowStyle,
   flexRowStyle,
+  { marginTop: 12 },
 );
 
 export type StepsAndDiagramViewProps = {
@@ -69,17 +71,9 @@ export class StepsAndDiagramView extends React.PureComponent<StepsAndDiagramView
     const goToStep = this.props.goToStep;
     return (
       <div className={rootClass}>
-        <div className={headerClass}>
-          <div className={titleAndSummaryClass}>
-            <div className={titleClass}>{title}</div>
-            <ParagraphView paragraph={summary} />
-          </div>
-          <StepControlsView
-            currentStepIndex={currentStepIndex}
-            minStepIndex={0}
-            maxStepIndex={steps.length - 1}
-            goToStep={goToStep}
-          />
+        <div className={titleAndSummaryClass}>
+          <div className={titleClass}>{title}</div>
+          <ParagraphView paragraph={summary} />
         </div>
         <div className={stepsAndDiagramClass}>
           <StepsView

@@ -23,27 +23,6 @@ export const borderStyle: Style = {
   borderWidth: 1,
 };
 
-export const buttonStyle: Style = {
-  paddingLeft: largeSpace,
-  paddingRight: largeSpace,
-  border: '1px solid #ddd',
-  color: 'black',
-  display: 'flex',
-  alignItems: 'center',
-  outline: 'none',
-  textDecoration: 'none',
-  $nest: {
-    '&:focus': {
-      $unique: true,
-      outline: '1px solid black',
-    },
-    '&:hover': {
-      $unique: true,
-      backgroundColor: '#eee',
-    },
-  },
-};
-
 export const flexColumnStyle: Style = {
   display: 'flex',
   flexDirection: 'column',

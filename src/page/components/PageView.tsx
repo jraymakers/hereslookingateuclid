@@ -23,6 +23,7 @@ const rootClass = namedClass(classPrefix, 'root',
   flexGrowStyle,
   flexRowStyle,
   justifyContentCenterStyle,
+  { backgroundColor: '#eee' },
 );
 
 const contentClass = namedClass(classPrefix, 'content',
@@ -31,13 +32,6 @@ const contentClass = namedClass(classPrefix, 'content',
   flexGrowStyle,
   textNormalStyle,
   textSerifStyle,
-  {
-    maxWidth: 1200,
-    paddingLeft: largeSpace,
-    paddingRight: largeSpace,
-    paddingTop: mediumSpace,
-    paddingBottom: mediumSpace,
-  },
 );
 
 type PageViewProps = {
@@ -61,9 +55,7 @@ export class PageView extends React.PureComponent<PageViewProps> {
     return (
       <div className={rootClass}>
         <div className={contentClass}>
-          <NavBar prev={page.prev} next={page.next}
-            noSiteTitleLink={this.props.noSiteTitleLink}
-          />
+          <NavBar prev={page.prev} bookName={page.bookName} next={page.next} />
           {this.props.children}
         </div>
       </div>

@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import { LinkInfo, mainContentsUrl } from '../../link';
+import { bookTitle, LinkInfo, mainContentsUrl } from '../../link';
 import {
   alignItemsCenterStyle,
   alignItemsStretchStyle,
-  buttonClass,
+  borderStyle,
   classes,
   flexColumnStyle,
   flexGrowStyle,
   flexNoneStyle,
   flexRowStyle,
+  justifyContentCenterStyle,
   justifyContentEndStyle,
   justifyContentStartStyle,
   linkClass,
@@ -22,36 +23,60 @@ import {
 const classPrefix = 'NavBar';
 const rootClass = namedClass(classPrefix, 'root',
   flexRowStyle,
-  { height: 36 },
+  {
+    alignSelf: 'stretch',
+    backgroundColor: 'white',
+    borderBottom: '1px solid #aaa',
+    height: 36,
+  },
 );
 const leftClass = namedClass(classPrefix, 'left',
-  alignItemsStretchStyle,
-  flexGrowStyle,
+  flexNoneStyle,
   flexRowStyle,
-  justifyContentStartStyle,
 );
 const centerClass = namedClass(classPrefix, 'center',
   alignItemsCenterStyle,
   flexRowStyle,
-  flexNoneStyle,
+  flexGrowStyle,
+  justifyContentCenterStyle,
 );
 const rightClass = namedClass(classPrefix, 'right',
-  alignItemsStretchStyle,
-  flexGrowStyle,
+  flexNoneStyle,
   flexRowStyle,
-  justifyContentEndStyle,
 );
-const siteTitleClass = namedClass(classPrefix, 'siteTitle',
-  textAlignCenterStyle,
-  textXXLargeStyle,
+const hierarchyTextClass = namedClass(classPrefix, 'hierarchyText',
+);
+const hierarchyDividerClass = namedClass(classPrefix, 'hierarchyDivider',
+  { padding: '0 6px' },
+);
+const buttonClass = namedClass(classPrefix, 'button',
+  {
+    width: 36,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: '#333',
+    textDecoration: 'none',
+    outline: 'none',
+    $nest: {
+      '&:focus': {
+        $unique: true,
+        color: 'orange',
+      },
+      '&:hover': {
+        $unique: true,
+        backgroundColor: '#eee',
+      },
+    },
+  },
 );
 
-const title = "Here's Looking at Euclid";
+const heresLookingAtEuclid = "Here's Looking at Euclid";
 
 export type NavBarProps = {
+  readonly bookName: string | null | undefined;
   readonly prev?: LinkInfo | null | undefined;
   readonly next?: LinkInfo | null | undefined;
-  readonly noSiteTitleLink?: boolean;
 };
 
 export class NavBar extends React.PureComponent<NavBarProps> {
@@ -60,29 +85,35 @@ export class NavBar extends React.PureComponent<NavBarProps> {
     return (
       <div className={rootClass}>
         <div className={leftClass}>
-          {this.renderLink(this.props.prev)}
+          {this.renderLink(this.props.prev, '◀')}
         </div>
         <div className={centerClass}>
-          {this.renderSiteTitle()}
+          <span className={hierarchyTextClass}>{heresLookingAtEuclid}</span>
+          {this.maybeRenderBookName()}
         </div>
         <div className={rightClass}>
-          {this.renderLink(this.props.next)}
+          {this.renderLink(this.props.next, '▶')}
         </div>
       </div>
     );
   }
 
-  private renderSiteTitle(): JSX.Element {
-    if (this.props.noSiteTitleLink) {
-      return <div className={siteTitleClass}>{title}</div>;
+  private maybeRenderBookName(): JSX.Element | null {
+    if (this.props.bookName) {
+      return (
+        <>
+          <span className={hierarchyDividerClass}>{':'}</span>
+          <span className={hierarchyTextClass}>{bookTitle(this.props.bookName)}</span>
+        </>
+      );
     } else {
-      return <Link className={classes(linkClass, siteTitleClass)} to={mainContentsUrl}>{title}</Link>;
+      return null;
     }
   }
 
-  private renderLink(link: LinkInfo | null | undefined): JSX.Element | null {
+  private renderLink(link: LinkInfo | null | undefined, text: string): JSX.Element | null {
     if (link) {
-      return <Link className={buttonClass} to={link.url}>{link.text}</Link>;
+      return <Link className={buttonClass} to={link.url}>{text}</Link>;
     } else {
       return null;
     }
