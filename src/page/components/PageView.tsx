@@ -23,7 +23,7 @@ const rootClass = namedClass(classPrefix, 'root',
   flexGrowStyle,
   flexRowStyle,
   justifyContentCenterStyle,
-  { backgroundColor: '#eee' },
+  { backgroundColor: '#ddd' },
 );
 
 const contentClass = namedClass(classPrefix, 'content',

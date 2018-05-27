@@ -18,7 +18,7 @@ export const alignSelfCenterStyle: Style = {
 };
 
 export const borderStyle: Style = {
-  borderColor: '#aaa',
+  borderColor: '#999',
   borderStyle: 'solid',
   borderWidth: 1,
 };

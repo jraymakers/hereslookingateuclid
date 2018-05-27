@@ -26,16 +26,17 @@ const rootClass = namedClass(classPrefix, 'root',
   {
     alignSelf: 'stretch',
     backgroundColor: 'white',
-    borderBottom: '1px solid #aaa',
+    borderBottom: '1px solid #999',
     height: 36,
   },
 );
 const leftClass = namedClass(classPrefix, 'left',
   flexNoneStyle,
   flexRowStyle,
+  { width: 36 },
 );
 const centerClass = namedClass(classPrefix, 'center',
-  alignItemsCenterStyle,
+  alignItemsStretchStyle,
   flexRowStyle,
   flexGrowStyle,
   justifyContentCenterStyle,
@@ -43,11 +44,41 @@ const centerClass = namedClass(classPrefix, 'center',
 const rightClass = namedClass(classPrefix, 'right',
   flexNoneStyle,
   flexRowStyle,
+  { width: 36 },
+);
+const hierarchyClass = namedClass(classPrefix, 'hierarchy',
+  alignItemsCenterStyle,
+  flexRowStyle,
+  {
+    cursor: 'pointer',
+    paddingLeft: 12,
+    paddingRight: 12,
+    $nest: {
+      '&:focus': {
+        $unique: true,
+        color: 'orange',
+      },
+      '&:hover': {
+        $unique: true,
+        backgroundColor: '#eee',
+      },
+    },
+  },
+);
+const hierarchyArrowClass = namedClass(classPrefix, 'hierarchyArrow',
+  {
+    fontSize: '10px',
+    paddingTop: 3,
+    paddingRight: 6,
+  },
 );
 const hierarchyTextClass = namedClass(classPrefix, 'hierarchyText',
 );
 const hierarchyDividerClass = namedClass(classPrefix, 'hierarchyDivider',
-  { padding: '0 6px' },
+  {
+    paddingLeft: 6,
+    paddingRight: 6,
+  },
 );
 const buttonClass = namedClass(classPrefix, 'button',
   {
@@ -88,13 +119,22 @@ export class NavBar extends React.PureComponent<NavBarProps> {
           {this.renderLink(this.props.prev, '◀')}
         </div>
         <div className={centerClass}>
-          <span className={hierarchyTextClass}>{heresLookingAtEuclid}</span>
-          {this.maybeRenderBookName()}
+          {this.renderHierarchy()}
         </div>
         <div className={rightClass}>
           {this.renderLink(this.props.next, '▶')}
         </div>
       </div>
+    );
+  }
+
+  private renderHierarchy(): JSX.Element {
+    return (
+      <span className={hierarchyClass}>
+        <span className={hierarchyArrowClass}>{'▼'}</span>
+        <span className={hierarchyTextClass}>{heresLookingAtEuclid}</span>
+        {this.maybeRenderBookName()}
+      </span>
     );
   }
 

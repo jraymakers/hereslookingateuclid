@@ -6,6 +6,7 @@ import { bookTitle } from '../../link';
 import { ParagraphView } from '../../paragraph';
 import {
   alignSelfCenterStyle,
+  borderStyle,
   mediumSpace,
   namedClass,
 } from '../../style';
@@ -16,14 +17,21 @@ import { PageHeaderView } from './PageHeaderView';
 import { PageView } from './PageView';
 
 const classPrefix = 'TextPageView';
+
 const contentClass = namedClass(classPrefix, 'content',
   alignSelfCenterStyle,
+  borderStyle,
   {
     marginTop: mediumSpace,
     maxWidth: 800,
+    padding: 12,
+    backgroundColor: 'white',
     $nest: {
       '&>*': {
         marginTop: mediumSpace,
+      },
+      '&>:first-child': {
+        marginTop: 0,
       },
     },
   },

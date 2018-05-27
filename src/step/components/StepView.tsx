@@ -20,24 +20,26 @@ const classPrefix = 'StepView';
 const rootClass = namedClass(classPrefix, 'root', flexRowStyle, {
   paddingTop: 6,
   paddingBottom: 6,
+  cursor: 'pointer',
+  borderLeft: '3px solid transparent',
   $nest: {
     '&:hover': {
       $unique: true,
-      outline: '1px solid #888',
+      borderLeft: '3px solid #666',
     },
   },
 });
 
 const fadedClass = namedClass(classPrefix, 'faded', {
-  opacity: 0.2,
+  opacity: 0.5,
 });
 
 const highlightedClass = namedClass(classPrefix, 'highlighted', {
-  outline: '1px solid orange',
+  borderLeft: '3px solid orange',
   $nest: {
     '&:hover': {
       $unique: true,
-      outline: '1px solid orange',
+      borderLeft: '3px solid orange',
     },
   },
 });

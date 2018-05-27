@@ -38,7 +38,7 @@ const titleAndSummaryClass = namedClass(classPrefix, 'titleAndSummary',
   {
     padding: '6px 12px',
     backgroundColor: 'white',
-    border: '1px solid #aaa',
+    border: '1px solid #999',
   },
 );
 
