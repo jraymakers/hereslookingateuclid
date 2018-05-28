@@ -29,6 +29,8 @@ class StepsAndDiagramPageViewInternal extends React.PureComponent<StepsAndDiagra
           steps={stepsAndDiagram.steps}
           diagram={stepsAndDiagram.diagram}
           currentStepIndex={currentStepIndex}
+          goPrevStep={this.goPrevStep}
+          goNextStep={this.goNextStep}
           goToStep={this.goToStep}
         />
       </PageView>
@@ -38,17 +40,35 @@ class StepsAndDiagramPageViewInternal extends React.PureComponent<StepsAndDiagra
   private readonly onKeyDown = (event: KeyboardEvent) => {
     switch (event.key) {
       case 'ArrowLeft':
-      case 'ArrowUp':
-        this.goPrev();
+        this.goPrevPage();
         break;
       case 'ArrowRight':
+        this.goNextPage();
+        break;
+      case 'ArrowUp':
+        this.goPrevStep();
+        break;
       case 'ArrowDown':
-        this.goNext();
+        this.goNextStep();
         break;
     }
   }
 
-  private readonly goPrev = () => {
+  private readonly goPrevPage = () => {
+    const page = this.props.page;
+    if (page.prev) {
+      this.navigate(page.prev.url);
+    }
+  }
+
+  private readonly goNextPage = () => {
+    const page = this.props.page;
+    if (page.next) {
+      this.navigate(page.next.url);
+    }
+  }
+
+  private readonly goPrevStep = () => {
     const currentStepIndex = this.props.currentStepIndex;
     if (currentStepIndex === 0) {
       const page = this.props.page;
@@ -60,7 +80,7 @@ class StepsAndDiagramPageViewInternal extends React.PureComponent<StepsAndDiagra
     }
   }
 
-  private readonly goNext = () => {
+  private readonly goNextStep = () => {
     const page = this.props.page;
     const currentStepIndex = this.props.currentStepIndex;
     if (currentStepIndex === page.stepsAndDiagram.steps.length - 1) {

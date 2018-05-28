@@ -59,23 +59,23 @@ class TextPageViewInternal extends React.PureComponent<TextPageViewProps> {
     switch (event.key) {
       case 'ArrowLeft':
       case 'ArrowUp':
-        this.goPrev();
+        this.goPrevPage();
         break;
       case 'ArrowRight':
       case 'ArrowDown':
-        this.goNext();
+        this.goNextPage();
         break;
     }
   }
 
-  private readonly goPrev = () => {
+  private readonly goPrevPage = () => {
     const page = this.props.page;
     if (page.prev) {
       this.navigate(page.prev.url);
     }
   }
 
-  private readonly goNext = () => {
+  private readonly goNextPage = () => {
     const page = this.props.page;
     if (page.next) {
       this.navigate(page.next.url);

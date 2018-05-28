@@ -33,12 +33,48 @@ const rootClass = namedClass(classPrefix, 'root', flexColumnStyle,
 );
 
 const titleAndSummaryClass = namedClass(classPrefix, 'titleAndSummary',
+  flexRowStyle,
+  flexGrowStyle,
+  {
+    backgroundColor: 'white',
+    border: '1px solid #999',
+  },
+);
+
+const titleAndSummaryTextClass = namedClass(classPrefix, 'titleAndSummaryText',
   flexColumnStyle,
   flexGrowStyle,
   {
     padding: '12px 18px',
-    backgroundColor: 'white',
-    border: '1px solid #999',
+  },
+);
+
+const stepControlsClass = namedClass(classPrefix, 'stepControls',
+  flexColumnStyle,
+);
+
+const stepButtonClass = namedClass(classPrefix, 'stepButton',
+  {
+    flex: '1',
+    paddingLeft: 12,
+    paddingRight: 12,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: '#333',
+    textDecoration: 'none',
+    outline: 'none',
+    userSelect: 'none',
+    $nest: {
+      '&:focus': {
+        $unique: true,
+        color: 'orange',
+      },
+      '&:hover': {
+        $unique: true,
+        backgroundColor: '#eee',
+      },
+    },
   },
 );
 
@@ -56,6 +92,8 @@ export type StepsAndDiagramViewProps = {
   readonly steps: StepList;
   readonly diagram: Diagram;
   readonly currentStepIndex: number;
+  readonly goPrevStep: () => void;
+  readonly goNextStep: () => void;
   readonly goToStep: (stepNum: number) => void;
 };
 
@@ -72,8 +110,14 @@ export class StepsAndDiagramView extends React.PureComponent<StepsAndDiagramView
     return (
       <div className={rootClass}>
         <div className={titleAndSummaryClass}>
-          <div className={titleClass}>{title}</div>
-          <ParagraphView paragraph={summary} />
+          <div className={titleAndSummaryTextClass}>
+            <div className={titleClass}>{title}</div>
+            <ParagraphView paragraph={summary} />
+          </div>
+          <div className={stepControlsClass}>
+            <div className={stepButtonClass} onClick={this.props.goPrevStep}>{'▲'}</div>
+            <div className={stepButtonClass} onClick={this.props.goNextStep}>{'▼'}</div>
+          </div>
         </div>
         <div className={stepsAndDiagramClass}>
           <StepsView
