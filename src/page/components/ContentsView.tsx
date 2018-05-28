@@ -21,7 +21,9 @@ import {
 
 const classPrefix = 'ContentsView';
 
-const rootClass = namedClass(classPrefix, 'root', flexColumnStyle);
+const rootClass = namedClass(classPrefix, 'root', flexColumnStyle, {
+  padding: 12,
+});
 
 type ContentsViewProps = {
   readonly contentsLinks: SubtitledLinkInfoList;
