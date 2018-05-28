@@ -54,6 +54,7 @@ const contentsOverlayClass = namedClass(classPrefix, 'contentsOverlay',
     width: 800,
     height: '90%',
     backgroundColor: 'white',
+    overflow: 'auto',
   },
 );
 

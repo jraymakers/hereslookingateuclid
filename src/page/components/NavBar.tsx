@@ -53,6 +53,7 @@ const hierarchyClass = namedClass(classPrefix, 'hierarchy',
     cursor: 'pointer',
     paddingLeft: 12,
     paddingRight: 12,
+    userSelect: 'none',
     $nest: {
       '&:focus': {
         $unique: true,
@@ -89,6 +90,7 @@ const buttonClass = namedClass(classPrefix, 'button',
     color: '#333',
     textDecoration: 'none',
     outline: 'none',
+    userSelect: 'none',
     $nest: {
       '&:focus': {
         $unique: true,
