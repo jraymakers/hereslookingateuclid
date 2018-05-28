@@ -42,21 +42,10 @@ const pageContentClass = namedClass(classPrefix, 'pageContent',
   textSerifStyle,
   {
     backgroundColor: '#ddd',
-    position: 'relative',
   },
 );
 
-const navGlassPaneClass = namedClass(classPrefix, 'navGlassPane',
-  {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-  },
-);
-
-const pageContentGlassPaneClass = namedClass(classPrefix, 'pageContentGlassPane',
+const glassPaneClass = namedClass(classPrefix, 'glassPane',
   {
     position: 'absolute',
     top: 0,
@@ -125,10 +114,9 @@ export class PageView extends React.PureComponent<PageViewProps, PageViewState> 
           next={page.next}
           toggleContentsOverlay={this.toggleContentsOverlay}
         />
-        {this.maybeRenderNavGlassPane()}
         <div className={pageContentClass}>
           {this.props.children}
-          {this.maybeRenderPageContentGlassPane()}
+          {this.maybeRenderGlassPane()}
           {this.maybeRenderContentsOverlay()}
         </div>
       </div>
@@ -147,20 +135,10 @@ export class PageView extends React.PureComponent<PageViewProps, PageViewState> 
     });
   }
 
-  private maybeRenderNavGlassPane(): JSX.Element | null {
+  private maybeRenderGlassPane(): JSX.Element | null {
     if (this.state.contentsVisible) {
       return (
-        <div className={navGlassPaneClass} onClick={this.hideContentsOverlay} />
-      );
-    } else {
-      return null;
-    }
-  }
-
-  private maybeRenderPageContentGlassPane(): JSX.Element | null {
-    if (this.state.contentsVisible) {
-      return (
-        <div className={pageContentGlassPaneClass} onClick={this.hideContentsOverlay} />
+        <div className={glassPaneClass} onClick={this.hideContentsOverlay} />
       );
     } else {
       return null;
