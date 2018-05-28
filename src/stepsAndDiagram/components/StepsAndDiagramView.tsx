@@ -36,7 +36,7 @@ const titleAndSummaryClass = namedClass(classPrefix, 'titleAndSummary',
   flexColumnStyle,
   flexGrowStyle,
   {
-    padding: '6px 12px',
+    padding: '12px 18px',
     backgroundColor: 'white',
     border: '1px solid #999',
   },
