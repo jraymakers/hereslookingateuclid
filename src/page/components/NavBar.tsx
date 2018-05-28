@@ -31,9 +31,8 @@ const rootClass = namedClass(classPrefix, 'root',
   },
 );
 const leftClass = namedClass(classPrefix, 'left',
-  flexNoneStyle,
+ flexGrowStyle,
   flexRowStyle,
-  { width: 36 },
 );
 const centerClass = namedClass(classPrefix, 'center',
   alignItemsStretchStyle,
@@ -42,9 +41,9 @@ const centerClass = namedClass(classPrefix, 'center',
   justifyContentCenterStyle,
 );
 const rightClass = namedClass(classPrefix, 'right',
-  flexNoneStyle,
+  flexGrowStyle,
   flexRowStyle,
-  { width: 36 },
+  { justifyContent: 'flex-end' },
 );
 const hierarchyClass = namedClass(classPrefix, 'hierarchy',
   alignItemsCenterStyle,
@@ -83,7 +82,6 @@ const hierarchyDividerClass = namedClass(classPrefix, 'hierarchyDivider',
 );
 const buttonClass = namedClass(classPrefix, 'button',
   {
-    width: 36,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -92,15 +90,33 @@ const buttonClass = namedClass(classPrefix, 'button',
     outline: 'none',
     userSelect: 'none',
     $nest: {
-      '&:focus': {
-        $unique: true,
-        color: 'orange',
-      },
       '&:hover': {
         $unique: true,
         backgroundColor: '#eee',
       },
     },
+  },
+);
+const nextLinkTextClass = namedClass(classPrefix, 'nextLinkText',
+  {
+    paddingLeft: 12,
+  },
+);
+const prevLinkTextClass = namedClass(classPrefix, 'prevLinkText',
+  {
+    paddingRight: 12,
+  },
+);
+const nextLinkArrowClass = namedClass(classPrefix, 'nextLinkArrow',
+  {
+    paddingLeft: 6,
+    paddingRight: 6,
+  },
+);
+const prevLinkArrowClass = namedClass(classPrefix, 'prevLinkArrow',
+  {
+    paddingLeft: 6,
+    paddingRight: 6,
   },
 );
 
@@ -119,13 +135,13 @@ export class NavBar extends React.PureComponent<NavBarProps> {
     return (
       <div className={rootClass}>
         <div className={leftClass}>
-          {this.renderLink(this.props.prev, '◀')}
+          {this.renderPrevLink(this.props.prev)}
         </div>
         <div className={centerClass}>
           {this.renderHierarchy()}
         </div>
         <div className={rightClass}>
-          {this.renderLink(this.props.next, '▶')}
+          {this.renderNextLink(this.props.next)}
         </div>
       </div>
     );
@@ -154,9 +170,27 @@ export class NavBar extends React.PureComponent<NavBarProps> {
     }
   }
 
-  private renderLink(link: LinkInfo | null | undefined, text: string): JSX.Element | null {
+  private renderPrevLink(link: LinkInfo | null | undefined): JSX.Element | null {
     if (link) {
-      return <Link className={buttonClass} to={link.url}>{text}</Link>;
+      return (
+        <Link className={buttonClass} to={link.url}>
+          <span className={prevLinkArrowClass}>{'◀'}</span>
+          <span className={prevLinkTextClass}>{link.text}</span>
+        </Link>
+      );
+    } else {
+      return null;
+    }
+  }
+
+  private renderNextLink(link: LinkInfo | null | undefined): JSX.Element | null {
+    if (link) {
+      return (
+        <Link className={buttonClass} to={link.url}>
+          <span className={nextLinkTextClass}>{link.text}</span>
+          <span className={nextLinkArrowClass}>{'▶'}</span>
+        </Link>
+      );
     } else {
       return null;
     }

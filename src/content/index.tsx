@@ -1,4 +1,5 @@
 import {
+  bookOverviewNavLink,
   bookTitleOverviewLink,
   mainIntroLink,
   SubtitledLinkInfoList,
@@ -19,7 +20,7 @@ export const mainContentsLinks: SubtitledLinkInfoList = [
 export const mainIntroPage: TextPage = {
   type: 'text',
   paragraphs: intro,
-  next: bookTitleOverviewLink(book01.bookName),
+  next: bookOverviewNavLink(book01.bookName),
 };
 
 export const books: BookMap = {

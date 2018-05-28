@@ -5,8 +5,12 @@ export function bookTitle(bookName: string): string {
   return `Book ${bookName}`;
 }
 
+export function bookOverviewNavText(bookName: string): string {
+  return `Book ${bookName}: Overview`;
+}
+
 export function commonNotionNavText(bookName: string, pageName: string): string {
-  return `${bookName}: Common Notion ${pageName}`;
+  return `Book ${bookName}: Common Notion ${pageName}`;
 }
 
 export function commonNotionRefText(bookName: string, pageName: string): string {
@@ -18,7 +22,7 @@ export function commonNotionTitle(pageName: string): string {
 }
 
 export function definitionNavText(bookName: string, pageName: string): string {
-  return `${bookName}: Definition ${pageName}`;
+  return `Book ${bookName}: Definition ${pageName}`;
 }
 
 export function definitionRefText(bookName: string, defName: string): string {
@@ -30,7 +34,7 @@ export function definitionTitle(pageName: string): string {
 }
 
 export function postulateNavText(bookName: string, pageName: string): string {
-  return `${bookName}: Postulate ${pageName}`;
+  return `Book ${bookName}: Postulate ${pageName}`;
 }
 
 export function postulateRefText(bookName: string, pageName: string): string {
@@ -42,7 +46,7 @@ export function postulateTitle(postulateName: string): string {
 }
 
 export function propositionNavText(bookName: string, pageName: string): string {
-  return `${bookName}: Proposition ${pageName}`;
+  return `Book ${bookName}: Proposition ${pageName}`;
 }
 
 export function propositionRefText(bookName: string, pageName: string): string {

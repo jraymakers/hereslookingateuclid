@@ -6,6 +6,7 @@ export {
 } from './types/LinkInfo';
 export {
   bookOverviewLink,
+  bookOverviewNavLink,
   bookTitleOverviewLink,
   commonNotionNavLink,
   commonNotionRefLink,

@@ -11,6 +11,7 @@ import {
 } from '../types/LinkInfo';
 
 import {
+  bookOverviewNavText,
   bookTitle,
   commonNotionNavText,
   commonNotionRefText,
@@ -44,6 +45,13 @@ export const mainIntroLink: LinkInfo = {
 export function bookOverviewLink(bookName: string): LinkInfo {
   return {
     text: overviewText,
+    url: bookOverviewUrl(bookName),
+  };
+}
+
+export function bookOverviewNavLink(bookName: string): LinkInfo {
+  return {
+    text: bookOverviewNavText(bookName),
     url: bookOverviewUrl(bookName),
   };
 }
