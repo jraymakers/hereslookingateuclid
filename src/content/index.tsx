@@ -1,5 +1,5 @@
 import {
-  bookTitleIntroLink,
+  bookTitleOverviewLink,
   mainIntroLink,
   SubtitledLinkInfoList,
 } from '../link';
@@ -13,13 +13,13 @@ import intro from './MainIntro';
 
 export const mainContentsLinks: SubtitledLinkInfoList = [
   mainIntroLink,
-  bookTitleIntroLink(book01.bookName),
+  bookTitleOverviewLink(book01.bookName),
 ];
 
 export const mainIntroPage: TextPage = {
   type: 'text',
   paragraphs: intro,
-  next: bookTitleIntroLink(book01.bookName),
+  next: bookTitleOverviewLink(book01.bookName),
 };
 
 export const books: BookMap = {

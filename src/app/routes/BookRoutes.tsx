@@ -7,7 +7,7 @@ import {
 } from 'react-router';
 
 import {
-  bookIntroUrl,
+  bookOverviewUrl,
   commonNotionUrl,
   definitionUrl,
   MakePageUrl,
@@ -36,18 +36,18 @@ export class BookRoutes extends React.Component<BookRoutesProps> {
     const bookName = this.props.book.bookName;
     return (
       <Switch>
-        <Route exact path={bookIntroUrl(bookName)} render={this.renderIntro} />
+        <Route exact path={bookOverviewUrl(bookName)} render={this.renderOverview} />
         <Route path={commonNotionUrl(bookName, ':pageName')} render={this.renderCommonNotionRoute} />
         <Route path={definitionUrl(bookName, ':pageName')} render={this.renderDefinitionRoute} />
         <Route path={postulateUrl(bookName, ':pageName')} render={this.renderPostulateRoute} />
         <Route path={propositionUrl(bookName, ':pageName')} render={this.renderPropositionRoute} />
-        <Redirect to={bookIntroUrl(bookName)} />
+        <Redirect to={bookOverviewUrl(bookName)} />
       </Switch>
     );
   }
 
-  private readonly renderIntro = () => {
-    return <TextPageView page={this.props.book.introPage} />;
+  private readonly renderOverview = () => {
+    return <TextPageView page={this.props.book.overviewPage} />;
   }
 
   private readonly renderCommonNotionRoute = (props: PageRouteProps) => {
@@ -89,7 +89,7 @@ export class BookRoutes extends React.Component<BookRoutesProps> {
         />
       );
     } else {
-      return <Redirect to={bookIntroUrl(this.props.book.bookName)} />;
+      return <Redirect to={bookOverviewUrl(this.props.book.bookName)} />;
     }
   }
 

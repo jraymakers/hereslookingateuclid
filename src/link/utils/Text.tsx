@@ -1,4 +1,5 @@
 export const introductionText = 'Introduction';
+export const overviewText = 'Overview';
 
 export function bookTitle(bookName: string): string {
   return `Book ${bookName}`;

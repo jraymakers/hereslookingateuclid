@@ -19,6 +19,7 @@ import {
   definitionRefText,
   definitionTitle,
   introductionText,
+  overviewText,
   postulateNavText,
   postulateRefText,
   postulateTitle,
@@ -27,7 +28,7 @@ import {
   propositionTitle,
 } from './Text';
 import {
-  bookIntroUrl,
+  bookOverviewUrl,
   commonNotionUrl,
   definitionUrl,
   mainIntroUrl,
@@ -40,17 +41,17 @@ export const mainIntroLink: LinkInfo = {
   url: mainIntroUrl,
 };
 
-export function bookIntroLink(bookName: string): LinkInfo {
+export function bookOverviewLink(bookName: string): LinkInfo {
   return {
-    text: introductionText,
-    url: bookIntroUrl(bookName),
+    text: overviewText,
+    url: bookOverviewUrl(bookName),
   };
 }
 
-export function bookTitleIntroLink(bookName: string): LinkInfo {
+export function bookTitleOverviewLink(bookName: string): LinkInfo {
   return {
     text: bookTitle(bookName),
-    url: bookIntroUrl(bookName),
+    url: bookOverviewUrl(bookName),
   };
 }
 

@@ -13,7 +13,7 @@ export type StepsAndDiagramPageMap = {
 export type Book = {
   readonly bookName: string;
   readonly contentsLinks: SubtitledLinkInfoList,
-  readonly introPage: TextPage,
+  readonly overviewPage: TextPage,
   readonly commonNotionPages?: StepsAndDiagramPageMap;
   readonly definitionPages?: StepsAndDiagramPageMap;
   readonly postulatePages?: StepsAndDiagramPageMap;

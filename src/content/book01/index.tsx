@@ -1,6 +1,6 @@
 import {
-  bookIntroLink,
-  bookTitleIntroLink,
+  bookOverviewLink,
+  bookTitleOverviewLink,
   commonNotionNavLink,
   commonNotionTitleLink,
   definitionNavLink,
@@ -34,7 +34,7 @@ import def19 from './Book1Def19';
 import def20to21 from './Book1Def20to21';
 import def22 from './Book1Def22';
 import def23 from './Book1Def23';
-import intro from './Book1Intro';
+import overview from './Book1Overview';
 import postulate1 from './Book1Postulate1';
 import postulate2 from './Book1Postulate2';
 import postulate3 from './Book1Postulate3';
@@ -48,8 +48,8 @@ import prop05 from './Book1Prop05';
 
 const bookName = 'I';
 
-const titleIntroLink = bookTitleIntroLink(bookName);
-const introLink = bookIntroLink(bookName);
+const titleOverviewLink = bookTitleOverviewLink(bookName);
+const overviewLink = bookOverviewLink(bookName);
 
 const def01to04Nav = definitionNavLink(bookName, def01to04.name);
 const def01to04NavLast = definitionNavLink(bookName, def01to04.name, lastStep);
@@ -104,7 +104,7 @@ const prop05Nav = propositionNavLink(bookName, prop05.name);
 const prop05NavLast = propositionNavLink(bookName, prop05.name, lastStep);
 
 const contentsLinks: SubtitledLinkInfoList = [
-  introLink,
+  overviewLink,
   definitionTitleLink(bookName, def01to04),
   definitionTitleLink(bookName, def05to07),
   definitionTitleLink(bookName, def08to12),
@@ -131,12 +131,12 @@ const contentsLinks: SubtitledLinkInfoList = [
   propositionTitleLink(bookName, prop05),
 ];
 
-const introPage: TextPage = {
+const overviewPage: TextPage = {
   type: 'text',
   bookName,
   prev: mainIntroLink,
   next: def01to04Nav,
-  paragraphs: intro,
+  paragraphs: overview,
 };
 
 const bookPage = {
@@ -145,7 +145,7 @@ const bookPage = {
 };
 
 const definitionPages: StepsAndDiagramPageMap = {
-  [def01to04.name]: { ...bookPage, stepsAndDiagram: def01to04, prev: titleIntroLink,     next: def05to07Nav},
+  [def01to04.name]: { ...bookPage, stepsAndDiagram: def01to04, prev: titleOverviewLink,     next: def05to07Nav},
   [def05to07.name]: { ...bookPage, stepsAndDiagram: def05to07, prev: def01to04NavLast,   next: def08to12Nav},
   [def08to12.name]: { ...bookPage, stepsAndDiagram: def08to12, prev: def05to07NavLast,   next: def13to14Nav},
   [def13to14.name]: { ...bookPage, stepsAndDiagram: def13to14, prev: def08to12NavLast,   next: def15to18Nav},
@@ -183,7 +183,7 @@ const propositionPages: StepsAndDiagramPageMap = {
 const book: Book = {
   bookName,
   contentsLinks,
-  introPage,
+  overviewPage,
   commonNotionPages,
   definitionPages,
   postulatePages,

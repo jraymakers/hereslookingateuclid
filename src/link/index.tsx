@@ -5,8 +5,8 @@ export {
   SubtitledLinkInfoList,
 } from './types/LinkInfo';
 export {
-  bookIntroLink,
-  bookTitleIntroLink,
+  bookOverviewLink,
+  bookTitleOverviewLink,
   commonNotionNavLink,
   commonNotionRefLink,
   commonNotionTitleLink,
@@ -29,7 +29,7 @@ export {
   propositionTitle,
 } from './utils/Text';
 export {
-  bookIntroUrl,
+  bookOverviewUrl,
   bookUrl,
   commonNotionUrl,
   definitionUrl,
