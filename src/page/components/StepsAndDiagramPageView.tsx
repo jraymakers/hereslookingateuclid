@@ -5,7 +5,6 @@ import { bookTitle } from '../../link';
 import { StepsAndDiagramPage } from '../../page';
 import { StepsAndDiagramView } from '../../stepsAndDiagram';
 
-import { PageHeaderView } from './PageHeaderView';
 import { PageView } from './PageView';
 
 type StepsAndDiagramPageViewProps = RouteComponentProps<{}> & {
@@ -22,7 +21,6 @@ class StepsAndDiagramPageViewInternal extends React.PureComponent<StepsAndDiagra
     const currentStepIndex = this.props.currentStepIndex;
     return (
       <PageView page={page} onKeyDown={this.onKeyDown}>
-        {/* <PageHeaderView header={page.bookName ? bookTitle(page.bookName) : null} /> */}
         <StepsAndDiagramView
           title={stepsAndDiagram.title}
           summary={stepsAndDiagram.summary}

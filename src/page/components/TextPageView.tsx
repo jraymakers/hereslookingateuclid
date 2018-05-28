@@ -13,7 +13,6 @@ import {
 
 import { TextPage } from '../types/Page';
 
-import { PageHeaderView } from './PageHeaderView';
 import { PageView } from './PageView';
 
 const classPrefix = 'TextPageView';
@@ -47,7 +46,6 @@ class TextPageViewInternal extends React.PureComponent<TextPageViewProps> {
     const page = this.props.page;
     return (
       <PageView page={page} onKeyDown={this.onKeyDown}>
-        {/* <PageHeaderView header={page.bookName ? bookTitle(page.bookName) : null} /> */}
         <div className={contentClass}>
           {page.paragraphs.map((paragraph, index) => <ParagraphView paragraph={paragraph} key={index} />)}
         </div>
