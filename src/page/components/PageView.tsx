@@ -31,6 +31,7 @@ const classPrefix = 'PageView';
 const rootClass = namedClass(classPrefix, 'root',
   flexGrowStyle,
   flexColumnStyle,
+  { position: 'relative' },
 );
 
 const pageContentClass = namedClass(classPrefix, 'pageContent',
@@ -42,6 +43,26 @@ const pageContentClass = namedClass(classPrefix, 'pageContent',
   {
     backgroundColor: '#ddd',
     position: 'relative',
+  },
+);
+
+const navGlassPaneClass = namedClass(classPrefix, 'navGlassPane',
+  {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+);
+
+const pageContentGlassPaneClass = namedClass(classPrefix, 'pageContentGlassPane',
+  {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
 );
 
@@ -70,7 +91,6 @@ function contentsLinksForBook(bookName: string | null | undefined): SubtitledLin
 
 type PageViewProps = {
   readonly page: Page;
-  readonly noSiteTitleLink?: boolean;
   readonly onKeyDown?: (event: KeyboardEvent) => void;
 };
 
@@ -103,23 +123,51 @@ export class PageView extends React.PureComponent<PageViewProps, PageViewState> 
           bookName={page.bookName}
           prev={page.prev}
           next={page.next}
-          toggleContents={this.toggleContents}
+          toggleContentsOverlay={this.toggleContentsOverlay}
         />
+        {this.maybeRenderNavGlassPane()}
         <div className={pageContentClass}>
           {this.props.children}
-          {this.maybeRenderContents()}
+          {this.maybeRenderPageContentGlassPane()}
+          {this.maybeRenderContentsOverlay()}
         </div>
       </div>
     );
   }
 
-  private readonly toggleContents = () => {
+  private readonly toggleContentsOverlay = () => {
     this.setState({
       contentsVisible: !this.state.contentsVisible,
     });
   }
 
-  private maybeRenderContents(): JSX.Element | null {
+  private readonly hideContentsOverlay = () => {
+    this.setState({
+      contentsVisible: false,
+    });
+  }
+
+  private maybeRenderNavGlassPane(): JSX.Element | null {
+    if (this.state.contentsVisible) {
+      return (
+        <div className={navGlassPaneClass} onClick={this.hideContentsOverlay} />
+      );
+    } else {
+      return null;
+    }
+  }
+
+  private maybeRenderPageContentGlassPane(): JSX.Element | null {
+    if (this.state.contentsVisible) {
+      return (
+        <div className={pageContentGlassPaneClass} onClick={this.hideContentsOverlay} />
+      );
+    } else {
+      return null;
+    }
+  }
+
+  private maybeRenderContentsOverlay(): JSX.Element | null {
     if (this.state.contentsVisible) {
       const contentsLinks = contentsLinksForBook(this.props.page.bookName);
       return (

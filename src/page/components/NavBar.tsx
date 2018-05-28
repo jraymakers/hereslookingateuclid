@@ -110,7 +110,7 @@ export type NavBarProps = {
   readonly bookName: string | null | undefined;
   readonly prev?: LinkInfo | null | undefined;
   readonly next?: LinkInfo | null | undefined;
-  readonly toggleContents: () => void;
+  readonly toggleContentsOverlay: () => void;
 };
 
 export class NavBar extends React.PureComponent<NavBarProps> {
@@ -133,7 +133,7 @@ export class NavBar extends React.PureComponent<NavBarProps> {
 
   private renderHierarchy(): JSX.Element {
     return (
-      <span className={hierarchyClass} onClick={this.props.toggleContents}>
+      <span className={hierarchyClass} onClick={this.props.toggleContentsOverlay}>
         <span className={hierarchyArrowClass}>{'▼'}</span>
         <span className={hierarchyTextClass}>{heresLookingAtEuclid}</span>
         {this.maybeRenderBookName()}
