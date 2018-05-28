@@ -4,24 +4,11 @@ export function bookTitle(bookName: string): string {
   return `Book ${bookName}`;
 }
 
-export function axiomNavText(bookName: string, pageName: string): string {
-  return `${bookName}: Axiom ${pageName}`;
-}
-
-export function axiomRefText(bookName: string, pageName: string): string {
-  return `${bookName}.Ax.${pageName}`;
-}
-
-export function axiomTitle(pageName: string): string {
-  return `Axiom ${pageName}`;
-}
-
 export function commonNotionNavText(bookName: string, pageName: string): string {
   return `${bookName}: Common Notion ${pageName}`;
 }
 
 export function commonNotionRefText(bookName: string, pageName: string): string {
-  // return `${bookName}.CN.${pageName}`;
   return `CN ${pageName}`;
 }
 
@@ -46,7 +33,6 @@ export function postulateNavText(bookName: string, pageName: string): string {
 }
 
 export function postulateRefText(bookName: string, pageName: string): string {
-  // return `${bookName}.Pos.${pageName}`;
   return `Post ${pageName}`;
 }
 

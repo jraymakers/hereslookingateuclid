@@ -5,11 +5,7 @@ export {
   SubtitledLinkInfoList,
 } from './types/LinkInfo';
 export {
-  axiomNavLink,
-  axiomRefLink,
-  axiomTitleLink,
   bookIntroLink,
-  bookTitleContentsLink,
   bookTitleIntroLink,
   commonNotionNavLink,
   commonNotionRefLink,
@@ -26,7 +22,6 @@ export {
   propositionTitleLink,
 } from './utils/Links';
 export {
-  axiomTitle,
   bookTitle,
   commonNotionTitle,
   definitionTitle,
@@ -34,14 +29,11 @@ export {
   propositionTitle,
 } from './utils/Text';
 export {
-  axiomUrl,
-  bookContentsUrl,
   bookIntroUrl,
   bookUrl,
   commonNotionUrl,
   definitionUrl,
   lastStep,
-  mainContentsUrl,
   mainIntroUrl,
   MakePageUrl,
   postulateUrl,

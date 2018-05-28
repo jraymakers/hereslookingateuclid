@@ -4,7 +4,6 @@ export {
   StepsAndDiagramPageMap,
 } from './Book';
 export {
-  ContentsPage,
   Page,
   TextPage,
   StepsAndDiagramPage,

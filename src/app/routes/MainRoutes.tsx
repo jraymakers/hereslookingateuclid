@@ -8,16 +8,13 @@ import {
 
 import {
   books,
-  mainContentsPage,
   mainIntroPage,
 } from '../../content';
 import {
   bookUrl,
-  mainContentsUrl,
   mainIntroUrl,
 } from '../../link';
 import {
-  ContentsPageView,
   TextPageView,
 } from '../../page';
 
@@ -32,16 +29,11 @@ export class MainRoutes extends React.Component<{}> {
   public render(): JSX.Element {
     return (
       <Switch>
-        <Route exact path={mainContentsUrl} render={this.renderContents} />
         <Route exact path={mainIntroUrl} component={this.renderIntro} />
         <Route path={bookUrl(':bookName')} render={this.renderBookRoute} />
         <Redirect to={mainIntroUrl} />
       </Switch>
     );
-  }
-
-  private readonly renderContents = (): JSX.Element => {
-    return <ContentsPageView page={mainContentsPage} />;
   }
 
   private readonly renderIntro = (): JSX.Element => {
@@ -55,7 +47,7 @@ export class MainRoutes extends React.Component<{}> {
     if (book) {
       return <BookRoutes book={book} />;
     } else {
-      return <Redirect to={mainContentsUrl} />;
+      return <Redirect to={mainIntroUrl} />;
     }
   }
 

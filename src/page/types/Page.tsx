@@ -3,15 +3,10 @@ import { ParagraphList } from '../../paragraph';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
 
 export type Page = {
-  readonly type: 'contents' | 'text' | 'stepsAndDiagram';
+  readonly type: 'text' | 'stepsAndDiagram';
   readonly bookName?: string | null | undefined;
   readonly prev?: LinkInfo | null | undefined;
   readonly next?: LinkInfo | null | undefined;
-};
-
-export type ContentsPage = Page & {
-  readonly type: 'contents';
-  readonly contentsLinks: SubtitledLinkInfoList;
 };
 
 export type TextPage = Page & {

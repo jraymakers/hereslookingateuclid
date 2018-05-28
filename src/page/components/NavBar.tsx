@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import { bookTitle, LinkInfo, mainContentsUrl } from '../../link';
+import { bookTitle, LinkInfo } from '../../link';
 import {
   alignItemsCenterStyle,
   alignItemsStretchStyle,

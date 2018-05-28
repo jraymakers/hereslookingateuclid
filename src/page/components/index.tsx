@@ -1,7 +1,4 @@
 export {
-  ContentsPageView,
-} from './ContentsPageView';
-export {
   NavBar,
 } from './NavBar';
 export {

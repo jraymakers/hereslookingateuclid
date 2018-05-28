@@ -1,6 +1,5 @@
 import {
   bookIntroLink,
-  bookTitleContentsLink,
   bookTitleIntroLink,
   commonNotionNavLink,
   commonNotionTitleLink,
@@ -16,7 +15,6 @@ import {
 } from '../../link';
 import {
   Book,
-  ContentsPage,
   StepsAndDiagramPage,
   StepsAndDiagramPageMap,
   TextPage,
@@ -50,7 +48,6 @@ import prop05 from './Book1Prop05';
 
 const bookName = 'I';
 
-const titleContentsLink = bookTitleContentsLink(bookName);
 const titleIntroLink = bookTitleIntroLink(bookName);
 const introLink = bookIntroLink(bookName);
 
@@ -134,12 +131,6 @@ const contentsLinks: SubtitledLinkInfoList = [
   propositionTitleLink(bookName, prop05),
 ];
 
-const contentsPage: ContentsPage = {
-  type: 'contents',
-  bookName,
-  contentsLinks,
-};
-
 const introPage: TextPage = {
   type: 'text',
   bookName,
@@ -191,7 +182,7 @@ const propositionPages: StepsAndDiagramPageMap = {
 
 const book: Book = {
   bookName,
-  contentsPage,
+  contentsLinks,
   introPage,
   commonNotionPages,
   definitionPages,

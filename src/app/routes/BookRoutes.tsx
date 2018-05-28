@@ -7,8 +7,6 @@ import {
 } from 'react-router';
 
 import {
-  // axiomUrl,
-  bookContentsUrl,
   bookIntroUrl,
   commonNotionUrl,
   definitionUrl,
@@ -18,7 +16,6 @@ import {
 } from '../../link';
 import {
   Book,
-  ContentsPageView,
   StepsAndDiagramPage,
   TextPageView,
 } from '../../page';
@@ -39,9 +36,7 @@ export class BookRoutes extends React.Component<BookRoutesProps> {
     const bookName = this.props.book.bookName;
     return (
       <Switch>
-        <Route exact path={bookContentsUrl(bookName)} render={this.renderContents} />
         <Route exact path={bookIntroUrl(bookName)} render={this.renderIntro} />
-        {/* <Route path={axiomUrl(bookName, ':pageName')} render={this.renderAxiomRoute} /> */}
         <Route path={commonNotionUrl(bookName, ':pageName')} render={this.renderCommonNotionRoute} />
         <Route path={definitionUrl(bookName, ':pageName')} render={this.renderDefinitionRoute} />
         <Route path={postulateUrl(bookName, ':pageName')} render={this.renderPostulateRoute} />
@@ -51,20 +46,9 @@ export class BookRoutes extends React.Component<BookRoutesProps> {
     );
   }
 
-  private readonly renderContents = () => {
-    return <ContentsPageView page={this.props.book.contentsPage} />;
-  }
-
   private readonly renderIntro = () => {
     return <TextPageView page={this.props.book.introPage} />;
   }
-
-  // private readonly renderAxiomRoute = (props: AxiomGroupRouteProps) => {
-  //   const pageName = props.match.params.pageName;
-  //   const pages = this.props.book.axiomPages;
-  //   const page = pages ? pages[pageName] : null;
-  //   return this.renderStepsAndDiagramPage(page, axiomUrl);
-  // }
 
   private readonly renderCommonNotionRoute = (props: PageRouteProps) => {
     const pageName = props.match.params.pageName;
@@ -105,7 +89,7 @@ export class BookRoutes extends React.Component<BookRoutesProps> {
         />
       );
     } else {
-      return <Redirect to={bookContentsUrl(this.props.book.bookName)} />;
+      return <Redirect to={bookIntroUrl(this.props.book.bookName)} />;
     }
   }
 

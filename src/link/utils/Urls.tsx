@@ -1,29 +1,16 @@
-export const mainContentsUrl = '/contents';
-export const mainIntroUrl = '/introduction';
+export const mainIntroUrl = '/';
 
 export function bookUrl(bookName: string): string {
   return `/book/${bookName}`;
 }
 
-export function bookContentsUrl(bookName: string): string {
-  return `/book/${bookName}/contents`;
-}
-
 export function bookIntroUrl(bookName: string): string {
-  return `/book/${bookName}/introduction`;
+  return `/book/${bookName}`;
 }
 
 export type MakePageUrl = (bookName: string, pageName: string, stepName: string) => string;
 
 export const lastStep = 'last';
-
-export function axiomUrl(bookName: string, pageName: string, stepName?: string): string {
-  if (stepName) {
-    return `/book/${bookName}/axiom/${pageName}/select=${stepName}`;
-  } else {
-    return `/book/${bookName}/axiom/${pageName}`;
-  }
-}
 
 export function commonNotionUrl(bookName: string, pageName: string, stepName?: string): string {
   if (stepName) {

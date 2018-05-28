@@ -1,5 +1,7 @@
 import {
-  ContentsPage,
+  SubtitledLinkInfoList,
+} from '../../link';
+import {
   StepsAndDiagramPage,
   TextPage,
 } from './Page';
@@ -10,9 +12,8 @@ export type StepsAndDiagramPageMap = {
 
 export type Book = {
   readonly bookName: string;
-  readonly contentsPage: ContentsPage,
+  readonly contentsLinks: SubtitledLinkInfoList,
   readonly introPage: TextPage,
-  // readonly axiomPages?: StepsAndDiagramPageMap;
   readonly commonNotionPages?: StepsAndDiagramPageMap;
   readonly definitionPages?: StepsAndDiagramPageMap;
   readonly postulatePages?: StepsAndDiagramPageMap;

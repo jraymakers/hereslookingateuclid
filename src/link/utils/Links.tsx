@@ -11,9 +11,6 @@ import {
 } from '../types/LinkInfo';
 
 import {
-  axiomNavText,
-  axiomRefText,
-  axiomTitle,
   bookTitle,
   commonNotionNavText,
   commonNotionRefText,
@@ -30,8 +27,6 @@ import {
   propositionTitle,
 } from './Text';
 import {
-  axiomUrl,
-  bookContentsUrl,
   bookIntroUrl,
   commonNotionUrl,
   definitionUrl,
@@ -52,39 +47,10 @@ export function bookIntroLink(bookName: string): LinkInfo {
   };
 }
 
-export function bookTitleContentsLink(bookName: string): LinkInfo {
-  return {
-    text: bookTitle(bookName),
-    url: bookContentsUrl(bookName),
-  };
-}
-
 export function bookTitleIntroLink(bookName: string): LinkInfo {
   return {
     text: bookTitle(bookName),
     url: bookIntroUrl(bookName),
-  };
-}
-
-export function axiomNavLink(bookName: string, pageName: string, stepName?: string): LinkInfo {
-  return {
-    text: axiomNavText(bookName, pageName),
-    url: axiomUrl(bookName, pageName, stepName),
-  };
-}
-
-export function axiomRefLink(bookName: string, pageName: string, stepName?: string): LinkInfo {
-  return {
-    text: axiomRefText(bookName, pageName),
-    url: axiomUrl(bookName, pageName, stepName),
-  };
-}
-
-export function axiomTitleLink(bookName: string, stepsAndDiagram: StepsAndDiagram): SubtitledLinkInfo {
-  return {
-    text: axiomTitle(stepsAndDiagram.name),
-    subtitle: stepsAndDiagram.summary,
-    url: axiomUrl(bookName, stepsAndDiagram.name),
   };
 }
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import {
   books,
-  mainContentsPage,
+  mainContentsLinks,
 } from '../../content';
 import {
   SubtitledLinkInfoList,
@@ -83,10 +83,10 @@ function contentsLinksForBook(bookName: string | null | undefined): SubtitledLin
   if (bookName) {
     const book = books[bookName];
     if (book) {
-      return book.contentsPage.contentsLinks;
+      return book.contentsLinks;
     }
   }
-  return mainContentsPage.contentsLinks;
+  return mainContentsLinks;
 }
 
 type PageViewProps = {
