@@ -5,22 +5,22 @@ export {
   SubtitledLinkInfoList,
 } from './types/LinkInfo';
 export {
-  bookOverviewLink,
+  // bookOverviewLink,
   bookOverviewNavLink,
   bookTitleOverviewLink,
   commonNotionNavLink,
   commonNotionRefLink,
-  commonNotionTitleLink,
+  // commonNotionTitleLink,
   definitionNavLink,
   definitionRefLink,
-  definitionTitleLink,
+  // definitionTitleLink,
   mainIntroLink,
   postulateNavLink,
   postulateRefLink,
-  postulateTitleLink,
+  // postulateTitleLink,
   propositionNavLink,
   propositionRefLink,
-  propositionTitleLink,
+  // propositionTitleLink,
 } from './utils/Links';
 export {
   bookTitle,

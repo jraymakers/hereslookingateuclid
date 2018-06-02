@@ -6,8 +6,14 @@ import {
   definitionTitle,
 } from '../../link';
 import {
+  leafPageData,
+  stepsAndDiagramPageItem,
+  textPageItem,
+} from '../../page';
+import {
   italic,
   Paragraph,
+  ParagraphList,
 } from '../../paragraph';
 import {
   StepList,
@@ -181,12 +187,15 @@ const summary: Paragraph = [
   ['Triangles'],
 ];
 
-const definitionGroup: StepsAndDiagram = {
-  name,
+const stepsAndDiagram: StepsAndDiagram = {
   title,
   summary,
   diagram,
   steps,
 };
 
-export default definitionGroup;
+const pageData = leafPageData(name, title, [
+  stepsAndDiagramPageItem(stepsAndDiagram),
+]);
+
+export default pageData;

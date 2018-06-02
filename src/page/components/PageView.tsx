@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import {
-  books,
-  mainContentsLinks,
-} from '../../content';
+// import {
+//   books,
+//   mainContentsLinks,
+// } from '../../content';
 import {
   SubtitledLinkInfoList,
 } from '../../link';
@@ -21,10 +21,12 @@ import {
   textSerifStyle,
 } from '../../style';
 
-import { Page } from '../types/Page';
+import { LeafPage, Page } from '../types/Page';
 
 import { ContentsView } from './ContentsView';
 import { NavBar } from './NavBar';
+import { StepsAndDiagramPageItemView } from './StepsAndDiagramPageItemView';
+import { TextPageItemView } from './TextPageItemView';
 
 const classPrefix = 'PageView';
 
@@ -68,19 +70,20 @@ const contentsOverlayClass = namedClass(classPrefix, 'contentsOverlay',
   },
 );
 
-function contentsLinksForBook(bookName: string | null | undefined): SubtitledLinkInfoList {
-  if (bookName) {
-    const book = books[bookName];
-    if (book) {
-      return book.contentsLinks;
-    }
-  }
-  return mainContentsLinks;
+function contentsLinksForPage(page: Page): SubtitledLinkInfoList {
+  // if (bookName) {
+  //   const book = books[bookName];
+  //   if (book) {
+  //     return book.contentsLinks;
+  //   }
+  // }
+  // return mainContentsLinks;
+  return [];
 }
 
 type PageViewProps = {
-  readonly page: Page;
-  readonly onKeyDown?: (event: KeyboardEvent) => void;
+  readonly page: LeafPage;
+  // readonly onKeyDown?: (event: KeyboardEvent) => void;
 };
 
 type PageViewState = {
@@ -109,18 +112,30 @@ export class PageView extends React.PureComponent<PageViewProps, PageViewState> 
     return (
       <div className={rootClass}>
         <NavBar
-          bookName={page.bookName}
-          prev={page.prev}
-          next={page.next}
+          page={page}
+          // bookName={page.bookName}
+          // prev={page.prev}
+          // next={page.next}
           toggleContentsOverlay={this.toggleContentsOverlay}
         />
         <div className={pageContentClass}>
-          {this.props.children}
+          {this.renderPageItems()}
           {this.maybeRenderGlassPane()}
           {this.maybeRenderContentsOverlay()}
         </div>
       </div>
     );
+  }
+
+  private renderPageItems(): JSX.Element[] {
+    return this.props.page.items.map((item, index) => {
+      switch (item.pageItemType) {
+        case 'stepsAndDiagram':
+          return <StepsAndDiagramPageItemView key={index} pageItem={item} currentStepIndex={0} />;
+        case 'text':
+          return <TextPageItemView key={index} pageItem={item} />;
+      }
+    });
   }
 
   private readonly toggleContentsOverlay = () => {
@@ -147,7 +162,7 @@ export class PageView extends React.PureComponent<PageViewProps, PageViewState> 
 
   private maybeRenderContentsOverlay(): JSX.Element | null {
     if (this.state.contentsVisible) {
-      const contentsLinks = contentsLinksForBook(this.props.page.bookName);
+      const contentsLinks = contentsLinksForPage(this.props.page);
       return (
         <div className={contentsOverlayClass}>
           <ContentsView contentsLinks={contentsLinks} />
@@ -159,9 +174,9 @@ export class PageView extends React.PureComponent<PageViewProps, PageViewState> 
   }
 
   private readonly onBodyKeyDown = (event: KeyboardEvent) => {
-    if (this.props.onKeyDown) {
-      this.props.onKeyDown(event);
-    }
+    // if (this.props.onKeyDown) {
+    //   this.props.onKeyDown(event);
+    // }
   }
 
 }

@@ -9,6 +9,8 @@ export {
   anchor,
   italic,
   link,
+  styled,
+  xlarge,
 } from './utils/RunUtils';
 export {
   RunView,

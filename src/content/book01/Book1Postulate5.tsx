@@ -6,8 +6,13 @@ import {
   postulateTitle,
 } from '../../link';
 import {
-  italic,
+  leafPageData,
+  stepsAndDiagramPageItem,
+  textPageItem,
+} from '../../page';
+import {
   Paragraph,
+  ParagraphList,
 } from '../../paragraph';
 import {
   StepList,
@@ -123,12 +128,15 @@ const summary: Paragraph = [
   ['The Parallel Postulate'],
 ];
 
-const postulate: StepsAndDiagram = {
-  name,
+const stepsAndDiagram: StepsAndDiagram = {
   title,
   summary,
   diagram,
   steps,
 };
 
-export default postulate;
+const pageData = leafPageData(name, title, [
+  stepsAndDiagramPageItem(stepsAndDiagram),
+]);
+
+export default pageData;

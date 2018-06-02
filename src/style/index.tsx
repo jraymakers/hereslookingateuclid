@@ -7,6 +7,7 @@ export {
   textItalicClass,
   textLargeClass,
   textSmallClass,
+  textXLargeClass,
 } from './constants/ClassConstants';
 export {
   smallSpace,

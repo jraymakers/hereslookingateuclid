@@ -1,15 +1,21 @@
 import {
+  leafPageData,
+  textPageItem,
+} from '../page';
+import {
   anchor,
   italic,
   ParagraphList,
 } from '../paragraph';
+
+const name = 'introduction';
 
 const mailLink = {
   text: 'info@hereslookingateuclid.com',
   url: 'mailto:info@hereslookingateuclid.com',
 };
 
-const intro: ParagraphList = [
+const paragraphs: ParagraphList = [
   [
     [ `An online adaptation of Euclid's `, italic('Elements'), `.` ],
   ],
@@ -21,4 +27,8 @@ const intro: ParagraphList = [
   ],
 ];
 
-export default intro;
+const pageData = leafPageData(name, 'Introduction', [
+  textPageItem(paragraphs),
+]);
+
+export default pageData;

@@ -10,8 +10,13 @@ import {
   propositionTitle,
 } from '../../link';
 import {
-  link,
+  leafPageData,
+  stepsAndDiagramPageItem,
+  textPageItem,
+} from '../../page';
+import {
   Paragraph,
+  ParagraphList,
 } from '../../paragraph';
 import {
   StepList,
@@ -179,12 +184,15 @@ const summary: Paragraph = [
   ['Construct a straight line equal to a given straight line with one end at a given point.'],
 ];
 
-const proposition: StepsAndDiagram = {
-  name,
+const stepsAndDiagram: StepsAndDiagram = {
   title,
   summary,
   diagram,
   steps,
 };
 
-export default proposition;
+const pageData = leafPageData(name, title, [
+  stepsAndDiagramPageItem(stepsAndDiagram),
+]);
+
+export default pageData;

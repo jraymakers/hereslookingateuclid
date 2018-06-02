@@ -7,6 +7,7 @@ import {
   textItalicStyle,
   textLargeStyle,
   textSmallStyle,
+  textXLargeStyle,
 } from './StyleConstants';
 
 const classPrefix = 'shared';
@@ -20,3 +21,4 @@ export const paddingMediumClass = namedClass(classPrefix, 'paddingLarge', paddin
 export const textItalicClass = namedClass(classPrefix, 'textItalic', textItalicStyle);
 export const textLargeClass = namedClass(classPrefix, 'textLarge', textLargeStyle);
 export const textSmallClass = namedClass(classPrefix, 'textSmall', textSmallStyle);
+export const textXLargeClass = namedClass(classPrefix, 'textXLarge', textXLargeStyle);

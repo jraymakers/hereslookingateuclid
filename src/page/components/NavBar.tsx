@@ -3,6 +3,12 @@ import { Link } from 'react-router-dom';
 
 import { bookTitle, LinkInfo } from '../../link';
 import {
+  nextLeafPage,
+  Page,
+  pageUrl,
+  prevLeafPage,
+} from '../../page';
+import {
   alignItemsCenterStyle,
   alignItemsStretchStyle,
   borderStyle,
@@ -123,9 +129,10 @@ const prevLinkArrowClass = namedClass(classPrefix, 'prevLinkArrow',
 const heresLookingAtEuclid = "Here's Looking at Euclid";
 
 export type NavBarProps = {
-  readonly bookName: string | null | undefined;
-  readonly prev?: LinkInfo | null | undefined;
-  readonly next?: LinkInfo | null | undefined;
+  readonly page: Page;
+  // readonly bookName: string | null | undefined;
+  // readonly prev?: LinkInfo | null | undefined;
+  // readonly next?: LinkInfo | null | undefined;
   readonly toggleContentsOverlay: () => void;
 };
 
@@ -135,13 +142,13 @@ export class NavBar extends React.PureComponent<NavBarProps> {
     return (
       <div className={rootClass}>
         <div className={leftClass}>
-          {this.renderPrevLink(this.props.prev)}
+          {this.renderPrevLink()}
         </div>
         <div className={centerClass}>
           {this.renderHierarchy()}
         </div>
         <div className={rightClass}>
-          {this.renderNextLink(this.props.next)}
+          {this.renderNextLink()}
         </div>
       </div>
     );
@@ -152,48 +159,54 @@ export class NavBar extends React.PureComponent<NavBarProps> {
       <span className={hierarchyClass} onClick={this.props.toggleContentsOverlay}>
         <span className={hierarchyArrowClass}>{'▼'}</span>
         <span className={hierarchyTextClass}>{heresLookingAtEuclid}</span>
-        {this.maybeRenderBookName()}
+        {/* {this.maybeRenderBookName()} */}
       </span>
     );
   }
 
-  private maybeRenderBookName(): JSX.Element | null {
-    if (this.props.bookName) {
-      return (
-        <>
-          <span className={hierarchyDividerClass}>{':'}</span>
-          <span className={hierarchyTextClass}>{bookTitle(this.props.bookName)}</span>
-        </>
-      );
-    } else {
+  // private maybeRenderBookName(): JSX.Element | null {
+  //   if (this.props.bookName) {
+  //     return (
+  //       <>
+  //         <span className={hierarchyDividerClass}>{':'}</span>
+  //         <span className={hierarchyTextClass}>{bookTitle(this.props.bookName)}</span>
+  //       </>
+  //     );
+  //   } else {
+  //     return null;
+  //   }
+  // }
+
+  private renderPrevLink(): JSX.Element | null {
+    const page = this.props.page;
+    const prevLeaf = prevLeafPage(page);
+    if (!prevLeaf) {
       return null;
     }
+    const text = prevLeaf.name; // todo: text
+    const url = pageUrl(prevLeaf);
+    return (
+      <Link className={buttonClass} to={url}>
+        <span className={prevLinkArrowClass}>{'◀'}</span>
+        <span className={prevLinkTextClass}>{text}</span>
+      </Link>
+    );
   }
 
-  private renderPrevLink(link: LinkInfo | null | undefined): JSX.Element | null {
-    if (link) {
-      return (
-        <Link className={buttonClass} to={link.url}>
-          <span className={prevLinkArrowClass}>{'◀'}</span>
-          <span className={prevLinkTextClass}>{link.text}</span>
-        </Link>
-      );
-    } else {
+  private renderNextLink(): JSX.Element | null {
+    const page = this.props.page;
+    const nextLeaf = nextLeafPage(page);
+    if (!nextLeaf) {
       return null;
     }
-  }
-
-  private renderNextLink(link: LinkInfo | null | undefined): JSX.Element | null {
-    if (link) {
-      return (
-        <Link className={buttonClass} to={link.url}>
-          <span className={nextLinkTextClass}>{link.text}</span>
-          <span className={nextLinkArrowClass}>{'▶'}</span>
-        </Link>
-      );
-    } else {
-      return null;
-    }
+    const text = nextLeaf.name; // todo: text
+    const url = pageUrl(nextLeaf);
+    return (
+      <Link className={buttonClass} to={url}>
+        <span className={nextLinkTextClass}>{text}</span>
+        <span className={nextLinkArrowClass}>{'▶'}</span>
+      </Link>
+    );
   }
 
 }

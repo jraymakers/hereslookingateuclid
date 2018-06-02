@@ -1,10 +1,20 @@
 export {
-  Book,
-  BookMap,
-  StepsAndDiagramPageMap,
-} from './Book';
-export {
+  LeafPage,
   Page,
-  TextPage,
-  StepsAndDiagramPage,
+  PageList,
+  PageMap,
+  ParentPage,
+  ParentPageWithMutableChildren,
 } from './Page';
+export {
+  LeafPageData,
+  PageData,
+  PageDataList,
+  ParentPageData,
+} from './PageData';
+export {
+  PageItem,
+  PageItemList,
+  StepsAndDiagramPageItem,
+  TextPageItem,
+} from './PageItem';
