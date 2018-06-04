@@ -12,7 +12,7 @@ export class App extends React.Component<{}> {
   public render(): JSX.Element {
     return (
       <HashRouter>
-        <PageRoutes prefix="" page={rootPage} />
+        <PageRoutes page={rootPage} />
       </HashRouter>
     );
   }

@@ -1,74 +1,74 @@
-import {
-  Paragraph,
-} from '../../paragraph';
-import {
-  StepsAndDiagram,
-} from '../../stepsAndDiagram';
+// import {
+//   Paragraph,
+// } from '../../paragraph';
+// import {
+//   StepsAndDiagram,
+// } from '../../stepsAndDiagram';
 
 import {
   LinkInfo,
-  SubtitledLinkInfo,
+  // SubtitledLinkInfo,
 } from '../types/LinkInfo';
 
 import {
-  bookOverviewNavText,
-  bookTitle,
-  commonNotionNavText,
+  // bookOverviewNavText,
+  // bookTitle,
+  // commonNotionNavText,
   commonNotionRefText,
-  commonNotionTitle,
-  definitionNavText,
+  // commonNotionTitle,
+  // definitionNavText,
   definitionRefText,
-  definitionTitle,
-  introductionText,
-  overviewText,
-  postulateNavText,
+  // definitionTitle,
+  // introductionText,
+  // overviewText,
+  // postulateNavText,
   postulateRefText,
-  postulateTitle,
-  propositionNavText,
+  // postulateTitle,
+  // propositionNavText,
   propositionRefText,
-  propositionTitle,
+  // propositionTitle,
 } from './Text';
 import {
-  bookOverviewUrl,
+  // bookOverviewUrl,
   commonNotionUrl,
   definitionUrl,
-  mainIntroUrl,
+  // mainIntroUrl,
   postulateUrl,
   propositionUrl,
 } from './Urls';
 
-export const mainIntroLink: LinkInfo = {
-  text: introductionText,
-  url: mainIntroUrl,
-};
+// export const mainIntroLink: LinkInfo = {
+//   text: introductionText,
+//   url: mainIntroUrl,
+// };
 
-export function bookOverviewLink(bookName: string): LinkInfo {
-  return {
-    text: overviewText,
-    url: bookOverviewUrl(bookName),
-  };
-}
+// export function bookOverviewLink(bookName: string): LinkInfo {
+//   return {
+//     text: overviewText,
+//     url: bookOverviewUrl(bookName),
+//   };
+// }
 
-export function bookOverviewNavLink(bookName: string): LinkInfo {
-  return {
-    text: bookOverviewNavText(bookName),
-    url: bookOverviewUrl(bookName),
-  };
-}
+// export function bookOverviewNavLink(bookName: string): LinkInfo {
+//   return {
+//     text: bookOverviewNavText(bookName),
+//     url: bookOverviewUrl(bookName),
+//   };
+// }
 
-export function bookTitleOverviewLink(bookName: string): LinkInfo {
-  return {
-    text: bookTitle(bookName),
-    url: bookOverviewUrl(bookName),
-  };
-}
+// export function bookTitleOverviewLink(bookName: string): LinkInfo {
+//   return {
+//     text: bookTitle(bookName),
+//     url: bookOverviewUrl(bookName),
+//   };
+// }
 
-export function commonNotionNavLink(bookName: string, pageName: string, stepName?: string): LinkInfo {
-  return {
-    text: commonNotionNavText(bookName, pageName),
-    url: commonNotionUrl(bookName, pageName, stepName),
-  };
-}
+// export function commonNotionNavLink(bookName: string, pageName: string, stepName?: string): LinkInfo {
+//   return {
+//     text: commonNotionNavText(bookName, pageName),
+//     url: commonNotionUrl(bookName, pageName, stepName),
+//   };
+// }
 
 export function commonNotionRefLink(bookName: string, pageName: string, stepName?: string): LinkInfo {
   return {
@@ -77,20 +77,20 @@ export function commonNotionRefLink(bookName: string, pageName: string, stepName
   };
 }
 
-// export function commonNotionTitleLink(bookName: string, stepsAndDiagram: StepsAndDiagram): SubtitledLinkInfo {
+// // export function commonNotionTitleLink(bookName: string, stepsAndDiagram: StepsAndDiagram): SubtitledLinkInfo {
+// //   return {
+// //     text: commonNotionTitle(stepsAndDiagram.name),
+// //     subtitle: stepsAndDiagram.summary,
+// //     url: commonNotionUrl(bookName, stepsAndDiagram.name),
+// //   };
+// // }
+
+// export function definitionNavLink(bookName: string, pageName: string, stepName?: string): LinkInfo {
 //   return {
-//     text: commonNotionTitle(stepsAndDiagram.name),
-//     subtitle: stepsAndDiagram.summary,
-//     url: commonNotionUrl(bookName, stepsAndDiagram.name),
+//     text: definitionNavText(bookName, pageName),
+//     url: definitionUrl(bookName, pageName, stepName),
 //   };
 // }
-
-export function definitionNavLink(bookName: string, pageName: string, stepName?: string): LinkInfo {
-  return {
-    text: definitionNavText(bookName, pageName),
-    url: definitionUrl(bookName, pageName, stepName),
-  };
-}
 
 export function definitionRefLink(bookName: string, pageName: string, stepName: string): LinkInfo {
   return {
@@ -99,20 +99,20 @@ export function definitionRefLink(bookName: string, pageName: string, stepName: 
   };
 }
 
-// export function definitionTitleLink(bookName: string, stepsAndDiagram: StepsAndDiagram): SubtitledLinkInfo {
+// // export function definitionTitleLink(bookName: string, stepsAndDiagram: StepsAndDiagram): SubtitledLinkInfo {
+// //   return {
+// //     text: definitionTitle(stepsAndDiagram.name),
+// //     subtitle: stepsAndDiagram.summary,
+// //     url: definitionUrl(bookName, stepsAndDiagram.name),
+// //   };
+// // }
+
+// export function postulateNavLink(bookName: string, pageName: string, stepName?: string): LinkInfo {
 //   return {
-//     text: definitionTitle(stepsAndDiagram.name),
-//     subtitle: stepsAndDiagram.summary,
-//     url: definitionUrl(bookName, stepsAndDiagram.name),
+//     text: postulateNavText(bookName, pageName),
+//     url: postulateUrl(bookName, pageName, stepName),
 //   };
 // }
-
-export function postulateNavLink(bookName: string, pageName: string, stepName?: string): LinkInfo {
-  return {
-    text: postulateNavText(bookName, pageName),
-    url: postulateUrl(bookName, pageName, stepName),
-  };
-}
 
 export function postulateRefLink(bookName: string, pageName: string, stepName?: string): LinkInfo {
   return {
@@ -121,20 +121,20 @@ export function postulateRefLink(bookName: string, pageName: string, stepName?: 
   };
 }
 
-// export function postulateTitleLink(bookName: string, stepsAndDiagram: StepsAndDiagram): SubtitledLinkInfo {
+// // export function postulateTitleLink(bookName: string, stepsAndDiagram: StepsAndDiagram): SubtitledLinkInfo {
+// //   return {
+// //     text: postulateTitle(stepsAndDiagram.name),
+// //     subtitle: stepsAndDiagram.summary,
+// //     url: postulateUrl(bookName, stepsAndDiagram.name),
+// //   };
+// // }
+
+// export function propositionNavLink(bookName: string, pageName: string, stepName?: string): LinkInfo {
 //   return {
-//     text: postulateTitle(stepsAndDiagram.name),
-//     subtitle: stepsAndDiagram.summary,
-//     url: postulateUrl(bookName, stepsAndDiagram.name),
+//     text: propositionNavText(bookName, pageName),
+//     url: propositionUrl(bookName, pageName, stepName),
 //   };
 // }
-
-export function propositionNavLink(bookName: string, pageName: string, stepName?: string): LinkInfo {
-  return {
-    text: propositionNavText(bookName, pageName),
-    url: propositionUrl(bookName, pageName, stepName),
-  };
-}
 
 export function propositionRefLink(bookName: string, pageName: string, stepName?: string): LinkInfo {
   return {
@@ -143,10 +143,10 @@ export function propositionRefLink(bookName: string, pageName: string, stepName?
   };
 }
 
-// export function propositionTitleLink(bookName: string, stepsAndDiagram: StepsAndDiagram): SubtitledLinkInfo {
-//   return {
-//     text: propositionTitle(stepsAndDiagram.name),
-//     subtitle: stepsAndDiagram.summary,
-//     url: propositionUrl(bookName, stepsAndDiagram.name),
-//   };
-// }
+// // export function propositionTitleLink(bookName: string, stepsAndDiagram: StepsAndDiagram): SubtitledLinkInfo {
+// //   return {
+// //     text: propositionTitle(stepsAndDiagram.name),
+// //     subtitle: stepsAndDiagram.summary,
+// //     url: propositionUrl(bookName, stepsAndDiagram.name),
+// //   };
+// // }

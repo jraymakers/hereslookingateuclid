@@ -6,15 +6,12 @@ import {
   Switch,
 } from 'react-router';
 
-import {
-  Page,
-  ParentPage,
-} from '../../page';
+import { parentPageUrl } from '../../link';
+import { ParentPage } from '../../page';
 
 import { PageRoutes } from './PageRoutes';
 
 type ParentPageRoutesProps = {
-  readonly prefix: string;
   readonly page: ParentPage;
 };
 
@@ -25,30 +22,34 @@ type ChildRouteProps = RouteComponentProps<{
 export class ParentPageRoutes extends React.Component<ParentPageRoutesProps> {
 
   public render(): JSX.Element {
-    const prefix = this.props.prefix;
     const page = this.props.page;
     return (
       <Switch>
         <Route
-          path={`${prefix}/${page.name}/:childName`}
+          path={`${parentPageUrl(page)}:childName`}
           render={this.renderChildRoute}
         />
-        {/* <Redirect to={mainIntroUrl} /> */}
+        {this.redirectToFirstChild()}
       </Switch>
     );
   }
 
+  private redirectToFirstChild() {
+    const page = this.props.page;
+    const firstChildName = page.childList.length > 0 ? page.childList[0].name : '';
+    return <Redirect to={`${parentPageUrl(page)}${firstChildName}`} />;
+  }
+
   private readonly renderChildRoute = (props: ChildRouteProps): JSX.Element | null => {
+    const page = this.props.page;
     const childName = props.match.params.childName;
-    const child = this.props.page.childMap[childName];
+    const child = page.childMap[childName];
     if (child) {
-      const prefix = this.props.prefix;
-      const page = this.props.page;
       return (
-        <PageRoutes prefix={`${prefix}/${page.name}`} page={child} />
+        <PageRoutes page={child} />
       );
     } else {
-      return null;
+      return this.redirectToFirstChild();
     }
   }
 
