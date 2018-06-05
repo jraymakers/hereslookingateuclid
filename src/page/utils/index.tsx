@@ -17,5 +17,6 @@ export {
   makePage,
   nextLeafPage,
   // pageUrl,
+  pageAncestors,
   prevLeafPage,
 } from './PageUtils';

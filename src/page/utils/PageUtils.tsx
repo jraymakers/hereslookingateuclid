@@ -94,6 +94,7 @@ function makeParentPage(pageData: ParentPageData, parent?: ParentPage, index?: n
   const page: ParentPageWithMutableChildren = {
     pageType: 'parent',
     name: pageData.name,
+    title: pageData.title,
     parent: parent != null ? parent : null,
     index: index != null ? index : null,
     childList: [],
@@ -123,6 +124,7 @@ function makeStepsAndDiagramPage(pageData: StepsAndDiagramPageData, parent?: Par
   return {
     pageType: 'stepsAndDiagram',
     name: pageData.name,
+    title: pageData.title,
     stepsAndDiagram: pageData.stepsAndDiagram,
     parent: parent != null ? parent : null,
     index: index != null ? index : null,
@@ -133,6 +135,7 @@ function makeTextPage(pageData: TextPageData, parent?: ParentPage, index?: numbe
   return {
     pageType: 'text',
     name: pageData.name,
+    title: pageData.title,
     paragraphs: pageData.paragraphs,
     parent: parent != null ? parent : null,
     index: index != null ? index : null,
@@ -194,6 +197,16 @@ export function nextLeafPage(page: Page): LeafPage | null {
     return firstLeafPage(nextPage);
   }
   return nextPage;
+}
+
+export function pageAncestors(page: Page): ReadonlyArray<ParentPage> {
+  const parents: ParentPage[] = [];
+  let parent: ParentPage | null = page.parent;
+  while (parent) {
+    parents.unshift(parent);
+    parent = parent.parent;
+  }
+  return parents;
 }
 
 // export function pageUrl(page: Page | null): string {

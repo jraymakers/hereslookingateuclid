@@ -31,6 +31,7 @@ export {
   nextLeafPage,
   // pageUrl,
   parentPageData,
+  pageAncestors,
   prevLeafPage,
   stepsAndDiagramPageData,
   textPageData,

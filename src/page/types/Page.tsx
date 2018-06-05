@@ -3,6 +3,7 @@ import { StepsAndDiagram } from '../../stepsAndDiagram';
 
 export type BasePage = {
   readonly name: string;
+  readonly title: string;
   readonly parent: ParentPage | null;
   readonly index: number | null;
 };

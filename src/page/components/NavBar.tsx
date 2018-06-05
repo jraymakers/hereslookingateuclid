@@ -5,6 +5,7 @@ import { lastStep, pageUrl} from '../../link';
 import {
   nextLeafPage,
   Page,
+  pageAncestors,
   prevLeafPage,
 } from '../../page';
 import {
@@ -77,8 +78,9 @@ const hierarchyArrowClass = namedClass(classPrefix, 'hierarchyArrow',
     paddingRight: 6,
   },
 );
-const hierarchyTextClass = namedClass(classPrefix, 'hierarchyText',
-);
+const hierarchyTextClass = namedClass(classPrefix, 'hierarchyText', {
+  whiteSpace: 'nowrap',
+});
 const hierarchyDividerClass = namedClass(classPrefix, 'hierarchyDivider',
   {
     paddingLeft: 6,
@@ -129,9 +131,6 @@ const heresLookingAtEuclid = "Here's Looking at Euclid";
 
 export type NavBarProps = {
   readonly page: Page;
-  // readonly bookName: string | null | undefined;
-  // readonly prev?: LinkInfo | null | undefined;
-  // readonly next?: LinkInfo | null | undefined;
   readonly toggleContentsOverlay: () => void;
 };
 
@@ -157,24 +156,22 @@ export class NavBar extends React.PureComponent<NavBarProps> {
     return (
       <span className={hierarchyClass} onClick={this.props.toggleContentsOverlay}>
         <span className={hierarchyArrowClass}>{'▼'}</span>
-        <span className={hierarchyTextClass}>{heresLookingAtEuclid}</span>
-        {/* {this.maybeRenderBookName()} */}
+        {this.renderAncestors()}
+        <span className={hierarchyTextClass}>{this.props.page.title}</span>
       </span>
     );
   }
 
-  // private maybeRenderBookName(): JSX.Element | null {
-  //   if (this.props.bookName) {
-  //     return (
-  //       <>
-  //         <span className={hierarchyDividerClass}>{':'}</span>
-  //         <span className={hierarchyTextClass}>{bookTitle(this.props.bookName)}</span>
-  //       </>
-  //     );
-  //   } else {
-  //     return null;
-  //   }
-  // }
+  private renderAncestors(): JSX.Element[] {
+    const page = this.props.page;
+    const ancestors = pageAncestors(page);
+    return ancestors.map((ancestor, index) => (
+      <span key={index}>
+        <span className={hierarchyTextClass}>{ancestor.title}</span>
+        <span className={hierarchyDividerClass}>{'>'}</span>
+      </span>
+    ));
+  }
 
   private renderPrevLink(): JSX.Element | null {
     const page = this.props.page;
@@ -182,7 +179,7 @@ export class NavBar extends React.PureComponent<NavBarProps> {
     if (!prevLeaf) {
       return null;
     }
-    const text = prevLeaf.name; // todo: text
+    const text = prevLeaf.title;
     const url = pageUrl(prevLeaf, lastStep);
     return (
       <Link className={buttonClass} to={url}>
@@ -198,7 +195,7 @@ export class NavBar extends React.PureComponent<NavBarProps> {
     if (!nextLeaf) {
       return null;
     }
-    const text = nextLeaf.name; // todo: text
+    const text = nextLeaf.title;
     const url = pageUrl(nextLeaf);
     return (
       <Link className={buttonClass} to={url}>
