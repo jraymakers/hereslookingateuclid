@@ -25,8 +25,6 @@ import { LeafPage, Page } from '../types/Page';
 
 import { ContentsView } from './ContentsView';
 import { NavBar } from './NavBar';
-import { StepsAndDiagramPageItemView } from './StepsAndDiagramPageItemView';
-import { TextPageItemView } from './TextPageItemView';
 
 const classPrefix = 'PageView';
 
@@ -83,6 +81,7 @@ function contentsLinksForPage(page: Page): SubtitledLinkInfoList {
 
 type PageViewProps = {
   readonly page: LeafPage;
+  readonly stepIndex?: number;
   // readonly onKeyDown?: (event: KeyboardEvent) => void;
 };
 
@@ -113,29 +112,15 @@ export class PageView extends React.PureComponent<PageViewProps, PageViewState> 
       <div className={rootClass}>
         <NavBar
           page={page}
-          // bookName={page.bookName}
-          // prev={page.prev}
-          // next={page.next}
           toggleContentsOverlay={this.toggleContentsOverlay}
         />
         <div className={pageContentClass}>
-          {this.renderPageItems()}
+          {this.props.children}
           {this.maybeRenderGlassPane()}
           {this.maybeRenderContentsOverlay()}
         </div>
       </div>
     );
-  }
-
-  private renderPageItems(): JSX.Element[] {
-    return this.props.page.items.map((item, index) => {
-      switch (item.pageItemType) {
-        case 'stepsAndDiagram':
-          return <StepsAndDiagramPageItemView key={index} pageItem={item} currentStepIndex={0} />;
-        case 'text':
-          return <TextPageItemView key={index} pageItem={item} />;
-      }
-    });
   }
 
   private readonly toggleContentsOverlay = () => {

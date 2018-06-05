@@ -2,6 +2,8 @@ import {
   LeafPage,
   Page,
   ParentPage,
+  StepsAndDiagramPage,
+  TextPage,
 } from '../../page';
 
 // export const mainIntroUrl = '/introduction';
@@ -16,7 +18,7 @@ import {
 
 // export type MakePageUrl = (bookName: string, pageName: string, stepName: string) => string;
 
-// export const lastStep = 'last';
+export const lastStep = 'last';
 
 export function commonNotionUrl(bookName: string, pageName: string, stepName?: string): string {
   if (stepName) {
@@ -58,14 +60,21 @@ export function parentPageUrl(page: ParentPage | null): string {
   }
 }
 
-export function leafPageUrl(page: LeafPage): string {
+export function stepsAndDiagramPageUrl(page: StepsAndDiagramPage, stepName?: string): string {
+  return `${parentPageUrl(page.parent)}${page.name}${stepName ? `/select=${stepName}` : ''}`;
+}
+
+export function textPageUrl(page: TextPage): string {
   return `${parentPageUrl(page.parent)}${page.name}`;
 }
 
-export function pageUrl(page: Page): string {
-  if (page.pageType === 'leaf') {
-    return leafPageUrl(page);
-  } else {
-    return parentPageUrl(page);
+export function pageUrl(page: Page, stepName?: string): string {
+  switch (page.pageType) {
+    case 'parent':
+      return parentPageUrl(page);
+    case 'stepsAndDiagram':
+      return stepsAndDiagramPageUrl(page, stepName);
+    case 'text':
+      return textPageUrl(page);
   }
 }

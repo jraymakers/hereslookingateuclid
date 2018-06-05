@@ -1,9 +1,21 @@
-// import * as React from 'react';
+import * as React from 'react';
 // import { RouteComponentProps, withRouter } from 'react-router';
 // import { Link } from 'react-router-dom';
 
 // import { bookTitle } from '../../link';
-// import { ParagraphView } from '../../paragraph';
+// import { PageView, TextPage } from '..';
+import { ParagraphView } from '../../paragraph';
+import {
+  alignSelfCenterStyle,
+  borderStyle,
+  mediumSpace,
+  namedClass,
+} from '../../style';
+
+import { TextPage } from '../types';
+
+import { PageView } from './PageView';
+
 // import {
 //   alignSelfCenterStyle,
 //   borderStyle,
@@ -89,3 +101,43 @@
 // }
 
 // export const TextPageView = withRouter(TextPageViewInternal);
+
+const classPrefix = 'TextPageView';
+
+const textPaneClass = namedClass(classPrefix, 'textPane',
+  alignSelfCenterStyle,
+  borderStyle,
+  {
+    marginTop: mediumSpace,
+    maxWidth: 800,
+    padding: 12,
+    backgroundColor: 'white',
+    $nest: {
+      '&>*': {
+        marginTop: mediumSpace,
+      },
+      '&>:first-child': {
+        marginTop: 0,
+      },
+    },
+  },
+);
+
+export type TextPageViewProps = {
+  readonly page: TextPage;
+};
+
+export class TextPageView extends React.PureComponent<TextPageViewProps> {
+
+  public render(): JSX.Element {
+    const page = this.props.page;
+    return (
+      <PageView page={page}>
+        <div className={textPaneClass}>
+          {page.paragraphs.map((paragraph, index) => <ParagraphView paragraph={paragraph} key={index} />)}
+        </div>
+      </PageView>
+    );
+  }
+
+}

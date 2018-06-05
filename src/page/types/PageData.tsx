@@ -1,13 +1,9 @@
-import { PageItemList } from './PageItem';
+import { ParagraphList } from '../../paragraph';
+import { StepsAndDiagram } from '../../stepsAndDiagram';
 
 export type BasePageData = {
   readonly name: string;
   readonly title: string;
-};
-
-export type LeafPageData = BasePageData & {
-  readonly pageDataType: 'leaf';
-  readonly items: PageItemList;
 };
 
 export type ParentPageData = BasePageData & {
@@ -15,6 +11,18 @@ export type ParentPageData = BasePageData & {
   readonly children: PageDataList;
 };
 
-export type PageData = LeafPageData | ParentPageData;
+export type StepsAndDiagramPageData = BasePageData & {
+  readonly pageDataType: 'stepsAndDiagram';
+  readonly stepsAndDiagram: StepsAndDiagram;
+  // readonly items: PageItemList;
+};
+
+export type TextPageData = BasePageData & {
+  readonly pageDataType: 'text';
+  readonly paragraphs: ParagraphList;
+  // readonly items: PageItemList;
+};
+
+export type PageData = ParentPageData | StepsAndDiagramPageData | TextPageData;
 
 export type PageDataList = ReadonlyArray<PageData>;

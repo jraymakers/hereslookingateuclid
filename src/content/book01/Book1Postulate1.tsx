@@ -6,9 +6,7 @@ import {
   postulateTitle,
 } from '../../link';
 import {
-  leafPageData,
-  stepsAndDiagramPageItem,
-  textPageItem,
+  stepsAndDiagramPageData,
 } from '../../page';
 import {
   Paragraph,
@@ -70,8 +68,6 @@ const stepsAndDiagram: StepsAndDiagram = {
   steps,
 };
 
-const pageData = leafPageData(name, title, [
-  stepsAndDiagramPageItem(stepsAndDiagram),
-]);
+const pageData = stepsAndDiagramPageData(name, title, stepsAndDiagram);
 
 export default pageData;

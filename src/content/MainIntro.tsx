@@ -1,6 +1,5 @@
 import {
-  leafPageData,
-  textPageItem,
+  textPageData,
 } from '../page';
 import {
   anchor,
@@ -9,6 +8,7 @@ import {
 } from '../paragraph';
 
 const name = 'introduction';
+const title = 'Introduction';
 
 const mailLink = {
   text: 'info@hereslookingateuclid.com',
@@ -27,8 +27,6 @@ const paragraphs: ParagraphList = [
   ],
 ];
 
-const pageData = leafPageData(name, 'Introduction', [
-  textPageItem(paragraphs),
-]);
+const pageData = textPageData(name, title, paragraphs);
 
 export default pageData;

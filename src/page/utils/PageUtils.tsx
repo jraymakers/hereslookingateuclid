@@ -66,7 +66,7 @@
 
 import {
   LeafPage,
-  LeafPageData,
+  // LeafPageData,
   Page,
   PageData,
   PageDataList,
@@ -75,25 +75,19 @@ import {
   ParentPage,
   ParentPageData,
   ParentPageWithMutableChildren,
+  StepsAndDiagramPageData,
+  TextPageData,
 } from '../types';
 
 export function makePage(pageData: PageData, parent?: ParentPage, index?: number): Page {
   switch (pageData.pageDataType) {
-    case 'leaf':
-      return makeLeafPage(pageData, parent, index);
     case 'parent':
       return makeParentPage(pageData, parent, index);
+    case 'stepsAndDiagram':
+      return makeStepsAndDiagramPage(pageData, parent, index);
+    case 'text':
+    return makeTextPage(pageData, parent, index);
   }
-}
-
-function makeLeafPage(pageData: LeafPageData, parent?: ParentPage, index?: number): LeafPage {
-  return {
-    pageType: 'leaf',
-    name: pageData.name,
-    items: pageData.items,
-    parent: parent != null ? parent : null,
-    index: index != null ? index : null,
-  };
 }
 
 function makeParentPage(pageData: ParentPageData, parent?: ParentPage, index?: number): ParentPage {
@@ -125,16 +119,36 @@ function makeChildMap(childList: PageList): PageMap {
   return childMap;
 }
 
+function makeStepsAndDiagramPage(pageData: StepsAndDiagramPageData, parent?: ParentPage, index?: number): LeafPage {
+  return {
+    pageType: 'stepsAndDiagram',
+    name: pageData.name,
+    stepsAndDiagram: pageData.stepsAndDiagram,
+    parent: parent != null ? parent : null,
+    index: index != null ? index : null,
+  };
+}
+
+function makeTextPage(pageData: TextPageData, parent?: ParentPage, index?: number): LeafPage {
+  return {
+    pageType: 'text',
+    name: pageData.name,
+    paragraphs: pageData.paragraphs,
+    parent: parent != null ? parent : null,
+    index: index != null ? index : null,
+  };
+}
+
 export function firstLeafPage(parent: ParentPage): LeafPage | null {
   const childList = parent.childList;
   const firstChild = childList[0];
   if (!firstChild) {
     return null;
   }
-  if (firstChild.pageType === 'leaf') {
-    return firstChild;
+  if (firstChild.pageType === 'parent') {
+    return firstLeafPage(firstChild);
   }
-  return firstLeafPage(firstChild);
+  return firstChild;
 }
 
 export function lastLeafPage(parent: ParentPage): LeafPage | null {
@@ -144,10 +158,10 @@ export function lastLeafPage(parent: ParentPage): LeafPage | null {
   if (!lastChild) {
     return null;
   }
-  if (lastChild.pageType === 'leaf') {
-    return lastChild;
+  if (lastChild.pageType === 'parent') {
+    return lastLeafPage(lastChild);
   }
-  return lastLeafPage(lastChild);
+  return lastChild;
 }
 
 export function prevLeafPage(page: Page): LeafPage | null {
@@ -160,10 +174,10 @@ export function prevLeafPage(page: Page): LeafPage | null {
     return prevLeafPage(parent);
   }
   const prevPage = parent.childList[index - 1];
-  if (prevPage.pageType === 'leaf') {
-    return prevPage;
+  if (prevPage.pageType === 'parent') {
+    return lastLeafPage(prevPage);
   }
-  return lastLeafPage(prevPage);
+  return prevPage;
 }
 
 export function nextLeafPage(page: Page): LeafPage | null {
@@ -176,16 +190,16 @@ export function nextLeafPage(page: Page): LeafPage | null {
     return nextLeafPage(parent);
   }
   const nextPage = parent.childList[index + 1];
-  if (nextPage.pageType === 'leaf') {
-    return nextPage;
+  if (nextPage.pageType === 'parent') {
+    return firstLeafPage(nextPage);
   }
-  return firstLeafPage(nextPage);
+  return nextPage;
 }
 
-export function pageUrl(page: Page | null): string {
-  if (page == null) {
-    return '';
-  } else {
-    return `${pageUrl(page.parent)}/${page.name}`;
-  }
-}
+// export function pageUrl(page: Page | null): string {
+//   if (page == null) {
+//     return '';
+//   } else {
+//     return `${pageUrl(page.parent)}/${page.name}`;
+//   }
+// }

@@ -5,16 +5,20 @@ export {
   PageMap,
   ParentPage,
   ParentPageWithMutableChildren,
+  StepsAndDiagramPage,
+  TextPage,
 } from './Page';
 export {
-  LeafPageData,
+  // LeafPageData,
   PageData,
   PageDataList,
   ParentPageData,
+  StepsAndDiagramPageData,
+  TextPageData,
 } from './PageData';
-export {
-  PageItem,
-  PageItemList,
-  StepsAndDiagramPageItem,
-  TextPageItem,
-} from './PageItem';
+// export {
+//   PageItem,
+//   // PageItemList,
+//   StepsAndDiagramPageItem,
+//   TextPageItem,
+// } from './PageItem';

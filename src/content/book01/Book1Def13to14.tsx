@@ -6,9 +6,7 @@ import {
   definitionTitle,
 } from '../../link';
 import {
-  leafPageData,
-  stepsAndDiagramPageItem,
-  textPageItem,
+  stepsAndDiagramPageData,
 } from '../../page';
 import {
   italic,
@@ -97,8 +95,6 @@ const stepsAndDiagram: StepsAndDiagram = {
   steps,
 };
 
-const pageData = leafPageData(name, title, [
-  stepsAndDiagramPageItem(stepsAndDiagram),
-]);
+const pageData = stepsAndDiagramPageData(name, title, stepsAndDiagram);
 
 export default pageData;

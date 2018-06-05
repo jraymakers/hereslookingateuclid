@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import { bookTitle, LinkInfo } from '../../link';
+import { lastStep, pageUrl} from '../../link';
 import {
   nextLeafPage,
   Page,
-  pageUrl,
   prevLeafPage,
 } from '../../page';
 import {
@@ -184,7 +183,7 @@ export class NavBar extends React.PureComponent<NavBarProps> {
       return null;
     }
     const text = prevLeaf.name; // todo: text
-    const url = pageUrl(prevLeaf);
+    const url = pageUrl(prevLeaf, lastStep);
     return (
       <Link className={buttonClass} to={url}>
         <span className={prevLinkArrowClass}>{'◀'}</span>

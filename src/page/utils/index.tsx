@@ -1,11 +1,13 @@
 export {
-  leafPageData,
+  // leafPageData,
   parentPageData,
+  stepsAndDiagramPageData,
+  textPageData,
 } from './PageDataUtils';
-export {
-  stepsAndDiagramPageItem,
-  textPageItem,
-} from './PageItemUtils';
+// export {
+//   stepsAndDiagramPageItem,
+//   textPageItem,
+// } from './PageItemUtils';
 export {
   // leafPage,
   // leafPageMaker,
@@ -14,6 +16,6 @@ export {
   lastLeafPage,
   makePage,
   nextLeafPage,
-  pageUrl,
+  // pageUrl,
   prevLeafPage,
 } from './PageUtils';

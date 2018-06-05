@@ -1,12 +1,12 @@
 import {
-  leafPageData,
-  textPageItem,
+  textPageData,
 } from '../../page';
 import {
   ParagraphList,
 } from '../../paragraph';
 
 const name = 'overview';
+const title = 'Overview';
 
 const paragraphs: ParagraphList = [
   [
@@ -14,8 +14,6 @@ const paragraphs: ParagraphList = [
   ],
 ];
 
-const pageData = leafPageData(name, 'Overview', [
-  textPageItem(paragraphs),
-]);
+const pageData = textPageData(name, title, paragraphs);
 
 export default pageData;
