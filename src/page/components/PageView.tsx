@@ -1,9 +1,6 @@
 import * as React from 'react';
 
 import {
-  pageUrl, SubtitledLinkInfo, SubtitledLinkInfoList,
-} from '../../link';
-import {
   alignItemsStretchStyle,
   borderStyle,
   flexColumnStyle,
@@ -17,7 +14,7 @@ import {
   textSerifStyle,
 } from '../../style';
 
-import { LeafPage, Page, ParentPage } from '../types/Page';
+import { LeafPage } from '../types/Page';
 
 import { ContentsView } from './ContentsView';
 import { NavBar } from './NavBar';
@@ -63,20 +60,6 @@ const contentsOverlayClass = namedClass(classPrefix, 'contentsOverlay',
     overflow: 'auto',
   },
 );
-
-function contentsLinksForPage(parent: ParentPage | null): SubtitledLinkInfoList {
-  if (parent) {
-    return parent.childList.map((child) => {
-      const linkInfo: SubtitledLinkInfo = {
-        url: pageUrl(child),
-        text: child.title,
-        subtitle: child.pageType === 'stepsAndDiagram' ? child.stepsAndDiagram.summary : undefined,
-      };
-      return linkInfo;
-    });
-  }
-  return [];
-}
 
 type PageViewProps = {
   readonly page: LeafPage;
@@ -146,10 +129,9 @@ export class PageView extends React.PureComponent<PageViewProps, PageViewState> 
 
   private maybeRenderContentsOverlay(): JSX.Element | null {
     if (this.state.contentsVisible) {
-      const contentsLinks = contentsLinksForPage(this.props.page.parent);
       return (
         <div className={contentsOverlayClass}>
-          <ContentsView contentsLinks={contentsLinks} />
+          <ContentsView parent={this.props.page.parent} />
         </div>
       );
     } else {
