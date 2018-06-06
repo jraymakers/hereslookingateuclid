@@ -25,11 +25,6 @@ import {
 const classPrefix = 'StepView';
 
 const rootClass = namedClass(classPrefix, 'root', flexRowStyle, {
-  paddingTop: 6,
-  paddingBottom: 6,
-  textDecoration: 'none',
-  color: 'black',
-  userSelect: 'none',
   cursor: 'pointer',
   borderLeft: '3px solid transparent',
   $nest: {
@@ -54,6 +49,15 @@ const highlightedClass = namedClass(classPrefix, 'highlighted', {
   },
 });
 
+const numAndTextClass = namedClass(classPrefix, 'numAndText', flexRowStyle, {
+  paddingTop: 6,
+  paddingBottom: 6,
+  textDecoration: 'none',
+  color: 'black',
+  userSelect: 'none',
+  flex: '1',
+});
+
 const numberClass = namedClass(classPrefix, 'number', flexNoneStyle, {
   width: 36,
   textAlign: 'right',
@@ -65,6 +69,8 @@ const textClass = namedClass(classPrefix, 'text', flexGrowStyle, {
 });
 
 const linkClass = namedClass(classPrefix, 'link', flexNoneStyle, {
+  paddingTop: 6,
+  paddingBottom: 6,
   width: 90,
   textAlign: 'right',
 });
@@ -89,14 +95,13 @@ export class StepView extends React.PureComponent<StepViewProps> {
       this.props.highlighted && highlightedClass,
     );
     return (
-      <Link
-        className={rootClasses}
-        to={this.props.makeStepUrl(stepName)}
-      >
-        <div className={numberClass}>{stepName}.</div>
-        <div className={textClass}><ParagraphView paragraph={this.props.text} /></div>
+      <div className={rootClasses} >
+        <Link className={numAndTextClass} to={this.props.makeStepUrl(stepName)}>
+          <div className={numberClass}>{stepName}.</div>
+          <div className={textClass}><ParagraphView paragraph={this.props.text} /></div>
+        </Link>
         <div className={linkClass}>{this.props.link ? <RunView run={link(this.props.link)} /> : null}</div>
-      </Link>
+      </div>
     );
   }
 
