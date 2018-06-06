@@ -3,6 +3,7 @@ import { HashRouter } from 'react-router-dom';
 
 import content from '../../content';
 import { makePage } from '../../page';
+
 import { PageRoutes } from '../routes/PageRoutes';
 
 const rootPage = makePage(content);

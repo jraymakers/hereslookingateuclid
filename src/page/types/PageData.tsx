@@ -14,13 +14,11 @@ export type ParentPageData = BasePageData & {
 export type StepsAndDiagramPageData = BasePageData & {
   readonly pageDataType: 'stepsAndDiagram';
   readonly stepsAndDiagram: StepsAndDiagram;
-  // readonly items: PageItemList;
 };
 
 export type TextPageData = BasePageData & {
   readonly pageDataType: 'text';
   readonly paragraphs: ParagraphList;
-  // readonly items: PageItemList;
 };
 
 export type PageData = ParentPageData | StepsAndDiagramPageData | TextPageData;

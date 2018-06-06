@@ -1,22 +1,13 @@
 export {
-  // leafPageData,
   parentPageData,
   stepsAndDiagramPageData,
   textPageData,
 } from './PageDataUtils';
-// export {
-//   stepsAndDiagramPageItem,
-//   textPageItem,
-// } from './PageItemUtils';
 export {
-  // leafPage,
-  // leafPageMaker,
-  // parentPage,
-  // parentPageMaker,
+  firstLeafPage,
   lastLeafPage,
   makePage,
   nextLeafPage,
-  // pageUrl,
   pageAncestors,
   prevLeafPage,
 } from './PageUtils';

@@ -1,5 +1,4 @@
 export {
-  StepControlsView,
   StepsView,
 } from './components';
 export {

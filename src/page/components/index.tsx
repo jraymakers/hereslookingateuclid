@@ -1,9 +1,3 @@
-// export {
-//   NavBar,
-// } from './NavBar';
-// export {
-//   PageView,
-// } from './PageView';
 export {
   StepsAndDiagramPageView,
 } from './StepsAndDiagramPageView';

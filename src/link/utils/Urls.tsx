@@ -1,22 +1,9 @@
 import {
-  LeafPage,
   Page,
   ParentPage,
   StepsAndDiagramPage,
   TextPage,
 } from '../../page';
-
-// export const mainIntroUrl = '/introduction';
-
-// export function bookUrl(bookName: string): string {
-//   return `/book/${bookName}`;
-// }
-
-// export function bookOverviewUrl(bookName: string): string {
-//   return `/book/${bookName}/overview`;
-// }
-
-// export type MakePageUrl = (bookName: string, pageName: string, stepName: string) => string;
 
 export const lastStep = 'last';
 

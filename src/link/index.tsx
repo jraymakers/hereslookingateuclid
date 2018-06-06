@@ -1,26 +1,11 @@
 export {
   LinkInfo,
-  LinkInfoList,
-  SubtitledLinkInfo,
-  SubtitledLinkInfoList,
 } from './types/LinkInfo';
 export {
-  // bookOverviewLink,
-  // bookOverviewNavLink,
-  // bookTitleOverviewLink,
-  // commonNotionNavLink,
   commonNotionRefLink,
-  // commonNotionTitleLink,
-  // definitionNavLink,
   definitionRefLink,
-  // definitionTitleLink,
-  // mainIntroLink,
-  // postulateNavLink,
   postulateRefLink,
-  // postulateTitleLink,
-  // propositionNavLink,
   propositionRefLink,
-  // propositionTitleLink,
 } from './utils/Links';
 export {
   bookTitle,
@@ -30,18 +15,9 @@ export {
   propositionTitle,
 } from './utils/Text';
 export {
-  // bookOverviewUrl,
-  // bookUrl,
-  // commonNotionUrl,
-  // definitionUrl,
   lastStep,
-  // leafPageUrl,
-  // mainIntroUrl,
-  // MakePageUrl,
   pageUrl,
   parentPageUrl,
   stepsAndDiagramPageUrl,
   textPageUrl,
-  // postulateUrl,
-  // propositionUrl,
 } from './utils/Urls';

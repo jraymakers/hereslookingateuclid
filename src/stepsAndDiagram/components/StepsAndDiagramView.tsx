@@ -10,7 +10,6 @@ import {
   ParagraphView,
 } from '../../paragraph';
 import {
-  StepControlsView,
   StepList,
   StepsView,
 } from '../../step';
@@ -93,8 +92,6 @@ export type StepsAndDiagramViewProps = {
   readonly steps: StepList;
   readonly diagram: Diagram;
   readonly currentStepIndex: number;
-  // readonly goPrevStep: () => void;
-  // readonly goNextStep: () => void;
   readonly makeStepUrl: (stepName: string) => string;
   readonly prevUrl: string | null;
   readonly nextUrl: string | null;

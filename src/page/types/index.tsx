@@ -9,16 +9,9 @@ export {
   TextPage,
 } from './Page';
 export {
-  // LeafPageData,
   PageData,
   PageDataList,
   ParentPageData,
   StepsAndDiagramPageData,
   TextPageData,
 } from './PageData';
-// export {
-//   PageItem,
-//   // PageItemList,
-//   StepsAndDiagramPageItem,
-//   TextPageItem,
-// } from './PageItem';
