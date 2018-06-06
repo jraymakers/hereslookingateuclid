@@ -46,6 +46,7 @@ const footerClass = namedClass(classPrefix, 'footer', flexRowStyle, {
 
 type NavListViewProps = {
   readonly parent: ParentPage;
+  readonly onClose: () => void;
 };
 
 type NavListViewState = {
@@ -108,7 +109,8 @@ export class NavListView extends React.PureComponent<NavListViewProps, NavListVi
     const items = parent ? parent.childList : [];
     return (
       <div className={listClass}>
-        {items.map((item, index) => <NavListItem page={item} parentClicked={this.goDown} key={index} />)}
+        {items.map((item, index) =>
+          <NavListItem page={item} parentClicked={this.goDown} leafClicked={this.props.onClose} key={index} />)}
       </div>
     );
   }

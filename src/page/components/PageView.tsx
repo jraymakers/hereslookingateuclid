@@ -134,7 +134,7 @@ export class PageView extends React.PureComponent<PageViewProps, PageViewState> 
     if (this.state.contentsVisible && this.props.page.parent) {
       return (
         <div className={contentsOverlayClass}>
-          <NavListView parent={this.props.page.parent} />
+          <NavListView parent={this.props.page.parent} onClose={this.hideNavListOverlay} />
         </div>
       );
     } else {
