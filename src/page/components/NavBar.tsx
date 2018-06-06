@@ -180,7 +180,7 @@ export class NavBar extends React.PureComponent<NavBarProps> {
       return null;
     }
     const text = prevLeaf.title;
-    const url = pageUrl(prevLeaf, lastStep);
+    const url = pageUrl(prevLeaf/*, lastStep*/);
     return (
       <Link className={buttonClass} to={url}>
         <span className={prevLinkArrowClass}>{'◀'}</span>

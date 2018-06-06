@@ -32,14 +32,13 @@ const rootClass = namedClass(classPrefix, 'root',
 export type StepsViewProps = {
   readonly steps: StepList;
   readonly currentStepIndex: number;
-  readonly goToStep: (stepIndex: number) => void;
+  readonly makeStepUrl: (stepName: string) => string;
 };
 
 export class StepsView extends React.PureComponent<StepsViewProps> {
 
   public render(): JSX.Element {
     const currentStepIndex = this.props.currentStepIndex;
-    const goToStep = this.props.goToStep;
     const stepElements = this.props.steps.map((step, index) => {
       return (
         <StepView
@@ -50,7 +49,7 @@ export class StepsView extends React.PureComponent<StepsViewProps> {
           link={step.link}
           faded={index > currentStepIndex}
           highlighted={index === currentStepIndex}
-          goToStep={goToStep}
+          makeStepUrl={this.props.makeStepUrl}
         />
       );
     });

@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { pageUrl } from '../../link';
 import {
   alignItemsStretchStyle,
   borderStyle,
@@ -15,6 +16,7 @@ import {
 } from '../../style';
 
 import { LeafPage } from '../types/Page';
+import { nextLeafPage, prevLeafPage } from '../utils';
 
 import { NavBar } from './NavBar';
 import { NavListView } from './NavListView';
@@ -63,7 +65,8 @@ const contentsOverlayClass = namedClass(classPrefix, 'contentsOverlay',
 
 type PageViewProps = {
   readonly page: LeafPage;
-  // readonly onKeyDown?: (event: KeyboardEvent) => void;
+  readonly navigate: (path: string) => void;
+  readonly onKeyDown?: (event: KeyboardEvent) => void;
 };
 
 type PageViewState = {
@@ -140,10 +143,32 @@ export class PageView extends React.PureComponent<PageViewProps, PageViewState> 
     }
   }
 
+  private goPrevPage() {
+    const prevPage = prevLeafPage(this.props.page);
+    if (prevPage) {
+      this.props.navigate(pageUrl(prevPage));
+    }
+  }
+
+  private goNextPage() {
+    const nextPage = nextLeafPage(this.props.page);
+    if (nextPage) {
+      this.props.navigate(pageUrl(nextPage));
+    }
+  }
+
   private readonly onBodyKeyDown = (event: KeyboardEvent) => {
-    // if (this.props.onKeyDown) {
-    //   this.props.onKeyDown(event);
-    // }
+    switch (event.key) {
+      case 'ArrowLeft':
+        this.goPrevPage();
+        break;
+      case 'ArrowRight':
+        this.goNextPage();
+        break;
+    }
+    if (this.props.onKeyDown) {
+      this.props.onKeyDown(event);
+    }
   }
 
 }

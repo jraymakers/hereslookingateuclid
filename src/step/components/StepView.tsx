@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 import {
   LinkInfo,
@@ -26,6 +27,9 @@ const classPrefix = 'StepView';
 const rootClass = namedClass(classPrefix, 'root', flexRowStyle, {
   paddingTop: 6,
   paddingBottom: 6,
+  textDecoration: 'none',
+  color: 'black',
+  userSelect: 'none',
   cursor: 'pointer',
   borderLeft: '3px solid transparent',
   $nest: {
@@ -72,7 +76,7 @@ export type StepViewProps = {
   readonly link?: LinkInfo | null | undefined;
   readonly faded?: boolean;
   readonly highlighted?: boolean;
-  readonly goToStep: (stepNum: number) => void;
+  readonly makeStepUrl: (stepName: string) => string;
 };
 
 export class StepView extends React.PureComponent<StepViewProps> {
@@ -85,19 +89,15 @@ export class StepView extends React.PureComponent<StepViewProps> {
       this.props.highlighted && highlightedClass,
     );
     return (
-      <div
+      <Link
         className={rootClasses}
-        onClick={this.onClick}
+        to={this.props.makeStepUrl(stepName)}
       >
         <div className={numberClass}>{stepName}.</div>
         <div className={textClass}><ParagraphView paragraph={this.props.text} /></div>
         <div className={linkClass}>{this.props.link ? <RunView run={link(this.props.link)} /> : null}</div>
-      </div>
+      </Link>
     );
-  }
-
-  private readonly onClick = () => {
-    this.props.goToStep(this.props.stepIndex);
   }
 
 }

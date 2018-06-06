@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 import {
   Diagram,
@@ -92,9 +93,11 @@ export type StepsAndDiagramViewProps = {
   readonly steps: StepList;
   readonly diagram: Diagram;
   readonly currentStepIndex: number;
-  readonly goPrevStep: () => void;
-  readonly goNextStep: () => void;
-  readonly goToStep: (stepNum: number) => void;
+  // readonly goPrevStep: () => void;
+  // readonly goNextStep: () => void;
+  readonly makeStepUrl: (stepName: string) => string;
+  readonly prevUrl: string | null;
+  readonly nextUrl: string | null;
 };
 
 export class StepsAndDiagramView extends React.PureComponent<StepsAndDiagramViewProps> {
@@ -106,7 +109,6 @@ export class StepsAndDiagramView extends React.PureComponent<StepsAndDiagramView
     const diagram = this.props.diagram;
     const currentStepIndex = this.props.currentStepIndex;
     const diagramPartStates = getDiagramPartStates(steps, currentStepIndex);
-    const goToStep = this.props.goToStep;
     return (
       <div className={rootClass}>
         <div className={titleAndSummaryClass}>
@@ -115,15 +117,21 @@ export class StepsAndDiagramView extends React.PureComponent<StepsAndDiagramView
             <ParagraphView paragraph={summary} />
           </div>
           <div className={stepControlsClass}>
-            <div className={stepButtonClass} onClick={this.props.goPrevStep}>{'▲'}</div>
-            <div className={stepButtonClass} onClick={this.props.goNextStep}>{'▼'}</div>
+            {this.props.prevUrl
+              ? <Link className={stepButtonClass} to={this.props.prevUrl}>{'▲'}</Link>
+              : <div className={stepButtonClass} />
+            }
+            {this.props.nextUrl
+              ? <Link className={stepButtonClass} to={this.props.nextUrl}>{'▼'}</Link>
+              : <div className={stepButtonClass} />
+            }
           </div>
         </div>
         <div className={stepsAndDiagramClass}>
           <StepsView
             steps={steps}
             currentStepIndex={currentStepIndex}
-            goToStep={goToStep}
+            makeStepUrl={this.props.makeStepUrl}
           />
           <DiagramView
             diagram={diagram}

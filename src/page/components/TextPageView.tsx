@@ -1,5 +1,5 @@
 import * as React from 'react';
-// import { RouteComponentProps, withRouter } from 'react-router';
+import { RouteComponentProps, withRouter } from 'react-router';
 // import { Link } from 'react-router-dom';
 
 // import { bookTitle } from '../../link';
@@ -123,16 +123,16 @@ const textPaneClass = namedClass(classPrefix, 'textPane',
   },
 );
 
-export type TextPageViewProps = {
+export type TextPageViewProps = RouteComponentProps<{}> & {
   readonly page: TextPage;
 };
 
-export class TextPageView extends React.PureComponent<TextPageViewProps> {
+class TextPageViewInternal extends React.PureComponent<TextPageViewProps> {
 
   public render(): JSX.Element {
     const page = this.props.page;
     return (
-      <PageView page={page}>
+      <PageView page={page} navigate={this.navigate}>
         <div className={textPaneClass}>
           {page.paragraphs.map((paragraph, index) => <ParagraphView paragraph={paragraph} key={index} />)}
         </div>
@@ -140,4 +140,12 @@ export class TextPageView extends React.PureComponent<TextPageViewProps> {
     );
   }
 
+  private readonly navigate = (path: string) => {
+    if (this.props.location.pathname !== path) {
+      this.props.history.push(path);
+    }
+  }
+
 }
+
+export const TextPageView = withRouter(TextPageViewInternal);
