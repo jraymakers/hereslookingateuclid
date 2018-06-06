@@ -6,8 +6,12 @@ import {
   Switch,
 } from 'react-router';
 
-import { lastStep, stepsAndDiagramPageUrl } from '../../link';
-import { StepsAndDiagramPage, StepsAndDiagramPageView } from '../../page';
+import { lastStep } from '../../link';
+import {
+  StepsAndDiagramPage,
+  stepsAndDiagramPageUrl,
+  StepsAndDiagramPageView,
+} from '../../page';
 import { findStepIndex } from '../../step';
 
 type StepsAndDiagramPageRoutesProps = {

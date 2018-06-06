@@ -16,8 +16,5 @@ export {
 } from './utils/Text';
 export {
   lastStep,
-  pageUrl,
-  parentPageUrl,
-  stepsAndDiagramPageUrl,
-  textPageUrl,
+  maybeAddStep,
 } from './utils/Urls';

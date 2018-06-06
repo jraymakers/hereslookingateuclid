@@ -1,13 +1,9 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import { lastStep, pageUrl} from '../../link';
 import {
-  nextLeafPage,
-  Page,
-  pageAncestors,
-  prevLeafPage,
-} from '../../page';
+  lastStep,
+} from '../../link';
 import {
   alignItemsCenterStyle,
   alignItemsStretchStyle,
@@ -25,6 +21,16 @@ import {
   textAlignCenterStyle,
   textXXLargeStyle,
 } from '../../style';
+
+import {
+  Page,
+} from '../types';
+import {
+  nextLeafPage,
+  pageAncestors,
+  pageUrl,
+  prevLeafPage,
+} from '../utils';
 
 const classPrefix = 'NavBar';
 const rootClass = namedClass(classPrefix, 'root',
@@ -126,8 +132,6 @@ const prevLinkArrowClass = namedClass(classPrefix, 'prevLinkArrow',
     paddingRight: 6,
   },
 );
-
-const heresLookingAtEuclid = "Here's Looking at Euclid";
 
 export type NavBarProps = {
   readonly page: Page;

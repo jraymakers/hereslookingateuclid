@@ -6,8 +6,7 @@ import {
   Switch,
 } from 'react-router';
 
-import { parentPageUrl } from '../../link';
-import { ParentPage } from '../../page';
+import { ParentPage, parentPageUrl } from '../../page';
 
 import { PageRoutes } from './PageRoutes';
 

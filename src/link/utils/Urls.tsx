@@ -1,67 +1,34 @@
-import {
-  Page,
-  ParentPage,
-  StepsAndDiagramPage,
-  TextPage,
-} from '../../page';
+export const elementsPageName = 'elements';
+
+export const bookPageName = 'book';
+
+export const commonNotionPageName = 'common-notion';
+export const definitionPageName = 'definition';
+export const postulatePageNaem = 'postulate';
+export const propositionPageName = 'proposition';
 
 export const lastStep = 'last';
 
+export function bookSectionPageUrl(bookName: string, sectionName: string, pageName: string): string {
+  return `/elements/book/${bookName}/${sectionName}/${pageName}`;
+}
+
+export function maybeAddStep(url: string, stepName?: string): string {
+  return stepName ? `${url}/select=${stepName}` : url;
+}
+
 export function commonNotionUrl(bookName: string, pageName: string, stepName?: string): string {
-  if (stepName) {
-    return `/elements//book/${bookName}/common-notion/${pageName}/select=${stepName}`;
-  } else {
-    return `/elements/book/${bookName}/common-notion/${pageName}`;
-  }
+  return maybeAddStep(bookSectionPageUrl(bookName, commonNotionPageName, pageName), stepName);
 }
 
 export function definitionUrl(bookName: string, pageName: string, stepName?: string): string {
-  if (stepName) {
-    return `/elements/book/${bookName}/definition/${pageName}/select=${stepName}`;
-  } else {
-    return `/elements/book/${bookName}/definition/${pageName}`;
-  }
+  return maybeAddStep(bookSectionPageUrl(bookName, definitionPageName, pageName), stepName);
 }
 
 export function postulateUrl(bookName: string, pageName: string, stepName?: string): string {
-  if (stepName) {
-    return `/elements/book/${bookName}/postulate/${pageName}/select=${stepName}`;
-  } else {
-    return `/elements/book/${bookName}/postulate/${pageName}`;
-  }
+  return maybeAddStep(bookSectionPageUrl(bookName, postulatePageNaem, pageName), stepName);
 }
 
 export function propositionUrl(bookName: string, pageName: string, stepName?: string): string {
-  if (stepName) {
-    return `/elements/book/${bookName}/propostion/${pageName}/select=${stepName}`;
-  } else {
-    return `/elements/book/${bookName}/propostion/${pageName}`;
-  }
-}
-
-export function parentPageUrl(page: ParentPage | null): string {
-  if (page) {
-    return `${parentPageUrl(page.parent)}${page.name}/`;
-  } else {
-    return '/';
-  }
-}
-
-export function stepsAndDiagramPageUrl(page: StepsAndDiagramPage, stepName?: string): string {
-  return `${parentPageUrl(page.parent)}${page.name}${stepName ? `/select=${stepName}` : ''}`;
-}
-
-export function textPageUrl(page: TextPage): string {
-  return `${parentPageUrl(page.parent)}${page.name}`;
-}
-
-export function pageUrl(page: Page, stepName?: string): string {
-  switch (page.pageType) {
-    case 'parent':
-      return parentPageUrl(page);
-    case 'stepsAndDiagram':
-      return stepsAndDiagramPageUrl(page, stepName);
-    case 'text':
-      return textPageUrl(page);
-  }
+  return maybeAddStep(bookSectionPageUrl(bookName, propositionPageName, pageName), stepName);
 }

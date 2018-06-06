@@ -20,8 +20,10 @@ export {
   makePage,
   nextLeafPage,
   parentPageData,
+  parentPageUrl,
   pageAncestors,
   prevLeafPage,
   stepsAndDiagramPageData,
+  stepsAndDiagramPageUrl,
   textPageData,
 } from './utils';

@@ -2,15 +2,6 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 import {
-  pageUrl,
-} from '../../link';
-import {
-  Page,
-  ParentPage,
-  StepsAndDiagramPage,
-  TextPage,
-} from '../../page';
-import {
   ParagraphView,
 } from '../../paragraph';
 import {
@@ -20,6 +11,16 @@ import {
   textLargeClass,
   textSmallClass,
 } from '../../style';
+
+import {
+  Page,
+  ParentPage,
+  StepsAndDiagramPage,
+  TextPage,
+} from '../types';
+import {
+  pageUrl,
+} from '../utils';
 
 export type NavListItemProps = {
   readonly page: Page;

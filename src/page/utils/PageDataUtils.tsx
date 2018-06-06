@@ -2,9 +2,7 @@ import { ParagraphList } from '../../paragraph';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
 
 import {
-  // LeafPageData,
   PageDataList,
-  // PageItemList,
   ParentPageData,
   StepsAndDiagramPageData,
   TextPageData,

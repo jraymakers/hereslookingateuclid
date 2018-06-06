@@ -1,72 +1,5 @@
-// import {
-//   LeafPage,
-//   MutableParentPage,
-//   Page,
-//   PageItemList,
-//   PageList,
-//   ParentPage,
-// } from '../types';
-
-// function leafPage(name: string, items: PageItemList, parent: MutableParentPage, index: number): LeafPage {
-//   const page: LeafPage = {
-//     pageType: 'leaf',
-//     parent,
-//     index,
-//     name,
-//     items,
-//   };
-//   addChild(parent, index, page);
-//   return page;
-// }
-
-// function parentPage(name: string, parent?: MutableParentPage, index?: number): MutableParentPage {
-//   const page: MutableParentPage = {
-//     pageType: 'parent',
-//     parent: parent != null ? parent : null,
-//     index: index != null ? index : null,
-//     name,
-//     pageList: [],
-//     pageMap: {},
-//   };
-//   if (parent != null && index != null) {
-//     addChild(parent, index, page);
-//   }
-//   return page;
-// }
-
-// function addChild(parent: MutableParentPage, index: number, child: Page) {
-//   parent.pageList[index] = child;
-//   parent.pageMap[child.name] = child;
-// }
-
-// export type LeafPageMaker = (parent: MutableParentPage, index: number) => LeafPage;
-// export type ParentPageMaker = (parent?: MutableParentPage, index?: number) => MutableParentPage;
-// export type PageMaker = (parent?: MutableParentPage, index?: number) => Page;
-
-// export function leafPageMaker(
-//   name: string,
-//   items: PageItemList,
-// ): LeafPageMaker {
-//   return (parent: MutableParentPage, index: number) => leafPage(name, items, parent, index);
-// }
-
-// export function parentPageMaker(
-//   name: string,
-//   pageMakers: ReadonlyArray<PageMaker>,
-// ): ParentPageMaker {
-//   return (parent?: MutableParentPage, index?: number) => {
-//     const page = parentPage(name, parent, index);
-//     for (let i = 0; i < pageMakers.length; i++) {
-//       const pageMaker = pageMakers[i];
-//       pageMaker(page, i);
-//     }
-//     return page;
-//   };
-// }
-
 import {
   LeafPage,
-  // LeafPageData,
   Page,
   PageData,
   PageDataList,
@@ -208,11 +141,3 @@ export function pageAncestors(page: Page): ReadonlyArray<ParentPage> {
   }
   return parents;
 }
-
-// export function pageUrl(page: Page | null): string {
-//   if (page == null) {
-//     return '';
-//   } else {
-//     return `${pageUrl(page.parent)}/${page.name}`;
-//   }
-// }

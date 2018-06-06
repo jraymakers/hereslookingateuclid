@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import { pageUrl } from '../../link';
 import {
   alignItemsStretchStyle,
   borderStyle,
@@ -15,8 +14,8 @@ import {
   textSerifStyle,
 } from '../../style';
 
-import { LeafPage } from '../types/Page';
-import { nextLeafPage, prevLeafPage } from '../utils';
+import { LeafPage } from '../types';
+import { nextLeafPage, pageUrl, prevLeafPage } from '../utils';
 
 import { NavBar } from './NavBar';
 import { NavListView } from './NavListView';

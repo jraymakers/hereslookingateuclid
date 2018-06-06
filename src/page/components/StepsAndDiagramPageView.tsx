@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 
-import { stepsAndDiagramPageUrl } from '../../link';
 import { StepsAndDiagram, StepsAndDiagramView } from '../../stepsAndDiagram';
 
 import { StepsAndDiagramPage } from '../types';
+import { stepsAndDiagramPageUrl } from '../utils';
 
 import { PageView } from './PageView';
 
