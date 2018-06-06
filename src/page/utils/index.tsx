@@ -1,8 +1,12 @@
 export {
   parentPageData,
+  parentPageDataNoNav,
   stepsAndDiagramPageData,
   textPageData,
 } from './PageDataUtils';
+export {
+  pageNavText,
+} from './PageText';
 export {
   pageUrl,
   parentPageUrl,

@@ -18,6 +18,21 @@ export function parentPageData(
     name,
     title,
     children,
+    noNav: false,
+  };
+}
+
+export function parentPageDataNoNav(
+  name: string,
+  title: string,
+  children: PageDataList,
+): ParentPageData {
+  return {
+    pageDataType: 'parent',
+    name,
+    title,
+    children,
+    noNav: true,
   };
 }
 

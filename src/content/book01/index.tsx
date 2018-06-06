@@ -1,6 +1,7 @@
 import {
   PageDataList,
   parentPageData,
+  parentPageDataNoNav,
 } from '../../page';
 
 import overview from './Book1Overview';
@@ -33,7 +34,7 @@ import prop03 from './Book1Prop03';
 import prop04 from './Book1Prop04';
 import prop05 from './Book1Prop05';
 
-const definitionsPageData = parentPageData('definition', 'Definitions', [
+const definitionsPageData = parentPageDataNoNav('definition', 'Definitions', [
   def01to04,
   def05to07,
   def08to12,
@@ -45,7 +46,7 @@ const definitionsPageData = parentPageData('definition', 'Definitions', [
   def23,
 ]);
 
-const postulatesPageData = parentPageData('postulate', 'Postulates', [
+const postulatesPageData = parentPageDataNoNav('postulate', 'Postulates', [
   postulate1,
   postulate2,
   postulate3,
@@ -53,7 +54,7 @@ const postulatesPageData = parentPageData('postulate', 'Postulates', [
   postulate5,
 ]);
 
-const commonNotionsPageData = parentPageData('common-notion', 'Common Notions', [
+const commonNotionsPageData = parentPageDataNoNav('common-notion', 'Common Notions', [
   cn1,
   cn2,
   cn3,
@@ -61,7 +62,7 @@ const commonNotionsPageData = parentPageData('common-notion', 'Common Notions', 
   cn5,
 ]);
 
-const propositionsPageData = parentPageData('proposition', 'Propositions', [
+const propositionsPageData = parentPageDataNoNav('proposition', 'Propositions', [
   prop01,
   prop02,
   prop03,

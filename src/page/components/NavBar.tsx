@@ -28,6 +28,7 @@ import {
 import {
   nextLeafPage,
   pageAncestors,
+  pageNavText,
   pageUrl,
   prevLeafPage,
 } from '../utils';
@@ -166,15 +167,22 @@ export class NavBar extends React.PureComponent<NavBarProps> {
     );
   }
 
-  private renderAncestors(): JSX.Element[] {
-    const page = this.props.page;
-    const ancestors = pageAncestors(page);
-    return ancestors.map((ancestor, index) => (
-      <span key={index}>
-        <span className={hierarchyTextClass}>{ancestor.title}</span>
-        <span className={hierarchyDividerClass}>{'❯'}</span>
-      </span>
-    ));
+  private renderAncestors(): ReadonlyArray<JSX.Element> {
+    const parts: JSX.Element[] = [];
+    const ancestors = pageAncestors(this.props.page);
+    let key = 0;
+    for (const ancestor of ancestors) {
+      if (!ancestor.noNav) {
+        parts.push((
+          <span key={key}>
+            <span className={hierarchyTextClass}>{ancestor.title}</span>
+            <span className={hierarchyDividerClass}>{'❯'}</span>
+          </span>
+        ));
+        key++;
+      }
+    }
+    return parts;
   }
 
   private renderPrevLink(): JSX.Element | null {
@@ -183,7 +191,7 @@ export class NavBar extends React.PureComponent<NavBarProps> {
     if (!prevLeaf) {
       return null;
     }
-    const text = prevLeaf.title;
+    const text = pageNavText(prevLeaf, page);
     const url = pageUrl(prevLeaf/*, lastStep*/);
     return (
       <Link className={buttonClass} to={url}>
@@ -199,7 +207,7 @@ export class NavBar extends React.PureComponent<NavBarProps> {
     if (!nextLeaf) {
       return null;
     }
-    const text = nextLeaf.title;
+    const text = pageNavText(nextLeaf, page);
     const url = pageUrl(nextLeaf);
     return (
       <Link className={buttonClass} to={url}>

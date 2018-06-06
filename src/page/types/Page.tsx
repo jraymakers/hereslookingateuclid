@@ -12,12 +12,14 @@ export type ParentPage = BasePage & {
   readonly pageType: 'parent';
   readonly childList: PageList;
   readonly childMap: PageMap;
+  readonly noNav: boolean;
 };
 
 export type ParentPageWithMutableChildren = BasePage & {
   readonly pageType: 'parent';
   childList: PageList;
   childMap: PageMap;
+  readonly noNav: boolean;
 };
 
 export type StepsAndDiagramPage = BasePage & {

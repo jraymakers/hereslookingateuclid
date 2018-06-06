@@ -9,6 +9,7 @@ export type BasePageData = {
 export type ParentPageData = BasePageData & {
   readonly pageDataType: 'parent';
   readonly children: PageDataList;
+  readonly noNav: boolean;
 };
 
 export type StepsAndDiagramPageData = BasePageData & {

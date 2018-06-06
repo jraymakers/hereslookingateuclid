@@ -20,6 +20,7 @@ export {
   makePage,
   nextLeafPage,
   parentPageData,
+  parentPageDataNoNav,
   parentPageUrl,
   pageAncestors,
   prevLeafPage,

@@ -1,13 +1,14 @@
 import {
   PageDataList,
   parentPageData,
+  parentPageDataNoNav,
 } from '../page';
 
 import introduction from './MainIntro';
 
 import book01 from './book01';
 
-const books = parentPageData('book', 'Books', [
+const books = parentPageDataNoNav('book', 'Books', [
   book01,
 ]);
 

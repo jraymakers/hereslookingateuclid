@@ -32,6 +32,7 @@ function makeParentPage(pageData: ParentPageData, parent?: ParentPage, index?: n
     index: index != null ? index : null,
     childList: [],
     childMap: {},
+    noNav: pageData.noNav,
   };
   page.childList = makeChildList(pageData.children, page);
   page.childMap = makeChildMap(page.childList);
