@@ -131,7 +131,7 @@ const heresLookingAtEuclid = "Here's Looking at Euclid";
 
 export type NavBarProps = {
   readonly page: Page;
-  readonly toggleContentsOverlay: () => void;
+  readonly toggleNavListOverlay: () => void;
 };
 
 export class NavBar extends React.PureComponent<NavBarProps> {
@@ -154,7 +154,7 @@ export class NavBar extends React.PureComponent<NavBarProps> {
 
   private renderHierarchy(): JSX.Element {
     return (
-      <span className={hierarchyClass} onClick={this.props.toggleContentsOverlay}>
+      <span className={hierarchyClass} onClick={this.props.toggleNavListOverlay}>
         <span className={hierarchyArrowClass}>{'▼'}</span>
         {this.renderAncestors()}
         <span className={hierarchyTextClass}>{this.props.page.title}</span>
@@ -168,7 +168,7 @@ export class NavBar extends React.PureComponent<NavBarProps> {
     return ancestors.map((ancestor, index) => (
       <span key={index}>
         <span className={hierarchyTextClass}>{ancestor.title}</span>
-        <span className={hierarchyDividerClass}>{'>'}</span>
+        <span className={hierarchyDividerClass}>{'❯'}</span>
       </span>
     ));
   }

@@ -56,6 +56,7 @@ export const justifyContentStartStyle: Style = {
 export const linkStyle: Style = {
   color: 'black',
   textDecoration: 'none',
+  cursor: 'pointer',
   $nest: {
     '&:hover': {
       $unique: true,

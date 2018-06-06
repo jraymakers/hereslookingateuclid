@@ -16,8 +16,8 @@ import {
 
 import { LeafPage } from '../types/Page';
 
-import { ContentsView } from './ContentsView';
 import { NavBar } from './NavBar';
+import { NavListView } from './NavListView';
 
 const classPrefix = 'PageView';
 
@@ -63,7 +63,6 @@ const contentsOverlayClass = namedClass(classPrefix, 'contentsOverlay',
 
 type PageViewProps = {
   readonly page: LeafPage;
-  readonly stepIndex?: number;
   // readonly onKeyDown?: (event: KeyboardEvent) => void;
 };
 
@@ -94,44 +93,46 @@ export class PageView extends React.PureComponent<PageViewProps, PageViewState> 
       <div className={rootClass}>
         <NavBar
           page={page}
-          toggleContentsOverlay={this.toggleContentsOverlay}
+          toggleNavListOverlay={this.toggleNavListOverlay}
         />
         <div className={pageContentClass}>
           {this.props.children}
           {this.maybeRenderGlassPane()}
-          {this.maybeRenderContentsOverlay()}
+          {this.maybeRenderNavListOverlay()}
         </div>
       </div>
     );
   }
 
-  private readonly toggleContentsOverlay = () => {
-    this.setState({
-      contentsVisible: !this.state.contentsVisible,
-    });
+  private readonly toggleNavListOverlay = () => {
+    if (this.props.page.parent) {
+      this.setState({
+        contentsVisible: !this.state.contentsVisible,
+      });
+    }
   }
 
-  private readonly hideContentsOverlay = () => {
+  private readonly hideNavListOverlay = () => {
     this.setState({
       contentsVisible: false,
     });
   }
 
   private maybeRenderGlassPane(): JSX.Element | null {
-    if (this.state.contentsVisible) {
+    if (this.state.contentsVisible && this.props.page.parent) {
       return (
-        <div className={glassPaneClass} onClick={this.hideContentsOverlay} />
+        <div className={glassPaneClass} onClick={this.hideNavListOverlay} />
       );
     } else {
       return null;
     }
   }
 
-  private maybeRenderContentsOverlay(): JSX.Element | null {
-    if (this.state.contentsVisible) {
+  private maybeRenderNavListOverlay(): JSX.Element | null {
+    if (this.state.contentsVisible && this.props.page.parent) {
       return (
         <div className={contentsOverlayClass}>
-          <ContentsView parent={this.props.page.parent} />
+          <NavListView parent={this.props.page.parent} />
         </div>
       );
     } else {
