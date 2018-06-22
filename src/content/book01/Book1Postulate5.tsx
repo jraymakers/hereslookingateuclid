@@ -54,6 +54,9 @@ const diagram: Diagram = {
     ['AG']: { type: 'line', p1: 'A', p2: 'G' },
     ['DG']: { type: 'line', p1: 'D', p2: 'G' },
 
+    ['∠ABE']: { type: 'angle', p1: 'A', v: 'B', p2: 'E', r: 20, ccw: true },
+    ['∠BED']: { type: 'angle', p1: 'B', v: 'E', p2: 'D', r: 20, ccw: true },
+
     ['A']: { type: 'point', x: aX, y: aY, labelY: -12 },
     ['B']: { type: 'point', x: bX, y: bY, labelY: -12 },
     ['C']: { type: 'point', x: cX, y: cY, labelY: -12 },
@@ -107,15 +110,16 @@ const steps: StepList = [
   {
     name: 'e',
     text: [
-      ['such that the two angles ABE and BED total less than two right angles,'],
+      ['such that the two angles ∠ABE and ∠BED total less than two right angles,'],
     ],
-    highlight: [ 'AB', 'BE', 'DE' ],
+    highlight: [ 'AB', 'BE', 'DE', '∠ABE', '∠BED' ],
   },
   {
     name: 'f',
     text: [
       ['then, if AC and DF are extended in the directions of A and D, they meet at a point G.'],
     ],
+    hide: [ '∠ABE', '∠BED' ],
     highlight: [ 'G', 'AG', 'DG' ],
   },
 ];

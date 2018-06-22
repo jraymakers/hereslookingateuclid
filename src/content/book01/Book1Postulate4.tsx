@@ -46,6 +46,9 @@ const diagram: Diagram = {
     ['DE']: { type: 'line', p1: 'D', p2: 'E' },
     ['EF']: { type: 'line', p1: 'E', p2: 'F' },
 
+    ['∠ABC']: { type: 'angle', p1: 'A', v: 'B', p2: 'C', r: 20, ccw: false },
+    ['∠DEF']: { type: 'angle', p1: 'D', v: 'E', p2: 'F', r: 20, ccw: true },
+
     ['A']: { type: 'point', x: aX, y: aY, labelX: -12 },
     ['B']: { type: 'point', x: bX, y: bY, labelX: -12 },
     ['C']: { type: 'point', x: cX, y: cY, labelX: 12 },
@@ -60,17 +63,17 @@ const steps: StepList = [
   {
     name: '4a',
     text: [
-      ['Let ABC and DEF be right angles.'],
+      ['Let ∠ABC and ∠DEF be right angles.'],
     ],
     show: [ 'A', 'B', 'C', 'D', 'E', 'F' ],
-    highlight: [ 'AB', 'BC', 'DE', 'EF' ],
+    highlight: [ 'AB', 'BC', 'DE', 'EF', '∠ABC', '∠DEF' ],
   },
   {
     name: '4b',
     text: [
-      ['Then the angle ABC equals the angle DEF.'],
+      ['Then the angle ∠ABC equals the angle ∠DEF.'],
     ],
-    highlight: [ 'AB', 'BC', 'DE', 'EF' ],
+    highlight: [ 'AB', 'BC', 'DE', 'EF', '∠ABC', '∠DEF' ],
   },
 ];
 
