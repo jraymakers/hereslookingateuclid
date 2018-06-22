@@ -28,9 +28,9 @@ const listClass = namedClass(classPrefix, 'list', flexColumnStyle, {
   overflow: 'auto',
 });
 
-const footerClass = namedClass(classPrefix, 'footer', flexRowStyle, {
+const upNavClass = namedClass(classPrefix, 'upNav', flexRowStyle, {
   padding: 12,
-  borderTop: '1px solid #999',
+  borderBottom: '1px solid #999',
   cursor: 'pointer',
   $nest: {
     '&:focus': {
@@ -65,9 +65,9 @@ export class NavListView extends React.PureComponent<NavListViewProps, NavListVi
   public render(): JSX.Element {
     return (
       <div className={rootClass}>
+        {this.renderUpNav()}
         {this.renderHeader()}
         {this.renderList()}
-        {this.renderFooter()}
       </div>
     );
   }
@@ -79,14 +79,14 @@ export class NavListView extends React.PureComponent<NavListViewProps, NavListVi
     );
   }
 
-  private renderFooter(): JSX.Element | null {
+  private renderUpNav(): JSX.Element | null {
     const currentParent = this.state.currentParent;
     const up = currentParent.parent;
     if (!up) {
       return null;
     }
     return (
-      <div className={footerClass} onClick={this.goUp}>{' ❮ '}{up.title}</div>
+      <div className={upNavClass} onClick={this.goUp}>{' ❮ '}{up.title}</div>
     );
   }
 
