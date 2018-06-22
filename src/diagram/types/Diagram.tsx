@@ -1,3 +1,13 @@
+export type AngleDiagramPart = {
+  readonly type: 'angle';
+  readonly p1: string; // point reference
+  readonly v: string; // point reference
+  readonly p2: string; // point reference
+  readonly ccw?: boolean;
+  readonly r: number;
+  readonly labelDir?: number;
+};
+
 export type ArcDiagramPart = {
   readonly type: 'arc';
   readonly p1: string; // point reference
@@ -25,7 +35,7 @@ export type CurveDiagramPart = {
 
 export type FigureDiagramPart = {
   readonly type: 'figure';
-  readonly boundary: ReadonlyArray<string>; // curve or line references
+  readonly boundary: ReadonlyArray<string>; // arc, curve or line references
 };
 
 export type LineDiagramPart = {
@@ -45,6 +55,7 @@ export type PointDiagramPart = {
 };
 
 export type DiagramPart =
+  AngleDiagramPart |
   ArcDiagramPart |
   CircleDiagramPart |
   CurveDiagramPart |

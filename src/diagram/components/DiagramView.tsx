@@ -4,6 +4,7 @@ import { assertNever } from '../../common';
 import { borderStyle, namedClass } from '../../style';
 
 import {
+  AngleDiagramPart,
   ArcDiagramPart,
   CircleDiagramPart,
   CurveDiagramPart,
@@ -91,6 +92,8 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
 
   private renderDiagramPart(key: string, part: DiagramPart, state: DiagramPartState): JSX.Element | null {
     switch (part.type) {
+      case 'angle':
+        return this.renderAngle(key, part, state);
       case 'arc':
         return this.renderArc(key, part, state);
       case 'circle':
@@ -106,6 +109,36 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
       default:
         assertNever(part);
         return null;
+    }
+  }
+  private renderAngle(key: string, angle: AngleDiagramPart, state: DiagramPartState): JSX.Element | null {
+    const parts = this.props.diagram.parts;
+    const p1 = parts[angle.p1];
+    const v = parts[angle.v];
+    const p2 = parts[angle.p2];
+    if (isPoint(v) && isPoint(p1) && isPoint(p2)) {
+      const p1dx = p1.x - v.x;
+      const p1dy = p1.y - v.y;
+      const p1d = Math.sqrt(p1dx * p1dx + p1dy * p1dy);
+      const p2dx = p2.x - v.x;
+      const p2dy = p2.y - v.y;
+      const p2d = Math.sqrt(p2dx * p2dx + p2dy * p2dy);
+      const r = angle.r;
+      return <ArcSvg
+        key={key}
+        x1={v.x + r * p1dx / p1d}
+        y1={v.y + r * p1dy / p1d}
+        x2={v.x + r * p2dx / p2d}
+        y2={v.y + r * p2dy / p2d}
+        rx={r}
+        ry={r}
+        ccw={angle.ccw}
+        label={key}
+        labelDir={angle.labelDir}
+        highlighted={state === 'highlighted'}
+      />;
+    } else {
+      return null;
     }
   }
 
