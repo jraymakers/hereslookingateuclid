@@ -6,6 +6,7 @@ export type AngleDiagramPart = {
   readonly ccw?: boolean;
   readonly r: number;
   readonly labelDir?: number;
+  readonly className?: string;
 };
 
 export type ArcDiagramPart = {

@@ -64,10 +64,18 @@ const posClass = namedClass(cssPrefix, 'pos', {
   animationFillMode: 'both',
 });
 
+const posDoneClass = namedClass(cssPrefix, 'posDone', {
+  transform: `translate(${width * 0.25}px, ${width * 0.2}px)`,
+});
+
 const negClass = namedClass(cssPrefix, 'neg', {
   animationName: translateNegAnimation,
   animationDuration: '2s',
   animationFillMode: 'both',
+});
+
+const negDoneClass = namedClass(cssPrefix, 'negDone', {
+  transform: `translate(${-width * 0.25}px, ${-width * 0.2}px)`,
 });
 
 const diagram: Diagram = {
@@ -76,31 +84,52 @@ const diagram: Diagram = {
   parts: {
     ['AB']: { type: 'line', p1: 'A', p2: 'B' },
     ['AB ']: { type: 'line', p1: 'A', p2: 'B', className: posClass },
+    ['AB  ']: { type: 'line', p1: 'A', p2: 'B', className: posDoneClass },
     ['BC']: { type: 'line', p1: 'B', p2: 'C' },
     ['BC ']: { type: 'line', p1: 'B', p2: 'C', className: posClass },
+    ['BC  ']: { type: 'line', p1: 'B', p2: 'C', className: posDoneClass },
     ['AC']: { type: 'line', p1: 'A', p2: 'C' },
     ['AC ']: { type: 'line', p1: 'A', p2: 'C', className: posClass },
+    ['AC  ']: { type: 'line', p1: 'A', p2: 'C', className: posDoneClass },
 
     ['DE']: { type: 'line', p1: 'D', p2: 'E' },
     ['DE ']: { type: 'line', p1: 'D', p2: 'E', className: negClass },
+    ['DE  ']: { type: 'line', p1: 'D', p2: 'E', className: negDoneClass },
     ['EF']: { type: 'line', p1: 'E', p2: 'F' },
     ['EF ']: { type: 'line', p1: 'E', p2: 'F', className: negClass },
+    ['EF  ']: { type: 'line', p1: 'E', p2: 'F', className: negDoneClass },
     ['DF']: { type: 'line', p1: 'D', p2: 'F' },
     ['DF ']: { type: 'line', p1: 'D', p2: 'F', className: negClass },
+    ['DF  ']: { type: 'line', p1: 'D', p2: 'F', className: negDoneClass },
+
+    ['∠ABC  ']: { type: 'angle', p1: 'A', v: 'B', p2: 'C', r: 25, ccw: false, className: posDoneClass },
+    ['∠ACB  ']: { type: 'angle', p1: 'A', v: 'C', p2: 'B', r: 25, ccw: true, className: posDoneClass },
+    ['∠BAC']: { type: 'angle', p1: 'B', v: 'A', p2: 'C', r: 25, ccw: true },
+    ['∠BAC  ']: { type: 'angle', p1: 'B', v: 'A', p2: 'C', r: 25, ccw: true, className: posDoneClass },
+    ['∠DEF  ']: { type: 'angle', p1: 'D', v: 'E', p2: 'F', r: 25, ccw: false, className: negDoneClass },
+    ['∠DFE  ']: { type: 'angle', p1: 'D', v: 'F', p2: 'E', r: 25, ccw: true, className: negDoneClass },
+    ['∠EDF']: { type: 'angle', p1: 'E', v: 'D', p2: 'F', r: 25, ccw: true },
+    ['∠EDF  ']: { type: 'angle', p1: 'E', v: 'D', p2: 'F', r: 25, ccw: true, className: negDoneClass },
 
     ['A']: { type: 'point', x: aX, y: aY, labelX: -8, labelY: -12 },
     ['A ']: { type: 'point', x: aX, y: aY, labelX: -8, labelY: -12, className: posClass },
+    ['A  ']: { type: 'point', x: aX, y: aY, labelX: -8, labelY: -12, className: posDoneClass },
     ['B']: { type: 'point', x: bX, y: bY, labelX: -12, labelY: -8 },
     ['B ']: { type: 'point', x: bX, y: bY, labelX: -12, labelY: -8, className: posClass },
+    ['B  ']: { type: 'point', x: bX, y: bY, labelX: -12, labelY: -8, className: posDoneClass },
     ['C']: { type: 'point', x: cX, y: cY, labelX:  12, labelY: -8 },
     ['C ']: { type: 'point', x: cX, y: cY, labelX:  12, labelY: -8, className: posClass },
+    ['C  ']: { type: 'point', x: cX, y: cY, labelX:  12, labelY: -8, className: posDoneClass },
 
     ['D']: { type: 'point', x: dX, y: dY, labelX: 8, labelY: -12 },
     ['D ']: { type: 'point', x: dX, y: dY, labelX: 8, labelY: -12, className: negClass },
+    ['D  ']: { type: 'point', x: dX, y: dY, labelX: 8, labelY: -12, className: negDoneClass },
     ['E']: { type: 'point', x: eX, y: eY, labelX: -12, labelY: 8 },
     ['E ']: { type: 'point', x: eX, y: eY, labelX: -12, labelY: 8, className: negClass },
+    ['E  ']: { type: 'point', x: eX, y: eY, labelX: -12, labelY: 8, className: negDoneClass },
     ['F']: { type: 'point', x: fX, y: fY, labelX:  12, labelY: 8 },
     ['F ']: { type: 'point', x: fX, y: fY, labelX:  12, labelY: 8, className: negClass },
+    ['F  ']: { type: 'point', x: fX, y: fY, labelX:  12, labelY: 8, className: negDoneClass },
   },
 };
 
@@ -109,10 +138,10 @@ const steps: StepList = [
     name: '1',
     text: [
       ['Let ABC and DEF be the given triangles, with AB equal to DE, AC equal to DF, ',
-       'and angle BAC equal to angle EDF.'],
+       'and angle ∠BAC equal to angle ∠EDF.'],
     ],
     show: [ 'A', 'B', 'C', 'D', 'E', 'F', 'BC', 'EF' ],
-    highlight: [ 'AB', 'AC', 'DE', 'DF' ],
+    highlight: [ 'AB', 'AC', 'DE', 'DF', '∠BAC', '∠EDF' ],
   },
   {
     name: '2',
@@ -120,7 +149,7 @@ const steps: StepList = [
       ['If A and D are made to coincide, as are AB and DE, ',
        'then B will coincide with E, because AB equals DE.'],
     ],
-    hide: [ 'A', 'B', 'C', 'D', 'E', 'F', 'AB', 'AC', 'BC', 'DE', 'DF', 'EF' ],
+    hide: [ 'A', 'B', 'C', 'D', 'E', 'F', 'AB', 'AC', 'BC', 'DE', 'DF', 'EF', '∠BAC', '∠EDF' ],
     show: [ 'C ', 'F ', 'AC ', 'BC ', 'DF ', 'EF ' ],
     highlight: [ 'A ', 'B ', 'D ', 'E ', 'AB ', 'DE ' ],
   },
@@ -128,18 +157,20 @@ const steps: StepList = [
     name: '3',
     text: [
       ['Also, if AB and DE coincide, then AC will coincide with DF, ',
-       'because angle BAC equals angle EDF.'],
+       'because angle ∠BAC equals angle ∠EDF.'],
     ],
-    show: [ 'A ', 'B ', 'C ', 'D ', 'E ', 'F ', 'AB ', 'BC ', 'DE ', 'EF ' ],
-    highlight: [ 'AC ', 'DF ' ],
+    hide: [ 'A ', 'B ', 'C ', 'D ', 'E ', 'F ', 'AB ', 'AC ', 'BC ', 'DE ', 'DF ', 'EF ' ],
+    show: [ 'A  ', 'B  ', 'C  ', 'D  ', 'E  ', 'F  ', 'BC  ', 'EF  ' ],
+    highlight: [ 'AB  ', 'AC  ', 'DE  ', 'DF  ', '∠BAC  ', '∠EDF  ' ],
   },
   {
     name: '4',
     text: [
       ['And C will coincide with F, because AC equals DF.'],
     ],
-    show: [ 'A ', 'B ', 'D ', 'E ', 'AB ', 'BC ', 'DE ', 'EF ' ],
-    highlight: [ 'C ', 'F ', 'AC ', 'DF ' ],
+    hide: [ '∠BAC  ', '∠EDF  ' ],
+    show: [ 'A  ', 'B  ', 'D  ', 'E  ', 'AB  ', 'BC  ', 'DE  ', 'EF  ' ],
+    highlight: [ 'C  ', 'F  ', 'AC  ', 'DF  ' ],
   },
   {
     name: '5',
@@ -148,8 +179,8 @@ const steps: StepList = [
        'so BC equals EF.'],
     ],
     link: commonNotionRefLink('I', '4'),
-    show: [ 'A ', 'D ', 'AB ', 'AC ', 'DE ', 'DF ' ],
-    highlight: [ 'B ', 'C ', 'E ', 'F ', 'BC ', 'EF ' ],
+    show: [ 'A  ', 'D  ', 'AB  ', 'AC  ', 'DE  ', 'DF  ' ],
+    highlight: [ 'B  ', 'C  ', 'E  ', 'F  ', 'BC  ', 'EF  ' ],
   },
   {
     name: '6',
@@ -157,25 +188,26 @@ const steps: StepList = [
       ['And the whole triangles ABC and DEF coincide, so they are equal.'],
     ],
     link: commonNotionRefLink('I', '4'),
-    highlight: [ 'A ', 'B ', 'C ', 'D ', 'E ', 'F ', 'AB ', 'AC ', 'BC ', 'DE ', 'DF ', 'EF ' ],
+    highlight: [ 'A  ', 'B  ', 'C  ', 'D  ', 'E  ', 'F  ', 'AB  ', 'AC  ', 'BC  ', 'DE  ', 'DF  ', 'EF  ' ],
   },
   {
     name: '7',
     text: [
-      ['Also, the angles ABC and DEF coincide, and thus are equal.'],
+      ['Also, the angles ∠ABC and ∠DEF coincide, and thus are equal.'],
     ],
     link: commonNotionRefLink('I', '4'),
-    show: ['A ', 'B ', 'C ', 'D ', 'E ', 'F ', 'AC ', 'DF ' ],
-    highlight: [ 'AB ', 'BC ', 'DE ', 'EF ' ],
+    show: ['A  ', 'B  ', 'C  ', 'D  ', 'E  ', 'F  ', 'AC  ', 'DF  ' ],
+    highlight: [ 'AB  ', 'BC  ', 'DE  ', 'EF  ', '∠ABC  ', '∠DEF  ' ],
   },
   {
     name: '8',
     text: [
-      ['Likewise, the angles ACB and DFE coincide, and thus are equal.'],
+      ['Likewise, the angles ∠ACB and ∠DFE coincide, and thus are equal.'],
     ],
     link: commonNotionRefLink('I', '4'),
-    show: ['A ', 'B ', 'C ', 'D ', 'E ', 'F ', 'AB ', 'DE ' ],
-    highlight: [ 'AC ', 'BC ', 'DF ', 'EF ' ],
+    hide: [ '∠ABC  ', '∠DEF  ' ],
+    show: ['A  ', 'B  ', 'C  ', 'D  ', 'E  ', 'F  ', 'AB  ', 'DE  ' ],
+    highlight: [ 'AC  ', 'BC  ', 'DF  ', 'EF  ', '∠ACB  ', '∠DFE  ' ],
   },
 ];
 

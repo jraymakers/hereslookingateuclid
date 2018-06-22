@@ -16,6 +16,7 @@ export type ArcSvgProps = {
   readonly label: string;
   readonly labelDir?: number;
   readonly highlighted?: boolean;
+  readonly className?: string;
 };
 
 export class ArcSvg extends React.PureComponent<ArcSvgProps> {
@@ -30,7 +31,7 @@ export class ArcSvg extends React.PureComponent<ArcSvgProps> {
     const largest = this.props.largest ? 1 : 0;
     const sweep = this.props.ccw ? 0 : 1;
     return (
-      <g>
+      <g className={this.props.className}>
         <path
           d={`M ${x1},${y1} A ${rx},${ry} 0 ${largest} ${sweep} ${x2},${y2}`}
           fill="transparent"
