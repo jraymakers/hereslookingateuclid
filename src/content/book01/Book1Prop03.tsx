@@ -69,13 +69,21 @@ const steps: StepList = [
   {
     name: '2',
     text: [
-      ['Construct the straight line AE equal to CD.'],
+      ['It is required to cut off a part of AB equal to CD.'],
     ],
-    link: propositionRefLink('I', '2'),
-    highlight: [ 'E', 'AE' ],
+    highlight: [ 'F', 'AF' ],
   },
   {
     name: '3',
+    text: [
+      ['Construct the straight line AE equal to CD.'],
+    ],
+    link: propositionRefLink('I', '2'),
+    hide: [ 'F', 'AF' ],
+    highlight: [ 'E', 'AE' ],
+  },
+  {
+    name: '4',
     text: [
       [`Construct the circle α with center A and radius AE.`],
     ],
@@ -83,14 +91,14 @@ const steps: StepList = [
     highlight: [ 'α' ],
   },
   {
-    name: '4',
+    name: '5',
     text: [
       [`Let F be the intersection of α and AB.`],
     ],
     highlight: [ 'F' ],
   },
   {
-    name: '5',
+    name: '6',
     text: [
       [`Since AE and AF are both radii of circle α, they are equal.`],
     ],
@@ -98,9 +106,9 @@ const steps: StepList = [
     highlight: [ 'AE', 'AF' ],
   },
   {
-    name: '6',
+    name: '7',
     text: [
-      ['So AF is part of AB and equal to CD, as desired.'],
+      ['So AF is part of AB and equal to CD, as required.'],
     ],
     link: commonNotionRefLink('I', '1'),
     highlight: [ 'AF', 'CD' ],

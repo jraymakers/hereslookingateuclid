@@ -65,13 +65,21 @@ const steps: StepList = [
   {
     name: '2',
     text: [
-      [`Construct a circle α with center A and radius AB.`],
+      ['It is required to construct an equilateral triangle on AB.'],
     ],
-    link: postulateRefLink('I', '3'),
-    highlight: [ 'α' ],
+    highlight: [ 'C', 'AC', 'BC' ],
   },
   {
     name: '3',
+    text: [
+      [`Construct a circle α with center A and radius AB.`],
+    ],
+    link: postulateRefLink('I', '3'),
+    hide: [ 'C', 'AC', 'BC' ],
+    highlight: [ 'α' ],
+  },
+  {
+    name: '4',
     text: [
       [`Construct another circle β with center B and radius AB.`],
     ],
@@ -79,15 +87,15 @@ const steps: StepList = [
     highlight: [ 'β' ],
   },
   {
-    name: '4',
+    name: '5',
     text: [
-      [`Let C be either one of the two intersection points of 'α' and β.`],
+      [`Let C be either one of the two intersection points of α and β.`],
       // Note
     ],
     highlight: [ 'C' ],
   },
   {
-    name: '5',
+    name: '6',
     text: [
       ['Construct the straight lines AC and BC.'],
     ],
@@ -95,7 +103,7 @@ const steps: StepList = [
     highlight: [ 'AC', 'BC' ],
   },
   {
-    name: '6',
+    name: '7',
     text: [
       [`Since AB and AC are both radii of circle α, they are equal.`],
     ],
@@ -103,7 +111,7 @@ const steps: StepList = [
     highlight: [ 'AB', 'AC' ],
   },
   {
-    name: '7',
+    name: '8',
     text: [
       [`Likewise, since AB and BC are both radii of circle β, they are equal.`],
     ],
@@ -111,7 +119,7 @@ const steps: StepList = [
     highlight: [ 'AB', 'BC' ],
   },
   {
-    name: '8',
+    name: '9',
     text: [
       ['Because AB equals AC and AB equals BC, AC equals BC.'],
     ],
@@ -119,9 +127,9 @@ const steps: StepList = [
     highlight: [ 'AC', 'BC' ],
   },
   {
-    name: '9',
+    name: '10',
     text: [
-      ['Thus AB, AC, and BC equal each other, so the triangle ABC is equilateral, as desired.'],
+      ['Thus AB, AC, and BC equal each other, so the triangle ABC is equilateral, as required.'],
     ],
     link: definitionRefLink('I', '20-21', '20a'),
     highlight: [ 'AB', 'AC', 'BC' ],

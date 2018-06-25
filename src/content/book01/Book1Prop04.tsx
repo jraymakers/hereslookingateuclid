@@ -100,11 +100,15 @@ const diagram: Diagram = {
     ['DF ']: { type: 'line', p1: 'D', p2: 'F', className: negClass },
     ['DF  ']: { type: 'line', p1: 'D', p2: 'F', className: negDoneClass },
 
+    ['∠ABC']: { type: 'angle', p1: 'A', v: 'B', p2: 'C', r: 25, ccw: false },
     ['∠ABC  ']: { type: 'angle', p1: 'A', v: 'B', p2: 'C', r: 25, ccw: false, className: posDoneClass },
+    ['∠ACB']: { type: 'angle', p1: 'A', v: 'C', p2: 'B', r: 25, ccw: true },
     ['∠ACB  ']: { type: 'angle', p1: 'A', v: 'C', p2: 'B', r: 25, ccw: true, className: posDoneClass },
     ['∠BAC']: { type: 'angle', p1: 'B', v: 'A', p2: 'C', r: 25, ccw: true },
     ['∠BAC  ']: { type: 'angle', p1: 'B', v: 'A', p2: 'C', r: 25, ccw: true, className: posDoneClass },
+    ['∠DEF']: { type: 'angle', p1: 'D', v: 'E', p2: 'F', r: 25, ccw: false },
     ['∠DEF  ']: { type: 'angle', p1: 'D', v: 'E', p2: 'F', r: 25, ccw: false, className: negDoneClass },
+    ['∠DFE']: { type: 'angle', p1: 'D', v: 'F', p2: 'E', r: 25, ccw: true },
     ['∠DFE  ']: { type: 'angle', p1: 'D', v: 'F', p2: 'E', r: 25, ccw: true, className: negDoneClass },
     ['∠EDF']: { type: 'angle', p1: 'E', v: 'D', p2: 'F', r: 25, ccw: true },
     ['∠EDF  ']: { type: 'angle', p1: 'E', v: 'D', p2: 'F', r: 25, ccw: true, className: negDoneClass },
@@ -144,15 +148,29 @@ const steps: StepList = [
   {
     name: '2',
     text: [
+      ['It is required to show that BC equals EF, ',
+       'that the triangles ABC and DEF are equal, ',
+       'and that ∠ABC equal ∠DEF and ∠ACB equals ∠DFE.',
+      ],
+    ],
+    highlight: [ 'BC', 'EF', '∠ABC', '∠ACB', '∠DEF', '∠DFE' ],
+  },
+  {
+    name: '3',
+    text: [
       ['If A and D are made to coincide, as are AB and DE, ',
        'then B will coincide with E, because AB equals DE.'],
     ],
-    hide: [ 'A', 'B', 'C', 'D', 'E', 'F', 'AB', 'AC', 'BC', 'DE', 'DF', 'EF', '∠BAC', '∠EDF' ],
+    hide: [
+      'A', 'B', 'C', 'D', 'E', 'F',
+      'AB', 'AC', 'BC', 'DE', 'DF', 'EF',
+      '∠ABC', '∠ACB', '∠BAC', '∠DEF', '∠DFE', '∠EDF',
+    ],
     show: [ 'C ', 'F ', 'AC ', 'BC ', 'DF ', 'EF ' ],
     highlight: [ 'A ', 'B ', 'D ', 'E ', 'AB ', 'DE ' ],
   },
   {
-    name: '3',
+    name: '4',
     text: [
       ['Also, if AB and DE coincide, then AC will coincide with DF, ',
        'because angle ∠BAC equals angle ∠EDF.'],
@@ -162,7 +180,7 @@ const steps: StepList = [
     highlight: [ 'AB  ', 'AC  ', 'DE  ', 'DF  ', '∠BAC  ', '∠EDF  ' ],
   },
   {
-    name: '4',
+    name: '5',
     text: [
       ['And C will coincide with F, because AC equals DF.'],
     ],
@@ -171,41 +189,41 @@ const steps: StepList = [
     highlight: [ 'C  ', 'F  ', 'AC  ', 'DF  ' ],
   },
   {
-    name: '5',
+    name: '6',
     text: [
-      ['Since B and E coincide, and C and F coincide, BC coincides wiith EF, ',
-       'so BC equals EF.'],
+      ['Since B and E coincide, and C and F coincide, BC coincides with EF, ',
+       'so BC equals EF, as required.'],
     ],
     link: commonNotionRefLink('I', '4'),
     show: [ 'A  ', 'D  ', 'AB  ', 'AC  ', 'DE  ', 'DF  ' ],
     highlight: [ 'B  ', 'C  ', 'E  ', 'F  ', 'BC  ', 'EF  ' ],
   },
   {
-    name: '6',
+    name: '7',
     text: [
-      ['And the whole triangles ABC and DEF coincide, so they are equal.'],
+      ['And the whole triangles ABC and DEF coincide, so they are equal, as required.'],
     ],
     link: commonNotionRefLink('I', '4'),
     highlight: [ 'A  ', 'B  ', 'C  ', 'D  ', 'E  ', 'F  ', 'AB  ', 'AC  ', 'BC  ', 'DE  ', 'DF  ', 'EF  ' ],
   },
   {
-    name: '7',
-    text: [
-      ['Also, the angles ∠ABC and ∠DEF coincide, and thus are equal.'],
-    ],
-    link: commonNotionRefLink('I', '4'),
-    show: ['A  ', 'B  ', 'C  ', 'D  ', 'E  ', 'F  ', 'AC  ', 'DF  ' ],
-    highlight: [ 'AB  ', 'BC  ', 'DE  ', 'EF  ', '∠ABC  ', '∠DEF  ' ],
-  },
-  {
     name: '8',
     text: [
-      ['Likewise, the angles ∠ACB and ∠DFE coincide, and thus are equal.'],
+      ['Also, the angles ∠ABC and ∠DEF coincide, and thus are equal, as required.'],
+    ],
+    link: commonNotionRefLink('I', '4'),
+    show: ['A  ', 'B  ', 'C  ', 'D  ', 'E  ', 'F  ', 'AB  ', 'AC  ', 'BC  ', 'DE  ', 'DF  ', 'EF  ' ],
+    highlight: [ '∠ABC  ', '∠DEF  ' ],
+  },
+  {
+    name: '9',
+    text: [
+      ['Likewise, the angles ∠ACB and ∠DFE coincide, and thus are equal, as required.'],
     ],
     link: commonNotionRefLink('I', '4'),
     hide: [ '∠ABC  ', '∠DEF  ' ],
-    show: ['A  ', 'B  ', 'C  ', 'D  ', 'E  ', 'F  ', 'AB  ', 'DE  ' ],
-    highlight: [ 'AC  ', 'BC  ', 'DF  ', 'EF  ', '∠ACB  ', '∠DFE  ' ],
+    show: ['A  ', 'B  ', 'C  ', 'D  ', 'E  ', 'F  ', 'AB  ', 'AC  ', 'BC  ', 'DE  ', 'DF  ', 'EF  ' ],
+    highlight: [ '∠ACB  ', '∠DFE  ' ],
   },
 ];
 

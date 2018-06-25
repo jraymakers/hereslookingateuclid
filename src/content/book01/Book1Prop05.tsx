@@ -62,12 +62,12 @@ const diagram: Diagram = {
     ['∠AFC']: { type: 'angle', p1: 'A', v: 'F', p2: 'C', r: 20, ccw: false },
     ['∠AGB']: { type: 'angle', p1: 'A', v: 'G', p2: 'B', r: 20, ccw: true },
     ['∠BAC']: { type: 'angle', p1: 'B', v: 'A', p2: 'C', r: 20, ccw: true },
+    ['∠BCE']: { type: 'angle', p1: 'B', v: 'C', p2: 'E', r: 15, ccw: true },
     ['∠BCF']: { type: 'angle', p1: 'B', v: 'C', p2: 'F', r: 25, ccw: true },
     ['∠BFC']: { type: 'angle', p1: 'B', v: 'F', p2: 'C', r: 20, ccw: false },
+    ['∠CBD']: { type: 'angle', p1: 'C', v: 'B', p2: 'D', r: 15, ccw: false },
     ['∠CBG']: { type: 'angle', p1: 'C', v: 'B', p2: 'G', r: 25, ccw: false },
     ['∠CGB']: { type: 'angle', p1: 'C', v: 'G', p2: 'B', r: 20, ccw: true },
-    ['∠FBC']: { type: 'angle', p1: 'F', v: 'B', p2: 'C', r: 15, ccw: true },
-    ['∠GCB']: { type: 'angle', p1: 'G', v: 'C', p2: 'B', r: 15, ccw: false },
 
     ['A']: { type: 'point', x: aX, y: aY, labelY: -12 },
     ['B']: { type: 'point', x: bX, y: bY, labelX: -12 },
@@ -100,13 +100,21 @@ const steps: StepList = [
   {
     name: '3',
     text: [
-      ['Pick a point F on BD, and another point G on CE, such at AF equals AG.'],
+      ['It is required to show that ∠ABC equals ∠ACB, and ∠CBD equals ∠BCE.'],
     ],
-    link: propositionRefLink('I', '3'),
-    highlight: [ 'F', 'G', 'AB', 'BF', 'AC', 'CG' ],
+    highlight: [ '∠ABC', '∠ACB', '∠BCE', '∠CBD' ],
   },
   {
     name: '4',
+    text: [
+      ['Pick a point F on BD, and another point G on CE, such at AF equals AG.'],
+    ],
+    link: propositionRefLink('I', '3'),
+    hide: [ '∠ABC', '∠ACB', '∠BCE', '∠CBD' ],
+    highlight: [ 'F', 'G', 'AB', 'BF', 'AC', 'CG' ],
+  },
+  {
+    name: '5',
     text: [
       ['Construct BG and CF.'],
     ],
@@ -114,18 +122,18 @@ const steps: StepList = [
     highlight: [ 'BG', 'CF' ],
   },
   {
-    name: '5',
+    name: '6',
     text: [
       ['Consider the triangles ABG and ACF.'],
       ['AB equals AC, AG equals AF, and the angles at A are common.'],
-      ['So, the triangles are equal, as are their bases BG and CF, ',
+      ['So, the triangles are equal, as are their bases BG and CF ',
         'and the remaining angles, so ∠ACF equals ∠ABG, and ∠AFC equals ∠AGB.'],
     ],
     link: propositionRefLink('I', '4'),
     highlight: [ 'AB', 'AC', 'BF', 'BG', 'CF', 'CG', '∠ABG', '∠ACF', '∠AFC', '∠AGB', '∠BAC' ],
   },
   {
-    name: '6',
+    name: '7',
     text: [
       ['Since AF equals AG, and their parts AB and AC are equal, ',
        'then the remainders, BF and CG, are equal.'],
@@ -135,27 +143,25 @@ const steps: StepList = [
     highlight: [ 'BF', 'CG' ],
   },
   {
-    name: '7',
+    name: '8',
     text: [
       ['Consider the triangles BFC and CGB.'],
       ['BF equals CG, CF equals BG, and the angles ∠BFC and ∠CGB are equal.'],
       ['So, the triangles are equal, as are their remaining angles, ',
-        'so ∠BCF equals ∠CBG, and ∠FBC equals ∠GCB.'],
-      ['Thus, the angles under the base of ABC are equal, as desired.'],
+        'so ∠BCF equals ∠CBG, and ∠CBF (also called ∠CBD) equals ∠BCG (also called ∠BCE), as required.'],
     ],
     link: propositionRefLink('I', '4'),
-    highlight: [ 'BC', 'BF', 'BG', 'CF', 'CG', '∠BCF', '∠BFC', '∠CBG', '∠CGB', '∠FBC', '∠GCB' ],
+    highlight: [ 'BC', 'BF', 'BG', 'CF', 'CG', '∠BCE', '∠BCF', '∠BFC', '∠CBD', '∠CBG', '∠CGB' ],
   },
   {
-    name: '8',
+    name: '9',
     text: [
       ['Since the angles ∠ABG and ∠ACF are equal, ',
        'as are their parts ∠CBG and ∠BCF, ',
-       'then the remaining angles ∠ABC and ∠ACB are equal.'],
-       ['Thus, the angles at the base of ABC are equal, as desired.'],
+       'then the remaining angles ∠ABC and ∠ACB are equal, as required.'],
     ],
     link: commonNotionRefLink('I', '3'),
-    hide: [ '∠BFC', '∠CGB', '∠FBC', '∠GCB' ],
+    hide: [ '∠BCE', '∠BFC', '∠CBD', '∠CGB' ],
     highlight: [ '∠ABC', '∠ABG', '∠ACB', '∠ACF', '∠BCF', '∠CBG' ],
   },
 ];
