@@ -20,8 +20,6 @@ import {
   StepsAndDiagram,
 } from '../../stepsAndDiagram';
 
-import { Greek } from '../Greek';
-
 const width = 400;
 const height = 400;
 

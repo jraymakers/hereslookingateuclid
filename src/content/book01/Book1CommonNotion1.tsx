@@ -20,8 +20,6 @@ import {
   StepsAndDiagram,
 } from '../../stepsAndDiagram';
 
-import { Greek } from '../Greek';
-
 const width = 400;
 const height = 400;
 
@@ -38,8 +36,8 @@ const diagram: Diagram = {
   width,
   height,
   parts: {
-    [Greek.alpha]: { type: 'circle', p1: 'A', p2: 'B', labelDir: LabelDir.W },
-    [Greek.beta]: { type: 'circle', p1: 'B', p2: 'A', labelDir: LabelDir.E },
+    ['α']: { type: 'circle', p1: 'A', p2: 'B', labelDir: LabelDir.W },
+    ['β']: { type: 'circle', p1: 'B', p2: 'A', labelDir: LabelDir.E },
 
     ['AB']: { type: 'line', p1: 'A', p2: 'B' },
     ['AC']: { type: 'line', p1: 'A', p2: 'C' },
@@ -56,16 +54,16 @@ const steps: StepList = [
   {
     name: 'a',
     text: [
-      [`Example: Let AB and AC be radii of circle ${Greek.alpha}. So AB equals AC.`],
+      [`Example: Let AB and AC be radii of circle α. So AB equals AC.`],
     ],
-    highlight: [ 'A', 'B', 'C', 'AB', 'AC', Greek.alpha ],
+    highlight: [ 'A', 'B', 'C', 'AB', 'AC', 'α' ],
   },
   {
     name: 'b',
     text: [
-      [`And let AB and BD be radii of circle ${Greek.beta}. So AB equals BD.`],
+      [`And let AB and BD be radii of circle β. So AB equals BD.`],
     ],
-    highlight: [ 'A', 'B', 'D', 'AB', 'BD', Greek.beta ],
+    highlight: [ 'A', 'B', 'D', 'AB', 'BD', 'β' ],
   },
   {
     name: 'c',

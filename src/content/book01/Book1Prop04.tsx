@@ -27,8 +27,6 @@ import {
   namedClass,
 } from '../../style';
 
-import { Greek } from '../Greek';
-
 const width = 400;
 const height = 400;
 

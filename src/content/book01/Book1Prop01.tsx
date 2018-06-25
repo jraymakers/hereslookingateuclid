@@ -23,8 +23,6 @@ import {
   StepsAndDiagram,
 } from '../../stepsAndDiagram';
 
-import { Greek } from '../Greek';
-
 const width = 400;
 const height = 400;
 const centerX = width / 2;
@@ -45,8 +43,8 @@ const diagram: Diagram = {
   width,
   height,
   parts: {
-    [Greek.alpha]: { type: 'circle', p1: 'A', p2: 'B', labelDir: LabelDir.W },
-    [Greek.beta]:  { type: 'circle', p1: 'B', p2: 'A', labelDir: LabelDir.E },
+    ['α']: { type: 'circle', p1: 'A', p2: 'B', labelDir: LabelDir.W },
+    ['β']:  { type: 'circle', p1: 'B', p2: 'A', labelDir: LabelDir.E },
     ['AB']: { type: 'line', p1: 'A', p2: 'B' },
     ['AC']: { type: 'line', p1: 'A', p2: 'C' },
     ['BC']: { type: 'line', p1: 'B', p2: 'C' },
@@ -67,23 +65,23 @@ const steps: StepList = [
   {
     name: '2',
     text: [
-      [`Construct a circle ${Greek.alpha} with center A and radius AB.`],
+      [`Construct a circle α with center A and radius AB.`],
     ],
     link: postulateRefLink('I', '3'),
-    highlight: [ Greek.alpha ],
+    highlight: [ 'α' ],
   },
   {
     name: '3',
     text: [
-      [`Construct another circle ${Greek.beta} with center B and radius AB.`],
+      [`Construct another circle β with center B and radius AB.`],
     ],
     link: postulateRefLink('I', '3'),
-    highlight: [ Greek.beta ],
+    highlight: [ 'β' ],
   },
   {
     name: '4',
     text: [
-      [`Let C be either one of the two intersection points of ${Greek.alpha} and ${Greek.beta}.`],
+      [`Let C be either one of the two intersection points of 'α' and β.`],
       // Note
     ],
     highlight: [ 'C' ],
@@ -99,7 +97,7 @@ const steps: StepList = [
   {
     name: '6',
     text: [
-      [`Since AB and AC are both radii of circle ${Greek.alpha}, they are equal.`],
+      [`Since AB and AC are both radii of circle α, they are equal.`],
     ],
     link: definitionRefLink('I', '15-18', '15'),
     highlight: [ 'AB', 'AC' ],
@@ -107,7 +105,7 @@ const steps: StepList = [
   {
     name: '7',
     text: [
-      [`Likewise, since AB and BC are both radii of circle ${Greek.beta}, they are equal.`],
+      [`Likewise, since AB and BC are both radii of circle β, they are equal.`],
     ],
     link: definitionRefLink('I', '15-18', '15'),
     highlight: [ 'AB', 'BC' ],

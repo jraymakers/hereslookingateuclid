@@ -23,8 +23,6 @@ import {
   StepsAndDiagram,
 } from '../../stepsAndDiagram';
 
-import { Greek } from '../Greek';
-
 const width = 400;
 const height = 400;
 
@@ -158,7 +156,7 @@ const steps: StepList = [
     ],
     link: commonNotionRefLink('I', '3'),
     hide: [ '∠BFC', '∠CGB', '∠FBC', '∠GCB' ],
-    highlight: [ /*'AB', 'AC', 'BC', 'BG', 'CF',*/ '∠ABC', '∠ABG', '∠ACB', '∠ACF', '∠BCF', '∠CBG' ],
+    highlight: [ '∠ABC', '∠ABG', '∠ACB', '∠ACF', '∠BCF', '∠CBG' ],
   },
 ];
 

@@ -23,8 +23,6 @@ import {
   StepsAndDiagram,
 } from '../../stepsAndDiagram';
 
-import { Greek } from '../Greek';
-
 const width = 400;
 const height = 400;
 const lesser = width * 0.25;
@@ -46,7 +44,7 @@ const diagram: Diagram = {
   width,
   height,
   parts: {
-    [Greek.alpha]:  { type: 'circle', p1: 'A', p2: 'E', labelDir: LabelDir.W },
+    ['α']:  { type: 'circle', p1: 'A', p2: 'E', labelDir: LabelDir.W },
     ['AB']: { type: 'line', p1: 'A', p2: 'B' },
     ['CD']: { type: 'line', p1: 'C', p2: 'D' },
     ['AE']: { type: 'line', p1: 'A', p2: 'E' },
@@ -79,22 +77,22 @@ const steps: StepList = [
   {
     name: '3',
     text: [
-      [`Construct the circle ${Greek.alpha} with center A and radius AE.`],
+      [`Construct the circle α with center A and radius AE.`],
     ],
     link: postulateRefLink('I', '3'),
-    highlight: [ Greek.alpha ],
+    highlight: [ 'α' ],
   },
   {
     name: '4',
     text: [
-      [`Let F be the intersection of ${Greek.alpha} and AB.`],
+      [`Let F be the intersection of α and AB.`],
     ],
     highlight: [ 'F' ],
   },
   {
     name: '5',
     text: [
-      [`Since AE and AF are both radii of circle ${Greek.alpha}, they are equal.`],
+      [`Since AE and AF are both radii of circle α, they are equal.`],
     ],
     link: definitionRefLink('I', '15-18', '15'),
     highlight: [ 'AE', 'AF' ],

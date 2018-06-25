@@ -20,8 +20,6 @@ import {
   StepsAndDiagram,
 } from '../../stepsAndDiagram';
 
-import { Greek } from '../Greek';
-
 const width = 400;
 const height = 400;
 
@@ -40,8 +38,8 @@ const diagram: Diagram = {
   width,
   height,
   parts: {
-    [Greek.alpha]: { type: 'circle', p1: 'A', p2: 'B', labelDir: LabelDir.E },
-    [Greek.beta]: { type: 'circle', p1: 'A', p2: 'D', labelDir: LabelDir.E },
+    ['α']: { type: 'circle', p1: 'A', p2: 'B', labelDir: LabelDir.E },
+    ['β']: { type: 'circle', p1: 'A', p2: 'D', labelDir: LabelDir.E },
 
     ['AB']: { type: 'line', p1: 'A', p2: 'B' },
     ['AC']: { type: 'line', p1: 'A', p2: 'C' },
@@ -60,22 +58,22 @@ const steps: StepList = [
   {
     name: 'a',
     text: [
-      [`Example: Let ${Greek.alpha} and ${Greek.beta} be two circles centered at A,`,
-       ` with ${Greek.alpha} smaller.`],
+      [`Example: Let α and β be two circles centered at A,`,
+       ` with α smaller.`],
     ],
-    highlight: [ 'A', Greek.alpha, Greek.beta ],
+    highlight: [ 'A', 'α', 'β' ],
   },
   {
     name: 'b',
     text: [
-      [`Let AB and AC be radii of ${Greek.alpha}. So AB equals AC.`],
+      [`Let AB and AC be radii of α. So AB equals AC.`],
     ],
     highlight: [ 'B', 'C', 'AB', 'AC' ],
   },
   {
     name: 'c',
     text: [
-      [`Extend AB in the direction of A, so that it intersects ${Greek.beta}.`],
+      [`Extend AB in the direction of A, so that it intersects β.`],
       ['Let D be the point of intersection.'],
     ],
     highlight: [ 'D', 'AD' ],
@@ -83,7 +81,7 @@ const steps: StepList = [
   {
     name: 'd',
     text: [
-      [`Similarly, extend AC in the direction of A, so that it intersects ${Greek.beta}.`],
+      [`Similarly, extend AC in the direction of A, so that it intersects β.`],
       ['Let E be the point of intersection.'],
     ],
     highlight: [ 'E', 'AE' ],
@@ -91,7 +89,7 @@ const steps: StepList = [
   {
     name: 'e',
     text: [
-      [`Because AD and AE are both radii of ${Greek.beta}, they are equal.`],
+      [`Because AD and AE are both radii of β, they are equal.`],
     ],
     highlight: [ 'AD', 'AE' ],
   },

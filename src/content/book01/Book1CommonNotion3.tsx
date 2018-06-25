@@ -20,8 +20,6 @@ import {
   StepsAndDiagram,
 } from '../../stepsAndDiagram';
 
-import { Greek } from '../Greek';
-
 const width = 400;
 const height = 400;
 
@@ -40,8 +38,8 @@ const diagram: Diagram = {
   width,
   height,
   parts: {
-    [Greek.alpha]: { type: 'circle', p1: 'A', p2: 'B', labelDir: LabelDir.E },
-    [Greek.beta]: { type: 'circle', p1: 'A', p2: 'D', labelDir: LabelDir.E },
+    ['α']: { type: 'circle', p1: 'A', p2: 'B', labelDir: LabelDir.E },
+    ['β']: { type: 'circle', p1: 'A', p2: 'D', labelDir: LabelDir.E },
 
     ['AB']: { type: 'line', p1: 'A', p2: 'B' },
     ['AC']: { type: 'line', p1: 'A', p2: 'C' },
@@ -62,36 +60,36 @@ const steps: StepList = [
   {
     name: 'a',
     text: [
-      [`Example: Let ${Greek.alpha} and ${Greek.beta} be two circles centered at A,`,
-       ` with ${Greek.alpha} larger.`],
+      [`Example: Let α and β be two circles centered at A,`,
+       ` with α larger.`],
     ],
-    highlight: [ 'A', Greek.alpha, Greek.beta ],
+    highlight: [ 'A', 'α', 'β' ],
   },
   {
     name: 'b',
     text: [
-      [`Let AB and AC be radii of ${Greek.alpha}. So AB equals AC.`],
+      [`Let AB and AC be radii of α. So AB equals AC.`],
     ],
     highlight: [ 'B', 'C', 'AB', 'AC' ],
   },
   {
     name: 'c',
     text: [
-      [`Let D be the intersection of AB and ${Greek.beta}.`],
+      [`Let D be the intersection of AB and β.`],
     ],
     highlight: [ 'D' ],
   },
   {
     name: 'd',
     text: [
-      [`Let E be the intersection of AC and ${Greek.beta}.`],
+      [`Let E be the intersection of AC and β.`],
     ],
     highlight: [ 'E' ],
   },
   {
     name: 'e',
     text: [
-      [`Because AD and AE are both radii of ${Greek.beta}, they are equal.`],
+      [`Because AD and AE are both radii of β, they are equal.`],
     ],
     highlight: [ 'AD', 'AE' ],
   },
