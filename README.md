@@ -11,6 +11,12 @@
 - Write intros (overall, Book I, etc)
 - Appendix?
 
+- side nav instead of dropdown
+- add top level landing page, above Elements
+- make hierarchy parts links
+- visual: tone down borders
+- visual: display font for headings
+
 - Crazy idea:
   - expand drawing area to full page
   - interleave drawing and text
