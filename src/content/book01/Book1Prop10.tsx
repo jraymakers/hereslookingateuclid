@@ -134,7 +134,7 @@ const steps: StepList = [
   {
     name: '9',
     text: [
-      ['Since the triangles ACE and BCE have AC equal BC, CE common, ',
+      ['Since triangles ACE and BCE have AC equal BC, CE common, ',
        'and ∠ACE equal ∠BCE, their third sides, AE and BE, must be equal, as required.'],
     ],
     link: propositionRefLink('I', '4'),
