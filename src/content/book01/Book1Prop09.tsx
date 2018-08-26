@@ -152,10 +152,11 @@ const steps: StepList = [
   {
     name: '10',
     text: [
-      ['And, since AD equals AE, and AF is common, then ∠DAF and ∠EAF are equal, as required.'],
+      ['Since triangles ADF and AEF have AD equal AE, AF common, and DF equal EF, ',
+       ' then ∠DAF equals ∠EAF, as required.'],
     ],
     link: propositionRefLink('I', '8'),
-    highlight: [ 'AD', 'AE', 'AF', '∠DAF', '∠EAF' ],
+    highlight: [ 'AD', 'AE', 'AF', 'DF', 'EF', '∠DAF', '∠EAF' ],
   },
 ];
 
