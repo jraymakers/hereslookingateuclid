@@ -132,7 +132,7 @@ const steps: StepList = [
   {
     name: '8',
     text: [
-      ['It is required to show that ∠DAF equals ∠EAF.'],
+      ['To show that AF bisects ∠BAC, it is required to show that ∠DAF equals ∠EAF.'],
     ],
     link: propositionRefLink('I', '1'),
     highlight: [ '∠DAF', '∠EAF' ],
