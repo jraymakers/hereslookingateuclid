@@ -54,12 +54,13 @@ const diagram: Diagram = {
     ['AF']: { type: 'line', p1: 'A', p2: 'F' },
     ['BD']: { type: 'line', p1: 'B', p2: 'D' },
     ['CE']: { type: 'line', p1: 'C', p2: 'E' },
-
     ['DE']: { type: 'line', p1: 'D', p2: 'E' },
     ['DF']: { type: 'line', p1: 'D', p2: 'F' },
     ['EF']: { type: 'line', p1: 'E', p2: 'F' },
 
     ['∠BAC']: { type: 'angle', p1: 'B', v: 'A', p2: 'C', r: 25, ccw: true },
+    ['∠BAF']: { type: 'angle', p1: 'B', v: 'A', p2: 'F', r: 35, ccw: true },
+    ['∠CAF']: { type: 'angle', p1: 'C', v: 'A', p2: 'F', r: 35, ccw: false },
     ['∠DAF']: { type: 'angle', p1: 'D', v: 'A', p2: 'F', r: 35, ccw: true },
     ['∠EAF']: { type: 'angle', p1: 'E', v: 'A', p2: 'F', r: 35, ccw: false },
 
@@ -83,16 +84,18 @@ const steps: StepList = [
   {
     name: '2',
     text: [
-      ['It is required to bisect it.'],
+      ['It is required to bisect it, that is, ',
+       'construct a line AF such that ∠BAF equals ∠CAF.'],
     ],
-    highlight: [ '∠BAC' ],
+    hide: [ '∠BAC' ],
+    highlight: [ 'F', 'AF', '∠BAF', '∠CAF' ],
   },
   {
     name: '3',
     text: [
       ['Let D be a point on AB.'],
     ],
-    hide: [ '∠BAC' ],
+    hide: [ 'F', 'AF', '∠BAF', '∠CAF' ],
     highlight: [ 'D' ],
   },
   {
@@ -143,6 +146,7 @@ const steps: StepList = [
       ['Since triangle DEF is equilateral, DF equals EF.'],
     ],
     link: definitionRefLink('I', '20-21', '20a'),
+    hide: [ '∠DAF', '∠EAF' ],
     highlight: [ 'DF', 'EF' ],
   },
   {
