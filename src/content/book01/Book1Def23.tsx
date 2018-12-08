@@ -11,7 +11,6 @@ import {
 import {
   italic,
   Paragraph,
-  ParagraphList,
 } from '../../paragraph';
 import {
   StepList,

@@ -10,7 +10,6 @@ import {
 } from '../../page';
 import {
   Paragraph,
-  ParagraphList,
 } from '../../paragraph';
 import {
   StepList,
