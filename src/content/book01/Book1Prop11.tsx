@@ -26,6 +26,7 @@ const width = 400;
 const height = 400;
 
 const cd = width * 0.2;
+
 const aX = width * 0.2;
 const aY = height * 0.7;
 const bX = width * 0.8;
@@ -76,7 +77,7 @@ const steps: StepList = [
   {
     name: '2',
     text: [
-      ['It is required to construct a straight line at right angles to AB from C.'],
+      ['It is required to construct a straight line perpendicular to AB from C.'],
     ],
     highlight: [ 'F',  'CF', '∠DCF', '∠ECF' ],
   },
@@ -127,7 +128,7 @@ const steps: StepList = [
     name: '8',
     text: [
       ['Since the straight line CF standing on the straight line AB makes equal angles ∠DCF and ∠ECF, ',
-       'both ∠DCF and ∠ECF must be right angles.'],
+       'both ∠DCF and ∠ECF are right angles, and CF is perpendicular to AB.'],
     ],
     link: definitionRefLink('I', '8-12', '10'),
     highlight: [ '∠DCF', '∠ECF' ],
@@ -135,7 +136,7 @@ const steps: StepList = [
   {
     name: '9',
     text: [
-      ['So CF is a straight line at right angles to AB from C, as required.'],
+      ['So CF is a straight line perpendicular to AB from C, as required.'],
     ],
     hide: [ '∠DCF', '∠ECF' ],
     highlight: [ 'CF' ],
@@ -145,7 +146,7 @@ const steps: StepList = [
 const name = '11';
 const title = propositionTitle(name);
 const summary: Paragraph = [
-  ['Construct a straight line at right angles to a given straight line from a given point on it.'],
+  ['Construct a straight line perpendicular to a given straight line from a given point on it.'],
 ];
 
 const stepsAndDiagram: StepsAndDiagram = {
