@@ -22,10 +22,6 @@ import {
 import {
   StepsAndDiagram,
 } from '../../stepsAndDiagram';
-import {
-  keyframes,
-  namedClass,
-} from '../../style';
 
 const width = 400;
 const height = 400;
