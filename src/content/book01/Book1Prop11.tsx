@@ -54,8 +54,8 @@ const diagram: Diagram = {
     ['DF']: { type: 'line', p1: 'D', p2: 'F' },
     ['EF']: { type: 'line', p1: 'E', p2: 'F' },
 
-    ['∠DCF']: { type: 'angle', p1: 'D', v: 'C', p2: 'F', r: 25, ccw: false },
-    ['∠ECF']: { type: 'angle', p1: 'E', v: 'C', p2: 'F', r: 25, ccw: true },
+    ['∠DCF']: { type: 'angle', p1: 'D', v: 'C', p2: 'F', r: 15, ccw: false },
+    ['∠ECF']: { type: 'angle', p1: 'E', v: 'C', p2: 'F', r: 15, ccw: true },
 
     ['A']: { type: 'point', x: aX, y: aY, labelY:  12 },
     ['B']: { type: 'point', x: bX, y: bY, labelY:  12 },
@@ -120,7 +120,7 @@ const steps: StepList = [
       ['Since the triangles CDF and CEF have CD equal CE, CF common, and DF equal EF, ',
        'then ∠DCF equals ∠ECF.'],
     ],
-    link: postulateRefLink('I', '8'),
+    link: propositionRefLink('I', '8'),
     hide: [ 'DE' ],
     highlight: [ 'CD', 'CE', 'CF', 'DF', 'EF', '∠DCF', '∠ECF' ],
   },
