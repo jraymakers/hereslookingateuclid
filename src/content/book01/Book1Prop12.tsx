@@ -44,9 +44,9 @@ const fX = cX + ce;
 const fY = aY;
 const gX = cX;
 const gY = aY;
-const ab0X = -width * 0.1;
+const ab0X = 0;
 const ab0Y = aY;
-const ab1X = width * 1.1;
+const ab1X = width;
 const ab1Y = aY;
 
 const diagram: Diagram = {
