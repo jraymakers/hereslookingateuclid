@@ -39,6 +39,11 @@ const bccp1Y = bY + width * 0.1;
 const bccp2X = cX - width * 0.15;
 const bccp2Y = cY - width * 0.1;
 
+const aaX = bX + 100 * Math.cos(Math.PI / 6);
+const aaY = bY + 100 * Math.sin(Math.PI / 6);
+const ccX = bX + 100 * Math.cos(Math.PI / 6);
+const ccY = bY - 100 * Math.sin(Math.PI / 6);
+
 const dX = width * 0.75;
 const dY = height * 0.1;
 const eX = width * 0.6;
@@ -83,9 +88,19 @@ const diagram: Diagram = {
     ['MN']: { type: 'line', p1: 'M', p2: 'N' },
     ['OP']: { type: 'line', p1: 'O', p2: 'P' },
     ['PQ']: { type: 'line', p1: 'P', p2: 'Q' },
+
+    ['∠ABC']: { type: 'angle', p1: 'a', v: 'B', p2: 'c', r: 15, ccw: true },
+    ['∠DEF']: { type: 'angle', p1: 'D', v: 'E', p2: 'F', r: 25, ccw: false },
+    ['∠GKJ']: { type: 'rightangle', p1: 'G', v: 'K', p2: 'J', r: 20 },
+    ['∠HKJ']: { type: 'rightangle', p1: 'H', v: 'K', p2: 'J', r: 20 },
+    ['∠LMN']: { type: 'angle', p1: 'L', v: 'M', p2: 'N', r: 25, ccw: false },
+    ['∠OPQ']: { type: 'angle', p1: 'O', v: 'P', p2: 'Q', r: 25, ccw: false },
+
     ['A']: { type: 'point', x: aX, y: aY },
     ['B']: { type: 'point', x: bX, y: bY },
     ['C']: { type: 'point', x: cX, y: cY },
+    ['a']: { type: 'point', x: aaX, y: aaY },
+    ['c']: { type: 'point', x: ccX, y: ccY },
     ['abcp1']: { type: 'point', x: abcp1X, y: abcp1Y },
     ['abcp2']: { type: 'point', x: abcp2X, y: abcp2Y },
     ['bccp1']: { type: 'point', x: bccp1X, y: bccp1Y },
@@ -113,7 +128,7 @@ const steps: StepList = [
       ['A ', italic('plane angle'), ' is the inclination to one another of two lines in a plane ',
        'which meet one another and do not lie in a straight line.'],
     ],
-    highlight: [ 'AB', 'BC' ],
+    highlight: [ 'AB', 'BC', '∠ABC' ],
   },
   {
     name: '9',
@@ -121,7 +136,7 @@ const steps: StepList = [
       ['And when the lines containing the angle are straight, the angle is called ',
        italic('rectilinear'), '.'],
     ],
-    highlight: [ 'DE', 'EF' ],
+    highlight: [ 'DE', 'EF', '∠DEF' ],
   },
   {
     name: '10',
@@ -131,21 +146,21 @@ const steps: StepList = [
        italic('right'), ' and the straight line standing on the other is called a ',
        italic('perpendicular'), ' to that on which it stands.'],
     ],
-    highlight: [ 'GH', 'JK' ],
+    highlight: [ 'GH', 'JK', '∠GKJ', '∠HKJ' ],
   },
   {
     name: '11',
     text: [
       ['An ', italic('obtuse angle'), ' is an angle greater than a right angle.'],
     ],
-    highlight: [ 'LM', 'MN' ],
+    highlight: [ 'LM', 'MN', '∠LMN' ],
   },
   {
     name: '12',
     text: [
       ['An ', italic('acute angle'), ' is an angle less than a right angle.'],
     ],
-    highlight: [ 'OP', 'PQ' ],
+    highlight: [ 'OP', 'PQ', '∠OPQ' ],
   },
 ];
 

@@ -65,6 +65,8 @@ const diagram: Diagram = {
 
     ['∠CGE']: { type: 'angle', p1: 'C', v: 'G', p2: 'E', r: 15, ccw: true },
     ['∠CGF']: { type: 'angle', p1: 'C', v: 'G', p2: 'F', r: 15, ccw: false },
+    ['∟CGE']: { type: 'rightangle', p1: 'C', v: 'G', p2: 'E', r: 15 },
+    ['∟CGF']: { type: 'rightangle', p1: 'C', v: 'G', p2: 'F', r: 15 },
 
     ['a']: { type: 'point', x: ab0X, y: ab0Y },
     ['b']: { type: 'point', x: ab1X, y: ab1Y },
@@ -91,14 +93,14 @@ const steps: StepList = [
     text: [
       ['It is required to construct a straight line perpendicular to AB from C.'],
     ],
-    highlight: [ 'CG', '∠CGE', '∠CGF' ],
+    highlight: [ 'CG', '∟CGE', '∟CGF' ],
   },
   {
     name: '3',
     text: [
       ['Pick a point D on the other side of AB from C.'],
     ],
-    hide: [ 'CG', '∠CGE', '∠CGF' ],
+    hide: [ 'CG', '∟CGE', '∟CGF' ],
     highlight: [ 'D' ],
   },
   {
@@ -157,14 +159,15 @@ const steps: StepList = [
        'both ∠CGE and ∠CGF are right angles, and CG is perpendicular to AB.'],
     ],
     link: definitionRefLink('I', '8-12', '10'),
-    highlight: [ '∠CGE', '∠CGF' ],
+    hide: [ '∠CGE', '∠CGF' ],
+    highlight: [ '∟CGE', '∟CGF' ],
   },
   {
     name: '11',
     text: [
       ['So CG is a straight line perpendicular to AB from C, as required.'],
     ],
-    hide: [ '∠CGE', '∠CGF' ],
+    hide: [ '∟CGE', '∟CGF' ],
     highlight: [ 'CG' ],
   },
 ];

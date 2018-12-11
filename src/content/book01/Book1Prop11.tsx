@@ -56,6 +56,8 @@ const diagram: Diagram = {
 
     ['∠DCF']: { type: 'angle', p1: 'D', v: 'C', p2: 'F', r: 15, ccw: false },
     ['∠ECF']: { type: 'angle', p1: 'E', v: 'C', p2: 'F', r: 15, ccw: true },
+    ['∟DCF']: { type: 'rightangle', p1: 'D', v: 'C', p2: 'F', r: 15 },
+    ['∟ECF']: { type: 'rightangle', p1: 'E', v: 'C', p2: 'F', r: 15 },
 
     ['A']: { type: 'point', x: aX, y: aY, labelY:  12 },
     ['B']: { type: 'point', x: bX, y: bY, labelY:  12 },
@@ -79,7 +81,7 @@ const steps: StepList = [
     text: [
       ['It is required to construct a straight line perpendicular to AB from C.'],
     ],
-    highlight: [ 'F',  'CF', '∠DCF', '∠ECF' ],
+    highlight: [ 'F',  'CF', '∟DCF', '∟ECF' ],
   },
   {
     name: '3',
@@ -87,7 +89,7 @@ const steps: StepList = [
       ['Pick a point D on AC and a point E on BC such that CD equals CE.'],
     ],
     link: propositionRefLink('I', '3'),
-    hide: [ 'F',  'CF', '∠DCF', '∠ECF' ],
+    hide: [ 'F',  'CF', '∟DCF', '∟ECF' ],
     highlight: [ 'D', 'E', 'CD', 'CE' ],
   },
   {
@@ -131,14 +133,15 @@ const steps: StepList = [
        'both ∠DCF and ∠ECF are right angles, and CF is perpendicular to AB.'],
     ],
     link: definitionRefLink('I', '8-12', '10'),
-    highlight: [ '∠DCF', '∠ECF' ],
+    hide: [ '∠DCF', '∠ECF' ],
+    highlight: [ '∟DCF', '∟ECF' ],
   },
   {
     name: '9',
     text: [
       ['So CF is a straight line perpendicular to AB from C, as required.'],
     ],
-    hide: [ '∠DCF', '∠ECF' ],
+    hide: [ '∟DCF', '∟ECF' ],
     highlight: [ 'CF' ],
   },
 ];

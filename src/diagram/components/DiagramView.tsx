@@ -15,6 +15,7 @@ import {
   FigureDiagramPart,
   LineDiagramPart,
   PointDiagramPart,
+  RightAngleDiagramPart,
 } from '../types';
 
 import { ArcSvg } from './ArcSvg';
@@ -106,11 +107,14 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
         return this.renderLine(key, part, state);
       case 'point':
         return this.renderPoint(key, part, state);
+      case 'rightangle':
+        return this.renderRightAngle(key, part, state);
       default:
         assertNever(part);
         return null;
     }
   }
+
   private renderAngle(key: string, angle: AngleDiagramPart, state: DiagramPartState): JSX.Element | null {
     const parts = this.props.diagram.parts;
     const p1 = parts[angle.p1];
@@ -137,6 +141,7 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
         labelDir={angle.labelDir}
         highlighted={state === 'highlighted'}
         className={angle.className}
+        lineWidth={1}
         dasharray={'2'}
       />;
     } else {
@@ -314,6 +319,54 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
       highlighted={state === 'highlighted'}
       className={point.className}
     />;
+  }
+
+  private renderRightAngle(key: string, angle: RightAngleDiagramPart, state: DiagramPartState): JSX.Element | null {
+    const parts = this.props.diagram.parts;
+    const p1 = parts[angle.p1];
+    const v = parts[angle.v];
+    const p2 = parts[angle.p2];
+    if (isPoint(v) && isPoint(p1) && isPoint(p2)) {
+      const p1dx = p1.x - v.x;
+      const p1dy = p1.y - v.y;
+      const p1d = Math.sqrt(p1dx * p1dx + p1dy * p1dy);
+      const p2dx = p2.x - v.x;
+      const p2dy = p2.y - v.y;
+      const p2d = Math.sqrt(p2dx * p2dx + p2dy * p2dy);
+      const r = angle.r;
+      const l1dx = r * p1dx / p1d;
+      const l1dy = r * p1dy / p1d;
+      const l2dx = r * p2dx / p2d;
+      const l2dy = r * p2dy / p2d;
+      const vdx = l1dx + l2dx;
+      const vdy = l1dy + l2dy;
+      return (
+        <g key={key}>
+          <LineSvg
+            x1={v.x + vdx}
+            y1={v.y + vdy}
+            x2={v.x + l1dx}
+            y2={v.y + l1dy}
+            highlighted={state === 'highlighted'}
+            className={angle.className}
+            lineWidth={1}
+            dasharray={'2'}
+          />
+          <LineSvg
+            x1={v.x + vdx}
+            y1={v.y + vdy}
+            x2={v.x + l2dx}
+            y2={v.y + l2dy}
+            highlighted={state === 'highlighted'}
+            className={angle.className}
+            lineWidth={1}
+            dasharray={'2'}
+          />
+        </g>
+      );
+    } else {
+      return null;
+    }
   }
 
 }

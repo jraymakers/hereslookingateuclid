@@ -55,6 +55,16 @@ export type PointDiagramPart = {
   readonly className?: string;
 };
 
+export type RightAngleDiagramPart = {
+  readonly type: 'rightangle';
+  readonly p1: string; // point reference
+  readonly v: string; // point reference
+  readonly p2: string; // point reference
+  readonly r: number;
+  // readonly labelDir?: number;
+  readonly className?: string;
+};
+
 export type DiagramPart =
   AngleDiagramPart |
   ArcDiagramPart |
@@ -62,7 +72,8 @@ export type DiagramPart =
   CurveDiagramPart |
   FigureDiagramPart |
   LineDiagramPart |
-  PointDiagramPart;
+  PointDiagramPart |
+  RightAngleDiagramPart;
 
 export type DiagramPartMap = {
   readonly [key: string]: DiagramPart | null | undefined;

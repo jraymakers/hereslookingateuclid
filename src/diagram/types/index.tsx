@@ -9,6 +9,7 @@ export {
   FigureDiagramPart,
   LineDiagramPart,
   PointDiagramPart,
+  RightAngleDiagramPart,
 } from './Diagram';
 export {
   DiagramPartState,

@@ -7,6 +7,8 @@ export type LineSvgProps = {
   readonly y2: number;
   readonly highlighted?: boolean;
   readonly className?: string;
+  readonly lineWidth?: number;
+  readonly dasharray?: string;
 };
 
 export class LineSvg extends React.PureComponent<LineSvgProps> {
@@ -15,8 +17,9 @@ export class LineSvg extends React.PureComponent<LineSvgProps> {
     return <line
       className={this.props.className}
       stroke={this.props.highlighted ? 'orange' : 'black'}
-      strokeWidth={2}
+      strokeWidth={this.props.lineWidth || 2}
       strokeLinecap="round"
+      strokeDasharray={this.props.dasharray}
       x1={this.props.x1}
       y1={this.props.y1}
       x2={this.props.x2}
