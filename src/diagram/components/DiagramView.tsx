@@ -137,6 +137,7 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
         labelDir={angle.labelDir}
         highlighted={state === 'highlighted'}
         className={angle.className}
+        dasharray={'2'}
       />;
     } else {
       return null;

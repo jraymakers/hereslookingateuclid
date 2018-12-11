@@ -17,6 +17,7 @@ export type ArcSvgProps = {
   readonly labelDir?: number;
   readonly highlighted?: boolean;
   readonly className?: string;
+  readonly dasharray?: string;
 };
 
 export class ArcSvg extends React.PureComponent<ArcSvgProps> {
@@ -37,6 +38,7 @@ export class ArcSvg extends React.PureComponent<ArcSvgProps> {
           fill="transparent"
           stroke={this.props.highlighted ? 'orange' : 'black'}
           strokeWidth={2}
+          strokeDasharray={this.props.dasharray}
         />
         {this.renderLabel()}
       </g>
