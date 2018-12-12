@@ -40,6 +40,7 @@ import prop09 from './Book1Prop09';
 import prop10 from './Book1Prop10';
 import prop11 from './Book1Prop11';
 import prop12 from './Book1Prop12';
+import prop13 from './Book1Prop13';
 
 const definitionsPageData = parentPageDataNoNav('definition', 'Definitions', [
   def01to04,
@@ -82,6 +83,7 @@ const propositionsPageData = parentPageDataNoNav('proposition', 'Propositions', 
   prop10,
   prop11,
   prop12,
+  prop13,
 ]);
 
 const pageData = parentPageData('I', 'Book I', [
