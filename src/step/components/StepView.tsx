@@ -18,10 +18,6 @@ import {
   namedClass,
 } from '../../style';
 
-import {
-  Step,
-} from '../types/Step';
-
 const classPrefix = 'StepView';
 
 const rootClass = namedClass(classPrefix, 'root', flexRowStyle, {
@@ -80,6 +76,7 @@ export type StepViewProps = {
   readonly stepName: string;
   readonly text: Paragraph;
   readonly link?: LinkInfo | null | undefined;
+  readonly links?: ReadonlyArray<LinkInfo> | null | undefined;
   readonly faded?: boolean;
   readonly highlighted?: boolean;
   readonly makeStepUrl: (stepName: string) => string;
@@ -100,9 +97,16 @@ export class StepView extends React.PureComponent<StepViewProps> {
           <div className={numberClass}>{stepName}.</div>
           <div className={textClass}><ParagraphView paragraph={this.props.text} /></div>
         </Link>
-        <div className={linkClass}>{this.props.link ? <RunView run={link(this.props.link)} /> : null}</div>
+        <div className={linkClass}>
+          {this.props.link ? <RunView run={link(this.props.link)} /> : null}
+          {this.props.links ? this.renderLinks(this.props.links) : null}
+        </div>
       </div>
     );
+  }
+
+  private renderLinks(links: ReadonlyArray<LinkInfo>): JSX.Element[] {
+    return links.map((linkInfo, index) => <div key={index}><RunView  run={link(linkInfo)} /></div>);
   }
 
 }

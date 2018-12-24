@@ -47,6 +47,7 @@ export class StepsView extends React.PureComponent<StepsViewProps> {
           stepName={step.name}
           text={step.text}
           link={step.link}
+          links={step.links}
           faded={index > currentStepIndex}
           highlighted={index === currentStepIndex}
           makeStepUrl={this.props.makeStepUrl}
