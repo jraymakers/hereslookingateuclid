@@ -1,10 +1,7 @@
 import * as React from 'react';
 
 import { Paragraph } from '../types/Paragraph';
-
 import { SentenceView } from './SentenceView';
-
-const classPrefix = 'Paragraph';
 
 export type ParagraphViewProps = {
   readonly paragraph: Paragraph;

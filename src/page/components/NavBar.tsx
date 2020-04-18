@@ -2,36 +2,15 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 import {
-  lastStep,
-} from '../../link';
-import {
   alignItemsCenterStyle,
   alignItemsStretchStyle,
-  borderStyle,
-  classes,
-  flexColumnStyle,
   flexGrowStyle,
-  flexNoneStyle,
   flexRowStyle,
   justifyContentCenterStyle,
-  justifyContentEndStyle,
-  justifyContentStartStyle,
-  linkClass,
   namedClass,
-  textAlignCenterStyle,
-  textXXLargeStyle,
 } from '../../style';
-
-import {
-  Page,
-} from '../types';
-import {
-  nextLeafPage,
-  pageAncestors,
-  pageNavText,
-  pageUrl,
-  prevLeafPage,
-} from '../utils';
+import { Page } from '../types';
+import { nextLeafPage, pageAncestors, pageNavText, pageUrl, prevLeafPage } from '../utils';
 
 const classPrefix = 'NavBar';
 const rootClass = namedClass(classPrefix, 'root',

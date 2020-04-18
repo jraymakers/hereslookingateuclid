@@ -1,7 +1,4 @@
-import {
-  Diagram,
-  LabelDir,
-} from '../../diagram';
+import { Diagram, LabelDir } from '../../diagram';
 import {
   commonNotionRefLink,
   definitionRefLink,
@@ -9,18 +6,10 @@ import {
   propositionRefLink,
   propositionTitle,
 } from '../../link';
-import {
-  stepsAndDiagramPageData,
-} from '../../page';
-import {
-  Paragraph,
-} from '../../paragraph';
-import {
-  StepList,
-} from '../../step';
-import {
-  StepsAndDiagram,
-} from '../../stepsAndDiagram';
+import { stepsAndDiagramPageData } from '../../page';
+import { Paragraph } from '../../paragraph';
+import { StepList } from '../../step';
+import { StepsAndDiagram } from '../../stepsAndDiagram';
 
 const width = 400;
 const height = 400;
@@ -31,7 +20,6 @@ const dY = centerY;
 const ab = 50;
 const bc = 100;
 const fg = 40;
-const dg = ab + bc;
 const daAngle = Math.PI * 11 / 24;
 const dbAngle = Math.PI * 3 / 24;
 const bcAngle = Math.PI * 10 / 24;

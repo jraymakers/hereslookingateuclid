@@ -1,9 +1,5 @@
 import { Style } from '../types/StyleTypes';
-
-import {
-  largeSpace,
-  mediumSpace,
-} from './SpaceConstants';
+import { mediumSpace } from './SpaceConstants';
 
 export const alignItemsCenterStyle: Style = {
   alignItems: 'center',

@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import { assertNever } from '../../common';
 import { borderStyle, namedClass } from '../../style';
-
 import {
   AngleDiagramPart,
   ArcDiagramPart,
@@ -17,17 +16,10 @@ import {
   PointDiagramPart,
   RightAngleDiagramPart,
 } from '../types';
-
 import { ArcSvg } from './ArcSvg';
 import { CircleSvg } from './CircleSvg';
 import { CurveSvg } from './CurveSvg';
-import {
-  CurveBoundaryPart,
-  FigureBoundaryPart,
-  FigureBoundaryPartList,
-  FigureSvg,
-  LineBoundaryPart,
-} from './FigureSvg';
+import { FigureBoundaryPart, FigureSvg } from './FigureSvg';
 import { LineSvg } from './LineSvg';
 import { PointSvg } from './PointSvg';
 
@@ -67,7 +59,7 @@ export class DiagramView extends React.PureComponent<DiagramViewProps> {
     const diagramElements: JSX.Element[] = [];
     const parts = diagram.parts;
     for (const key in parts) {
-      if (parts.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(parts, key)) {
         const part = parts[key];
         const state = states[key];
         if (state === 'visible' || state === 'highlighted') {

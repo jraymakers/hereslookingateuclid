@@ -5,18 +5,12 @@ import {
   borderStyle,
   flexColumnStyle,
   flexGrowStyle,
-  flexRowStyle,
-  justifyContentCenterStyle,
-  largeSpace,
-  mediumSpace,
   namedClass,
   textNormalStyle,
   textSerifStyle,
 } from '../../style';
-
 import { LeafPage } from '../types';
 import { nextLeafPage, pageUrl, prevLeafPage } from '../utils';
-
 import { NavBar } from './NavBar';
 import { NavListView } from './NavListView';
 

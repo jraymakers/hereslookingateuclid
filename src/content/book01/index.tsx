@@ -1,11 +1,9 @@
-import {
-  PageDataList,
-  parentPageData,
-  parentPageDataNoNav,
-} from '../../page';
-
-import overview from './Book1Overview';
-
+import { parentPageData, parentPageDataNoNav } from '../../page';
+import cn1 from './Book1CommonNotion1';
+import cn2 from './Book1CommonNotion2';
+import cn3 from './Book1CommonNotion3';
+import cn4 from './Book1CommonNotion4';
+import cn5 from './Book1CommonNotion5';
 import def01to04 from './Book1Def01to04';
 import def05to07 from './Book1Def05to07';
 import def08to12 from './Book1Def08to12';
@@ -15,19 +13,12 @@ import def19 from './Book1Def19';
 import def20to21 from './Book1Def20to21';
 import def22 from './Book1Def22';
 import def23 from './Book1Def23';
-
+import overview from './Book1Overview';
 import postulate1 from './Book1Postulate1';
 import postulate2 from './Book1Postulate2';
 import postulate3 from './Book1Postulate3';
 import postulate4 from './Book1Postulate4';
 import postulate5 from './Book1Postulate5';
-
-import cn1 from './Book1CommonNotion1';
-import cn2 from './Book1CommonNotion2';
-import cn3 from './Book1CommonNotion3';
-import cn4 from './Book1CommonNotion4';
-import cn5 from './Book1CommonNotion5';
-
 import prop01 from './Book1Prop01';
 import prop02 from './Book1Prop02';
 import prop03 from './Book1Prop03';

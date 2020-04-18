@@ -2,8 +2,8 @@ const fse = require('fs-extra');
 const jr = require('jr');
 const path = require('path');
 
+const eslintPath = path.join('node_modules', '.bin', 'eslint');
 const httpServerPath = path.join('node_modules', '.bin', 'http-server');
-const tslintPath = path.join('node_modules', '.bin', 'tslint');
 const webpackPath = path.join('node_modules', '.bin', 'webpack');
 
 const outDir = 'out';
@@ -38,7 +38,7 @@ module.exports = () => ({
     action: () => fse.copy(path.join(srcDir, 'app', 'root', 'index.html'), path.join(outDir, 'index.html'))
   },
   lint: {
-    action: jr.scriptAction(tslintPath, ['src/**/*.tsx'], { cwd: __dirname })
+    action: jr.scriptAction(eslintPath, ['src/**/*.tsx'], { cwd: __dirname })
   },
   publish: {
     action: jr.processAction('gsutil', ['cp', '-r', 'out/**', 'gs://www.hereslookingateuclid.com'], { cwd: __dirname })

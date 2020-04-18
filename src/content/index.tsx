@@ -1,13 +1,7 @@
-import {
-  PageDataList,
-  parentPageData,
-  parentPageDataNoNav,
-} from '../page';
-
-import introduction from './MainIntro';
-
+import { parentPageData, parentPageDataNoNav } from '../page';
 import book01 from './book01';
 import book02 from './book02';
+import introduction from './MainIntro';
 
 const books = parentPageDataNoNav('book', 'Books', [
   book01,

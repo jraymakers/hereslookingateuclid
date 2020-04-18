@@ -1,11 +1,5 @@
-import {
-  textPageData,
-} from '../page';
-import {
-  anchor,
-  italic,
-  ParagraphList,
-} from '../paragraph';
+import { textPageData } from '../page';
+import { anchor, italic, ParagraphList } from '../paragraph';
 
 const name = 'introduction';
 const title = 'Introduction';
@@ -17,7 +11,7 @@ const mailLink = {
 
 const paragraphs: ParagraphList = [
   [
-    [ `An online adaptation of Euclid's `, italic('Elements'), `.` ],
+    [ `An interactive adaptation of Euclid's `, italic('Elements'), `.` ],
   ],
   [
     [ 'Currently a work in progress.' ],

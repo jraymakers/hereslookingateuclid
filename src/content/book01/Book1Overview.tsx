@@ -1,9 +1,5 @@
-import {
-  textPageData,
-} from '../../page';
-import {
-  ParagraphList,
-} from '../../paragraph';
+import { textPageData } from '../../page';
+import { ParagraphList } from '../../paragraph';
 
 const name = 'overview';
 const title = 'Overview';

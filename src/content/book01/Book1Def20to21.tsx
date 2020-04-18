@@ -1,23 +1,9 @@
-import {
-  Diagram,
-  LabelDir,
-} from '../../diagram';
-import {
-  definitionTitle,
-} from '../../link';
-import {
-  stepsAndDiagramPageData,
-} from '../../page';
-import {
-  italic,
-  Paragraph,
-} from '../../paragraph';
-import {
-  StepList,
-} from '../../step';
-import {
-  StepsAndDiagram,
-} from '../../stepsAndDiagram';
+import { Diagram } from '../../diagram';
+import { definitionTitle } from '../../link';
+import { stepsAndDiagramPageData } from '../../page';
+import { italic, Paragraph } from '../../paragraph';
+import { StepList } from '../../step';
+import { StepsAndDiagram } from '../../stepsAndDiagram';
 
 const width = 400;
 const height = 400;

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { assertNever } from '../../common';
 
 export type ArcBoundaryPart = {
-  readonly type: 'arc',
+  readonly type: 'arc';
   readonly x1: number;
   readonly y1: number;
   readonly x2: number;
@@ -15,7 +15,7 @@ export type ArcBoundaryPart = {
 };
 
 export type CurveBoundaryPart = {
-  readonly type: 'curve',
+  readonly type: 'curve';
   readonly x1: number;
   readonly y1: number;
   readonly cpx1: number;
@@ -27,7 +27,7 @@ export type CurveBoundaryPart = {
 };
 
 export type LineBoundaryPart = {
-  readonly type: 'line',
+  readonly type: 'line';
   readonly x1: number;
   readonly y1: number;
   readonly x2: number;
@@ -47,7 +47,7 @@ function pathFromBoundary(boundaryParts: FigureBoundaryPartList): string {
     stringParts.push(`M ${x},${y}`);
     for (const part of boundaryParts) {
       switch (part.type) {
-        case 'arc':
+        case 'arc': {
           const rx = part.rx;
           const ry = part.ry;
           const largest = part.largest ? 1 : 0;
@@ -66,6 +66,7 @@ function pathFromBoundary(boundaryParts: FigureBoundaryPartList): string {
             y = part.y2;
           }
           break;
+        }
         case 'curve':
           if (part.x2 === x && part.y2 === y) {
             stringParts.push(`C ${part.cpx2},${part.cpy2} ${part.cpx1},${part.cpy1} ${part.x1},${part.y1}`);

@@ -1,23 +1,9 @@
-import {
-  Diagram,
-  LabelDir,
-} from '../../diagram';
-import {
-  commonNotionRefLink,
-  commonNotionTitle,
-} from '../../link';
-import {
-  stepsAndDiagramPageData,
-} from '../../page';
-import {
-  Paragraph,
-} from '../../paragraph';
-import {
-  StepList,
-} from '../../step';
-import {
-  StepsAndDiagram,
-} from '../../stepsAndDiagram';
+import { Diagram, LabelDir } from '../../diagram';
+import { commonNotionRefLink, commonNotionTitle } from '../../link';
+import { stepsAndDiagramPageData } from '../../page';
+import { Paragraph } from '../../paragraph';
+import { StepList } from '../../step';
+import { StepsAndDiagram } from '../../stepsAndDiagram';
 
 const width = 400;
 const height = 400;

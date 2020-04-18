@@ -1,30 +1,17 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import {
-  Diagram,
-  DiagramView,
-} from '../../diagram';
-import {
-  Paragraph,
-  ParagraphView,
-} from '../../paragraph';
-import {
-  StepList,
-  StepsView,
-} from '../../step';
+import { Diagram, DiagramView } from '../../diagram';
+import { Paragraph, ParagraphView } from '../../paragraph';
+import { StepList, StepsView } from '../../step';
 import {
   flexColumnStyle,
   flexGrowStyle,
   flexRowStyle,
-  mediumSpace,
   namedClass,
   textXLargeStyle,
 } from '../../style';
-
-import {
-  getDiagramPartStates,
-} from '../utils/StepsAndDiagramUtils';
+import { getDiagramPartStates } from '../utils/StepsAndDiagramUtils';
 
 const classPrefix = 'StepsAndDiagramView';
 

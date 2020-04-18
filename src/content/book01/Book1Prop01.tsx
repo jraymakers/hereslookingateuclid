@@ -1,26 +1,14 @@
-import {
-  Diagram,
-  LabelDir,
-} from '../../diagram';
+import { Diagram, LabelDir } from '../../diagram';
 import {
   commonNotionRefLink,
   definitionRefLink,
   postulateRefLink,
-  propositionRefLink,
   propositionTitle,
 } from '../../link';
-import {
-  stepsAndDiagramPageData,
-} from '../../page';
-import {
-  Paragraph,
-} from '../../paragraph';
-import {
-  StepList,
-} from '../../step';
-import {
-  StepsAndDiagram,
-} from '../../stepsAndDiagram';
+import { stepsAndDiagramPageData } from '../../page';
+import { Paragraph } from '../../paragraph';
+import { StepList } from '../../step';
+import { StepsAndDiagram } from '../../stepsAndDiagram';
 
 const width = 400;
 const height = 400;
@@ -31,10 +19,6 @@ const aX = centerX - ab / 2;
 const aY = centerY;
 const bX = centerX + ab / 2;
 const bY = centerY;
-const alphaX = aX - ab;
-const alphaY = aY;
-const betaX = bX + ab;
-const betaY = bY;
 const cX = centerX;
 const cY = centerY - ab * Math.sqrt(3) / 2;
 
