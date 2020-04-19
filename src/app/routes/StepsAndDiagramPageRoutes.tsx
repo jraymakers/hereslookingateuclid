@@ -1,74 +1,59 @@
 import * as React from 'react';
-import {
-  Redirect,
-  Route,
-  RouteComponentProps,
-  Switch,
-} from 'react-router';
+import { Redirect, Route, RouteComponentProps, Switch } from 'react-router';
 
 import { lastStep } from '../../link';
-import {
-  StepsAndDiagramPage,
-  stepsAndDiagramPageUrl,
-  StepsAndDiagramPageView,
-} from '../../page';
+import { StepsAndDiagramPage, stepsAndDiagramPageUrl, StepsAndDiagramPageView } from '../../page';
 import { findStepIndex } from '../../step';
 
-type StepsAndDiagramPageRoutesProps = {
-  readonly page: StepsAndDiagramPage;
-};
+const stepNameRoutePropKey = 'stepName';
+type RoutePropKeys = typeof stepNameRoutePropKey;
+type StepRouteProps = { [key in RoutePropKeys]: string; };
 
-type StepRouteProps = RouteComponentProps<{
-  readonly stepName: string;
-}>;
-
-export class StepsAndDiagramPageRoutes extends React.Component<StepsAndDiagramPageRoutesProps> {
-
-  public render(): JSX.Element {
-    const page = this.props.page;
-    return (
-      <Switch>
-        <Route
-          path={`${stepsAndDiagramPageUrl(page, ':stepName')}`}
-          render={this.renderStepRoute}
-        />
-        {this.renderRedirectToFirstStep()}
-      </Switch>
-    );
-  }
-
-  private renderRedirectToFirstStep(): JSX.Element {
-    const steps = this.props.page.stepsAndDiagram.steps;
-    return this.renderRedirectToStep(steps[0].name);
-  }
-
-  private renderRedirectToStep(stepName: string): JSX.Element {
-    return <Redirect to={stepsAndDiagramPageUrl(this.props.page, stepName)} />;
-  }
-
-  private readonly renderStepRoute = (props: StepRouteProps): JSX.Element | null => {
-    const page = this.props.page;
-    const steps = page.stepsAndDiagram.steps;
-    const stepName = props.match.params.stepName;
-
-    if (stepName === lastStep) {
-      return this.renderRedirectToStep(steps[steps.length - 1].name);
-    }
-    const stepIndex = findStepIndex(steps, stepName);
-    if (0 <= stepIndex && stepIndex < steps.length) {
-      return this.renderStep(stepIndex);
-    } else {
-      return this.renderRedirectToStep(steps[0].name);
-    }
-  }
-
-  private renderStep(stepIndex: number): JSX.Element {
-    return (
-      <StepsAndDiagramPageView
-        page={this.props.page}
-        currentStepIndex={stepIndex}
-      />
-    );
-  }
-
+function renderStep(page: StepsAndDiagramPage, stepIndex: number) {
+  return (
+    <StepsAndDiagramPageView
+      page={page}
+      currentStepIndex={stepIndex}
+    />
+  );
 }
+
+function renderRedirectToStep(page: StepsAndDiagramPage, stepName: string) {
+  return <Redirect to={stepsAndDiagramPageUrl(page, stepName)} />;
+}
+
+function renderRedirectToFirstStep(page: StepsAndDiagramPage) {
+  const steps = page.stepsAndDiagram.steps;
+  return renderRedirectToStep(page, steps[0].name);
+}
+
+export const StepsAndDiagramPageRoutes: React.FC<{
+  page: StepsAndDiagramPage;
+}> = ({ page }) => {
+  const renderStepRoute = React.useCallback(
+    (props: RouteComponentProps<StepRouteProps>) => {
+      const steps = page.stepsAndDiagram.steps;
+      const stepName = props.match.params.stepName;
+      if (stepName === lastStep) {
+        return renderRedirectToStep(page, steps[steps.length - 1].name);
+      }
+      const stepIndex = findStepIndex(steps, stepName);
+      if (0 <= stepIndex && stepIndex < steps.length) {
+        return renderStep(page, stepIndex);
+      } else {
+        return renderRedirectToStep(page, steps[0].name);
+      }
+    },
+    [page],
+  );
+  return (
+    <Switch>
+      <Route
+        path={stepsAndDiagramPageUrl(page, `:${stepNameRoutePropKey}`)}
+        render={renderStepRoute}
+      />
+      {renderRedirectToFirstStep(page)}
+    </Switch>
+  );
+}
+StepsAndDiagramPageRoutes.displayName = 'StepsAndDiagramPageRoutes';
