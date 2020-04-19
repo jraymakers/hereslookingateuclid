@@ -35,7 +35,7 @@ module.exports = () => ({
     action: () => fse.copy(path.join(srcDir, 'favicon', 'favicon.png'), path.join(outDir, 'favicon.png'))
   },
   copyIndex: {
-    action: () => fse.copy(path.join(srcDir, 'app', 'root', 'index.html'), path.join(outDir, 'index.html'))
+    action: () => fse.copy(path.join(srcDir, 'entry', 'index.html'), path.join(outDir, 'index.html'))
   },
   lint: {
     action: jr.scriptAction(eslintPath, ['src/**/*.tsx'], { cwd: __dirname })
