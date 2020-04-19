@@ -2,35 +2,32 @@ import * as React from 'react';
 
 import { LabelSvg } from './LabelSvg';
 
-export type PointSvgProps = {
-  readonly x: number;
-  readonly y: number;
-  readonly label: string;
-  readonly labelX?: number;
-  readonly labelY?: number;
-  readonly highlighted?: boolean;
-  readonly className?: string;
-};
+type PointSvgProps = Readonly<{
+  x: number;
+  y: number;
+  label: string;
+  labelX?: number;
+  labelY?: number;
+  highlighted?: boolean;
+  className?: string;
+}>;
 
-export class PointSvg extends React.PureComponent<PointSvgProps> {
-
-  public render(): JSX.Element | null {
-    return (
-      <g className={this.props.className}>
-        <circle
-          fill={this.props.highlighted ? 'orange' : 'black'}
-          cx={this.props.x}
-          cy={this.props.y}
-          r={3}
-        />
-        <LabelSvg
-          text={this.props.label}
-          x={this.props.x + (this.props.labelX || 0)}
-          y={this.props.y + (this.props.labelY || 0)}
-          highlighted={this.props.highlighted}
-        />
-      </g>
-    );
-  }
-
+export const PointSvg: React.FC<PointSvgProps> = (props) => {
+  return (
+    <g className={props.className}>
+      <circle
+        fill={props.highlighted ? 'orange' : 'black'}
+        cx={props.x}
+        cy={props.y}
+        r={3}
+      />
+      <LabelSvg
+        text={props.label}
+        x={props.x + (props.labelX || 0)}
+        y={props.y + (props.labelY || 0)}
+        highlighted={props.highlighted}
+      />
+    </g>
+  );
 }
+PointSvg.displayName = 'PointSvg';

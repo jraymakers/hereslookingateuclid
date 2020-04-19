@@ -1,22 +1,9 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import {
-  LinkInfo,
-} from '../../link';
-import {
-  link,
-  Paragraph,
-  ParagraphView,
-  RunView,
-} from '../../paragraph';
-import {
-  classes,
-  flexGrowStyle,
-  flexNoneStyle,
-  flexRowStyle,
-  namedClass,
-} from '../../style';
+import { LinkInfo } from '../../link';
+import { link, Paragraph, ParagraphView, RunView } from '../../paragraph';
+import { classes, flexGrowStyle, flexNoneStyle, flexRowStyle, namedClass } from '../../style';
 
 const classPrefix = 'StepView';
 
@@ -71,42 +58,39 @@ const linkClass = namedClass(classPrefix, 'link', flexNoneStyle, {
   textAlign: 'right',
 });
 
-export type StepViewProps = {
-  readonly stepIndex: number;
-  readonly stepName: string;
-  readonly text: Paragraph;
-  readonly link?: LinkInfo | null | undefined;
-  readonly links?: ReadonlyArray<LinkInfo> | null | undefined;
-  readonly faded?: boolean;
-  readonly highlighted?: boolean;
-  readonly makeStepUrl: (stepName: string) => string;
-};
+type StepViewProps = Readonly<{
+  stepIndex: number;
+  stepName: string;
+  text: Paragraph;
+  link?: LinkInfo | null | undefined;
+  links?: ReadonlyArray<LinkInfo> | null | undefined;
+  faded?: boolean;
+  highlighted?: boolean;
+  makeStepUrl: (stepName: string) => string;
+}>;
 
-export class StepView extends React.PureComponent<StepViewProps> {
-
-  public render(): JSX.Element {
-    const stepName = this.props.stepName;
-    const rootClasses = classes(
-      rootClass,
-      this.props.faded && fadedClass,
-      this.props.highlighted && highlightedClass,
-    );
-    return (
-      <div className={rootClasses} >
-        <Link className={numAndTextClass} to={this.props.makeStepUrl(stepName)}>
-          <div className={numberClass}>{stepName}.</div>
-          <div className={textClass}><ParagraphView paragraph={this.props.text} /></div>
-        </Link>
-        <div className={linkClass}>
-          {this.props.link ? <RunView run={link(this.props.link)} /> : null}
-          {this.props.links ? this.renderLinks(this.props.links) : null}
-        </div>
+export const StepView: React.FC<StepViewProps> = (props) => {
+  const stepName = props.stepName;
+  const rootClasses = classes(
+    rootClass,
+    props.faded && fadedClass,
+    props.highlighted && highlightedClass,
+  );
+  return (
+    <div className={rootClasses} >
+      <Link className={numAndTextClass} to={props.makeStepUrl(stepName)}>
+        <div className={numberClass}>{stepName}.</div>
+        <div className={textClass}><ParagraphView paragraph={props.text} /></div>
+      </Link>
+      <div className={linkClass}>
+        {props.link ? <RunView run={link(props.link)} /> : null}
+        {props.links ? renderLinks(props.links) : null}
       </div>
-    );
-  }
+    </div>
+  );
+}
+StepView.displayName = 'StepView';
 
-  private renderLinks(links: ReadonlyArray<LinkInfo>): JSX.Element[] {
-    return links.map((linkInfo, index) => <div key={index}><RunView  run={link(linkInfo)} /></div>);
-  }
-
+function renderLinks(links: ReadonlyArray<LinkInfo>): JSX.Element[] {
+  return links.map((linkInfo, index) => <div key={index}><RunView run={link(linkInfo)} /></div>);
 }

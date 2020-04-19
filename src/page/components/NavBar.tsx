@@ -113,87 +113,82 @@ const prevLinkArrowClass = namedClass(classPrefix, 'prevLinkArrow',
   },
 );
 
-export type NavBarProps = {
-  readonly page: Page;
-  readonly toggleNavListOverlay: () => void;
-};
+type NavBarProps = Readonly<{
+  page: Page;
+  toggleNavListOverlay: () => void;
+}>;
 
-export class NavBar extends React.PureComponent<NavBarProps> {
-
-  public render(): JSX.Element {
-    return (
-      <div className={rootClass}>
-        <div className={leftClass}>
-          {this.renderPrevLink()}
-        </div>
-        <div className={centerClass}>
-          {this.renderHierarchy()}
-        </div>
-        <div className={rightClass}>
-          {this.renderNextLink()}
-        </div>
+export const NavBar: React.FC<NavBarProps> = (props) => {
+  return (
+    <div className={rootClass}>
+      <div className={leftClass}>
+        {renderPrevLink(props.page)}
       </div>
-    );
-  }
+      <div className={centerClass}>
+        {renderHierarchy(props)}
+      </div>
+      <div className={rightClass}>
+        {renderNextLink(props.page)}
+      </div>
+    </div>
+  );
+}
+NavBar.displayName = 'NavBar';
 
-  private renderHierarchy(): JSX.Element {
-    return (
-      <span className={hierarchyClass} onClick={this.props.toggleNavListOverlay}>
-        <span className={hierarchyArrowClass}>{'▼'}</span>
-        {this.renderAncestors()}
-        <span className={hierarchyTextClass}>{this.props.page.title}</span>
-      </span>
-    );
-  }
+function renderHierarchy(props: NavBarProps): JSX.Element {
+  return (
+    <span className={hierarchyClass} onClick={props.toggleNavListOverlay}>
+      <span className={hierarchyArrowClass}>{'▼'}</span>
+      {renderAncestors(props.page)}
+      <span className={hierarchyTextClass}>{props.page.title}</span>
+    </span>
+  );
+}
 
-  private renderAncestors(): ReadonlyArray<JSX.Element> {
-    const parts: JSX.Element[] = [];
-    const ancestors = pageAncestors(this.props.page);
-    let key = 0;
-    for (const ancestor of ancestors) {
-      if (!ancestor.noNav) {
-        parts.push((
-          <span key={key}>
-            <span className={hierarchyTextClass}>{ancestor.title}</span>
-            <span className={hierarchyDividerClass}>{'❯'}</span>
-          </span>
-        ));
-        key++;
-      }
+function renderAncestors(page: Page): ReadonlyArray<JSX.Element> {
+  const parts: JSX.Element[] = [];
+  const ancestors = pageAncestors(page);
+  let key = 0;
+  for (const ancestor of ancestors) {
+    if (!ancestor.noNav) {
+      parts.push((
+        <span key={key}>
+          <span className={hierarchyTextClass}>{ancestor.title}</span>
+          <span className={hierarchyDividerClass}>{'❯'}</span>
+        </span>
+      ));
+      key++;
     }
-    return parts;
   }
+  return parts;
+}
 
-  private renderPrevLink(): JSX.Element | null {
-    const page = this.props.page;
-    const prevLeaf = prevLeafPage(page);
-    if (!prevLeaf) {
-      return null;
-    }
-    const text = pageNavText(prevLeaf, page);
-    const url = pageUrl(prevLeaf/*, lastStep*/);
-    return (
-      <Link className={buttonClass} to={url}>
-        <span className={prevLinkArrowClass}>{'◀'}</span>
-        <span className={prevLinkTextClass}>{text}</span>
-      </Link>
-    );
+function renderPrevLink(page: Page): JSX.Element | null {
+  const prevLeaf = prevLeafPage(page);
+  if (!prevLeaf) {
+    return null;
   }
+  const text = pageNavText(prevLeaf, page);
+  const url = pageUrl(prevLeaf/*, lastStep*/);
+  return (
+    <Link className={buttonClass} to={url}>
+      <span className={prevLinkArrowClass}>{'◀'}</span>
+      <span className={prevLinkTextClass}>{text}</span>
+    </Link>
+  );
+}
 
-  private renderNextLink(): JSX.Element | null {
-    const page = this.props.page;
-    const nextLeaf = nextLeafPage(page);
-    if (!nextLeaf) {
-      return null;
-    }
-    const text = pageNavText(nextLeaf, page);
-    const url = pageUrl(nextLeaf);
-    return (
-      <Link className={buttonClass} to={url}>
-        <span className={nextLinkTextClass}>{text}</span>
-        <span className={nextLinkArrowClass}>{'▶'}</span>
-      </Link>
-    );
+function renderNextLink(page: Page): JSX.Element | null {
+  const nextLeaf = nextLeafPage(page);
+  if (!nextLeaf) {
+    return null;
   }
-
+  const text = pageNavText(nextLeaf, page);
+  const url = pageUrl(nextLeaf);
+  return (
+    <Link className={buttonClass} to={url}>
+      <span className={nextLinkTextClass}>{text}</span>
+      <span className={nextLinkArrowClass}>{'▶'}</span>
+    </Link>
+  );
 }

@@ -1,15 +1,7 @@
 import * as React from 'react';
 
-import {
-  flexColumnStyle,
-  flexRowStyle,
-  namedClass,
-} from '../../style';
-
-import {
-  ParentPage,
-} from '../types';
-
+import { flexColumnStyle, flexRowStyle, namedClass } from '../../style';
+import { ParentPage } from '../types';
 import { NavListItem } from './NavListItem';
 
 const classPrefix = 'NavListView';
@@ -44,75 +36,53 @@ const upNavClass = namedClass(classPrefix, 'upNav', flexRowStyle, {
   },
 });
 
-type NavListViewProps = {
-  readonly parent: ParentPage;
-  readonly onClose: () => void;
-};
+type NavListViewProps = Readonly<{
+  parent: ParentPage;
+  onClose: () => void;
+}>;
 
-type NavListViewState = {
-  readonly currentParent: ParentPage;
-};
-
-export class NavListView extends React.PureComponent<NavListViewProps, NavListViewState> {
-
-  constructor(props: NavListViewProps) {
-    super(props);
-    this.state = {
-      currentParent: this.props.parent,
-    };
-  }
-
-  public render(): JSX.Element {
-    return (
-      <div className={rootClass}>
-        {this.renderUpNav()}
-        {this.renderHeader()}
-        {this.renderList()}
-      </div>
-    );
-  }
-
-  private renderHeader(): JSX.Element | null {
-    const currentParent = this.state.currentParent;
-    return (
-      <div className={headerClass}>{currentParent.title}</div>
-    );
-  }
-
-  private renderUpNav(): JSX.Element | null {
-    const currentParent = this.state.currentParent;
-    const up = currentParent.parent;
-    if (!up) {
-      return null;
+export const NavListView: React.FC<NavListViewProps> = (props) => {
+  const [currentParent, setCurrentParent] = React.useState<ParentPage>(props.parent);
+  const goUp = React.useCallback(() => {
+    if (currentParent.parent) {
+      setCurrentParent(currentParent.parent);
     }
-    return (
-      <div className={upNavClass} onClick={this.goUp}>{' ❮ '}{up.title}</div>
-    );
-  }
+  }, [currentParent, setCurrentParent]);
+  const goDown = React.useCallback((parent: ParentPage) => {
+    setCurrentParent(parent);
+  }, [setCurrentParent]);
+  return (
+    <div className={rootClass}>
+      {renderUpNav(currentParent, goUp)}
+      {renderHeader(currentParent)}
+      {renderList(currentParent, goDown, props.onClose)}
+    </div>
+  );
+}
+NavListView.displayName = 'NavListView';
 
-  private readonly goUp = () => {
-    if (this.state.currentParent.parent) {
-      this.setState({
-        currentParent: this.state.currentParent.parent,
-      });
-    }
-  }
+function renderHeader(currentParent: ParentPage) {
+  return (
+    <div className={headerClass}>{currentParent.title}</div>
+  );
+}
 
-  private readonly goDown = (parent: ParentPage) => {
-    this.setState({
-      currentParent: parent,
-    });
+function renderUpNav(currentParent: ParentPage, goUp: () => void) {
+  const up = currentParent.parent;
+  if (!up) {
+    return null;
   }
+  return (
+    <div className={upNavClass} onClick={goUp}>{' ❮ '}{up.title}</div>
+  );
+}
 
-  private renderList(): JSX.Element {
-    const parent = this.state.currentParent;
-    const items = parent ? parent.childList : [];
-    return (
-      <div className={listClass}>
-        {items.map((item, index) =>
-          <NavListItem page={item} parentClicked={this.goDown} leafClicked={this.props.onClose} key={index} />)}
-      </div>
-    );
-  }
-
+function renderList(parent: ParentPage, goDown: (parent: ParentPage) => void, onClose: () => void) {
+  const items = parent ? parent.childList : [];
+  return (
+    <div className={listClass}>
+      {items.map((item, index) =>
+        <NavListItem page={item} parentClicked={goDown} leafClicked={onClose} key={index} />)}
+    </div>
+  );
 }

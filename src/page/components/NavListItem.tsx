@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import {
-  ParagraphView,
-} from '../../paragraph';
+import { ParagraphView } from '../../paragraph';
 import {
   classes,
   linkClass,
@@ -11,71 +9,58 @@ import {
   textLargeClass,
   textSmallClass,
 } from '../../style';
+import { Page, ParentPage, StepsAndDiagramPage, TextPage } from '../types';
+import { pageUrl } from '../utils';
 
-import {
-  Page,
-  ParentPage,
-  StepsAndDiagramPage,
-  TextPage,
-} from '../types';
-import {
-  pageUrl,
-} from '../utils';
+type NavListItemProps = Readonly<{
+  page: Page;
+  parentClicked: (parent: ParentPage) => void;
+  leafClicked: () => void;
+}>;
 
-export type NavListItemProps = {
-  readonly page: Page;
-  readonly parentClicked: (parent: ParentPage) => void;
-  readonly leafClicked: () => void;
-};
-
-export class NavListItem extends React.PureComponent<NavListItemProps> {
-
-  public render(): JSX.Element {
-    const page = this.props.page;
-    switch (page.pageType) {
-      case 'parent':
-        return this.renderParentListItem(page);
-      case 'stepsAndDiagram':
-        return this.renderStepsAndDiagramListItem(page);
-      case 'text':
-        return this.renderTextListItem(page);
-    }
-  }
-
-  private renderParentListItem(item: ParentPage): JSX.Element {
-    return (
-      <div className={classes(linkClass, paddingMediumClass)} onClick={this.parentClicked}>
-        <div className={textLargeClass}>{' ❯ '}{item.title}</div>
-      </div>
-    );
-  }
-
-  private readonly parentClicked = () => {
-    const page = this.props.page;
+export const NavListItem: React.FC<NavListItemProps> = (props) => {
+  const { page, parentClicked, leafClicked } = props;
+  const parentClickedCallback = React.useCallback(() => {
     if (page.pageType === 'parent') {
-      this.props.parentClicked(page);
+      parentClicked(page);
     }
+  }, [page, parentClicked]);
+  switch (page.pageType) {
+    case 'parent':
+      return renderParentListItem(page, parentClickedCallback);
+    case 'stepsAndDiagram':
+      return renderStepsAndDiagramListItem(page, leafClicked);
+    case 'text':
+      return renderTextListItem(page, leafClicked);
   }
+}
+NavListItem.displayName = 'NavListItem';
 
-  private renderStepsAndDiagramListItem(item: StepsAndDiagramPage): JSX.Element {
-    const url = pageUrl(item);
-    return (
-      <Link className={classes(linkClass, paddingMediumClass)} to={url} onClick={this.props.leafClicked}>
-        <div className={textLargeClass}>{item.title}</div>
-        <div className={textSmallClass}>
-          <ParagraphView paragraph={item.stepsAndDiagram.summary} />
-        </div>
-      </Link>
-    );
-  }
+function renderParentListItem(item: ParentPage, parentClickedCallback: () => void): JSX.Element {
+  return (
+    <div className={classes(linkClass, paddingMediumClass)} onClick={parentClickedCallback}>
+      <div className={textLargeClass}>{' ❯ '}{item.title}</div>
+    </div>
+  );
+}
 
-  private renderTextListItem(item: TextPage): JSX.Element {
-    const url = pageUrl(item);
-    return (
-      <Link className={classes(linkClass, paddingMediumClass)} to={url} onClick={this.props.leafClicked}>
-        <div className={textLargeClass}>{item.title}</div>
-      </Link>
-    );
-  }
+function renderStepsAndDiagramListItem(item: StepsAndDiagramPage, leafClicked: () => void): JSX.Element {
+  const url = pageUrl(item);
+  return (
+    <Link className={classes(linkClass, paddingMediumClass)} to={url} onClick={leafClicked}>
+      <div className={textLargeClass}>{item.title}</div>
+      <div className={textSmallClass}>
+        <ParagraphView paragraph={item.stepsAndDiagram.summary} />
+      </div>
+    </Link>
+  );
+}
 
+function renderTextListItem(item: TextPage, leafClicked: () => void): JSX.Element {
+  const url = pageUrl(item);
+  return (
+    <Link className={classes(linkClass, paddingMediumClass)} to={url} onClick={leafClicked}>
+      <div className={textLargeClass}>{item.title}</div>
+    </Link>
+  );
 }

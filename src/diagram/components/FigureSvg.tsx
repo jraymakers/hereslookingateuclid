@@ -3,35 +3,35 @@ import * as React from 'react';
 import { assertNever } from '../../common';
 
 export type ArcBoundaryPart = {
-  readonly type: 'arc';
-  readonly x1: number;
-  readonly y1: number;
-  readonly x2: number;
-  readonly y2: number;
-  readonly rx: number;
-  readonly ry: number;
-  readonly largest?: boolean;
-  readonly ccw?: boolean;
+  type: 'arc';
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+  rx: number;
+  ry: number;
+  largest?: boolean;
+  ccw?: boolean;
 };
 
 export type CurveBoundaryPart = {
-  readonly type: 'curve';
-  readonly x1: number;
-  readonly y1: number;
-  readonly cpx1: number;
-  readonly cpy1: number;
-  readonly cpx2: number;
-  readonly cpy2: number;
-  readonly x2: number;
-  readonly y2: number;
+  type: 'curve';
+  x1: number;
+  y1: number;
+  cpx1: number;
+  cpy1: number;
+  cpx2: number;
+  cpy2: number;
+  x2: number;
+  y2: number;
 };
 
 export type LineBoundaryPart = {
-  readonly type: 'line';
-  readonly x1: number;
-  readonly y1: number;
-  readonly x2: number;
-  readonly y2: number;
+  type: 'line';
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
 };
 
 export type FigureBoundaryPart = ArcBoundaryPart | CurveBoundaryPart | LineBoundaryPart;
@@ -111,18 +111,17 @@ function pathFromBoundary(boundaryParts: FigureBoundaryPartList): string {
   return stringParts.join(' ');
 }
 
-export type FigureSvgProps = {
-  readonly boundaryParts: FigureBoundaryPartList;
-  readonly highlighted?: boolean;
-};
+type FigureSvgProps = Readonly<{
+  boundaryParts: FigureBoundaryPartList;
+  highlighted?: boolean;
+}>;
 
-export class FigureSvg extends React.PureComponent<FigureSvgProps> {
-
-  public render(): JSX.Element | null {
-    return <path
-      d={pathFromBoundary(this.props.boundaryParts)}
-      fill={this.props.highlighted ? 'orange' : 'gray'}
-    />;
-  }
-
+export const FigureSvg: React.FC<FigureSvgProps> = (props) => {
+  return (
+    <path
+      d={pathFromBoundary(props.boundaryParts)}
+      fill={props.highlighted ? 'orange' : 'gray'}
+    />
+  );
 }
+FigureSvg.displayName = 'FigureSvg';

@@ -4,44 +4,44 @@ import { LabelSvg } from './LabelSvg';
 
 const labelDist = 10;
 
-export type CircleSvgProps = {
-  readonly cx: number;
-  readonly cy: number;
-  readonly r: number;
-  readonly label: string;
-  readonly labelDir?: number;
-  readonly highlighted?: boolean;
-};
+type CircleSvgProps = Readonly<{
+  cx: number;
+  cy: number;
+  r: number;
+  label: string;
+  labelDir?: number;
+  highlighted?: boolean;
+}>;
 
-export class CircleSvg extends React.PureComponent<CircleSvgProps> {
-
-  public render(): JSX.Element | null {
-    return (
-      <g>
-        <circle
-          fill="transparent"
-          stroke={this.props.highlighted ? 'orange' : 'black'}
-          strokeWidth={2}
-          cx={this.props.cx}
-          cy={this.props.cy}
-          r={this.props.r}
-        />
-        {this.renderLabel()}
-      </g>
-    );
-  }
-
-  private renderLabel(): JSX.Element | null {
-    if (this.props.labelDir != null) {
-      return <LabelSvg
-        text={this.props.label}
-        x={this.props.cx + (this.props.r + labelDist) * Math.cos(this.props.labelDir)}
-        y={this.props.cy + (this.props.r + labelDist) * Math.sin(this.props.labelDir)}
-        highlighted={this.props.highlighted}
-      />;
-    } else {
-      return null;
-    }
-  }
-
+export const CircleSvg: React.FC<CircleSvgProps> = (props) => {
+  return (
+    <g>
+      <circle
+        fill="transparent"
+        stroke={props.highlighted ? 'orange' : 'black'}
+        strokeWidth={2}
+        cx={props.cx}
+        cy={props.cy}
+        r={props.r}
+      />
+      <CircleSvgLabel {...props} />
+    </g>
+  );
 }
+CircleSvg.displayName = 'CircleSvg';
+
+const CircleSvgLabel: React.FC<CircleSvgProps> = (props) => {
+  if (props.labelDir != null) {
+    return (
+      <LabelSvg
+        text={props.label}
+        x={props.cx + (props.r + labelDist) * Math.cos(props.labelDir)}
+        y={props.cy + (props.r + labelDist) * Math.sin(props.labelDir)}
+        highlighted={props.highlighted}
+      />
+    );
+  } else {
+    return null;
+  }
+}
+CircleSvgLabel.displayName = 'CircleSvgLabel';

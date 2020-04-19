@@ -73,57 +73,54 @@ const stepsAndDiagramClass = namedClass(classPrefix, 'stepsAndDiagram',
   { marginTop: 12 },
 );
 
-export type StepsAndDiagramViewProps = {
-  readonly title: string;
-  readonly summary: Paragraph;
-  readonly steps: StepList;
-  readonly diagram: Diagram;
-  readonly currentStepIndex: number;
-  readonly makeStepUrl: (stepName: string) => string;
-  readonly prevUrl: string | null;
-  readonly nextUrl: string | null;
-};
+type StepsAndDiagramViewProps = Readonly<{
+  title: string;
+  summary: Paragraph;
+  steps: StepList;
+  diagram: Diagram;
+  currentStepIndex: number;
+  makeStepUrl: (stepName: string) => string;
+  prevUrl: string | null;
+  nextUrl: string | null;
+}>;
 
-export class StepsAndDiagramView extends React.PureComponent<StepsAndDiagramViewProps> {
-
-  public render(): JSX.Element {
-    const title = this.props.title;
-    const summary = this.props.summary;
-    const steps = this.props.steps;
-    const diagram = this.props.diagram;
-    const currentStepIndex = this.props.currentStepIndex;
-    const diagramPartStates = getDiagramPartStates(steps, currentStepIndex);
-    return (
-      <div className={rootClass}>
-        <div className={titleAndSummaryClass}>
-          <div className={titleAndSummaryTextClass}>
-            <div className={titleClass}>{title}</div>
-            <ParagraphView paragraph={summary} />
-          </div>
-          <div className={stepControlsClass}>
-            {this.props.prevUrl
-              ? <Link className={stepButtonClass} to={this.props.prevUrl}>{'▲'}</Link>
-              : <div className={stepButtonClass} />
-            }
-            {this.props.nextUrl
-              ? <Link className={stepButtonClass} to={this.props.nextUrl}>{'▼'}</Link>
-              : <div className={stepButtonClass} />
-            }
-          </div>
+export const StepsAndDiagramView: React.FC<StepsAndDiagramViewProps> = (props) => {
+  const title = props.title;
+  const summary = props.summary;
+  const steps = props.steps;
+  const diagram = props.diagram;
+  const currentStepIndex = props.currentStepIndex;
+  const diagramPartStates = getDiagramPartStates(steps, currentStepIndex);
+  return (
+    <div className={rootClass}>
+      <div className={titleAndSummaryClass}>
+        <div className={titleAndSummaryTextClass}>
+          <div className={titleClass}>{title}</div>
+          <ParagraphView paragraph={summary} />
         </div>
-        <div className={stepsAndDiagramClass}>
-          <StepsView
-            steps={steps}
-            currentStepIndex={currentStepIndex}
-            makeStepUrl={this.props.makeStepUrl}
-          />
-          <DiagramView
-            diagram={diagram}
-            diagramPartStates={diagramPartStates}
-          />
+        <div className={stepControlsClass}>
+          {props.prevUrl
+            ? <Link className={stepButtonClass} to={props.prevUrl}>{'▲'}</Link>
+            : <div className={stepButtonClass} />
+          }
+          {props.nextUrl
+            ? <Link className={stepButtonClass} to={props.nextUrl}>{'▼'}</Link>
+            : <div className={stepButtonClass} />
+          }
         </div>
       </div>
-    );
-  }
-
+      <div className={stepsAndDiagramClass}>
+        <StepsView
+          steps={steps}
+          currentStepIndex={currentStepIndex}
+          makeStepUrl={props.makeStepUrl}
+        />
+        <DiagramView
+          diagram={diagram}
+          diagramPartStates={diagramPartStates}
+        />
+      </div>
+    </div>
+  );
 }
+StepsAndDiagramView.displayName = 'StepsAndDiagramView';
