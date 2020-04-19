@@ -1,16 +1,9 @@
 import * as React from 'react';
-import { RouteComponentProps, withRouter } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 
 import { ParagraphView } from '../../paragraph';
-import {
-  alignSelfCenterStyle,
-  borderStyle,
-  mediumSpace,
-  namedClass,
-} from '../../style';
-
+import { alignSelfCenterStyle, borderStyle, mediumSpace, namedClass } from '../../style';
 import { TextPage } from '../types';
-
 import { PageView } from './PageView';
 
 const classPrefix = 'TextPageView';
@@ -34,29 +27,24 @@ const textPaneClass = namedClass(classPrefix, 'textPane',
   },
 );
 
-export type TextPageViewProps = RouteComponentProps<{}> & {
-  readonly page: TextPage;
-};
+type TextPageViewProps = Readonly<{
+  page: TextPage;
+}>;
 
-class TextPageViewInternal extends React.PureComponent<TextPageViewProps> {
-
-  public render(): JSX.Element {
-    const page = this.props.page;
-    return (
-      <PageView page={page} navigate={this.navigate}>
-        <div className={textPaneClass}>
-          {page.paragraphs.map((paragraph, index) => <ParagraphView paragraph={paragraph} key={index} />)}
-        </div>
-      </PageView>
-    );
-  }
-
-  private readonly navigate = (path: string) => {
-    if (this.props.location.pathname !== path) {
-      this.props.history.push(path);
+export const TextPageView: React.FC<TextPageViewProps> = (props) => {
+  const page = props.page;
+  const history = useHistory();
+  const location = useLocation();
+  const navigate = React.useCallback((path: string) => {
+    if (location.pathname !== path) {
+      history.push(path);
     }
-  }
-
+  }, [history, location]);
+  return (
+    <PageView page={page} navigate={navigate}>
+      <div className={textPaneClass}>
+        {page.paragraphs.map((paragraph, index) => <ParagraphView paragraph={paragraph} key={index} />)}
+      </div>
+    </PageView>
+  );
 }
-
-export const TextPageView = withRouter(TextPageViewInternal);

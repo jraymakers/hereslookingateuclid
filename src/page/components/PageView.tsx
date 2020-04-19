@@ -56,112 +56,73 @@ const contentsOverlayClass = namedClass(classPrefix, 'contentsOverlay',
   },
 );
 
-type PageViewProps = {
-  readonly page: LeafPage;
-  readonly navigate: (path: string) => void;
-  readonly onKeyDown?: (event: KeyboardEvent) => void;
-};
+type PageViewProps = Readonly<{
+  page: LeafPage;
+  navigate: (path: string) => void;
+  onKeyDown?: (event: KeyboardEvent) => void;
+}>;
 
-type PageViewState = {
-  readonly contentsVisible: boolean;
-};
-
-export class PageView extends React.PureComponent<PageViewProps, PageViewState> {
-
-  constructor(props: PageViewProps) {
-    super(props);
-    this.state = {
-      contentsVisible: false,
+export const PageView: React.FC<PageViewProps> = (props) => {
+  const { page, navigate, onKeyDown } = props;
+  const [contentsVisible, setContentsVisible] = React.useState(false);
+  React.useEffect(() => {
+    function onBodyKeyDown(event: KeyboardEvent) {
+      const neighborPage = neighborPageForKey(event.key, page);
+      if (neighborPage) {
+        navigate(pageUrl(neighborPage));
+      }
+      if (onKeyDown) {
+        onKeyDown(event);
+      }
+    }
+    document.body.addEventListener('keydown', onBodyKeyDown);
+    return () => {
+      document.body.removeEventListener('keydown', onBodyKeyDown);
     };
-  }
-
-  public componentDidMount() {
-    document.body.addEventListener('keydown', this.onBodyKeyDown);
-  }
-
-  public componentWillUnmount() {
-    document.body.removeEventListener('keydown', this.onBodyKeyDown);
-  }
-
-  public render(): JSX.Element {
-    const page = this.props.page;
-    return (
-      <div className={rootClass}>
-        <NavBar
-          page={page}
-          toggleNavListOverlay={this.toggleNavListOverlay}
-        />
-        <div className={pageContentClass}>
-          {this.props.children}
-          {this.maybeRenderGlassPane()}
-          {this.maybeRenderNavListOverlay()}
-        </div>
+  }, [navigate, onKeyDown, page]);
+  const toggleNavListOverlay = React.useCallback(() => {
+    if (page.parent) {
+      setContentsVisible(!contentsVisible);
+    }
+  }, [contentsVisible, setContentsVisible, page]);
+  const hideNavListOverlay = React.useCallback(() => {
+    setContentsVisible(false);
+  }, []);
+  return (
+    <div className={rootClass}>
+      <NavBar
+        page={page}
+        toggleNavListOverlay={toggleNavListOverlay}
+      />
+      <div className={pageContentClass}>
+        {props.children}
+        {maybeRenderNavListOverlay(contentsVisible, page, hideNavListOverlay)}
       </div>
-    );
-  }
+    </div>
+  );
+}
 
-  private readonly toggleNavListOverlay = () => {
-    if (this.props.page.parent) {
-      this.setState({
-        contentsVisible: !this.state.contentsVisible,
-      });
-    }
+function neighborPageForKey(key: string, page: LeafPage) {
+  switch (key) {
+    case 'ArrowLeft':
+      return prevLeafPage(page);
+    case 'ArrowRight':
+      return nextLeafPage(page);
   }
+  return null;
+}
 
-  private readonly hideNavListOverlay = () => {
-    this.setState({
-      contentsVisible: false,
-    });
-  }
-
-  private maybeRenderGlassPane(): JSX.Element | null {
-    if (this.state.contentsVisible && this.props.page.parent) {
-      return (
-        <div className={glassPaneClass} onClick={this.hideNavListOverlay} />
-      );
-    } else {
-      return null;
-    }
-  }
-
-  private maybeRenderNavListOverlay(): JSX.Element | null {
-    if (this.state.contentsVisible && this.props.page.parent) {
-      return (
+function maybeRenderNavListOverlay(contentsVisible: boolean, page: LeafPage, hideNavListOverlay: () => void) {
+  if (contentsVisible && page.parent) {
+    return (
+      <>
+        <div className={glassPaneClass} onClick={hideNavListOverlay} />
         <div className={contentsOverlayClass}>
-          <NavListView parent={this.props.page.parent} onClose={this.hideNavListOverlay} />
+          <NavListView parent={page.parent} onClose={hideNavListOverlay} />
         </div>
-      );
-    } else {
-      return null;
-    }
+      </>
+    );
+  } else {
+    return null;
   }
-
-  private goPrevPage() {
-    const prevPage = prevLeafPage(this.props.page);
-    if (prevPage) {
-      this.props.navigate(pageUrl(prevPage));
-    }
-  }
-
-  private goNextPage() {
-    const nextPage = nextLeafPage(this.props.page);
-    if (nextPage) {
-      this.props.navigate(pageUrl(nextPage));
-    }
-  }
-
-  private readonly onBodyKeyDown = (event: KeyboardEvent) => {
-    switch (event.key) {
-      case 'ArrowLeft':
-        this.goPrevPage();
-        break;
-      case 'ArrowRight':
-        this.goNextPage();
-        break;
-    }
-    if (this.props.onKeyDown) {
-      this.props.onKeyDown(event);
-    }
-  }
-
 }
