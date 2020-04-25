@@ -48,7 +48,7 @@ module.exports = () => ({
       { cwd: __dirname })
   },
   serve: {
-    action: jr.scriptAction(servePath, ['./out', '-p', '12345'], { cwd: __dirname })
+    action: jr.scriptAction(servePath, ['./out'], { cwd: __dirname })
   },
   watch: {
     action: jr.scriptAction(webpackPath, ['--hide-modules', '--progress', '--watch'], { cwd: __dirname })
