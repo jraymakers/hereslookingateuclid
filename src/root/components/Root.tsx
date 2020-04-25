@@ -3,9 +3,9 @@ import { HashRouter } from 'react-router-dom';
 
 import content from '../../content';
 import { makePage } from '../../page';
-import { PageRoutes } from '../routes/PageRoutes';
+import { PageRoutes } from '../../route/components/PageRoutes';
 
-export const App: React.FC = () => {
+export const Root: React.FC = () => {
   const rootPage = React.useMemo(() => makePage(content), []);
   return (
     <HashRouter>
@@ -13,4 +13,4 @@ export const App: React.FC = () => {
     </HashRouter>
   );
 }
-App.displayName = 'App';
+Root.displayName = 'Root';
