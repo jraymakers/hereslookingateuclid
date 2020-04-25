@@ -3,7 +3,7 @@ import { HashRouter } from 'react-router-dom';
 
 import content from '../../content';
 import { makePage } from '../../page';
-import { PageRoutes } from '../../route/components/PageRoutes';
+import { PageRoutes } from '../../route';
 
 export const Root: React.FC = () => {
   const rootPage = React.useMemo(() => makePage(content), []);
