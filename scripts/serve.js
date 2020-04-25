@@ -13,7 +13,7 @@ function getOptions() {
   for (let i = 0, l = args.length; i < l; i++) {
     const arg = args[i];
     if (arg.startsWith('-')) {
-      if (arg === '-p') {
+      if (arg === '-p' || arg === '--port') {
         listenPort = parseInt(args[++i], 10);
       }
     } else {
