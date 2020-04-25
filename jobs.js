@@ -3,7 +3,7 @@ const jr = require('jr');
 const path = require('path');
 
 const eslintPath = path.join('node_modules', '.bin', 'eslint');
-const httpServerPath = path.join('node_modules', '.bin', 'http-server');
+const serverPath = path.join('scripts', 'server.js');
 const webpackPath = path.join('node_modules', '.bin', 'webpack');
 
 const outDir = 'out';
@@ -48,7 +48,7 @@ module.exports = () => ({
       { cwd: __dirname })
   },
   serve: {
-    action: jr.scriptAction(httpServerPath, ['./out', '-o'], { cwd: __dirname })
+    action: jr.scriptAction(serverPath, ['./out', '-p', '12345'], { cwd: __dirname })
   },
   watch: {
     action: jr.scriptAction(webpackPath, ['--hide-modules', '--progress', '--watch'], { cwd: __dirname })
