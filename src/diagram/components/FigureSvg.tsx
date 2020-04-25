@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { assertNever } from '../../common';
+import { assertNever } from '../../typescript';
 
 export type ArcBoundaryPart = {
   type: 'arc';

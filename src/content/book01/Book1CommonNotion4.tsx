@@ -4,7 +4,7 @@ import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
-import { keyframes, namedClass } from '../../style';
+import { cssClass, keyframes } from '../../style';
 
 const width = 400;
 const height = 400;
@@ -37,13 +37,13 @@ const translateNegAnimation = keyframes({
 
 const cssPrefix = 'Book1CommonNotion4';
 
-const posClass = namedClass(cssPrefix, 'pos', {
+const posClass = cssClass(cssPrefix, 'pos', {
   animationName: translatePosAnimation,
   animationDuration: '5s',
   animationIterationCount: 'infinite',
 });
 
-const negClass = namedClass(cssPrefix, 'neg', {
+const negClass = cssClass(cssPrefix, 'neg', {
   animationName: translateNegAnimation,
   animationDuration: '5s',
   animationIterationCount: 'infinite',

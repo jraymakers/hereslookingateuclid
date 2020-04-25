@@ -3,9 +3,9 @@ import * as React from 'react';
 import {
   alignItemsStretchStyle,
   borderStyle,
+  cssClass,
   flexColumnStyle,
   flexGrowStyle,
-  namedClass,
   textNormalStyle,
   textSerifStyle,
 } from '../../style';
@@ -16,13 +16,13 @@ import { NavListView } from './NavListView';
 
 const classPrefix = 'PageView';
 
-const rootClass = namedClass(classPrefix, 'root',
+const rootClass = cssClass(classPrefix, 'root',
   flexGrowStyle,
   flexColumnStyle,
   { position: 'relative' },
 );
 
-const pageContentClass = namedClass(classPrefix, 'pageContent',
+const pageContentClass = cssClass(classPrefix, 'pageContent',
   alignItemsStretchStyle,
   flexColumnStyle,
   flexGrowStyle,
@@ -33,7 +33,7 @@ const pageContentClass = namedClass(classPrefix, 'pageContent',
   },
 );
 
-const glassPaneClass = namedClass(classPrefix, 'glassPane',
+const glassPaneClass = cssClass(classPrefix, 'glassPane',
   {
     position: 'absolute',
     top: 0,
@@ -43,7 +43,7 @@ const glassPaneClass = namedClass(classPrefix, 'glassPane',
   },
 );
 
-const contentsOverlayClass = namedClass(classPrefix, 'contentsOverlay',
+const contentsOverlayClass = cssClass(classPrefix, 'contentsOverlay',
   borderStyle,
   {
     alignSelf: 'center',

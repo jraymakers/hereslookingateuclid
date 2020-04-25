@@ -34,7 +34,7 @@ export {
 } from './constants/StyleConstants';
 export {
   Style,
-} from './types/StyleTypes';
+} from './types/Style';
 export {
-  namedClass,
-} from './utils/StyleUtils';
+  cssClass,
+} from './functions/cssClass';

@@ -1,4 +1,4 @@
-import { Style } from '../types/StyleTypes';
+import { Style } from '../types/Style';
 import { mediumSpace } from './SpaceConstants';
 
 export const alignItemsCenterStyle: Style = {

@@ -2,13 +2,13 @@ import * as React from 'react';
 import { useHistory, useLocation } from 'react-router';
 
 import { ParagraphView } from '../../paragraph';
-import { alignSelfCenterStyle, borderStyle, mediumSpace, namedClass } from '../../style';
+import { alignSelfCenterStyle, borderStyle, cssClass, mediumSpace } from '../../style';
 import { TextPage } from '../types';
 import { PageView } from './PageView';
 
 const classPrefix = 'TextPageView';
 
-const textPaneClass = namedClass(classPrefix, 'textPane',
+const textPaneClass = cssClass(classPrefix, 'textPane',
   alignSelfCenterStyle,
   borderStyle,
   {

@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import { assertNever } from '../../common';
 import { linkClass } from '../../style';
-
+import { assertNever } from '../../typescript';
 import { Run } from '../types/Paragraph';
 
 function stopProp(event: React.MouseEvent<HTMLElement>) {

@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import { borderStyle, flexColumnStyle, flexGrowStyle, namedClass } from '../../style';
+import { borderStyle, cssClass, flexColumnStyle, flexGrowStyle } from '../../style';
 import { StepList } from '../types/Step';
 import { StepView } from './StepView';
 
 const classPrefix = 'StepsView';
 
-const rootClass = namedClass(classPrefix, 'root',
+const rootClass = cssClass(classPrefix, 'root',
   borderStyle,
   flexColumnStyle,
   flexGrowStyle,

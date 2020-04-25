@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom';
 import {
   alignItemsCenterStyle,
   alignItemsStretchStyle,
+  cssClass,
   flexGrowStyle,
   flexRowStyle,
   justifyContentCenterStyle,
-  namedClass,
 } from '../../style';
 import { Page } from '../types';
 import { nextLeafPage, pageAncestors, pageNavText, pageUrl, prevLeafPage } from '../utils';
 
 const classPrefix = 'NavBar';
-const rootClass = namedClass(classPrefix, 'root',
+const rootClass = cssClass(classPrefix, 'root',
   flexRowStyle,
   {
     alignSelf: 'stretch',
@@ -22,22 +22,22 @@ const rootClass = namedClass(classPrefix, 'root',
     height: 36,
   },
 );
-const leftClass = namedClass(classPrefix, 'left',
+const leftClass = cssClass(classPrefix, 'left',
  flexGrowStyle,
   flexRowStyle,
 );
-const centerClass = namedClass(classPrefix, 'center',
+const centerClass = cssClass(classPrefix, 'center',
   alignItemsStretchStyle,
   flexRowStyle,
   flexGrowStyle,
   justifyContentCenterStyle,
 );
-const rightClass = namedClass(classPrefix, 'right',
+const rightClass = cssClass(classPrefix, 'right',
   flexGrowStyle,
   flexRowStyle,
   { justifyContent: 'flex-end' },
 );
-const hierarchyClass = namedClass(classPrefix, 'hierarchy',
+const hierarchyClass = cssClass(classPrefix, 'hierarchy',
   alignItemsCenterStyle,
   flexRowStyle,
   {
@@ -57,23 +57,23 @@ const hierarchyClass = namedClass(classPrefix, 'hierarchy',
     },
   },
 );
-const hierarchyArrowClass = namedClass(classPrefix, 'hierarchyArrow',
+const hierarchyArrowClass = cssClass(classPrefix, 'hierarchyArrow',
   {
     fontSize: '10px',
     paddingTop: 3,
     paddingRight: 6,
   },
 );
-const hierarchyTextClass = namedClass(classPrefix, 'hierarchyText', {
+const hierarchyTextClass = cssClass(classPrefix, 'hierarchyText', {
   whiteSpace: 'nowrap',
 });
-const hierarchyDividerClass = namedClass(classPrefix, 'hierarchyDivider',
+const hierarchyDividerClass = cssClass(classPrefix, 'hierarchyDivider',
   {
     paddingLeft: 6,
     paddingRight: 6,
   },
 );
-const buttonClass = namedClass(classPrefix, 'button',
+const buttonClass = cssClass(classPrefix, 'button',
   {
     display: 'flex',
     alignItems: 'center',
@@ -90,23 +90,23 @@ const buttonClass = namedClass(classPrefix, 'button',
     },
   },
 );
-const nextLinkTextClass = namedClass(classPrefix, 'nextLinkText',
+const nextLinkTextClass = cssClass(classPrefix, 'nextLinkText',
   {
     paddingLeft: 12,
   },
 );
-const prevLinkTextClass = namedClass(classPrefix, 'prevLinkText',
+const prevLinkTextClass = cssClass(classPrefix, 'prevLinkText',
   {
     paddingRight: 12,
   },
 );
-const nextLinkArrowClass = namedClass(classPrefix, 'nextLinkArrow',
+const nextLinkArrowClass = cssClass(classPrefix, 'nextLinkArrow',
   {
     paddingLeft: 6,
     paddingRight: 6,
   },
 );
-const prevLinkArrowClass = namedClass(classPrefix, 'prevLinkArrow',
+const prevLinkArrowClass = cssClass(classPrefix, 'prevLinkArrow',
   {
     paddingLeft: 6,
     paddingRight: 6,

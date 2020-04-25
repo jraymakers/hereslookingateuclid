@@ -1,26 +1,26 @@
 import * as React from 'react';
 
-import { flexColumnStyle, flexRowStyle, namedClass } from '../../style';
+import { cssClass, flexColumnStyle, flexRowStyle } from '../../style';
 import { ParentPage } from '../types';
 import { NavListItem } from './NavListItem';
 
 const classPrefix = 'NavListView';
 
-const rootClass = namedClass(classPrefix, 'root', flexColumnStyle, {
+const rootClass = cssClass(classPrefix, 'root', flexColumnStyle, {
 });
 
-const headerClass = namedClass(classPrefix, 'header', flexRowStyle, {
+const headerClass = cssClass(classPrefix, 'header', flexRowStyle, {
   borderBottom: '1px solid #999',
   padding: 12,
 });
 
-const listClass = namedClass(classPrefix, 'list', flexColumnStyle, {
+const listClass = cssClass(classPrefix, 'list', flexColumnStyle, {
   padding: 12,
   maxHeight: 400,
   overflow: 'auto',
 });
 
-const upNavClass = namedClass(classPrefix, 'upNav', flexRowStyle, {
+const upNavClass = cssClass(classPrefix, 'upNav', flexRowStyle, {
   padding: 12,
   borderBottom: '1px solid #999',
   cursor: 'pointer',

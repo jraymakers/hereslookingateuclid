@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { assertNever } from '../../common';
-import { borderStyle, namedClass } from '../../style';
+import { borderStyle, cssClass } from '../../style';
+import { assertNever } from '../../typescript';
 import {
   AngleDiagramPart,
   ArcDiagramPart,
@@ -42,7 +42,7 @@ function isPoint(dp: DiagramPart | null | undefined): dp is PointDiagramPart {
 
 const classPrefix = 'DiagramView';
 
-const rootClass = namedClass(classPrefix, 'root',
+const rootClass = cssClass(classPrefix, 'root',
   borderStyle,
   { backgroundColor: 'white' },
 );

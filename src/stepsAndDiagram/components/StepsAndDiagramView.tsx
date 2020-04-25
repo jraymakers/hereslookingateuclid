@@ -5,21 +5,21 @@ import { Diagram, DiagramView } from '../../diagram';
 import { Paragraph, ParagraphView } from '../../paragraph';
 import { StepList, StepsView } from '../../step';
 import {
+  cssClass,
   flexColumnStyle,
   flexGrowStyle,
   flexRowStyle,
-  namedClass,
   textXLargeStyle,
 } from '../../style';
 import { getDiagramPartStates } from '../utils/StepsAndDiagramUtils';
 
 const classPrefix = 'StepsAndDiagramView';
 
-const rootClass = namedClass(classPrefix, 'root', flexColumnStyle,
+const rootClass = cssClass(classPrefix, 'root', flexColumnStyle,
   { padding: 12 },
 );
 
-const titleAndSummaryClass = namedClass(classPrefix, 'titleAndSummary',
+const titleAndSummaryClass = cssClass(classPrefix, 'titleAndSummary',
   flexRowStyle,
   flexGrowStyle,
   {
@@ -28,7 +28,7 @@ const titleAndSummaryClass = namedClass(classPrefix, 'titleAndSummary',
   },
 );
 
-const titleAndSummaryTextClass = namedClass(classPrefix, 'titleAndSummaryText',
+const titleAndSummaryTextClass = cssClass(classPrefix, 'titleAndSummaryText',
   flexColumnStyle,
   flexGrowStyle,
   {
@@ -36,11 +36,11 @@ const titleAndSummaryTextClass = namedClass(classPrefix, 'titleAndSummaryText',
   },
 );
 
-const stepControlsClass = namedClass(classPrefix, 'stepControls',
+const stepControlsClass = cssClass(classPrefix, 'stepControls',
   flexColumnStyle,
 );
 
-const stepButtonClass = namedClass(classPrefix, 'stepButton',
+const stepButtonClass = cssClass(classPrefix, 'stepButton',
   {
     flex: '1',
     paddingLeft: 12,
@@ -65,9 +65,9 @@ const stepButtonClass = namedClass(classPrefix, 'stepButton',
   },
 );
 
-const titleClass = namedClass(classPrefix, 'title', textXLargeStyle);
+const titleClass = cssClass(classPrefix, 'title', textXLargeStyle);
 
-const stepsAndDiagramClass = namedClass(classPrefix, 'stepsAndDiagram',
+const stepsAndDiagramClass = cssClass(classPrefix, 'stepsAndDiagram',
   flexGrowStyle,
   flexRowStyle,
   { marginTop: 12 },

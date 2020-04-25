@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 import { LinkInfo } from '../../link';
 import { link, Paragraph, ParagraphView, RunView } from '../../paragraph';
-import { classes, flexGrowStyle, flexNoneStyle, flexRowStyle, namedClass } from '../../style';
+import { classes, cssClass, flexGrowStyle, flexNoneStyle, flexRowStyle } from '../../style';
 
 const classPrefix = 'StepView';
 
-const rootClass = namedClass(classPrefix, 'root', flexRowStyle, {
+const rootClass = cssClass(classPrefix, 'root', flexRowStyle, {
   cursor: 'pointer',
   borderLeft: '3px solid transparent',
   $nest: {
@@ -18,11 +18,11 @@ const rootClass = namedClass(classPrefix, 'root', flexRowStyle, {
   },
 });
 
-const fadedClass = namedClass(classPrefix, 'faded', {
+const fadedClass = cssClass(classPrefix, 'faded', {
   opacity: 0.5,
 });
 
-const highlightedClass = namedClass(classPrefix, 'highlighted', {
+const highlightedClass = cssClass(classPrefix, 'highlighted', {
   borderLeft: '3px solid orange',
   $nest: {
     '&:hover': {
@@ -32,7 +32,7 @@ const highlightedClass = namedClass(classPrefix, 'highlighted', {
   },
 });
 
-const numAndTextClass = namedClass(classPrefix, 'numAndText', flexRowStyle, {
+const numAndTextClass = cssClass(classPrefix, 'numAndText', flexRowStyle, {
   paddingTop: 6,
   paddingBottom: 6,
   textDecoration: 'none',
@@ -41,17 +41,17 @@ const numAndTextClass = namedClass(classPrefix, 'numAndText', flexRowStyle, {
   flex: '1',
 });
 
-const numberClass = namedClass(classPrefix, 'number', flexNoneStyle, {
+const numberClass = cssClass(classPrefix, 'number', flexNoneStyle, {
   width: 36,
   textAlign: 'right',
 });
 
-const textClass = namedClass(classPrefix, 'text', flexGrowStyle, {
+const textClass = cssClass(classPrefix, 'text', flexGrowStyle, {
   paddingLeft: 12,
   paddingRight: 12,
 });
 
-const linkClass = namedClass(classPrefix, 'link', flexNoneStyle, {
+const linkClass = cssClass(classPrefix, 'link', flexNoneStyle, {
   paddingTop: 6,
   paddingBottom: 6,
   width: 90,

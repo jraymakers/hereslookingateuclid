@@ -4,7 +4,7 @@ import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
-import { keyframes, namedClass } from '../../style';
+import { cssClass, keyframes } from '../../style';
 
 const width = 400;
 const height = 400;
@@ -35,23 +35,23 @@ const translateNegAnimation = keyframes({
 
 const cssPrefix = 'Book1Prop4';
 
-const posClass = namedClass(cssPrefix, 'pos', {
+const posClass = cssClass(cssPrefix, 'pos', {
   animationName: translatePosAnimation,
   animationDuration: '2s',
   animationFillMode: 'both',
 });
 
-const posDoneClass = namedClass(cssPrefix, 'posDone', {
+const posDoneClass = cssClass(cssPrefix, 'posDone', {
   transform: `translate(${width * 0.25}px, ${width * 0.2}px)`,
 });
 
-const negClass = namedClass(cssPrefix, 'neg', {
+const negClass = cssClass(cssPrefix, 'neg', {
   animationName: translateNegAnimation,
   animationDuration: '2s',
   animationFillMode: 'both',
 });
 
-const negDoneClass = namedClass(cssPrefix, 'negDone', {
+const negDoneClass = cssClass(cssPrefix, 'negDone', {
   transform: `translate(${-width * 0.25}px, ${-width * 0.2}px)`,
 });
 

@@ -1,5 +1,4 @@
-import { namedClass } from '../utils/StyleUtils';
-
+import { cssClass } from '../functions/cssClass';
 import {
   borderStyle,
   linkStyle,
@@ -12,13 +11,13 @@ import {
 
 const classPrefix = 'shared';
 
-export const borderClass = namedClass(classPrefix, 'border', borderStyle);
+export const borderClass = cssClass(classPrefix, 'border', borderStyle);
 
-export const linkClass = namedClass(classPrefix, 'link', linkStyle);
+export const linkClass = cssClass(classPrefix, 'link', linkStyle);
 
-export const paddingMediumClass = namedClass(classPrefix, 'paddingLarge', paddingMediumStyle);
+export const paddingMediumClass = cssClass(classPrefix, 'paddingLarge', paddingMediumStyle);
 
-export const textItalicClass = namedClass(classPrefix, 'textItalic', textItalicStyle);
-export const textLargeClass = namedClass(classPrefix, 'textLarge', textLargeStyle);
-export const textSmallClass = namedClass(classPrefix, 'textSmall', textSmallStyle);
-export const textXLargeClass = namedClass(classPrefix, 'textXLarge', textXLargeStyle);
+export const textItalicClass = cssClass(classPrefix, 'textItalic', textItalicStyle);
+export const textLargeClass = cssClass(classPrefix, 'textLarge', textLargeStyle);
+export const textSmallClass = cssClass(classPrefix, 'textSmall', textSmallStyle);
+export const textXLargeClass = cssClass(classPrefix, 'textXLarge', textXLargeStyle);
