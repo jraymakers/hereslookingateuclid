@@ -4,7 +4,7 @@ const path = require('path');
 
 const args = process.argv.slice(2);
 
-let dir = __dirname;
+let dir = process.cwd();;
 let port = 8080;
 
 for (let i = 0, l = args.length; i < l; i++) {
@@ -18,20 +18,31 @@ for (let i = 0, l = args.length; i < l; i++) {
   }
 }
 
+const pathMappings = {
+  '/': '/index.html'
+};
+
+const contentTypeForExtension = {
+  '.html': 'text/html',
+  '.js': 'text/javascript',
+  '.svg': 'image/svg+xml',
+};
+
 const server = http.createServer((request, response) => {
   const url = request.url;
-  console.log(url);
   const urlPath = url.split('?')[0];
-  let mappedPath = urlPath;
-  if (urlPath === '/') {
-    mappedPath = '/index.html';
-  }
+  const mappedPath = pathMappings[urlPath] || urlPath;
   const filePath = path.join(dir, mappedPath);
+  const extension = path.extname(filePath);
+  const contentType = contentTypeForExtension[extension];
+  console.log(`${url} -> ${filePath} (${contentType})`);
   fs.readFile(filePath, (err, data) => {
     if (err) {
       response.writeHead(404).end();
     } else {
-      response.writeHead(200).end(data);
+      response.writeHead(200, {
+        'Content-Type': contentType,
+      }).end(data);
     }
   });
 });

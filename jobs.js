@@ -3,7 +3,7 @@ const jr = require('jr');
 const path = require('path');
 
 const eslintPath = path.join('node_modules', '.bin', 'eslint');
-const serverPath = path.join('scripts', 'server.js');
+const servePath = path.join('scripts', 'serve.js');
 const webpackPath = path.join('node_modules', '.bin', 'webpack');
 
 const outDir = 'out';
@@ -32,7 +32,7 @@ module.exports = () => ({
     needs: ['copyFavicon', 'copyIndex']
   },
   copyFavicon: {
-    action: () => fse.copy(path.join(srcDir, 'favicon', 'favicon.png'), path.join(outDir, 'favicon.png'))
+    action: () => fse.copy(path.join(srcDir, 'favicon', 'favicon.svg'), path.join(outDir, 'favicon.svg'))
   },
   copyIndex: {
     action: () => fse.copy(path.join(srcDir, 'entry', 'index.html'), path.join(outDir, 'index.html'))
@@ -48,7 +48,7 @@ module.exports = () => ({
       { cwd: __dirname })
   },
   serve: {
-    action: jr.scriptAction(serverPath, ['./out', '-p', '12345'], { cwd: __dirname })
+    action: jr.scriptAction(servePath, ['./out', '-p', '12345'], { cwd: __dirname })
   },
   watch: {
     action: jr.scriptAction(webpackPath, ['--hide-modules', '--progress', '--watch'], { cwd: __dirname })
