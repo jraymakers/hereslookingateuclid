@@ -2,8 +2,8 @@ const fse = require('fs-extra');
 const jr = require('jr');
 const path = require('path');
 
+const basicServePath = path.join('node_modules', '.bin', 'basicServe');
 const eslintPath = path.join('node_modules', '.bin', 'eslint');
-const servePath = path.join('scripts', 'serve.js');
 const webpackPath = path.join('node_modules', '.bin', 'webpack');
 
 const outDir = 'out';
@@ -48,7 +48,7 @@ module.exports = () => ({
       { cwd: __dirname })
   },
   serve: {
-    action: jr.scriptAction(servePath, ['./out'], { cwd: __dirname })
+    action: jr.scriptAction(basicServePath, ['./out'], { cwd: __dirname })
   },
   watch: {
     action: jr.scriptAction(webpackPath, ['--hide-modules', '--progress', '--watch'], { cwd: __dirname })
