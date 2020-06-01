@@ -30,7 +30,6 @@ const diagram: Diagram = {
   width,
   height,
   parts: {
-
     ['AB']: { type: 'line', p1: 'A', p2: 'B' },
     ['AB ']: { type: 'line', p1: 'A ', p2: 'B' },
     ['BC']: { type: 'line', p1: 'B', p2: 'C' },

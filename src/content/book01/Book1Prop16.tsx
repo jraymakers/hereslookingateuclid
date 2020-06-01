@@ -34,7 +34,6 @@ const diagram: Diagram = {
   width,
   height,
   parts: {
-
     ['AB']: { type: 'line', p1: 'A', p2: 'B' },
     ['AC']: { type: 'line', p1: 'A', p2: 'C' },
     ['AE']: { type: 'line', p1: 'A', p2: 'E' },
