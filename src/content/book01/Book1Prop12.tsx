@@ -9,6 +9,7 @@ import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
+import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -72,7 +73,8 @@ const steps: StepList = [
   {
     name: '1',
     text: [
-      ['Let AB be the given infinite straight line, and C the given point not on it.'],
+      ['Let ', highlight('AB'), ' be the given infinite straight line, and ',
+       highlight('C'), ' the given point not on it.'],
     ],
     highlight: [ 'A', 'B', 'C', 'ab' ],
   },
@@ -86,7 +88,7 @@ const steps: StepList = [
   {
     name: '3',
     text: [
-      ['Pick a point D on the other side of AB from C.'],
+      ['Pick a point ', highlight('D'), ' on the other side of AB from C.'],
     ],
     hide: [ 'CG', '∟CGE', '∟CGF' ],
     highlight: [ 'D' ],
@@ -94,7 +96,7 @@ const steps: StepList = [
   {
     name: '4',
     text: [
-      ['Construct circle α with center C and radius CD.'],
+      ['Construct circle ', highlight('α'), ' with center C and radius ', highlight('CD'), '.'],
     ],
     link: postulateRefLink('I', '3'),
     highlight: [ 'α', 'CD' ],
@@ -102,7 +104,7 @@ const steps: StepList = [
   {
     name: '5',
     text: [
-      ['Let E and F be the intersection points of AB and α.'],
+      ['Let ', highlight('E'), ' and ', highlight('F'), ' be the intersection points of AB and α.'],
     ],
     hide: [ 'CD' ],
     highlight: [ 'E', 'F' ],
@@ -110,7 +112,7 @@ const steps: StepList = [
   {
     name: '6',
     text: [
-      ['Bisect EF at G. So EG equals FG.'],
+      ['Bisect EF at ', highlight('G'), '. So ', highlight('EG'), ' equals ', highlight('FG'), '.'],
     ],
     link: propositionRefLink('I', '10'),
     highlight: [ 'G', 'EG', 'FG' ],
@@ -118,7 +120,7 @@ const steps: StepList = [
   {
     name: '7',
     text: [
-      ['Construct CE, CF, and CG.'],
+      ['Construct ', highlight('CE'), ', ', highlight('CF'), ', and ', highlight('CG'), '.'],
     ],
     link: postulateRefLink('I', '1'),
     highlight: [ 'CE', 'CF', 'CG' ],
@@ -126,7 +128,7 @@ const steps: StepList = [
   {
     name: '8',
     text: [
-      ['Since CE and CF are both radii of α, they are equal.'],
+      ['Since ', highlight('CE'), ' and ', highlight('CF'), ' are both radii of α, they are equal.'],
     ],
     link: definitionRefLink('I', '15-18', '15'),
     highlight: [ 'CE', 'CF' ],
@@ -134,8 +136,9 @@ const steps: StepList = [
   {
     name: '9',
     text: [
-      ['Since the triangles CEG and CFG have CE equal CF, CG common, and EG equal FG, ',
-       'then ∠CGE equals ∠CGF.'],
+      ['Since the triangles CEG and CFG have ', highlight('CE'), ' equal ', highlight('CF'),
+       ', ', highlight('CG'), ' common, and ', highlight('EG'), ' equal ', highlight('FG'), ', ',
+       'then ', highlight('∠CGE'), ' equals ', highlight('∠CGF'), '.'],
     ],
     link: propositionRefLink('I', '8'),
     highlight: [ 'CE', 'CF', 'CG', 'EG', 'FG', '∠CGE', '∠CGF' ],
@@ -143,8 +146,10 @@ const steps: StepList = [
   {
     name: '10',
     text: [
-      ['Since the straight line CG standing on the straight line AB makes equal angles ∠CGE and ∠CGF, ',
-       'both ∠CGE and ∠CGF are right angles, and CG is perpendicular to AB.'],
+      ['Since the straight line CG standing on the straight line AB makes equal angles ',
+       highlight('∠CGE'), ' and ', highlight('∠CGF'), ', ',
+       'both ', highlight('∠CGE'), ' and ', highlight('∠CGF'),
+       ' are right angles, and CG is perpendicular to AB.'],
     ],
     link: definitionRefLink('I', '8-12', '10'),
     hide: [ '∠CGE', '∠CGF' ],
@@ -153,10 +158,9 @@ const steps: StepList = [
   {
     name: '11',
     text: [
-      ['So CG is a straight line perpendicular to AB from C, as required.'],
+      ['So ', highlight('CG'), ' is a straight line perpendicular to AB from C, as required.'],
     ],
-    hide: [ '∟CGE', '∟CGF' ],
-    highlight: [ 'CG' ],
+    highlight: [ 'CG', '∟CGE', '∟CGF' ],
   },
 ];
 
