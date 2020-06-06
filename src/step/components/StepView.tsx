@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { LinkInfo } from '../../link';
 import { link, Paragraph, ParagraphView, RunView } from '../../paragraph';
 import { classes, cssClass, flexGrowStyle, flexNoneStyle, flexRowStyle } from '../../style';
+import { textHighlightClass } from '../../style/constants/ClassConstants';
 
 const classPrefix = 'StepView';
 
@@ -29,6 +30,9 @@ const highlightedClass = cssClass(classPrefix, 'highlighted', {
       $unique: true,
       borderLeft: '3px solid orange',
     },
+    [`.${textHighlightClass}`]: {
+      color: 'orange',
+    }
   },
 });
 

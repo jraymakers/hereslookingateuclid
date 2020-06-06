@@ -21,3 +21,5 @@ export const textItalicClass = cssClass(classPrefix, 'textItalic', textItalicSty
 export const textLargeClass = cssClass(classPrefix, 'textLarge', textLargeStyle);
 export const textSmallClass = cssClass(classPrefix, 'textSmall', textSmallStyle);
 export const textXLargeClass = cssClass(classPrefix, 'textXLarge', textXLargeStyle);
+
+export const textHighlightClass = cssClass(classPrefix, 'textHighlight', {});

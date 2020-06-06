@@ -5,6 +5,7 @@ import {
 } from '../../style';
 
 import { AnchorRun, LinkRun, StyledRun } from '../types/Paragraph';
+import { textHighlightClass } from '../../style/constants/ClassConstants';
 
 export function anchor(linkInfo: LinkInfo): AnchorRun {
   return { type: 'anchor', linkInfo };
@@ -24,4 +25,8 @@ export function italic(text: string): StyledRun {
 
 export function xlarge(text: string): StyledRun {
   return styled(textXLargeClass, text);
+}
+
+export function highlight(text: string): StyledRun {
+  return styled(textHighlightClass, text);
 }

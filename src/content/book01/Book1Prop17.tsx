@@ -8,6 +8,7 @@ import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
+import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -34,7 +35,6 @@ const diagram: Diagram = {
     ['∠ABC']: { type: 'angle', p1: 'A', v: 'B', p2: 'C', r: 35, ccw: false },
     ['∠ACB']: { type: 'angle', p1: 'A', v: 'C', p2: 'B', r: 35, ccw: true },
     ['∠ACD']: { type: 'angle', p1: 'A', v: 'C', p2: 'D', r: 35, ccw: false },
-    // ['∠BAC']: { type: 'angle', p1: 'B', v: 'A', p2: 'C', r: 35, ccw: true },
 
     ['A']: { type: 'point', x: aX, y: aY, labelY: -12 },
     ['B']: { type: 'point', x: bX, y: bY, labelX: -12 },
@@ -47,14 +47,14 @@ const steps: StepList = [
   {
     name: '1',
     text: [
-      ['Let ABC be any triangle.'],
+      ['Let ', highlight('ABC'), ' be any triangle.'],
     ],
     highlight: [ 'A', 'B', 'C', 'AB', 'AC', 'BC' ],
   },
   {
     name: '2',
     text: [
-      ['Extend BC to create CD.'],
+      ['Extend BC to create ', highlight('CD'), '.'],
     ],
     link: postulateRefLink('I', '2'),
     highlight: [ 'D', 'CD' ],
@@ -62,15 +62,17 @@ const steps: StepList = [
   {
     name: '3',
     text: [
-      ['It is required to show that the sum of the angles ∠ABC and ∠ACB ',
-       'is less than two right angles.'],
+      ['It is required to show that the sum of the angles ',
+       highlight('∠ABC'), ' and ', highlight('∠ACB'),
+       ' is less than two right angles.'],
     ],
     highlight: [ '∠ABC', '∠ACB' ],
   },
   {
     name: '4',
     text: [
-      ['The exterior angle ∠ACD is greater than the opposite interior angle ∠ABC.'],
+      ['The exterior angle ', highlight('∠ACD'),
+       ' is greater than the opposite interior angle ', highlight('∠ABC'), '.'],
     ],
     link: propositionRefLink('I', '16'),
     hide: [ '∠ACB' ],
@@ -79,14 +81,17 @@ const steps: StepList = [
   {
     name: '5',
     text: [
-      ['Add ∠ACB to each. Then the sum of ∠ACD and ∠ACB is greater than the sum of ∠ABC and ∠ACB.'],
+      ['Add ', highlight('∠ACB'), ' to each.',
+       ' Then the sum of ∠ACD and ', highlight('∠ACB'),
+       ' is greater than the sum of ∠ABC and ', highlight('∠ACB'), '.'],
     ],
     highlight: [ '∠ACB' ],
   },
   {
     name: '6',
     text: [
-      ['Since AC stands on BD, the sum of ∠ACD and ∠ACB equals two right angles.'],
+      ['Since ', highlight('AC'), ' stands on ', highlight('BD'), ', the sum of ',
+       highlight('∠ACD'),' and ', highlight('∠ACB'), ' equals two right angles.'],
     ],
     link: propositionRefLink('I', '13'),
     hide: [ '∠ABC' ],
@@ -95,7 +100,8 @@ const steps: StepList = [
   {
     name: '7',
     text: [
-      ['So, the sum of ∠ABC and ∠ACB is less than two right angles, as required.'],
+      ['So, the sum of ', highlight('∠ABC'), ' and ', highlight('∠ACB'),
+       ' is less than two right angles, as required.'],
     ],
     highlight: [ '∠ABC', '∠ACB' ],
   },
