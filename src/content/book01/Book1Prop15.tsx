@@ -96,7 +96,8 @@ const steps: StepList = [
   {
     name: '6',
     text: [
-      ['Subtract ∠AED from each. Then the remaining angle ∠AEC equals the remaining angle ∠BED, as required.'],
+      ['Subtract ∠AED from each. Then the remaining angle ', highlight('∠AEC'),
+       ' equals the remaining angle ', highlight('∠BED'), ', as required.'],
     ],
     link: commonNotionRefLink('I', '3'),
     hide: [ '∠AED' ],
@@ -105,7 +106,7 @@ const steps: StepList = [
   {
     name: '7',
     text: [
-      ['Similarly, it can be shown that ∠AED equals ∠BEC, as required.'],
+      ['Similarly, it can be shown that ', highlight('∠AED'), ' equals ', highlight('∠BEC'), ', as required.'],
     ],
     hide: [ '∠AEC', '∠BED' ],
     highlight: [ '∠AED', '∠BEC' ],
