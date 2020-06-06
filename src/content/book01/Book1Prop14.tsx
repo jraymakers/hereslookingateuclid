@@ -7,6 +7,7 @@ import {
 } from '../../link';
 import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
+import { highlight } from '../../paragraph/utils/RunUtils';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
 
@@ -49,15 +50,17 @@ const steps: StepList = [
   {
     name: '1',
     text: [
-      ['Let AB be the given straight line, and let BC and BD lie on different sides of it, ',
-       'making angles ∠ABC and ∠ABD that sum to two right angles.'],
+      ['Let ', highlight('AB'), ' be the given straight line, and let ', highlight('BC'),
+       ' and ', highlight('BD'), ' lie on different sides of it, ',
+       'making angles ', highlight('∠ABC'), ' and ', highlight('∠ABD'), ' that sum to two right angles.'],
     ],
     highlight: [ 'A', 'B', 'C', 'D', 'AB', 'BC', 'BD', '∠ABC', '∠ABD' ],
   },
   {
     name: '2',
     text: [
-      ['It is required to show that BC and BD lie on the same straight line.'],
+      ['It is required to show that ', highlight('BC'), ' and ', highlight('BD'),
+       ' lie on the same straight line.'],
     ],
     hide: [ '∠ABC', '∠ABD' ],
     highlight: [ 'BC', 'BD' ],
@@ -66,7 +69,7 @@ const steps: StepList = [
     name: '3',
     text: [
       ['Assume the opposite, that BC and BD do not lie on the same straight line. ',
-       'Then extend BC in a straight line to create BE.'],
+       'Then extend BC in a straight line to create ', highlight('BE'), '.'],
     ],
     link: postulateRefLink('I', '2'),
     highlight: [ 'E', 'BE' ],
@@ -75,7 +78,7 @@ const steps: StepList = [
     name: '4',
     text: [
       ['Since the straight line AB stands on the (assumed) straight line CBE, ',
-       'the sum of the angles ∠ABC and ∠ABE equals two right angles.'],
+       'the sum of the angles ', highlight('∠ABC'), ' and ', highlight('∠ABE'), ' equals two right angles.'],
     ],
     link: propositionRefLink('I', '13'),
     highlight: [ '∠ABC', '∠ABE' ],
@@ -83,16 +86,17 @@ const steps: StepList = [
   {
     name: '5',
     text: [
-      ['Since ∠ABC and ∠ABD also sum to two right angles, ',
-       'the sum of ∠ABC and ∠ABD equals the sum of ∠ABC and ∠ABE.'],
+      ['Since ∠ABC and ', highlight('∠ABD'), ' also sum to two right angles, ',
+       'the sum of ∠ABC and ', highlight('∠ABD'), ' equals the sum of ∠ABC and ∠ABE.'],
     ],
     links: [ postulateRefLink('I', '4'), commonNotionRefLink('I', '1') ],
-    highlight: [ '∠ABC', '∠ABD', '∠ABE' ],
+    highlight: [ '∠ABD' ],
   },
   {
     name: '6',
     text: [
-      ['Subtract ∠ABC from each. Then the remaining angle ∠ABD equals the remaining angle ∠ABE.'],
+      ['Subtract ∠ABC from each. Then the remaining angle ', highlight('∠ABD'),
+       ' equals the remaining angle ', highlight('∠ABE'), '.'],
     ],
     link: commonNotionRefLink('I', '3'),
     hide: [ '∠ABC' ],
@@ -101,17 +105,20 @@ const steps: StepList = [
   {
     name: '7',
     text: [
-      ['But, according to our assumption, BD and BE do not lie on the same straight line. ',
+      ['But, according to our assumption, ', highlight('BD'), ' and ', highlight('BE'),
+       ' do not lie on the same straight line. ',
        'So, either ∠ABD or ∠ABE is greater than the other, thus they cannot be equal.'],
     ],
     link: commonNotionRefLink('I', '5'),
-    highlight: [ 'BD', 'BE', '∠ABD', '∠ABE' ],
+    highlight: [ 'BD', 'BE' ],
   },
   {
     name: '8',
     text: [
-      ['So the assumption must be wrong, thus BC and BD must lie on the same straight line, as required.'],
+      ['So the assumption must be wrong, thus ', highlight('BC'), ' and ', highlight('BD'),
+       ' must lie on the same straight line, as required.'],
     ],
+    hide: [ '∠ABD', '∠ABE' ], 
     highlight: [ 'BC', 'BD' ],
   },
 ];
