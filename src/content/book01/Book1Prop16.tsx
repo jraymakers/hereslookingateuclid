@@ -7,6 +7,7 @@ import {
 } from '../../link';
 import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
+import { highlight } from '../../paragraph/utils/RunUtils';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
 
@@ -72,14 +73,14 @@ const steps: StepList = [
   {
     name: '1',
     text: [
-      ['Let ABC be any triangle.'],
+      ['Let ', highlight('ABC'), ' be any triangle.'],
     ],
     highlight: [ 'A', 'B', 'C', 'AB', 'AC', 'BC' ],
   },
   {
     name: '2',
     text: [
-      ['Extend BC to create CD.'],
+      ['Extend BC to create ', highlight('CD'), '.'],
     ],
     link: postulateRefLink('I', '2'),
     highlight: [ 'D', 'CD' ],
@@ -87,15 +88,15 @@ const steps: StepList = [
   {
     name: '3',
     text: [
-      ['It is required to show that the exterior angle ∠ACD is greater than ',
-       'either of the two opposite interior angles, ∠ABC or ∠BAC.'],
+      ['It is required to show that the exterior angle ', highlight('∠ACD'), ' is greater than ',
+       'either of the two opposite interior angles, ', highlight('∠ABC'), ' or ', highlight('∠BAC'), '.'],
     ],
     highlight: [ '∠ABC', '∠ACD', '∠BAC' ],
   },
   {
     name: '4',
     text: [
-      ['Bisect AC at E.'],
+      ['Bisect AC at ', highlight('E'), '.'],
     ],
     link: propositionRefLink('I', '10'),
     hide: [ '∠ABC', '∠ACD', '∠BAC' ],
@@ -104,7 +105,7 @@ const steps: StepList = [
   {
     name: '5',
     text: [
-      ['Construct BE.'],
+      ['Construct ', highlight('BE'), '.'],
     ],
     link: postulateRefLink('I', '1'),
     highlight: [ 'BE' ],
@@ -112,7 +113,7 @@ const steps: StepList = [
   {
     name: '6',
     text: [
-      ['Extend BE to create EF.'],
+      ['Extend BE to create ', highlight('EF'), '.'],
     ],
     link: postulateRefLink('I', '2'),
     highlight: [ 'F', 'EF' ],
@@ -120,7 +121,7 @@ const steps: StepList = [
   {
     name: '7',
     text: [
-      ['Pick G on EF such that EG equals BE.'],
+      ['Pick ', highlight('G'), ' on EF such that ', highlight('EG'), ' equals ', highlight('BE'), '.'],
     ],
     link: propositionRefLink('I', '3'),
     highlight: [ 'G', 'BE', 'EG' ],
@@ -128,7 +129,7 @@ const steps: StepList = [
   {
     name: '8',
     text: [
-      ['Construct CG.'],
+      ['Construct ', highlight('CG'), '.'],
     ],
     link: postulateRefLink('I', '1'),
     highlight: [ 'CG' ],
@@ -136,7 +137,7 @@ const steps: StepList = [
   {
     name: '9',
     text: [
-      ['Extend AC to create CH.'],
+      ['Extend AC to create ', highlight('CH'), '.'],
     ],
     link: postulateRefLink('I', '2'),
     highlight: [ 'H', 'CH' ],
@@ -144,7 +145,8 @@ const steps: StepList = [
   {
     name: '10',
     text: [
-      ['Since AC and BG intersect at E, the opposite angles ∠AEB and ∠CEG are equal.'],
+      ['Since AC and BG intersect at E, the opposite angles ',
+       highlight('∠AEB'), ' and ', highlight('∠CEG'), ' are equal.'],
     ],
     link: propositionRefLink('I', '15'),
     highlight: [ '∠AEB', '∠CEG' ],
@@ -152,8 +154,10 @@ const steps: StepList = [
   {
     name: '11',
     text: [
-      ['Consider the triangles AEB and CEG. AE equals CE, BE equals EG, and ∠AEB equals ∠CEG. ',
-       'So, the triangles are equal, thus ∠BAE equals ∠ECG.'],
+      ['Consider the triangles ', highlight('AEB'), ' and ', highlight('CEG'), '. ',
+       highlight('AE'), ' equals ', highlight('CE'), ', ', highlight('BE'), ' equals ', highlight('EG'),
+       ', and ', highlight('∠AEB'), ' equals ', highlight('∠CEG'), '. ',
+       'So, the triangles are equal, thus ', highlight('∠BAE'), ' equals ', highlight('∠ECG'), '.'],
     ],
     link: propositionRefLink('I', '4'),
     highlight: [ 'AB', 'AE', 'BE', 'CE', 'CG', 'EG', '∠AEB', '∠BAE', '∠CEG', '∠ECG' ],
@@ -161,8 +165,10 @@ const steps: StepList = [
   {
     name: '12',
     text: [
-      ['Since ∠ECD is greater than ∠ECG, ∠ECD must also be greater than ∠BAE. ',
-       'Thus ∠ACD (same as ∠ECD) is greater than ∠BAC (same as ∠BAE), as required.'],
+      ['Since ', highlight('∠ECD'), ' is greater than ', highlight('∠ECG'), ', ', highlight('∠ECD'),
+       ' must also be greater than ', highlight('∠BAE'), '. ',
+       'Thus ', highlight('∠ACD'), ' (same as ', highlight('∠ECD'), ') is greater than ',
+        highlight('∠BAC'), ' (same as ', highlight('∠BAE'), '), as required.'],
     ],
     link: commonNotionRefLink('I', '5'),
     hide: [ '∠AEB', '∠CEG' ],
@@ -171,7 +177,8 @@ const steps: StepList = [
   {
     name: '13',
     text: [
-      ['By bisecting BC and using a similar argument, we can show that ∠BCH is greater than ∠ABC.'],
+      ['By bisecting BC and using a similar argument, we can show that ', highlight('∠BCH'),
+       ' is greater than ', highlight('∠ABC'), '.'],
     ],
     hide: [ '∠BAE', '∠ECD', '∠ECG'  ],
     highlight: [ '∠ABC', '∠BCH' ],
@@ -179,8 +186,8 @@ const steps: StepList = [
   {
     name: '14',
     text: [
-      ['Since AH and BD intersect at C, the opposite angles ∠ACD and ∠BCH are equal. ',
-       'Thus ∠ACD is also greater than ∠ABC, as required.'],
+      ['Since AH and BD intersect at C, the opposite angles ', highlight('∠ACD'), ' and ', highlight('∠BCH'),
+       ' are equal. Thus ', highlight('∠ACD'), ' is also greater than ' ,highlight('∠ABC'), ', as required.'],
     ],
     link: commonNotionRefLink('I', '5'),
     highlight: [ '∠ABC', '∠ACD', '∠BCH' ],
