@@ -154,25 +154,23 @@ const steps: StepList = [
   {
     name: '11',
     text: [
-      ['Consider the triangles ', highlight('AEB'), ' and ', highlight('CEG'), '. ',
-       highlight('AE'), ' equals ', highlight('CE'), ', ', highlight('BE'), ' equals ', highlight('EG'),
-       ', and ', highlight('∠AEB'), ' equals ', highlight('∠CEG'), '. ',
+      ['Consider the triangles AEB and CEG. ', highlight('AE'), ' equals ', highlight('CE'),
+       ', ', highlight('BE'), ' equals ', highlight('EG'), ', and ∠AEB equals ∠CEG. ',
        'So, the triangles are equal, thus ', highlight('∠BAE'), ' equals ', highlight('∠ECG'), '.'],
     ],
     link: propositionRefLink('I', '4'),
-    highlight: [ 'AB', 'AE', 'BE', 'CE', 'CG', 'EG', '∠AEB', '∠BAE', '∠CEG', '∠ECG' ],
+    highlight: [ 'AE', 'BE', 'CE', 'EG', '∠BAE', '∠ECG' ],
   },
   {
     name: '12',
     text: [
-      ['Since ', highlight('∠ECD'), ' is greater than ', highlight('∠ECG'), ', ', highlight('∠ECD'),
-       ' must also be greater than ', highlight('∠BAE'), '. ',
-       'Thus ', highlight('∠ACD'), ' (same as ', highlight('∠ECD'), ') is greater than ',
-        highlight('∠BAC'), ' (same as ', highlight('∠BAE'), '), as required.'],
+      ['Since ', highlight('∠ECD'), ' is greater than ∠ECG, ', highlight('∠ECD'),
+       ' must also be greater than ∠BAE. ', 'Thus ', highlight('∠ACD'),
+       ' (same as ', highlight('∠ECD'), ') is greater than ∠BAC (same as ∠BAE), as required.'],
     ],
     link: commonNotionRefLink('I', '5'),
     hide: [ '∠AEB', '∠CEG' ],
-    highlight: [ '∠BAE', '∠ECD', '∠ECG' ],
+    highlight: [ '∠ECD' ],
   },
   {
     name: '13',
@@ -187,10 +185,10 @@ const steps: StepList = [
     name: '14',
     text: [
       ['Since AH and BD intersect at C, the opposite angles ', highlight('∠ACD'), ' and ', highlight('∠BCH'),
-       ' are equal. Thus ', highlight('∠ACD'), ' is also greater than ' ,highlight('∠ABC'), ', as required.'],
+       ' are equal. Thus ', highlight('∠ACD'), ' is also greater than ∠ABC, as required.'],
     ],
     link: commonNotionRefLink('I', '5'),
-    highlight: [ '∠ABC', '∠ACD', '∠BCH' ],
+    highlight: [ '∠ACD', '∠BCH' ],
   },
 ];
 

@@ -1,14 +1,10 @@
 import { Diagram } from '../../diagram';
-import {
-  postulateRefLink,
-  propositionRefLink,
-  propositionTitle,
-} from '../../link';
+import { postulateRefLink, propositionRefLink, propositionTitle } from '../../link';
 import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
+import { highlight } from '../../paragraph/utils/RunUtils';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
-import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -72,11 +68,11 @@ const steps: StepList = [
     name: '4',
     text: [
       ['The exterior angle ', highlight('∠ACD'),
-       ' is greater than the opposite interior angle ', highlight('∠ABC'), '.'],
+       ' is greater than the opposite interior angle ∠ABC.'],
     ],
     link: propositionRefLink('I', '16'),
     hide: [ '∠ACB' ],
-    highlight: [ '∠ABC', '∠ACD' ],
+    highlight: [ '∠ACD' ],
   },
   {
     name: '5',
@@ -90,12 +86,12 @@ const steps: StepList = [
   {
     name: '6',
     text: [
-      ['Since ', highlight('AC'), ' stands on ', highlight('BD'), ', the sum of ',
+      ['Since AC stands on BD, the sum of ',
        highlight('∠ACD'),' and ', highlight('∠ACB'), ' equals two right angles.'],
     ],
     link: propositionRefLink('I', '13'),
     hide: [ '∠ABC' ],
-    highlight: [ 'AC', 'BC', 'CD', '∠ACB', '∠ACD' ],
+    highlight: [ '∠ACB', '∠ACD' ],
   },
   {
     name: '7',
@@ -103,6 +99,7 @@ const steps: StepList = [
       ['So, the sum of ', highlight('∠ABC'), ' and ', highlight('∠ACB'),
        ' is less than two right angles, as required.'],
     ],
+    hide: [ '∠ACD' ],
     highlight: [ '∠ABC', '∠ACB' ],
   },
 ];

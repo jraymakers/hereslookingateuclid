@@ -7,6 +7,7 @@ import {
 } from '../../link';
 import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
+import { highlight } from '../../paragraph/utils/RunUtils';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
 
@@ -50,42 +51,47 @@ const steps: StepList = [
   {
     name: '1',
     text: [
-      ['Let AB and CD intersect at E.'],
+      ['Let ', highlight('AB'), ' and ', highlight('CD'), ' intersect at ', highlight('E'), '.'],
     ],
     highlight: [ 'A', 'B', 'C', 'D', 'E', 'AE', 'BE', 'CE', 'DE' ],
   },
   {
     name: '2',
     text: [
-      ['It is required to show that ∠AEC equals ∠BED and ∠AED equals ∠BEC.'],
+      ['It is required to show that ', highlight('∠AEC'), ' equals ', highlight('∠BED'),
+       ' and ', highlight('∠AED'), ' equals ', highlight('∠BEC'), '.'],
     ],
     highlight: [ '∠AEC', '∠AED', '∠BEC', '∠BED' ],
   },
   {
     name: '3',
     text: [
-      ['Since AE stands on CD, the sum of ∠AEC and ∠AED equals two right angles.'],
+      ['Since AE stands on CD, the sum of ', highlight('∠AEC'), ' and ', highlight('∠AED'),
+       ' equals two right angles.'],
     ],
     link: propositionRefLink('I', '13'),
     hide: [ '∠BEC', '∠BED' ],
-    highlight: [ 'AE', 'CE', 'DE', '∠AEC', '∠AED' ],
+    highlight: [ '∠AEC', '∠AED' ],
   },
   {
     name: '4',
     text: [
-      ['Likewise, since DE stands on AB, the sum of ∠AED and ∠BED equals two right angles.'],
+      ['Likewise, since DE stands on AB, the sum of ', highlight('∠AED'), ' and ', highlight('∠BED'),
+       ' equals two right angles.'],
     ],
     link: propositionRefLink('I', '13'),
     hide: [ '∠AEC' ],
-    highlight: [ 'AE', 'BE', 'DE', '∠AED', '∠BED' ],
+    highlight: [ '∠AED', '∠BED' ],
   },
   {
     name: '5',
     text: [
-      ['Since both equal two right angles, the sum of ∠AEC and ∠AED equals the sum of ∠AED and ∠BED.'],
+      ['Since both equal two right angles, the sum of ∠AEC and ', highlight('∠AED'),
+       ' equals the sum of ', highlight('∠AED'), ' and ∠BED.'],
     ],
     links: [ postulateRefLink('I', '4'), commonNotionRefLink('I', '1') ],
-    highlight: [ '∠AEC', '∠AED', '∠BED' ],
+    show: [ '∠AEC' ],
+    highlight: [ '∠AED' ],
   },
   {
     name: '6',
