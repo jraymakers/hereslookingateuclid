@@ -9,6 +9,7 @@ import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
+import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -60,7 +61,8 @@ const steps: StepList = [
   {
     name: '1',
     text: [
-      ['Let AB be the given straight line, and C the given point on it.'],
+      ['Let ', highlight('AB'), ' be the given straight line, and ',
+       highlight('C'), ' the given point on it.'],
     ],
     highlight: [ 'A', 'B', 'C', 'AB' ],
   },
@@ -69,12 +71,13 @@ const steps: StepList = [
     text: [
       ['It is required to construct a straight line perpendicular to AB from C.'],
     ],
-    highlight: [ 'F',  'CF', '∟DCF', '∟ECF' ],
+    highlight: [ 'CF', '∟DCF', '∟ECF' ],
   },
   {
     name: '3',
     text: [
-      ['Pick a point D on AC and a point E on BC such that CD equals CE.'],
+      ['Pick a point ', highlight('D'), ' on AC and a point ', highlight('E'),
+       ' on BC such that ', highlight('CD'), ' equals ', highlight('CE'), '.'],
     ],
     link: propositionRefLink('I', '3'),
     hide: [ 'F',  'CF', '∟DCF', '∟ECF' ],
@@ -83,7 +86,7 @@ const steps: StepList = [
   {
     name: '4',
     text: [
-      ['Construct an equilateral triangle DEF on DE.'],
+      ['Construct an equilateral triangle ', highlight('DEF'), ' on DE.'],
     ],
     link: propositionRefLink('I', '1'),
     highlight: [ 'F', 'DE', 'DF', 'EF' ],
@@ -91,7 +94,7 @@ const steps: StepList = [
   {
     name: '5',
     text: [
-      ['Construct CF.'],
+      ['Construct ', highlight('CF'), '.'],
     ],
     link: postulateRefLink('I', '1'),
     highlight: [ 'CF' ],
@@ -99,7 +102,7 @@ const steps: StepList = [
   {
     name: '6',
     text: [
-      ['Since DEF is equilateral, DF equal EF.'],
+      ['Since DEF is equilateral, ', highlight('DF'), ' equal ', highlight('EF'), '.'],
     ],
     link: definitionRefLink('I', '20-21', '20a'),
     highlight: [ 'DF', 'EF' ],
@@ -107,8 +110,9 @@ const steps: StepList = [
   {
     name: '7',
     text: [
-      ['Since the triangles CDF and CEF have CD equal CE, CF common, and DF equal EF, ',
-       'then ∠DCF equals ∠ECF.'],
+      ['Since the triangles CDF and CEF have ', highlight('CD'), ' equal ', highlight('CE'),
+       ', ', highlight('CF'), ' common, and ', highlight('DF'), ' equal ', highlight('EF'),
+       ', then ', highlight('∠DCF'), ' equals ', highlight('∠ECF'), '.'],
     ],
     link: propositionRefLink('I', '8'),
     hide: [ 'DE' ],
@@ -117,8 +121,9 @@ const steps: StepList = [
   {
     name: '8',
     text: [
-      ['Since the straight line CF standing on the straight line AB makes equal angles ∠DCF and ∠ECF, ',
-       'both ∠DCF and ∠ECF are right angles, and CF is perpendicular to AB.'],
+      ['Since the straight line CF standing on the straight line AB makes equal angles ',
+       highlight('∠DCF'), ' and ', highlight('∠ECF'), ', both ',
+       highlight('∠DCF'), ' and ', highlight('∠ECF'), ' are right angles, and CF is perpendicular to AB.'],
     ],
     link: definitionRefLink('I', '8-12', '10'),
     hide: [ '∠DCF', '∠ECF' ],
@@ -127,9 +132,9 @@ const steps: StepList = [
   {
     name: '9',
     text: [
-      ['So CF is a straight line perpendicular to AB from C, as required.'],
+      ['So ', highlight('CF'), ' is a straight line perpendicular to AB from C, as required.'],
     ],
-    hide: [ '∟DCF', '∟ECF' ],
+    show: [ '∟DCF', '∟ECF' ],
     highlight: [ 'CF' ],
   },
 ];

@@ -160,7 +160,8 @@ const steps: StepList = [
     text: [
       ['So ', highlight('CG'), ' is a straight line perpendicular to AB from C, as required.'],
     ],
-    highlight: [ 'CG', '∟CGE', '∟CGF' ],
+    show: [ '∟CGE', '∟CGF' ],
+    highlight: [ 'CG' ],
   },
 ];
 
