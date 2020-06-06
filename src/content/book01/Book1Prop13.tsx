@@ -7,6 +7,7 @@ import {
 } from '../../link';
 import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
+import { highlight } from '../../paragraph/utils/RunUtils';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
 
@@ -59,23 +60,23 @@ const steps: StepList = [
   {
     name: '1',
     text: [
-      ['Let AB be a straight line standing on another straight line CD, ',
-       'making the angles ∠ABC and ∠ABD.'],
+      ['Let ', highlight('AB'), ' be a straight line standing on another straight line ', highlight('CD'),
+       ', making the angles ', highlight('∠ABC'), ' and ', highlight('∠ABD'), '.'],
     ],
     highlight: [ 'A', 'B', 'C', 'D', 'AB', 'BC', 'BD', '∠ABC', '∠ABD' ],
   },
   {
     name: '2',
     text: [
-      ['It is required to show that either ∠ABC and ∠ABD are right angles, ',
-       'or that their sum equals two right angles.'],
+      ['It is required to show that either ', highlight('∠ABC'), ' and ', highlight('∠ABD'),
+       ' are right angles, or that their sum equals two right angles.'],
     ],
     highlight: [ '∠ABC', '∠ABD' ],
   },
   {
     name: '3',
     text: [
-      ['If ∠ABC and ∠ABD are equal, then they are two right angles.'],
+      ['If ', highlight('∠ABC'), ' and ', highlight('∠ABD'), ' are equal, then they are two right angles.'],
     ],
     link: definitionRefLink('I', '8-12', '10'),
     hide: [ 'A', 'AB', '∠ABC', '∠ABD' ],
@@ -85,8 +86,8 @@ const steps: StepList = [
   {
     name: '4',
     text: [
-      ['If not, then construct BE perpendicular to CD. ',
-       'Then ∠EBC and ∠EBD are right angles.'],
+      ['If not, then construct ', highlight('BE'), ' perpendicular to CD. ',
+       'Then ', highlight('∠EBC'), ' and ', highlight('∠EBD'), ' are right angles.'],
     ],
     link: propositionRefLink('I', '11'),
     hide: [ 'A ', 'AB ', '∟ABC', '∟ABD'  ],
@@ -96,40 +97,42 @@ const steps: StepList = [
   {
     name: '5',
     text: [
-      ['Since ∠EBC equals the sum of ∠ABC and ∠ABE, ',
-       'then the sum of ∠EBC and ∠EBD equals the sum of ∠ABC, ∠ABE, and ∠EBD.'],
+      ['Since ∠EBC equals the sum of ', highlight('∠ABC'), ' and ', highlight('∠ABE'), ', ',
+       'then the sum of ∠EBC and ∠EBD equals the sum of ',
+        highlight('∠ABC'), ', ', highlight('∠ABE'), ', and ∠EBD.'],
     ],
     link: commonNotionRefLink('I', '2'),
-    hide: [ '∟EBC', '∟EBD' ],
-    highlight: [ '∠ABC', '∠ABE', '∠EBC', '∠EBD' ],
+    highlight: [ '∠ABC', '∠ABE' ],
   },
   {
     name: '6',
     text: [
-      ['Likewise, since ∠ABD equals the sum of ∠ABE and ∠EBD, ',
-       'then the sum of ∠ABC and ∠ABD equals the sum of ∠ABC, ∠ABE, and ∠EBD.'],
+      ['Likewise, since ', highlight('∠ABD'), ' equals the sum of ∠ABE and ∠EBD, ',
+       'then the sum of ∠ABC and ', highlight('∠ABD'), ' equals the sum of ∠ABC, ∠ABE, and ∠EBD.'],
     ],
     link: commonNotionRefLink('I', '2'),
     hide: [ '∠EBC' ],
-    highlight: [ '∠ABC', '∠ABD', '∠ABE', '∠EBD' ],
+    highlight: [ '∠ABD' ],
   },
   {
     name: '7',
     text: [
-      ['So, since the sum of ∠ABC and ∠ABD and the sum of ∠EBC and ∠EBD both equal ',
-       'the sum of ∠ABC, ∠ABE, and ∠EBD, the sums must be equal to each other.'],
+      ['So, since the sum of ', highlight('∠ABC'), ' and ', highlight('∠ABD'),
+       ' and the sum of ', highlight('∠EBC'), ' and ', highlight('∠EBD'), ' both equal ',
+       'the sum of ', highlight('∠ABC'), ', ∠ABE, and ', highlight('∠EBD'),
+       ', the sums must be equal to each other.'],
     ],
     link: commonNotionRefLink('I', '1'),
-    highlight: [ '∠ABC', '∠ABD', '∠ABE', '∠EBC', '∠EBD' ],
+    highlight: [ '∠ABC', '∠ABD', '∟EBC', '∟EBD' ],
   },
   {
     name: '8',
     text: [
       ['And, since ∠EBC and ∠EBD are two right angles, ',
-       'the sum of ∠ABC and ∠ABD equals two right angles, as required.'],
+       'the sum of ', highlight('∠ABC'), ' and ', highlight('∠ABD'), ' equals two right angles, as required.'],
     ],
     hide: [ '∠ABE', '∠EBC', '∠EBD' ],
-    highlight: [ '∠ABC', '∠ABD', '∟EBC', '∟EBD' ],
+    highlight: [ '∠ABC', '∠ABD' ],
   },
 ];
 
