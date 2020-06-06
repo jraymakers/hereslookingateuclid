@@ -9,7 +9,7 @@ import {
   textNormalStyle,
   textSerifStyle,
 } from '../../style';
-import { LeafPage } from '../types';
+import { LeafPage, ParentPage } from '../types';
 import { nextLeafPage, pageUrl, prevLeafPage } from '../utils';
 import { NavBar } from './NavBar';
 import { NavListView } from './NavListView';
@@ -64,7 +64,7 @@ type PageViewProps = Readonly<{
 
 export const PageView: React.FC<PageViewProps> = (props) => {
   const { page, navigate, onKeyDown } = props;
-  const [contentsVisible, setContentsVisible] = React.useState(false);
+  const [overlayParent, setOverlayParent] = React.useState<ParentPage | null>(null);
   React.useEffect(() => {
     function onBodyKeyDown(event: KeyboardEvent) {
       const neighborPage = neighborPageForKey(event.key, page);
@@ -80,23 +80,21 @@ export const PageView: React.FC<PageViewProps> = (props) => {
       document.body.removeEventListener('keydown', onBodyKeyDown);
     };
   }, [navigate, onKeyDown, page]);
-  const toggleNavListOverlay = React.useCallback(() => {
-    if (page.parent) {
-      setContentsVisible(!contentsVisible);
-    }
-  }, [contentsVisible, setContentsVisible, page]);
+  const toggleNavListOverlayForParent = React.useCallback((parent: ParentPage) => {
+    setOverlayParent(overlayParent ? null : parent);
+  }, [overlayParent, setOverlayParent]);
   const hideNavListOverlay = React.useCallback(() => {
-    setContentsVisible(false);
+    setOverlayParent(null);
   }, []);
   return (
     <div className={rootClass}>
       <NavBar
         page={page}
-        toggleNavListOverlay={toggleNavListOverlay}
+        toggleNavListOverlayForParent={toggleNavListOverlayForParent}
       />
       <div className={pageContentClass}>
         {props.children}
-        {maybeRenderNavListOverlay(contentsVisible, page, hideNavListOverlay)}
+        {maybeRenderNavListOverlay(overlayParent, hideNavListOverlay)}
       </div>
     </div>
   );
@@ -112,13 +110,13 @@ function neighborPageForKey(key: string, page: LeafPage) {
   return null;
 }
 
-function maybeRenderNavListOverlay(contentsVisible: boolean, page: LeafPage, hideNavListOverlay: () => void) {
-  if (contentsVisible && page.parent) {
+function maybeRenderNavListOverlay(overlayParent: ParentPage | null, hideNavListOverlay: () => void) {
+  if (overlayParent) {
     return (
       <>
         <div className={glassPaneClass} onClick={hideNavListOverlay} />
         <div className={contentsOverlayClass}>
-          <NavListView parent={page.parent} onClose={hideNavListOverlay} />
+          <NavListView parent={overlayParent} onClose={hideNavListOverlay} />
         </div>
       </>
     );

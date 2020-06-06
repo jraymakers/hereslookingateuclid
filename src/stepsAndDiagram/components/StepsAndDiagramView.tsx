@@ -49,6 +49,8 @@ const stepButtonClass = cssClass(classPrefix, 'stepButton',
     alignItems: 'center',
     justifyContent: 'center',
     color: '#333',
+    fontSize: '20px',
+    fontWeight: 'bold',
     textDecoration: 'none',
     outline: 'none',
     userSelect: 'none',
@@ -100,11 +102,11 @@ export const StepsAndDiagramView: React.FC<StepsAndDiagramViewProps> = (props) =
         </div>
         <div className={stepControlsClass}>
           {props.prevUrl
-            ? <Link className={stepButtonClass} to={props.prevUrl}>{'▲'}</Link>
+            ? <Link className={stepButtonClass} to={props.prevUrl}>{'△'}</Link>
             : <div className={stepButtonClass} />
           }
           {props.nextUrl
-            ? <Link className={stepButtonClass} to={props.nextUrl}>{'▼'}</Link>
+            ? <Link className={stepButtonClass} to={props.nextUrl}>{'▽'}</Link>
             : <div className={stepButtonClass} />
           }
         </div>
