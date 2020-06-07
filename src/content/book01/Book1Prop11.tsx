@@ -43,10 +43,10 @@ const diagram: Diagram = {
     ['DF']: { type: 'line', p1: 'D', p2: 'F' },
     ['EF']: { type: 'line', p1: 'E', p2: 'F' },
 
-    ['∠DCF']: { type: 'angle', p1: 'D', v: 'C', p2: 'F', r: 15, ccw: false },
-    ['∠ECF']: { type: 'angle', p1: 'E', v: 'C', p2: 'F', r: 15, ccw: true },
-    ['∟DCF']: { type: 'rightangle', p1: 'D', v: 'C', p2: 'F', r: 15 },
-    ['∟ECF']: { type: 'rightangle', p1: 'E', v: 'C', p2: 'F', r: 15 },
+    ['∠DCF']: { type: 'angle', p1: 'D', v: 'C', p2: 'F', r: 17, ccw: false },
+    ['∠ECF']: { type: 'angle', p1: 'E', v: 'C', p2: 'F', r: 17, ccw: true },
+    ['∟DCF']: { type: 'rightangle', p1: 'D', v: 'C', p2: 'F', r: 17 },
+    ['∟ECF']: { type: 'rightangle', p1: 'E', v: 'C', p2: 'F', r: 17 },
 
     ['A']: { type: 'point', x: aX, y: aY, labelY:  12 },
     ['B']: { type: 'point', x: bX, y: bY, labelY:  12 },

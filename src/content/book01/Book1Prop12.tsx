@@ -52,10 +52,10 @@ const diagram: Diagram = {
     ['EG']: { type: 'line', p1: 'E', p2: 'G' },
     ['FG']: { type: 'line', p1: 'F', p2: 'G' },
 
-    ['∠CGE']: { type: 'angle', p1: 'C', v: 'G', p2: 'E', r: 15, ccw: true },
-    ['∠CGF']: { type: 'angle', p1: 'C', v: 'G', p2: 'F', r: 15, ccw: false },
-    ['∟CGE']: { type: 'rightangle', p1: 'C', v: 'G', p2: 'E', r: 15 },
-    ['∟CGF']: { type: 'rightangle', p1: 'C', v: 'G', p2: 'F', r: 15 },
+    ['∠CGE']: { type: 'angle', p1: 'C', v: 'G', p2: 'E', r: 17, ccw: true },
+    ['∠CGF']: { type: 'angle', p1: 'C', v: 'G', p2: 'F', r: 17, ccw: false },
+    ['∟CGE']: { type: 'rightangle', p1: 'C', v: 'G', p2: 'E', r: 17 },
+    ['∟CGF']: { type: 'rightangle', p1: 'C', v: 'G', p2: 'F', r: 17 },
 
     ['a']: { type: 'point', x: ab0X, y: ab0Y },
     ['b']: { type: 'point', x: ab1X, y: ab1Y },

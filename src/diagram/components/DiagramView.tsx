@@ -23,6 +23,7 @@ import { CurveSvg } from './CurveSvg';
 import { FigureBoundaryPart, FigureSvg } from './FigureSvg';
 import { LineSvg } from './LineSvg';
 import { PointSvg } from './PointSvg';
+import { PolylineSvg } from './PolylineSvg';
 
 function isArc(dp: DiagramPart | null | undefined): dp is ArcDiagramPart {
   return dp ? dp.type === 'arc' : false;
@@ -105,7 +106,9 @@ function renderDiagramPart(
     case 'point':
       return renderPoint(key, part, state);
     case 'rightangle':
-      return renderRightAngle(key, part, parts, state);
+      return (
+        <RightAngle key={key} angle={part} parts={parts} state={state} />
+      );
     default:
       assertNever(part);
       return null;
@@ -143,7 +146,7 @@ function renderAngle(
         labelDir={angle.labelDir}
         highlighted={state === 'highlighted'}
         className={angle.className}
-        lineWidth={1}
+        lineWidth={1.5}
         dasharray={'2'}
       />
     );
@@ -360,52 +363,59 @@ function renderPoint(
   );
 }
 
-function renderRightAngle(
+// Looks best with angle.r = 4k+1
+const RightAngle: React.FC<{
   key: string,
   angle: RightAngleDiagramPart,
   parts: DiagramPartMap,
   state: DiagramPartState,
-): JSX.Element | null {
+}> = ({
+  key,
+  angle,
+  parts,
+  state,
+}) => {
   const p1 = parts[angle.p1];
   const v = parts[angle.v];
   const p2 = parts[angle.p2];
-  if (isPoint(v) && isPoint(p1) && isPoint(p2)) {
-    const p1dx = p1.x - v.x;
-    const p1dy = p1.y - v.y;
-    const p1d = Math.sqrt(p1dx * p1dx + p1dy * p1dy);
-    const p2dx = p2.x - v.x;
-    const p2dy = p2.y - v.y;
-    const p2d = Math.sqrt(p2dx * p2dx + p2dy * p2dy);
-    const r = angle.r;
-    const l1dx = r * p1dx / p1d;
-    const l1dy = r * p1dy / p1d;
-    const l2dx = r * p2dx / p2d;
-    const l2dy = r * p2dy / p2d;
-    const vdx = l1dx + l2dx;
-    const vdy = l1dy + l2dy;
+  const r = angle.r;
+  const points = React.useMemo(
+    () => {
+      if (isPoint(v) && isPoint(p1) && isPoint(p2)) {
+        const p1dx = p1.x - v.x;
+        const p1dy = p1.y - v.y;
+        const p1d = Math.sqrt(p1dx * p1dx + p1dy * p1dy);
+        const p2dx = p2.x - v.x;
+        const p2dy = p2.y - v.y;
+        const p2d = Math.sqrt(p2dx * p2dx + p2dy * p2dy);
+        
+        const l1dx = r * p1dx / p1d;
+        const l1dy = r * p1dy / p1d;
+        const l2dx = r * p2dx / p2d;
+        const l2dy = r * p2dy / p2d;
+        const vdx = l1dx + l2dx;
+        const vdy = l1dy + l2dy;
+        return [
+          {x: v.x + l1dx, y: v.y + l1dy },
+          {x: v.x + vdx, y: v.y + vdy },
+          {x: v.x + l2dx, y: v.y + l2dy },
+        ];
+      } else {
+        return [];
+      }
+    },
+    [p1, v, p2, r],
+  );
+  if (points.length > 0) {
     return (
-      <g key={key}>
-        <LineSvg
-          x1={v.x + vdx}
-          y1={v.y + vdy}
-          x2={v.x + l1dx}
-          y2={v.y + l1dy}
-          highlighted={state === 'highlighted'}
-          className={angle.className}
-          lineWidth={1}
-          dasharray={'2'}
-        />
-        <LineSvg
-          x1={v.x + vdx}
-          y1={v.y + vdy}
-          x2={v.x + l2dx}
-          y2={v.y + l2dy}
-          highlighted={state === 'highlighted'}
-          className={angle.className}
-          lineWidth={1}
-          dasharray={'2'}
-        />
-      </g>
+      <PolylineSvg
+        key={key}
+        points={points}
+        highlighted={state === 'highlighted'}
+        className={angle.className}
+        lineWidth={1.5}
+        dasharray={'2'}
+      />
     );
   } else {
     return null;

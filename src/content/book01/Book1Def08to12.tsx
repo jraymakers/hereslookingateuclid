@@ -77,8 +77,8 @@ const diagram: Diagram = {
 
     ['∠ABC']: { type: 'angle', p1: 'a', v: 'B', p2: 'c', r: 15, ccw: true },
     ['∠DEF']: { type: 'angle', p1: 'D', v: 'E', p2: 'F', r: 25, ccw: false },
-    ['∠GKJ']: { type: 'rightangle', p1: 'G', v: 'K', p2: 'J', r: 20 },
-    ['∠HKJ']: { type: 'rightangle', p1: 'H', v: 'K', p2: 'J', r: 20 },
+    ['∠GKJ']: { type: 'rightangle', p1: 'G', v: 'K', p2: 'J', r: 21 },
+    ['∠HKJ']: { type: 'rightangle', p1: 'H', v: 'K', p2: 'J', r: 21 },
     ['∠LMN']: { type: 'angle', p1: 'L', v: 'M', p2: 'N', r: 25, ccw: false },
     ['∠OPQ']: { type: 'angle', p1: 'O', v: 'P', p2: 'Q', r: 25, ccw: false },
 

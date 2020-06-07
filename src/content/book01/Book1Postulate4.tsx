@@ -32,8 +32,8 @@ const diagram: Diagram = {
     ['DE']: { type: 'line', p1: 'D', p2: 'E' },
     ['EF']: { type: 'line', p1: 'E', p2: 'F' },
 
-    ['∠ABC']: { type: 'rightangle', p1: 'A', v: 'B', p2: 'C', r: 20 },
-    ['∠DEF']: { type: 'rightangle', p1: 'D', v: 'E', p2: 'F', r: 20 },
+    ['∠ABC']: { type: 'rightangle', p1: 'A', v: 'B', p2: 'C', r: 21 },
+    ['∠DEF']: { type: 'rightangle', p1: 'D', v: 'E', p2: 'F', r: 21 },
 
     ['A']: { type: 'point', x: aX, y: aY, labelX: -12 },
     ['B']: { type: 'point', x: bX, y: bY, labelX: -12 },

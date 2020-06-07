@@ -2,6 +2,7 @@ import { Diagram } from '../../diagram';
 import { definitionRefLink, propositionRefLink, propositionTitle } from '../../link';
 import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
+import { highlight } from '../../paragraph/utils/RunUtils';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
 
@@ -31,9 +32,9 @@ const diagram: Diagram = {
     ['CD']: { type: 'line', p1: 'C', p2: 'D' },
     ['CE']: { type: 'line', p1: 'C', p2: 'E' },
 
-    ['∠ACB']: { type: 'angle', p1: 'A', v: 'C', p2: 'B', r: 25, ccw: true },
-    ['∠ACE']: { type: 'angle', p1: 'A', v: 'C', p2: 'E', r: 35, ccw: true },
-    ['∠BCE']: { type: 'angle', p1: 'B', v: 'C', p2: 'E', r: 35, ccw: false },
+    ['∠ACB']: { type: 'angle', p1: 'A', v: 'C', p2: 'B', r: 30, ccw: true },
+    ['∠ACE']: { type: 'angle', p1: 'A', v: 'C', p2: 'E', r: 40, ccw: true },
+    ['∠BCE']: { type: 'angle', p1: 'B', v: 'C', p2: 'E', r: 50, ccw: false },
 
     ['A']: { type: 'point', x: aX, y: aY, labelY:  12 },
     ['B']: { type: 'point', x: bX, y: bY, labelY:  12 },
@@ -47,15 +48,15 @@ const steps: StepList = [
   {
     name: '1',
     text: [
-      ['Let AB be the given finite straight line.'],
+      ['Let ', highlight('AB'), ' be the given finite straight line.'],
     ],
     highlight: [ 'A', 'B', 'AB' ],
   },
   {
     name: '2',
     text: [
-      ['It is required to bisect AB, that is, ',
-       'find a point E on AB such that AE equals BE.'],
+      ['It is required to bisect AB, that is, find a point ', highlight('E'),
+      ' on AB such that ', highlight('AE'), ' equals ', highlight('BE'), '.'],
     ],
     hide: [ 'AB' ],
     highlight: [ 'E', 'AE', 'BE' ],
@@ -63,7 +64,7 @@ const steps: StepList = [
   {
     name: '3',
     text: [
-      ['Construct an equilateral triangle ABC on AB.'],
+      ['Construct an equilateral triangle ', highlight('ABC'), ' on AB.'],
     ],
     link: propositionRefLink('I', '1'),
     hide: [ 'E', 'AE', 'BE' ],
@@ -73,7 +74,7 @@ const steps: StepList = [
   {
     name: '4',
     text: [
-      ['Bisect ∠ACB with CD.'],
+      ['Bisect ', highlight('∠ACB'), ' with ', highlight('CD'), '.'],
     ],
     link: propositionRefLink('I', '9'),
     highlight: [ 'C', 'D', 'CD', '∠ACB' ],
@@ -81,15 +82,16 @@ const steps: StepList = [
   {
     name: '5',
     text: [
-      ['Let E be the intersection of AB and CD.'],
+      ['Let ', highlight('E'), ' be the intersection of AB and CD.'],
     ],
     hide: [ '∠ACB' ],
-    highlight: [ 'E', 'AB', 'CD' ],
+    highlight: [ 'E' ],
   },
   {
     name: '6',
     text: [
-      ['To show that E bisects AB, it is required to show that AE equals BE.'],
+      ['To show that E bisects AB, it is required to show that ',
+       highlight('AE'), ' equals ', highlight('BE'), '.'],
     ],
     hide: [ 'AB' ],
     highlight: [ 'AE', 'BE' ],
@@ -97,7 +99,7 @@ const steps: StepList = [
   {
     name: '7',
     text: [
-      ['Since triangle ABC is equilateral, AC equals BC.'],
+      ['Since triangle ABC is equilateral, ', highlight('AC'), ' equals ', highlight('BC'), '.'],
     ],
     link: definitionRefLink('I', '20-21', '20a'),
     highlight: [ 'AC', 'BC' ],
@@ -105,15 +107,16 @@ const steps: StepList = [
   {
     name: '8',
     text: [
-      ['Since CE bisects ∠ACB, ∠ACE equals ∠BCE.'],
+      ['Since CE bisects ∠ACB, ', highlight('∠ACE'), ' equals ', highlight('∠BCE'), '.'],
     ],
     highlight: [ '∠ACE', '∠BCE' ],
   },
   {
     name: '9',
     text: [
-      ['Since triangles ACE and BCE have AC equal BC, CE common, ',
-       'and ∠ACE equal ∠BCE, their third sides, AE and BE, must be equal, as required.'],
+      ['Since triangles ACE and BCE have ', highlight('AC'), ' equal ', highlight('BC'), ', ',
+       highlight('CE'), ' common, and ', highlight('∠ACE'), ' equal ', highlight('∠BCE'),
+       ', their third sides, ', highlight('AE'), ' and ', highlight('BE'), ', must be equal, as required.'],
     ],
     link: propositionRefLink('I', '4'),
     highlight: [ 'AC', 'BC', 'AE', 'BE', 'CE', '∠ACE', '∠BCE' ],
