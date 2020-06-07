@@ -9,6 +9,7 @@ import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
+import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -41,11 +42,11 @@ const diagram: Diagram = {
     ['DF']: { type: 'line', p1: 'D', p2: 'F' },
     ['EF']: { type: 'line', p1: 'E', p2: 'F' },
 
-    ['∠BAC']: { type: 'angle', p1: 'B', v: 'A', p2: 'C', r: 25, ccw: true },
-    ['∠BAF']: { type: 'angle', p1: 'B', v: 'A', p2: 'F', r: 35, ccw: true },
-    ['∠CAF']: { type: 'angle', p1: 'C', v: 'A', p2: 'F', r: 35, ccw: false },
-    ['∠DAF']: { type: 'angle', p1: 'D', v: 'A', p2: 'F', r: 35, ccw: true },
-    ['∠EAF']: { type: 'angle', p1: 'E', v: 'A', p2: 'F', r: 35, ccw: false },
+    ['∠BAC']: { type: 'angle', p1: 'B', v: 'A', p2: 'C', r: 30, ccw: true },
+    ['∠BAF']: { type: 'angle', p1: 'B', v: 'A', p2: 'F', r: 40, ccw: true },
+    ['∠CAF']: { type: 'angle', p1: 'C', v: 'A', p2: 'F', r: 50, ccw: false },
+    ['∠DAF']: { type: 'angle', p1: 'D', v: 'A', p2: 'F', r: 40, ccw: true },
+    ['∠EAF']: { type: 'angle', p1: 'E', v: 'A', p2: 'F', r: 50, ccw: false },
 
     ['A']: { type: 'point', x: aX, y: aY, labelY: -12 },
     ['B']: { type: 'point', x: bX, y: bY, labelX: -12 },
@@ -60,7 +61,7 @@ const steps: StepList = [
   {
     name: '1',
     text: [
-      ['Let ∠BAC be the given rectilinear angle.'],
+      ['Let ', highlight('∠BAC'), ' be the given rectilinear angle.'],
     ],
     highlight: [ 'A', 'B', 'C', 'AB', 'AC', '∠BAC' ],
   },
@@ -68,7 +69,8 @@ const steps: StepList = [
     name: '2',
     text: [
       ['It is required to bisect it, that is, ',
-       'construct a line AF such that ∠BAF equals ∠CAF.'],
+       'construct a line ', highlight('AF'), ' such that ',
+       highlight('∠BAF'), ' equals ', highlight('∠CAF'), '.'],
     ],
     hide: [ '∠BAC' ],
     highlight: [ 'F', 'AF', '∠BAF', '∠CAF' ],
@@ -76,7 +78,7 @@ const steps: StepList = [
   {
     name: '3',
     text: [
-      ['Let D be a point on AB.'],
+      ['Let ', highlight('D'), ' be a point on AB.'],
     ],
     hide: [ 'F', 'AF', '∠BAF', '∠CAF' ],
     highlight: [ 'D' ],
@@ -84,7 +86,7 @@ const steps: StepList = [
   {
     name: '4',
     text: [
-      ['Cut off AE from AC equal to AD.'],
+      ['Cut off ', highlight('AE'), ' from AC equal to ', highlight('AD'), '.'],
     ],
     link: propositionRefLink('I', '3'),
     hide: [ 'AB', 'AC' ],
@@ -94,7 +96,7 @@ const steps: StepList = [
   {
     name: '5',
     text: [
-      ['Construct DE.'],
+      ['Construct ', highlight('DE'), '.'],
     ],
     link: postulateRefLink('I', '1'),
     highlight: [ 'DE' ],
@@ -102,7 +104,7 @@ const steps: StepList = [
   {
     name: '6',
     text: [
-      ['Construct equilateral triangle DEF on DE.'],
+      ['Construct equilateral triangle ', highlight('DEF'), ' on DE.'],
     ],
     link: propositionRefLink('I', '1'),
     highlight: [ 'F', 'DF', 'EF' ],
@@ -110,7 +112,7 @@ const steps: StepList = [
   {
     name: '7',
     text: [
-      ['Construct AF.'],
+      ['Construct ', highlight('AF'), '.'],
     ],
     link: postulateRefLink('I', '1'),
     highlight: [ 'AF' ],
@@ -118,25 +120,28 @@ const steps: StepList = [
   {
     name: '8',
     text: [
-      ['To show that AF bisects ∠BAC, it is required to show that ∠DAF equals ∠EAF.'],
+      ['To show that AF bisects ∠BAC, it is required to show that ',
+       highlight('∠DAF'), ' equals ', highlight('∠EAF'), '.'],
     ],
     link: propositionRefLink('I', '1'),
+    show: [ '∠BAC' ],
     highlight: [ '∠DAF', '∠EAF' ],
   },
   {
     name: '9',
     text: [
-      ['Since triangle DEF is equilateral, DF equals EF.'],
+      ['Since triangle DEF is equilateral, ', highlight('DF'), ' equals ', highlight('EF'), '.'],
     ],
     link: definitionRefLink('I', '20-21', '20a'),
-    hide: [ '∠DAF', '∠EAF' ],
+    hide: [ '∠BAC', '∠DAF', '∠EAF' ],
     highlight: [ 'DF', 'EF' ],
   },
   {
     name: '10',
     text: [
-      ['Since triangles ADF and AEF have AD equal AE, AF common, and DF equal EF, ',
-       'then ∠DAF equals ∠EAF, as required.'],
+      ['Since triangles ADF and AEF have ', highlight('AD'), ' equal ', highlight('AE'), ', ',
+       highlight('AF'), ' common, and ', highlight('DF'), ' equal ', highlight('EF'), ', ',
+       'then ', highlight('∠DAF'), ' equals ', highlight('∠EAF'), ', as required.'],
     ],
     link: propositionRefLink('I', '8'),
     highlight: [ 'AD', 'AE', 'AF', 'DF', 'EF', '∠DAF', '∠EAF' ],
