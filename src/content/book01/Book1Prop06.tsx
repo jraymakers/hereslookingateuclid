@@ -4,6 +4,7 @@ import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
+import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -41,7 +42,7 @@ const steps: StepList = [
   {
     name: '1',
     text: [
-      ['Let ABC be a triangle with ∠ABC equal ∠ACB.'],
+      ['Let ABC be a triangle with ', highlight('∠ABC'), ' equal ', highlight('∠ACB'), '.'],
     ],
     show: [ 'A', 'B', 'C', 'AB', 'AC', 'BC' ],
     highlight: [ '∠ABC', '∠ACB' ],
@@ -49,7 +50,7 @@ const steps: StepList = [
   {
     name: '2',
     text: [
-      ['It is required to show that AB equals AC.'],
+      ['It is required to show that ', highlight('AB'), ' equals ', highlight('AC'), '.'],
     ],
     highlight: [ 'AB', 'AC' ],
   },
@@ -58,7 +59,7 @@ const steps: StepList = [
     text: [
       ['Assume the opposite, that AB does not equal AC.'],
       ['Then one must be greater.'],
-      ['Let AB be greater.'],
+      ['Let ', highlight('AB'), ' be greater.'],
     ],
     hide: [ '∠ABC', '∠ACB' ],
     highlight: [ 'AB' ],
@@ -66,7 +67,8 @@ const steps: StepList = [
   {
     name: '4',
     text: [
-      ['Pick a point D on AB such that BD equals AC.'],
+      ['Pick a point ', highlight('D'), ' on AB such that ',
+       highlight('BD'), ' equals ', highlight('AC'), '.'],
     ],
     link: propositionRefLink('I', '3'),
     highlight: [ 'D', 'BD', 'AC' ],
@@ -74,7 +76,7 @@ const steps: StepList = [
   {
     name: '5',
     text: [
-      ['Construct CD.'],
+      ['Construct ', highlight('CD'), '.'],
     ],
     link: postulateRefLink('I', '1'),
     highlight: [ 'CD' ],
@@ -83,7 +85,9 @@ const steps: StepList = [
     name: '6',
     text: [
       ['Consider triangles DBC and ACB.'],
-      ['Because BD equals AC, BC is common, and ∠DBC (or ∠ABC) equals ∠ACB, the triangles are equal.'],
+      ['Because ', highlight('BD'), ' equals ', highlight('AC'), ', ',
+       highlight('BC'), ' is common, and ',
+       highlight('∠DBC'), ' (or ∠ABC) equals ', highlight('∠ACB'), ', the triangles are equal.'],
     ],
     link: propositionRefLink('I', '4'),
     highlight: [ 'AC', 'BC', 'BD', '∠ABC', '∠ACB' ],
@@ -91,7 +95,7 @@ const steps: StepList = [
   {
     name: '7',
     text: [
-      ['But the triangle DBC is part of ACB, so it cannot be equal to it.'],
+      ['But the triangle ', highlight('DBC'), ' is part of ACB, so it cannot be equal to it.'],
     ],
     link: commonNotionRefLink('I', '5'),
     hide: [ '∠ABC', '∠ACB' ],
@@ -101,7 +105,7 @@ const steps: StepList = [
     name: '8',
     text: [
       ['Thus the assumption that AB does not equal AC must be wrong.'],
-      ['So AB equals AC, as required.'],
+      ['So ', highlight('AB'), ' equals ', highlight('AC'), ', as required.'],
     ],
     hide: [ 'BD' ],
     highlight: [ 'AB', 'AC' ],
