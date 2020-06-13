@@ -5,6 +5,7 @@ import { Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
 import { cssClass, keyframes } from '../../style';
+import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -116,7 +117,9 @@ const steps: StepList = [
   {
     name: '1',
     text: [
-      ['Let ABC and DEF be triangles with AB equal to DE, AC equal to DF, and BC equal to EF.'],
+      ['Let ABC and DEF be triangles with ', highlight('AB'), ' equal to ', highlight('DE'),
+       ', ', highlight('AC'), ' equal to ', highlight('DF'),
+      ', and ', highlight('BC'),' equal to ', highlight('EF'), '.'],
     ],
     highlight: [
       'A', 'B', 'C', 'D', 'E', 'F',
@@ -126,7 +129,7 @@ const steps: StepList = [
   {
     name: '2',
     text: [
-      ['It is required to show that ∠BAC equals ∠EDF.'],
+      ['It is required to show that ', highlight('∠BAC'), ' equals ', highlight('∠EDF'), '.'],
     ],
     highlight: [ '∠BAC', '∠EDF' ],
   },
@@ -134,8 +137,10 @@ const steps: StepList = [
     name: '3',
     text: [
       [
-        'If B and E are made to coincide, as are BC and EF, ',
-        'then C will coincide with F, because BC equals EF.',
+        'If ', highlight('B'), ' and ', highlight('E'), ' are made to coincide, as are ',
+        highlight('BC'), ' and ', highlight('EF'), ', ',
+        'then ', highlight('C'), ' will coincide with ', highlight('F'),
+        ', because ', highlight('BC'), ' equals ', highlight('EF'), '.',
       ],
     ],
     hide: [
@@ -149,7 +154,8 @@ const steps: StepList = [
   {
     name: '4',
     text: [
-      ['It is desired to show that AB coincides with DE and AC coincides with DF.'],
+      ['It is desired to show that ', highlight('AB'), ' coincides with ', highlight('DE'),
+       ' and ', highlight('AC'), ' coincides with ', highlight('DF') ,'.'],
     ],
     hide: [
       'A ', 'B ', 'C ', 'D ', 'E ', 'F ',
@@ -163,18 +169,20 @@ const steps: StepList = [
     text: [
       [
         'Assume the opposite: ',
-        'that either AB does not coincide with DE or AC does not coincide with DF (or both), ',
-        'so that A and D do not coincide.',
+        'that either ', highlight('AB'), ' does not coincide with ', highlight('DE'),
+        ' or ', highlight('AC'), ' does not coincide with ', highlight('DF'), ' (or both), ',
+        'so that ', highlight('A'), ' and ', highlight('D'), ' do not coincide.',
       ],
     ],
-    hide: [ 'D  ' ],
-    highlight: [ 'A  ', 'D   ', 'DE   ', 'DF   ' ],
+    hide: [ 'D  ', 'DE  ', 'DF  ' ],
+    highlight: [ 'A  ', 'D   ', 'AB  ', 'AC  ', 'DE   ', 'DF   ' ],
   },
   {
     name: '6',
     text: [
       [
-        'But then there will be two different pairs of lines (AB, AC and DE, DF) ',
+        'But then there will be two different pairs of lines (',
+         highlight('AB'), ', ', highlight('AC'), ' and ', highlight('DE'), ', ', highlight('DF'), ') ',
         'from the ends of the same straight line meeting in two different points ',
         'on the same side of the line, such that the respective lines from the same end are equal.',
       ],
@@ -185,7 +193,8 @@ const steps: StepList = [
     name: '7',
     text: [
       [ 'This is not possible, so our assumption must be wrong.' ],
-      [ 'Thus AB must coincide with DE and AC with DF.' ],
+      [ 'Thus ', highlight('AB'), ' must coincide with ', highlight('DE'),
+       ' and ', highlight('AC'), ' with ', highlight('DF'), '.' ],
     ],
     link: propositionRefLink('I', '7'),
     hide: [ 'D   ', 'DE   ', 'DF   ' ],
@@ -195,7 +204,7 @@ const steps: StepList = [
   {
     name: '8',
     text: [
-      ['Thus, ∠BAC must coincide with ∠EDF, and equal it, as required.'],
+      ['Thus, ', highlight('∠BAC'), ' must coincide with ', highlight('∠EDF'), ', and equal it, as required.'],
     ],
     link: commonNotionRefLink('I', '4'),
     highlight: [ '∠BAC  ', '∠EDF  ' ],
