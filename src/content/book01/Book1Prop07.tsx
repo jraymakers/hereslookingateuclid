@@ -9,6 +9,7 @@ import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
+import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -49,35 +50,37 @@ const steps: StepList = [
   {
     name: '1',
     text: [
-      ['Let AB be a straight line.'],
+      ['Let ', highlight('AB'), ' be a straight line.'],
     ],
     highlight: [ 'A', 'B', 'AB' ],
   },
   {
     name: '2',
     text: [
-      ['Let C and D be two different points on the same side of AB.'],
+      ['Let ', highlight('C'), ' and ', highlight('D'), ' be two different points on the same side of AB.'],
     ],
     highlight: [ 'C', 'D' ],
   },
   {
     name: '3',
     text: [
-      ['It is required to show that either AC does not equal AD or BC does not equal BD.'],
+      ['It is required to show that either ', highlight('AC'), ' does not equal ', highlight('AD'),
+      ' or ', highlight('BC'), ' does not equal ', highlight('BD'), '.'],
     ],
     highlight: [ 'AC', 'AD', 'BC', 'BD' ],
   },
   {
     name: '4',
     text: [
-      ['Assume the opposite, that AC equals AD and BC equals BD.'],
+      ['Assume the opposite, that ', highlight('AC'), ' equals ', highlight('AD'),
+       ' and ', highlight('BC'), ' equals ', highlight('BD'), '.'],
     ],
     highlight: [ 'AC', 'AD', 'BC', 'BD' ],
   },
   {
     name: '5',
     text: [
-      ['Construct CD.'],
+      ['Construct ', highlight('CD'), '.'],
     ],
     link: postulateRefLink('I', '1'),
     highlight: [ 'CD' ],
@@ -85,7 +88,8 @@ const steps: StepList = [
   {
     name: '6',
     text: [
-      ['Since AC equals AD, ∠ACD equals ∠ADC.'],
+      ['Since ', highlight('AC'), ' equals ', highlight('AD'), ', ',
+       highlight('∠ACD'), ' equals ', highlight('∠ADC'), '.'],
     ],
     link: propositionRefLink('I', '5'),
     highlight: [ 'AC', 'AD', '∠ACD', '∠ADC' ],
@@ -93,24 +97,27 @@ const steps: StepList = [
   {
     name: '7',
     text: [
-      ['Since ∠ACD is greater than its part, ∠BCD, ∠ADC is also greater than ∠BCD.'],
+      ['Since ∠ACD is greater than its part, ', highlight('∠BCD'),
+       ', ∠ADC is also greater than ', highlight('∠BCD'), '.'],
     ],
     link: commonNotionRefLink('I', '5'),
-    highlight: [ '∠ACD', '∠ADC', '∠BCD' ],
+    highlight: [ '∠BCD' ],
   },
   {
     name: '8',
     text: [
-      ['And since ∠BDC is also greater than its part, ∠ADC, ∠BDC is greater than ∠BCD.'],
+      ['And since ', highlight('∠BDC'), ' is also greater than its part, ∠ADC, ',
+       highlight('∠BDC'), ' is greater than ∠BCD.'],
     ],
     link: commonNotionRefLink('I', '5'),
     hide: [ '∠ACD' ],
-    highlight: [ '∠ADC', '∠BCD', '∠BDC' ],
+    highlight: [ '∠BDC' ],
   },
   {
     name: '9',
     text: [
-      ['But, since BC equals BD, ∠BCD equals ∠BDC.'],
+      ['But, since ', highlight('BC'), ' equals ', highlight('BD'), ', ',
+       highlight('∠BCD'), ' equals ', highlight('∠BDC'), '.'],
     ],
     link: propositionRefLink('I', '5'),
     hide: [ '∠ADC' ],
@@ -120,7 +127,7 @@ const steps: StepList = [
     name: '10',
     text: [
       [
-        '∠BDC cannot be both greater than and equal to ∠BCD, ',
+        highlight('∠BDC'), ' cannot be both greater than and equal to ', highlight('∠BCD'), ', ',
         'so our assumption that AC equals AD and BC equals BD must be wrong.',
       ],
     ],
@@ -130,7 +137,8 @@ const steps: StepList = [
     name: '11',
     text: [
       [
-        'So either AC does not equal AD or BC does not equal BD, as required.',
+        'So either ', highlight('AC'), ' does not equal ', highlight('AD'),
+        ' or ', highlight('BC'), ' does not equal ', highlight('BD'), ', as required.',
       ],
     ],
     hide: [ '∠BCD', '∠BDC' ],
