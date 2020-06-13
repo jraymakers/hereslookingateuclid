@@ -10,6 +10,7 @@ import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
+import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -71,7 +72,7 @@ const steps: StepList = [
   {
     name: '1',
     text: [
-      ['Let ABC be an isoceles triangle with AB equal AC.'],
+      ['Let ABC be an isoceles triangle with ', highlight('AB'), ' equal ', highlight('AC'), '.'],
     ],
     link: definitionRefLink('I', '20-21', '20b'),
     show: [ 'A', 'B', 'C', 'BC' ],
@@ -80,7 +81,7 @@ const steps: StepList = [
   {
     name: '2',
     text: [
-      ['Extend AB to create BD, and extend AC to create CE.'],
+      ['Extend AB to create ', highlight('BD'), ', and extend AC to create ', highlight('CE'), '.'],
     ],
     link: postulateRefLink('I', '2'),
     highlight: [ 'D', 'E', 'BD', 'CE' ],
@@ -88,14 +89,16 @@ const steps: StepList = [
   {
     name: '3',
     text: [
-      ['It is required to show that ∠ABC equals ∠ACB, and ∠CBD equals ∠BCE.'],
+      ['It is required to show that ', highlight('∠ABC'), ' equals ', highlight('∠ACB'),
+       ', and ', highlight('∠CBD'), ' equals ', highlight('∠BCE'), '.'],
     ],
     highlight: [ '∠ABC', '∠ACB', '∠BCE', '∠CBD' ],
   },
   {
     name: '4',
     text: [
-      ['Pick a point F on BD, and another point G on CE, such at AF equals AG.'],
+      ['Pick a point ', highlight('F'), ' on BD, and another point ', highlight('G'),
+       ' on CE, such at ', highlight('AF'), ' equals ', highlight('AG'), '.'],
     ],
     link: propositionRefLink('I', '3'),
     hide: [ '∠ABC', '∠ACB', '∠BCE', '∠CBD' ],
@@ -104,7 +107,7 @@ const steps: StepList = [
   {
     name: '5',
     text: [
-      ['Construct BG and CF.'],
+      ['Construct ', highlight('BG'), ' and ', highlight('CF'), '.'],
     ],
     link: postulateRefLink('I', '1'),
     highlight: [ 'BG', 'CF' ],
@@ -113,9 +116,11 @@ const steps: StepList = [
     name: '6',
     text: [
       ['Consider the triangles ABG and ACF.'],
-      ['AB equals AC, AG equals AF, and the angles at A are common.'],
-      ['So, the triangles are equal, as are their bases BG and CF ',
-        'and the remaining angles, so ∠ACF equals ∠ABG, and ∠AFC equals ∠AGB.'],
+      [highlight('AB'), ' equals ', highlight('AC'), ', ',
+       highlight('AG'), ' equals ', highlight('AF'), ', and the angles at ', highlight('A'), ' are common.'],
+      ['So, the triangles are equal, as are their bases ', highlight('BG'), ' and ', highlight('CF'),
+       ', and the remaining angles, so ', highlight('∠ACF'), ' equals ', highlight('∠ABG'),
+       ', and ', highlight('∠AFC'), ' equals ', highlight('∠AGB'), '.'],
     ],
     link: propositionRefLink('I', '4'),
     highlight: [ 'AB', 'AC', 'BF', 'BG', 'CF', 'CG', '∠ABG', '∠ACF', '∠AFC', '∠AGB', '∠BAC' ],
@@ -124,7 +129,7 @@ const steps: StepList = [
     name: '7',
     text: [
       ['Since AF equals AG, and their parts AB and AC are equal, ',
-       'then the remainders, BF and CG, are equal.'],
+       'then the remainders, ', highlight('BF'), ' and ', highlight('CG'), ', are equal.'],
     ],
     link: commonNotionRefLink('I', '3'),
     hide: [ '∠ABG', '∠ACF', '∠AFC', '∠AGB', '∠BAC' ],
@@ -134,9 +139,12 @@ const steps: StepList = [
     name: '8',
     text: [
       ['Consider the triangles BFC and CGB.'],
-      ['BF equals CG, CF equals BG, and the angles ∠BFC and ∠CGB are equal.'],
+      [highlight('BF'), ' equals ', highlight('CG'), ', ', highlight('CF'), ' equals ', highlight('BG'),
+       ', and the angles ', highlight('∠BFC'), ' and ', highlight('∠CGB'), ' are equal.'],
       ['So, the triangles are equal, as are their remaining angles, ',
-        'so ∠BCF equals ∠CBG, and ∠CBF (also called ∠CBD) equals ∠BCG (also called ∠BCE), as required.'],
+        'so ', highlight('∠BCF'), ' equals ', highlight('∠CBG'),
+        ', and ', highlight('∠CBF'), ' (also called ∠CBD) equals ',
+         highlight('∠BCG'), ' (also called ∠BCE), as required.'],
     ],
     link: propositionRefLink('I', '4'),
     highlight: [ 'BC', 'BF', 'BG', 'CF', 'CG', '∠BCE', '∠BCF', '∠BFC', '∠CBD', '∠CBG', '∠CGB' ],
@@ -144,9 +152,9 @@ const steps: StepList = [
   {
     name: '9',
     text: [
-      ['Since the angles ∠ABG and ∠ACF are equal, ',
-       'as are their parts ∠CBG and ∠BCF, ',
-       'then the remaining angles ∠ABC and ∠ACB are equal, as required.'],
+      ['Since the angles ', highlight('∠ABG'), ' and ', highlight('∠ACF'), ' are equal, ',
+       'as are their parts ', highlight('∠CBG'), ' and ', highlight('∠BCF'), ', ',
+       'then the remaining angles ', highlight('∠ABC'), ' and ', highlight('∠ACB'), ' are equal, as required.'],
     ],
     link: commonNotionRefLink('I', '3'),
     hide: [ '∠BCE', '∠BFC', '∠CBD', '∠CGB' ],
