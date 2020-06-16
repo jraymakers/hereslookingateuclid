@@ -4,6 +4,7 @@ import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
+import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -45,43 +46,45 @@ const steps: StepList = [
   {
     name: 'a',
     text: [
-      [`Example: Let α and β be two circles centered at A,`,
-       ` with α larger.`],
+      ['Example: Let ', highlight('α'), ' and ', highlight('β'), ' be two circles centered at ',
+       highlight('A'), ',  with ', highlight('α'), ' larger.'],
     ],
     highlight: [ 'A', 'α', 'β' ],
   },
   {
     name: 'b',
     text: [
-      [`Let AB and AC be radii of α. So AB equals AC.`],
+      ['Let ', highlight('AB'), ' and ', highlight('AC'), ' be radii of α.',
+       ' So ', highlight('AB'), ' equals ', highlight('AC'), '.'],
     ],
     highlight: [ 'B', 'C', 'AB', 'AC' ],
   },
   {
     name: 'c',
     text: [
-      [`Let D be the intersection of AB and β.`],
+      ['Let ', highlight('D'), ' be the intersection of AB and β.'],
     ],
     highlight: [ 'D' ],
   },
   {
     name: 'd',
     text: [
-      [`Let E be the intersection of AC and β.`],
+      ['Let ', highlight('E'), ' be the intersection of AC and β.'],
     ],
     highlight: [ 'E' ],
   },
   {
     name: 'e',
     text: [
-      [`Because AD and AE are both radii of β, they are equal.`],
+      ['Because ', highlight('AD'), ' and ', highlight('AE'), ' are both radii of β, they are equal.'],
     ],
     highlight: [ 'AD', 'AE' ],
   },
   {
     name: 'f',
     text: [
-      [`Then, BD, which is AB minus AD, and CE, which is AC minus AE, are equal.`],
+      ['Then, ', highlight('BD'), ', which is AB minus AD, and ',
+       highlight('CE'), ', which is AC minus AE, are equal.'],
     ],
     link: commonNotionRefLink('I', '3'),
     highlight: [ 'BD', 'CE' ],

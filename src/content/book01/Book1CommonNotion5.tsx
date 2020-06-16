@@ -4,6 +4,7 @@ import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
+import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -32,21 +33,21 @@ const steps: StepList = [
   {
     name: 'a',
     text: [
-      ['Example: Let AB be a straight line.'],
+      ['Example: Let ', highlight('AB'), ' be a straight line.'],
     ],
     highlight: [ 'A', 'B', 'AB' ],
   },
   {
     name: 'b',
     text: [
-      ['Let C be between A and B.'],
+      ['Let ', highlight('C'), ' be between A and B.'],
     ],
     highlight: [ 'C' ],
   },
   {
     name: 'c',
     text: [
-      ['Then AC is a part of AB, so AB is greater than AC.'],
+      ['Then ', highlight('AC'), ' is a part of AB, so AB is greater than ', highlight('AC'), '.'],
     ],
     link: commonNotionRefLink('I', '5'),
     highlight: [ 'AC' ],

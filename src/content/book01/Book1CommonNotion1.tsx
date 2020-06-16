@@ -4,6 +4,7 @@ import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
+import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -39,21 +40,24 @@ const steps: StepList = [
   {
     name: 'a',
     text: [
-      [`Example: Let AB and AC be radii of circle α. So AB equals AC.`],
+      ['Example: Let ', highlight('AB'), ' and ', highlight('AC'),
+       ' be radii of circle ', highlight('α'), '. So ', highlight('AB'), ' equals ', highlight('AC'), '.'],
     ],
     highlight: [ 'A', 'B', 'C', 'AB', 'AC', 'α' ],
   },
   {
     name: 'b',
     text: [
-      [`And let AB and BD be radii of circle β. So AB equals BD.`],
+      ['And let ', highlight('AB'), ' and ', highlight('BD'), ' be radii of circle ', highlight('β'),
+       '. So ', highlight('AB'), ' equals ', highlight('BD'), '.'],
     ],
     highlight: [ 'A', 'B', 'D', 'AB', 'BD', 'β' ],
   },
   {
     name: 'c',
     text: [
-      [`Since both AC and BD equal AB, then AC equals BD.`],
+      ['Since both ', highlight('AC'), ' and ', highlight('BD'), ' equal AB, then ',
+       highlight('AC'), ' equals ', highlight('BD'), '.'],
     ],
     link: commonNotionRefLink('I', '1'),
     highlight: [ 'AC', 'BD' ],

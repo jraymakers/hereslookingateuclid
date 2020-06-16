@@ -5,6 +5,7 @@ import { Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
 import { cssClass, keyframes } from '../../style';
+import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -75,7 +76,7 @@ const steps: StepList = [
   {
     name: 'a',
     text: [
-      ['Example: Let ABC and DEF be triangles such that, ',
+      ['Example: Let ', highlight('ABC'), ' and ', highlight('DEF'), ' be triangles such that, ',
        'all at the same time, A may be made to coincide with D, ',
        'B with E, and C with F.'],
     ],
@@ -84,7 +85,7 @@ const steps: StepList = [
   {
     name: 'b',
     text: [
-      ['Then ABC and DEF are equal.'],
+      ['Then ', highlight('ABC'), ' and ', highlight('DEF'), ' are equal.'],
     ],
     link: commonNotionRefLink('I', '4'),
     highlight: [ 'A', 'B', 'C', 'D', 'E', 'F', 'AB', 'BC', 'AC', 'DE', 'EF', 'DF' ],
