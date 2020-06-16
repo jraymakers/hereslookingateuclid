@@ -10,6 +10,7 @@ import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
+import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -50,21 +51,21 @@ const steps: StepList = [
   {
     name: '1',
     text: [
-      ['Let AB and CD be the given straight lines, with AB greater.'],
+      ['Let ', highlight('AB'), ' and ', highlight('CD'), ' be the given straight lines, with AB greater.'],
     ],
     highlight: [ 'A', 'B', 'C', 'D', 'AB', 'CD' ],
   },
   {
     name: '2',
     text: [
-      ['It is required to cut off a part of AB equal to CD.'],
+      ['It is required to cut off a ', highlight('part of AB'), ' equal to CD .'],
     ],
     highlight: [ 'F', 'AF' ],
   },
   {
     name: '3',
     text: [
-      ['Construct the straight line AE equal to CD.'],
+      ['Construct the straight line ', highlight('AE'), ' equal to CD.'],
     ],
     link: propositionRefLink('I', '2'),
     hide: [ 'F', 'AF' ],
@@ -73,7 +74,7 @@ const steps: StepList = [
   {
     name: '4',
     text: [
-      [`Construct the circle α with center A and radius AE.`],
+      ['Construct the circle ', highlight('α'), ' with center A and radius AE.'],
     ],
     link: postulateRefLink('I', '3'),
     highlight: [ 'α' ],
@@ -81,14 +82,14 @@ const steps: StepList = [
   {
     name: '5',
     text: [
-      [`Let F be the intersection of α and AB.`],
+      ['Let ', highlight('F'), ' be the intersection of α and AB.'],
     ],
     highlight: [ 'F' ],
   },
   {
     name: '6',
     text: [
-      [`Since AE and AF are both radii of circle α, they are equal.`],
+      ['Since ', highlight('AE'), ' and ', highlight('AF'), ' are both radii of circle α, they are equal.'],
     ],
     link: definitionRefLink('I', '15-18', '15'),
     highlight: [ 'AE', 'AF' ],
@@ -96,7 +97,7 @@ const steps: StepList = [
   {
     name: '7',
     text: [
-      ['So AF is part of AB and equal to CD, as required.'],
+      ['So ', highlight('AF'), ' is part of AB and equal to ', highlight('CD'), ', as required.'],
     ],
     link: commonNotionRefLink('I', '1'),
     highlight: [ 'AF', 'CD' ],
