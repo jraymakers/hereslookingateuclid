@@ -10,6 +10,7 @@ import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
+import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -67,21 +68,21 @@ const steps: StepList = [
   {
     name: '1',
     text: [
-      ['Let A be the given point, and BC the given straight line.'],
+      ['Let ', highlight('A'), ' be the given point, and ', highlight('BC'), ' the given straight line.'],
     ],
     highlight: [ 'A', 'B', 'C', 'BC' ],
   },
   {
     name: '2',
     text: [
-      ['It is required to construct a straight line equal to BC with one end at A.'],
+      ['It is required to construct a ', highlight('straight line equal to BC'), ' with one end at A.'],
     ],
     highlight: [ 'H', 'AH' ],
   },
   {
     name: '3',
     text: [
-      ['Construct the straight line AB.'],
+      ['Construct the straight line ', highlight('AB'), '.'],
     ],
     link: postulateRefLink('I', '1'),
     hide: [ 'H', 'AH' ],
@@ -90,8 +91,8 @@ const steps: StepList = [
   {
     name: '4',
     text: [
-      ['Construct an equilateral triangle ABD on AB.'],
-      ['So AB, AD, and BD are all equal.'],
+      ['Construct an equilateral triangle ', highlight('ABD'), ' on AB.'],
+      ['So AB, ', highlight('AD'), ', and ', highlight('BD'), ' are all equal.'],
     ],
     link: propositionRefLink('I', '1'),
     highlight: [ 'D', 'AD', 'BD' ],
@@ -99,7 +100,8 @@ const steps: StepList = [
   {
     name: '5',
     text: [
-      ['Construct the straight lines AE and BF by extending DA and DB, respectively.'],
+      ['Construct the straight lines ', highlight('AE'), ' and ', highlight('BF'),
+       ' by extending DA and DB, respectively.'],
     ],
     link: postulateRefLink('I', '2'),
     highlight: [ 'E', 'F', 'AH', 'BG', 'EH', 'FG' ],
@@ -107,7 +109,7 @@ const steps: StepList = [
   {
     name: '6',
     text: [
-      [`Construct the circle β with center B and radius BC.`],
+      ['Construct the circle ', highlight('β'), ' with center B and radius BC.'],
     ],
     link: postulateRefLink('I', '3'),
     highlight: [ 'β' ],
@@ -115,14 +117,14 @@ const steps: StepList = [
   {
     name: '7',
     text: [
-      [`Let G be the intersection of β and DF.`],
+      ['Let ', highlight('G'), ' be the intersection of β and DF.'],
     ],
     highlight: [ 'G' ],
   },
   {
     name: '8',
     text: [
-      [`Construct the circle δ with center D and radius DG.`],
+      ['Construct the circle ', highlight('δ'), ' with center D and radius DG.'],
     ],
     link: postulateRefLink('I', '3'),
     highlight: [ 'δ' ],
@@ -130,14 +132,14 @@ const steps: StepList = [
   {
     name: '9',
     text: [
-      [`Let H be the intersection of δ and DE.`],
+      ['Let ', highlight('H'), ' be the intersection of δ and DE.'],
     ],
     highlight: [ 'H' ],
   },
   {
     name: '10',
     text: [
-      [`Since BC and BG are both radii of circle β, they are equal.`],
+      ['Since ', highlight('BC'), ' and ', highlight('BG'), ' are both radii of circle β, they are equal.'],
     ],
     link: definitionRefLink('I', '15-18', '15'),
     highlight: [ 'BC', 'BG' ],
@@ -145,7 +147,7 @@ const steps: StepList = [
   {
     name: '11',
     text: [
-      [`Since DG and DH are both radii of circle δ, they are equal.`],
+      ['Since ', highlight('DG'), ' and ', highlight('DH'), ' are both radii of circle δ, they are equal.'],
     ],
     link: definitionRefLink('I', '15-18', '15'),
     highlight: [ 'AD', 'AH', 'BD', 'BG' ],
@@ -154,7 +156,7 @@ const steps: StepList = [
     name: '12',
     text: [
       ['Because AD equals BD, and AD and BD are parts of DH and DG respectively, ',
-       'the remaining parts of each, AH and BG, are also equal.'],
+       'the remaining parts of each, ', highlight('AH'), ' and ', highlight('BG'), ', are also equal.'],
     ],
     link: commonNotionRefLink('I', '3'),
     highlight: [ 'AH', 'BG' ],
@@ -162,7 +164,8 @@ const steps: StepList = [
   {
     name: '13',
     text: [
-      ['And since BG also equals BC, then AH equals BC and has one end at A, as required.'],
+      ['And since BG also equals BC, then ', highlight('AH'), ' equals ', highlight('BC'),
+       ' and has one end at A, as required.'],
     ],
     link: commonNotionRefLink('I', '1'),
     highlight: [ 'AH', 'BC' ],
