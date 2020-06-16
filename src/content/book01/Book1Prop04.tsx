@@ -5,6 +5,7 @@ import { Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
 import { cssClass, keyframes } from '../../style';
+import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -118,8 +119,9 @@ const steps: StepList = [
   {
     name: '1',
     text: [
-      ['Let ABC and DEF be the given triangles, with AB equal to DE, AC equal to DF, ',
-       'and angle ∠BAC equal to angle ∠EDF.'],
+      ['Let ABC and DEF be the given triangles, with ', highlight('AB'), ' equal to ', highlight('DE'),
+       ', ', highlight('AC'), ' equal to ', highlight('DF'), ', ',
+       'and angle ', highlight('∠BAC'), ' equal to angle ', highlight('∠EDF'), '.'],
     ],
     show: [ 'A', 'B', 'C', 'D', 'E', 'F', 'BC', 'EF' ],
     highlight: [ 'AB', 'AC', 'DE', 'DF', '∠BAC', '∠EDF' ],
@@ -127,9 +129,10 @@ const steps: StepList = [
   {
     name: '2',
     text: [
-      ['It is required to show that BC equals EF, ',
+      ['It is required to show that ', highlight('BC'), ' equals ', highlight('EF'), ', ',
        'that the triangles ABC and DEF are equal, ',
-       'and that ∠ABC equal ∠DEF and ∠ACB equals ∠DFE.',
+       'and that ', highlight('∠ABC'), ' equals ', highlight('∠DEF'), ' and ',
+        highlight('∠ACB'), ' equals ', highlight('∠DFE'), '.',
       ],
     ],
     highlight: [ 'BC', 'EF', '∠ABC', '∠ACB', '∠DEF', '∠DFE' ],
@@ -137,8 +140,10 @@ const steps: StepList = [
   {
     name: '3',
     text: [
-      ['If A and D are made to coincide, as are AB and DE, ',
-       'then B will coincide with E, because AB equals DE.'],
+      ['If ', highlight('A'), ' and ', highlight('D'), ' are made to coincide, as are ',
+       highlight('AB'), ' and ', highlight('DE'), ', ',
+       'then ', highlight('B'), ' will coincide with ', highlight('E'),
+        ', because ', highlight('AB'), ' equals ', highlight('DE'), '.'],
     ],
     hide: [
       'A', 'B', 'C', 'D', 'E', 'F',
@@ -151,8 +156,9 @@ const steps: StepList = [
   {
     name: '4',
     text: [
-      ['Also, if AB and DE coincide, then AC will coincide with DF, ',
-       'because angle ∠BAC equals angle ∠EDF.'],
+      ['Also, if ', highlight('AB'), ' and ', highlight('DE'), ' coincide, then ',
+       highlight('AC'), ' will coincide with ', highlight('DF'), ', ',
+       'because angle ', highlight('∠BAC'), ' equals angle ', highlight('∠EDF'), '.'],
     ],
     hide: [ 'A ', 'B ', 'C ', 'D ', 'E ', 'F ', 'AB ', 'AC ', 'BC ', 'DE ', 'DF ', 'EF ' ],
     show: [ 'A  ', 'B  ', 'C  ', 'D  ', 'E  ', 'F  ', 'BC  ', 'EF  ' ],
@@ -161,7 +167,8 @@ const steps: StepList = [
   {
     name: '5',
     text: [
-      ['And C will coincide with F, because AC equals DF.'],
+      ['And ', highlight('C'), ' will coincide with ', highlight('F'),
+       ', because ', highlight('AC'), ' equals ', highlight('DF'), '.'],
     ],
     hide: [ '∠BAC  ', '∠EDF  ' ],
     show: [ 'A  ', 'B  ', 'D  ', 'E  ', 'AB  ', 'BC  ', 'DE  ', 'EF  ' ],
@@ -170,8 +177,10 @@ const steps: StepList = [
   {
     name: '6',
     text: [
-      ['Since B and E coincide, and C and F coincide, BC coincides with EF, ',
-       'so BC equals EF, as required.'],
+      ['Since ', highlight('B'), ' and ', highlight('E'), ' coincide, and ',
+       highlight('C'), ' and ', highlight('F'), ' coincide, ',
+       highlight('BC'), ' coincides with ', highlight('EF'), ', ',
+       'so ', highlight('BC'), ' equals ', highlight('EF'), ', as required.'],
     ],
     link: commonNotionRefLink('I', '4'),
     show: [ 'A  ', 'D  ', 'AB  ', 'AC  ', 'DE  ', 'DF  ' ],
@@ -180,7 +189,8 @@ const steps: StepList = [
   {
     name: '7',
     text: [
-      ['And the whole triangles ABC and DEF coincide, so they are equal, as required.'],
+      ['And the whole triangles ', highlight('ABC'), ' and ', highlight('DEF'),
+      ' coincide, so they are equal, as required.'],
     ],
     link: commonNotionRefLink('I', '4'),
     highlight: [ 'A  ', 'B  ', 'C  ', 'D  ', 'E  ', 'F  ', 'AB  ', 'AC  ', 'BC  ', 'DE  ', 'DF  ', 'EF  ' ],
@@ -188,7 +198,8 @@ const steps: StepList = [
   {
     name: '8',
     text: [
-      ['Also, the angles ∠ABC and ∠DEF coincide, and thus are equal, as required.'],
+      ['Also, the angles ', highlight('∠ABC'), ' and ', highlight('∠DEF'),
+       ' coincide, and thus are equal, as required.'],
     ],
     link: commonNotionRefLink('I', '4'),
     show: ['A  ', 'B  ', 'C  ', 'D  ', 'E  ', 'F  ', 'AB  ', 'AC  ', 'BC  ', 'DE  ', 'DF  ', 'EF  ' ],
@@ -197,7 +208,8 @@ const steps: StepList = [
   {
     name: '9',
     text: [
-      ['Likewise, the angles ∠ACB and ∠DFE coincide, and thus are equal, as required.'],
+      ['Likewise, the angles ', highlight('∠ACB'), ' and ', highlight('∠DFE'),
+       ' coincide, and thus are equal, as required.'],
     ],
     link: commonNotionRefLink('I', '4'),
     hide: [ '∠ABC  ', '∠DEF  ' ],
