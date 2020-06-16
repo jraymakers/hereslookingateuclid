@@ -9,6 +9,7 @@ import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
+import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -41,21 +42,21 @@ const steps: StepList = [
   {
     name: '1',
     text: [
-      ['Let AB be the given straight line.'],
+      ['Let ', highlight('AB'), ' be the given straight line.'],
     ],
     highlight: [ 'AB', 'A', 'B' ],
   },
   {
     name: '2',
     text: [
-      ['It is required to construct an equilateral triangle on AB.'],
+      ['It is required to construct an ', highlight('equilateral triangle on AB'), '.'],
     ],
     highlight: [ 'C', 'AC', 'BC' ],
   },
   {
     name: '3',
     text: [
-      [`Construct a circle α with center A and radius AB.`],
+      ['Construct a circle ', highlight('α'), ' with center A and radius AB.'],
     ],
     link: postulateRefLink('I', '3'),
     hide: [ 'C', 'AC', 'BC' ],
@@ -64,7 +65,7 @@ const steps: StepList = [
   {
     name: '4',
     text: [
-      [`Construct another circle β with center B and radius AB.`],
+      ['Construct another circle ', highlight('β'), ' with center B and radius AB.'],
     ],
     link: postulateRefLink('I', '3'),
     highlight: [ 'β' ],
@@ -72,7 +73,7 @@ const steps: StepList = [
   {
     name: '5',
     text: [
-      [`Let C be either one of the two intersection points of α and β.`],
+      ['Let ', highlight('C'), ' be either one of the two intersection points of α and β.'],
       // Note
     ],
     highlight: [ 'C' ],
@@ -80,7 +81,7 @@ const steps: StepList = [
   {
     name: '6',
     text: [
-      ['Construct the straight lines AC and BC.'],
+      ['Construct the straight lines ', highlight('AC'), ' and ', highlight('BC'), '.'],
     ],
     link: postulateRefLink('I', '1'),
     highlight: [ 'AC', 'BC' ],
@@ -88,7 +89,7 @@ const steps: StepList = [
   {
     name: '7',
     text: [
-      [`Since AB and AC are both radii of circle α, they are equal.`],
+      ['Since ', highlight('AB'), ' and ', highlight('AC'), ' are both radii of circle α, they are equal.'],
     ],
     link: definitionRefLink('I', '15-18', '15'),
     highlight: [ 'AB', 'AC' ],
@@ -96,7 +97,8 @@ const steps: StepList = [
   {
     name: '8',
     text: [
-      [`Likewise, since AB and BC are both radii of circle β, they are equal.`],
+      ['Likewise, since ', highlight('AB'), ' and ', highlight('BC'),
+       ' are both radii of circle β, they are equal.'],
     ],
     link: definitionRefLink('I', '15-18', '15'),
     highlight: [ 'AB', 'BC' ],
@@ -104,7 +106,8 @@ const steps: StepList = [
   {
     name: '9',
     text: [
-      ['Because AB equals AC and AB equals BC, AC equals BC.'],
+      ['Because AB equals ', highlight('AC'), ' and AB equals ', highlight('BC'),
+       ', ', highlight('AC'), ' equals ', highlight('BC'), '.'],
     ],
     link: commonNotionRefLink('I', '1'),
     highlight: [ 'AC', 'BC' ],
@@ -112,7 +115,8 @@ const steps: StepList = [
   {
     name: '10',
     text: [
-      ['Thus AB, AC, and BC equal each other, so the triangle ABC is equilateral, as required.'],
+      ['Thus ', highlight('AB'), ', ', highlight('AC'), ', and ', highlight('BC'),
+       ' equal each other, so the triangle ', highlight('ABC'), ' is equilateral, as required.'],
     ],
     link: definitionRefLink('I', '20-21', '20a'),
     highlight: [ 'AB', 'AC', 'BC' ],
