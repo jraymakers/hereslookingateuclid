@@ -4,6 +4,7 @@ import { stepsAndDiagramPageData } from '../../page';
 import { italic, Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
+import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -32,7 +33,7 @@ const steps: StepList = [
   {
     name: '2a',
     text: [
-      ['Let AB be the given straight line.'],
+      ['Let ', highlight('AB'), ' be the given straight line.'],
     ],
     show: [ 'A', 'B' ],
     highlight: [ 'AB' ],
@@ -40,8 +41,8 @@ const steps: StepList = [
   {
     name: '2b',
     text: [
-      ['Then AB can be ', italic('extended'), ' in the direction of B by choosing a point C',
-       ' and constructing the straight line BC such that B is on the straight line AC.'],
+      ['Then AB can be ', italic('extended'), ' in the direction of B by choosing a point ', highlight('C'),
+       ' and constructing the straight line ', highlight('BC'), ' such that B is on the straight line AC.'],
     ],
     highlight: [ 'C', 'BC' ],
   },

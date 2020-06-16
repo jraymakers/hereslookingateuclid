@@ -4,6 +4,7 @@ import { stepsAndDiagramPageData } from '../../page';
 import { italic, Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
+import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -30,14 +31,15 @@ const steps: StepList = [
   {
     name: '3a',
     text: [
-      ['Let A and B be any two points.'],
+      ['Let ', highlight('A'), ' and ', highlight('B'), ' be any two points.'],
     ],
     highlight: [ 'A', 'B' ],
   },
   {
     name: '3b',
     text: [
-      [`Then there is a unique circle α with center A and `, italic('radius'), ' AB.'],
+      ['Then there is a unique circle ', highlight('α'), ' with center A and ',
+       italic('radius'), ' ', highlight('AB'), '.'],
     ],
     highlight: [ 'α', 'AB' ],
   },

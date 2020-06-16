@@ -4,6 +4,7 @@ import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
+import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -67,7 +68,7 @@ const steps: StepList = [
   {
     name: 'a',
     text: [
-      ['In other words: Given two straight lines AC and DF,'],
+      ['In other words: Given two straight lines ', highlight('AC'), ' and ', highlight('DF'), ','],
     ],
     show: [ 'A', 'C', 'D', 'F' ],
     highlight: [ 'AB', 'BC', 'DE', 'EF' ],
@@ -75,35 +76,37 @@ const steps: StepList = [
   {
     name: 'b',
     text: [
-      ['a point B between A and C,'],
+      ['a point ', highlight('B'), ' between A and C,'],
     ],
     highlight: [ 'B' ],
   },
   {
     name: 'c',
     text: [
-      ['a point E between D and F,'],
+      ['a point ', highlight('E'), ' between D and F,'],
     ],
     highlight: [ 'E' ],
   },
   {
     name: 'd',
     text: [
-      ['and the straight line BE'],
+      ['and the straight line ', highlight('BE')],
     ],
     highlight: [ 'BE' ],
   },
   {
     name: 'e',
     text: [
-      ['such that the two angles ∠ABE and ∠BED total less than two right angles,'],
+      ['such that the two angles ', highlight('∠ABE'), ' and ', highlight('∠BED'),
+       ' total less than two right angles,'],
     ],
-    highlight: [ 'AB', 'BE', 'DE', '∠ABE', '∠BED' ],
+    highlight: [ '∠ABE', '∠BED' ],
   },
   {
     name: 'f',
     text: [
-      ['then, if AC and DF are extended in the directions of A and D, they meet at a point G.'],
+      ['then, if AC and DF are ', highlight('extended'),
+       ' in the directions of A and D, they meet at a point ', highlight('G'), '.'],
     ],
     hide: [ '∠ABE', '∠BED' ],
     highlight: [ 'G', 'AG', 'DG' ],

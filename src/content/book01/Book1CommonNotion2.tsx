@@ -60,7 +60,7 @@ const steps: StepList = [
   {
     name: 'c',
     text: [
-      ['Extend AB in the direction of A, so that it intersects β.'],
+      [highlight('Extend'), ' AB in the direction of A, so that it intersects β.'],
       ['Let ', highlight('D'), ' be the point of intersection.'],
     ],
     highlight: [ 'D', 'AD' ],
@@ -68,7 +68,7 @@ const steps: StepList = [
   {
     name: 'd',
     text: [
-      ['Similarly, extend AC in the direction of A, so that it intersects β.'],
+      ['Similarly, ', highlight('extend'), ' AC in the direction of A, so that it intersects β.'],
       ['Let ', highlight('E'), ' be the point of intersection.'],
     ],
     highlight: [ 'E', 'AE' ],

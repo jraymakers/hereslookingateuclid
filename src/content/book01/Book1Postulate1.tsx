@@ -4,6 +4,7 @@ import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
+import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -28,14 +29,14 @@ const steps: StepList = [
   {
     name: '1a',
     text: [
-      ['Let A and B be any two points.'],
+      ['Let ', highlight('A'), ' and ', highlight('B'), ' be any two points.'],
     ],
     highlight: [ 'A', 'B' ],
   },
   {
     name: '1b',
     text: [
-      ['Then there is a unique straight line AB with ends A and B.'],
+      ['Then there is a unique straight line ', highlight('AB'), ' with ends A and B.'],
     ],
     highlight: [ 'AB' ],
   },

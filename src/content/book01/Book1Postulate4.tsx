@@ -4,6 +4,7 @@ import { stepsAndDiagramPageData } from '../../page';
 import { Paragraph } from '../../paragraph';
 import { StepList } from '../../step';
 import { StepsAndDiagram } from '../../stepsAndDiagram';
+import { highlight } from '../../paragraph/utils/RunUtils';
 
 const width = 400;
 const height = 400;
@@ -49,17 +50,17 @@ const steps: StepList = [
   {
     name: '4a',
     text: [
-      ['Let ∠ABC and ∠DEF be right angles.'],
+      ['Let ', highlight('∠ABC'), ' and ', highlight('∠DEF'), ' be right angles.'],
     ],
-    show: [ 'A', 'B', 'C', 'D', 'E', 'F' ],
-    highlight: [ 'AB', 'BC', 'DE', 'EF', '∠ABC', '∠DEF' ],
+    show: [ 'A', 'B', 'C', 'D', 'E', 'F', 'AB', 'BC', 'DE', 'EF' ],
+    highlight: [ '∠ABC', '∠DEF' ],
   },
   {
     name: '4b',
     text: [
-      ['Then the angle ∠ABC equals the angle ∠DEF.'],
+      ['Then the angle ', highlight('∠ABC'), ' equals the angle ', highlight('∠DEF'), '.'],
     ],
-    highlight: [ 'AB', 'BC', 'DE', 'EF', '∠ABC', '∠DEF' ],
+    highlight: [ '∠ABC', '∠DEF' ],
   },
 ];
 
